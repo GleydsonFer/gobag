@@ -1,0 +1,21 @@
+.itens-sacola{
+    width: 40px;
+}
+.logo{
+    width: 40px;
+}
+.pesquisa{
+    height: 38px;
+}
+.btn-pesquisa{
+    height: 38px;
+}
+.banner img{
+    width: 100%;
+}
+.dropdown:hover>.dropdown-menu{
+    display: block;
+}
+.main{
+    background-color: #111;
+}

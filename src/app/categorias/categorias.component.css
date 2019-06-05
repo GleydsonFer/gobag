@@ -1,0 +1,30 @@
+  .nav {
+    list-style-type: none;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+  }
+  
+  .nav li {
+    display: inline-block;
+    width: 31%;
+    margin: 10px;
+  }
+  .image{
+    width: 100%;
+    display: inline-block;
+    border-radius: 8px;
+  }
+  @media (max-width: 600px) {
+    .nav {
+      font-size: 10px;
+      max-height: 75px; }
+  }
+  @media (max-width: 1024px) {
+    .nav li {
+      margin: 4px;
+    }
+    .nav {
+      min-width: 60px;
+    }
+  }
