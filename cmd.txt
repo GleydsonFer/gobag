@@ -1,0 +1,49 @@
+cd c:\angular\projetos\app2
+ng serve
+
+npm start
+--------
+cd c:\angular\projetos\app1
+
+ng build
+
+ng build -- prod
+
+--------
+
+cd c:\angular\projetos\app2
+
+json-server --watch banco-de-dados.json
+
+--criar um novo componente
+
+cd c:\angular\projetos\app2
+
+ng g c nome_novo_componente --spec=false
+
+
+--instalação
+
+Dowload nodejs
+Node -v
+Npm -v
+Npm install -g @angular/cli
+npm install -g json-server
+
+
+
+json-server --watch banco-de-dados.json
+
+---
+npm install -g json-server
+
+json-server --watch banco-de-dados.json
+
+--novo projeto--
+
+ng new nomedoprojeto
+npm install
+Npm install bootstrap@numerodaversao (ver no site do bootstrap) --save
+Npm install jquery --save
+Npm install tether --save
+

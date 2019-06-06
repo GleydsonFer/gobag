@@ -1,0 +1,168 @@
+<nav class="navbar navbar-expand-xl navbar-dark main navbar-fixed-top mt-n2 mb-n2">
+
+    <a class="navbar-brand mt-n1 mb-n2" href="#">
+        <img class="logo" src="./assets/logo03.png" />
+    </a>
+<!--BUSCA -->
+    <div class="form-inline mt-n1 mb-n2">
+        <input  class="form-control ml-2  pesquisa" 
+                type="text" 
+                placeholder="Buscar..."
+                #termoDaPesquisa
+                (keyup)="pesquisa(termoDaPesquisa.value)">
+                <ul class="list-group" style="position: absolute; z-index: 999">
+                    <li class="list-group-item" *ngFor="let oferta of ofertas | async">
+                      <a [routerLink]="['/oferta', oferta.id ]" (click)="limpaPesquisa()">
+                        {{ oferta.titulo | descricaoReduzida:15 }}
+                      </a>
+                    </li>
+                  </ul>
+        
+                </div>
+<!--/BUSCA-->
+
+    
+
+
+    <div class="navbar-text mt-n1 mb-n2" style="max-width: 200px">
+        <em>Entrega: Avenida Presidente Castelo Branco, 123</em>
+    </div>
+
+    <div class="collapse navbar-collapse mt-n1 mb-n2 ml-5" id="navbarSite">
+        <ul class="navbar-nav mr-auto my-3">
+            <li class="nav-item dropdown">
+                <a  class="nav-link" 
+                    data-toggle="dropdown" 
+                    role="button" 
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    routerLink=""
+                    
+                    >
+                    Novidades <!-- AINDA FALTA CRIAR COMPONENTE NOVIDADES! -->
+                </a> 
+                    <!-- FAZER PARA A PROXIMA VERSÃO
+                <div class="dropdown-menu mt-0">
+                    <a class="dropdown-item" href="#">Promoções</a>
+                    <a class="dropdown-item" href="#">Outono</a>
+                    <a class="dropdown-item" href="#">Inverno</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Ver tudo</a>
+                </div>  -->
+            </li>
+            <li class="nav-item dropdown">
+                <a  class="nav-link" 
+                    data-toggle="dropdown" 
+                    
+                    role="button" 
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    routerLinkActive="active"
+                    routerLink="/diversao"
+                    >
+                    Feminino
+                </a> 
+                <!-- FAZER PARA A PROXIMA VERSÃO 
+
+                       
+                <div class="dropdown-menu mt-0">
+                    <a class="dropdown-item" href="#">Saias</a>
+                    <a class="dropdown-item" href="#">Vestidos</a>
+                    <a class="dropdown-item" href="#">Bodies</a>
+                    <a class="dropdown-item" href="#">Camisetas</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Ver tudo</a>
+                </div> -->
+            </li>
+            <li class="nav-item dropdown">
+                <a  class="nav-link" 
+                    data-toggle="dropdown" 
+                     
+                    role="button" 
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    routerLinkActive="active"
+                    routerLink="/restaurantes"
+                    >
+                    Masculino
+                </a>
+                     <!-- FAZER PARA A PROXIMA VERSÃO
+                        
+                <div class="dropdown-menu mt-0">
+                    <a class="dropdown-item" href="#">Camisas Polo</a>
+                    <a class="dropdown-item" href="#">Camisetas</a>
+                    <a class="dropdown-item" href="#">Calças</a>
+                    <a class="dropdown-item" href="#">Shorts</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Ver tudo</a>
+                </div> -->
+            </li>
+            <li class="nav-item dropdown">
+                <a  class="nav-link" 
+                    data-toggle="dropdown" 
+                    role="button" 
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    routerLinkActive="active"
+                    routerLink="" 
+                    >
+                     
+                    Acessórios <!-- AINDA FALTA CRIAR COMPONENTE ACESSORIOS! -->
+                </a>
+                    <!-- FAZER PARA A PROXIMA VERSÃO
+                <div class="dropdown-menu mt-0">
+                    <a class="dropdown-item" href="#">Óculos</a>
+                    <a class="dropdown-item" href="#">Coláres</a>
+                    <a class="dropdown-item" href="#">Pulseiras</a>
+                    <a class="dropdown-item" href="#">Relógios</a>
+                    <a class="dropdown-item" href="#">Bonés</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Ver tudo</a>
+                </div>
+                -->
+            </li>
+            <li class="nav-item dropdown">
+                <a  class="nav-link" 
+                    data-toggle="dropdown" 
+                    role="button" 
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    routerLinkActive="active"
+                    routerLink="/fitness" 
+                    >
+                    Fitness
+                </a>
+                    <!-- FAZER PARA A PROXIMA VERSÃO
+                <div class="dropdown-menu mt-0">
+                    <a class="dropdown-item" href="#">Ténis</a>
+                    <a class="dropdown-item" href="#">Acessórios</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Ver tudo</a>
+                </div>
+            -->
+            </li>
+            <li class="nav-item dropdown">
+                <a  class="nav-link" 
+                    data-toggle="dropdown" 
+                    href="#" 
+                    role="button" 
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    routerLinkActive="active"
+                    routerLink="/teen"
+                    >
+                    Teen
+                </a> 
+        </ul>
+    </div>
+
+    <div class="navbar mt-n1 mb-n2">
+        <button class="navbar navbar-toggler mt-n2 mb-n2 mr-1 mr-auto" type="button" data-toggle="collapse"
+            data-target="#navbarSite" aria-controls="navbarSite" aria-expanded="false" aria-label="Alterna navegação">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a routerLink="/ordem-compra"><img class="itens-sacola mr-1" src="/assets/carrinho.png" /></a>
+        <a routerLink="#"><img class="itens-sacola" src="/assets/perfil.png" /></a>
+    </div>
+
+</nav>

@@ -1,0 +1,384 @@
+{
+  "ofertas": [
+    {
+      "id": 1,
+      "categoria": "restaurante",
+      "titulo": "Super Burger",
+      "descricao_oferta": "Rodízio de Mini-hambúrger com opção de entrada.",
+      "anunciante": "Original Burger",
+      "valor": 29.9,
+      "destaque": true,
+      "imagens": [
+        {
+          "url": "/assets/ofertas/1/img1.jpg"
+        },
+        {
+          "url": "/assets/ofertas/1/img2.jpg"
+        },
+        {
+          "url": "/assets/ofertas/1/img3.jpg"
+        },
+        {
+          "url": "/assets/ofertas/1/img4.jpg"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "categoria": "restaurante",
+      "titulo": "Cozinha Mexicana",
+      "descricao_oferta": "Almoço ou Jantar com Rodízio Mexicano delicioso.",
+      "anunciante": "Mexicana",
+      "valor": 32.9,
+      "destaque": true,
+      "imagens": [
+        {
+          "url": "/assets/ofertas/2/img1.jpg"
+        },
+        {
+          "url": "/assets/ofertas/2/img2.jpg"
+        },
+        {
+          "url": "/assets/ofertas/2/img3.jpg"
+        },
+        {
+          "url": "/assets/ofertas/2/img4.jpg"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "categoria": "restaurante",
+      "titulo": "Pizzas Grandes",
+      "descricao_oferta": "Pizza Grande, Mussarela, Marguerita ou outras!",
+      "anunciante": "Nossa Pizza",
+      "valor": 21.9,
+      "destaque": false,
+      "imagens": [
+        {
+          "url": "/assets/ofertas/3/img1.jpg"
+        },
+        {
+          "url": "/assets/ofertas/3/img2.jpg"
+        },
+        {
+          "url": "/assets/ofertas/3/img3.jpg"
+        },
+        {
+          "url": "/assets/ofertas/3/img4.jpg"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "categoria": "diversao",
+      "titulo": "Estância das águas",
+      "descricao_oferta": "Diversão garantida com piscinas, trilhas e muito mais.",
+      "anunciante": "Estância das águas",
+      "valor": 31.9,
+      "destaque": true,
+      "imagens": [
+        {
+          "url": "/assets/ofertas/4/img1.jpg"
+        },
+        {
+          "url": "/assets/ofertas/4/img2.jpg"
+        },
+        {
+          "url": "/assets/ofertas/4/img3.jpg"
+        },
+        {
+          "url": "/assets/ofertas/4/img4.jpg"
+        },
+        {
+          "url": "/assets/ofertas/4/img5.jpg"
+        },
+        {
+          "url": "/assets/ofertas/4/img6.jpg"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "categoria": "diversao",
+      "titulo": "Kart",
+      "descricao_oferta": "Bateria de Kart de 30 minutos.",
+      "anunciante": "Speed Kart",
+      "valor": 54.9,
+      "destaque": false,
+      "imagens": [
+        {
+          "url": "/assets/ofertas/5/img1.jpg"
+        },
+        {
+          "url": "/assets/ofertas/5/img2.jpg"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "categoria": "diversao",
+      "titulo": "Academia de tiro",
+      "descricao_oferta": "Sessão de tiro dinâmico com Instrutor, Estande, Alvo e Equipamentos.",
+      "anunciante": "Academia de Tiro",
+      "valor": 89.9,
+      "destaque": false,
+      "imagens": [
+        {
+          "url": "/assets/ofertas/6/img1.jpg"
+        },
+        {
+          "url": "/assets/ofertas/6/img2.jpg"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "categoria": "fitness",
+      "titulo": "Roupa Fitness",
+      "descricao_oferta": "Roupas de academia.",
+      "anunciante": "Loja de roupas de academia",
+      "valor": 89.9,
+      "destaque": false,
+      "imagens": [
+        {
+          "url": "/assets/ofertas/6/img1.jpg"
+        },
+        {
+          "url": "/assets/ofertas/6/img2.jpg"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "categoria": "infantil",
+      "titulo": "Roupa infantil",
+      "descricao_oferta": "Roupas dos herois preferidos",
+      "anunciante": "Kids",
+      "valor": 54.9,
+      "destaque": false,
+      "imagens": [
+        {
+          "url": "/assets/ofertas/5/img1.jpg"
+        },
+        {
+          "url": "/assets/ofertas/5/img2.jpg"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "categoria": "teen",
+      "titulo": "Roupas teen",
+      "descricao_oferta": "Roupas teen, para adolecentes q querem ficar na moda",
+      "anunciante": "TeenTãs",
+      "valor": 7.9,
+      "destaque": true,
+      "imagens": [
+        {
+          "url": "/assets/ofertas/2/img1.jpg"
+        },
+        {
+          "url": "/assets/ofertas/2/img2.jpg"
+        },
+        {
+          "url": "/assets/ofertas/2/img3.jpg"
+        },
+        {
+          "url": "/assets/ofertas/2/img4.jpg"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "categoria": "calcados",
+      "titulo": "Calçados top",
+      "descricao_oferta": "Top ficar na moda",
+      "anunciante": "Toperson",
+      "valor": 27.9,
+      "destaque": true,
+      "imagens": [
+        {
+          "url": "/assets/ofertas/4/img1.jpg"
+        },
+        {
+          "url": "/assets/ofertas/4/img2.jpg"
+        },
+        {
+          "url": "/assets/ofertas/4/img3.jpg"
+        },
+        {
+          "url": "/assets/ofertas/4/img4.jpg"
+        },
+        {
+          "url": "/assets/ofertas/4/img5.jpg"
+        },
+        {
+          "url": "/assets/ofertas/4/img6.jpg"
+        }
+      ]
+    }
+  ],
+  "como-usar": [
+    {
+      "id": 1,
+      "descricao": "Não é necessário agendar"
+    },
+    {
+      "id": 2,
+      "descricao": "Válido de segunda a quinta das 12h as 23h"
+    },
+    {
+      "id": 3,
+      "descricao": "Não é necessário agendar"
+    },
+    {
+      "id": 4,
+      "descricao": "Necessário agendar com no mínimo 48 horas de antecedência"
+    },
+    {
+      "id": 5,
+      "descricao": "Válido de segunda a sábado das 12h as 23h. Necessário agendamento prévio"
+    },
+    {
+      "id": 6,
+      "descricao": "Não é necessário agendar. Sujeito à fila."
+    },
+    {
+      "id": 7,
+      "descricao": "É necessário agendar"
+    },
+    {
+      "id": 8,
+      "descricao": "Roupas! so vim e comprar"
+    },
+    {
+      "id": 9,
+      "descricao": "Jovens Titãs"
+    },
+    {
+      "id": 10,
+      "descricao": "Topzeira"
+    }
+  ],
+  "onde-fica": [
+    {
+      "id": 1,
+      "descricao": "Avenida João da Silva, 255, São Paulo - SP"
+    },
+    {
+      "id": 2,
+      "descricao": "Rua Francisco Mendes, 1000, Rio de Janeiro - SP "
+    },
+    {
+      "id": 3,
+      "descricao": "Avenida Lúcio Rodrigues Alves, 33, Fortaleza - CE"
+    },
+    {
+      "id": 4,
+      "descricao": "Avenida José de Oliveira, 550, Campo Grande - MS"
+    },
+    {
+      "id": 5,
+      "descricao": "Avenida Júlia Abrão, 77, São Paulo - SP"
+    },
+    {
+      "id": 6,
+      "descricao": "Estrada Maria das Graças, 12, Salvador - BA "
+    },
+    {
+      "id": 7,
+      "descricao": "Rua Luiza, 123, Fortaleza-CE "
+    },
+    {
+      "id": 8,
+      "descricao": "Rua Miranda, 321, Fortaleza-CE "
+    },
+    {
+      "id": 9,
+      "descricao": "Rua DC, 7, Fortaleza-CE "
+    },
+    {
+      "id": 10,
+      "descricao": "Rua Pé de papel, 27, Fortaleza-CE "
+    }
+  ],
+  "pedidos": [
+    {
+      "endereco": "Rua Abc",
+      "numero": "123",
+      "complemento": "",
+      "formaPagamento": "debito",
+      "id": 1
+    },
+    {
+      "endereco": "Rua Luiza Miranda Coelho",
+      "numero": "760",
+      "complemento": "Ao lado da padaria Vianna",
+      "formaPagamento": "dinheiro",
+      "id": 2
+    },
+    {
+      "endereco": "Rua Teste",
+      "numero": "5",
+      "complemento": "",
+      "formaPagamento": "debito",
+      "id": 3
+    },
+    {
+      "endereco": "rua 10",
+      "numero": "3",
+      "complemento": "casa x",
+      "formaPagamento": "dinheiro",
+      "id": 4
+    },
+    {
+      "endereco": "TEST1",
+      "numero": "1",
+      "complemento": null,
+      "formaPagamento": "dinheiro",
+      "item": [
+        {
+          "id": 9,
+          "img": {
+            "url": "/assets/ofertas/2/img1.jpg"
+          },
+          "titulo": "Roupas teen",
+          "descricao_oferta": "Roupas teen, para adolecentes q querem ficar na moda",
+          "valor": 7.9,
+          "quantidade": 4
+        },
+        {
+          "id": 7,
+          "img": {
+            "url": "/assets/ofertas/6/img1.jpg"
+          },
+          "titulo": "Roupa Fitness",
+          "descricao_oferta": "Roupas de academia.",
+          "valor": 89.9,
+          "quantidade": 2
+        }
+      ],
+      "id": 5
+    },
+    {
+      "endereco": "TESTE2",
+      "numero": "123123",
+      "complemento": "ASDFSDF",
+      "formaPagamento": "dinheiro",
+      "item": [
+        {
+          "id": 9,
+          "img": {
+            "url": "/assets/ofertas/2/img1.jpg"
+          },
+          "titulo": "Roupas teen",
+          "descricao_oferta": "Roupas teen, para adolecentes q querem ficar na moda",
+          "valor": 7.9,
+          "quantidade": 9
+        }
+      ],
+      "id": 6
+    }
+  ]
+}

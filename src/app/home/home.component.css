@@ -1,0 +1,15 @@
+.card_box {
+    margin-bottom: 20px;
+}
+
+.card-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.card-title,
+.card-text {
+    text-align: center;
+}

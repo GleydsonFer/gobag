@@ -1,0 +1,65 @@
+/* img {
+    border-radius: 5px;
+    width: 320px;
+    height: 200px
+} */
+
+.container {
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+/* edições wilson */
+.prat_prod {
+    margin: 50px 0;
+}
+
+.prod {
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+
+.prod_title,
+.prod_price {
+   text-align: center;
+}
+
+.prod_title {
+    text-transform: capitalize;
+    padding: 10px 0;
+    margin: 0;
+}
+
+.prod_img-box {margin: 0;}
+
+.prod_price-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 15px 0;
+}
+
+.prod_price {
+    margin: 0;
+    font-size: 20px;
+    padding-left: 70px;
+}
+
+.add_bag {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    cursor: pointer;
+    text-align: center;
+}
+
+.add_bag::before {
+    content:'👜';
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    line-height: 30px;
+}
