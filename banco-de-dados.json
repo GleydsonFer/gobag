@@ -217,6 +217,7 @@
           "url": "/assets/ofertas/4/img6.jpg"
         }
       ]
+<<<<<<< HEAD
     },
     {
       "id": 11,
@@ -344,6 +345,8 @@
           "url": "/assets/ofertas/4/img6.jpg"
         }
       ]
+=======
+>>>>>>> refs/remotes/origin/master
     }
   ],
   "como-usar": [
@@ -386,6 +389,7 @@
     {
       "id": 10,
       "descricao": "Topzeira"
+<<<<<<< HEAD
     },
     {
       "id": 11,
@@ -406,6 +410,8 @@
     {
       "id": 15,
       "descricao": "Topzeira"
+=======
+>>>>>>> refs/remotes/origin/master
     }
   ],
   "onde-fica": [
@@ -448,6 +454,7 @@
     {
       "id": 10,
       "descricao": "Rua Pé de papel, 27, Fortaleza-CE "
+<<<<<<< HEAD
     },
     {
       "id": 11,
@@ -468,6 +475,8 @@
     {
       "id": 15,
       "descricao": "Rua Pé de papel, 27, Fortaleza-CE "
+=======
+>>>>>>> refs/remotes/origin/master
     }
   ],
   "pedidos": [
@@ -546,6 +555,7 @@
         }
       ],
       "id": 6
+<<<<<<< HEAD
     },
     {
       "endereco": "Rua antonio ",
@@ -585,6 +595,8 @@
         }
       ],
       "id": 7
+=======
+>>>>>>> refs/remotes/origin/master
     }
   ]
 }
