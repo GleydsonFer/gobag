@@ -22,8 +22,6 @@ import { OfertaComponent } from './oferta/oferta.component';
 import { ComoUsarComponent } from './oferta/como-usar/como-usar.component';
 import { OndeFicaComponent } from './oferta/onde-fica/onde-fica.component';
 
-
-
 //pipe
 import { DescricaoReduzida } from './util/descricao-reduzida.pipe';
 import { OrdemCompraComponent } from './ordem-compra/ordem-compra.component';
@@ -33,7 +31,6 @@ import { registerLocaleData } from '@angular/common';
 import { from } from 'rxjs';
 import { TeenComponent } from './teen/teen.component';
 import { CalcadosComponent } from './calcados/calcados.component';
-import { CategoriasComponent } from './categorias/categorias.component';
 import { BannerSlideComponent } from './banner-slide/banner-slide.component';
 import { OrdemCompraSucessoComponent } from './ordem-compra-sucesso/ordem-compra-sucesso.component';
 
@@ -41,6 +38,11 @@ import { OrdemCompraSucessoComponent } from './ordem-compra-sucesso/ordem-compra
 import  CarrinhoService  from './carrinho.service'
 import { ReactiveFormsModule } from '@angular/forms'
 
+import { CategoriasComponent } from './categorias/categorias.component';
+import { Categoria01Component } from './categoria01/categoria01.component';
+import { OfertasService } from './ofertas.service';
+import { Categoria02Component } from './categoria02/categoria02.component';
+import { Categoria03Component } from './categoria03/categoria03.component';
 
 registerLocaleData(localePtBr);
 
@@ -61,9 +63,12 @@ registerLocaleData(localePtBr);
     FitnessComponent,
     TeenComponent,
     CalcadosComponent,
-    CategoriasComponent,
     BannerSlideComponent,
     OrdemCompraSucessoComponent,
+    CategoriasComponent,
+    Categoria01Component,
+    Categoria02Component,
+    Categoria03Component
     //ajustanto o erro ngIf
     
     //
@@ -71,20 +76,23 @@ registerLocaleData(localePtBr);
   imports: [
     BrowserModule,
     HttpModule,
+    //CategoriasModule,
     //ajustanto o erro ngIf
-    
     ReactiveFormsModule,
-    
-    //
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [ CarrinhoService, { provide: LOCALE_ID, useValue: 'pt-Br' } 
-],
-  bootstrap: [AppComponent],
+  providers: [ 
+    CarrinhoService, { provide: LOCALE_ID, useValue: 'pt-Br' },
+    OfertasService   
+  ],
+  bootstrap: [
+    AppComponent
+  ],
   //
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA,
+  schemas: [ 
+    CUSTOM_ELEMENTS_SCHEMA,
     NO_ERRORS_SCHEMA
-   ]
+  ]
   //
 })
 export class AppModule { }

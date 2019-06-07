@@ -217,6 +217,133 @@
           "url": "/assets/ofertas/4/img6.jpg"
         }
       ]
+    },
+    {
+      "id": 11,
+      "categoria": "off30",
+      "titulo": "Blusa Branca",
+      "descricao_oferta": "Simples perfeita para momentos casuais",
+      "anunciante": "Toperson",
+      "valor": 39.9,
+      "destaque": false,
+      "imagens": [
+        {
+          "url": "/assets/ofertas/blusa-branca/img01.jpg"
+        },
+        {
+          "url": "/assets/ofertas/blusa-branca/img02.jpg"
+        },
+        {
+          "url": "/assets/ofertas/blusa-branca/img03.jpg"
+        },
+        {
+          "url": "/assets/ofertas/blusa-branca/img04.jpg"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "categoria": "off30",
+      "titulo": "Blusa Lança Perfume",
+      "descricao_oferta": "descricao Oferta",
+      "anunciante": "Toperson",
+      "valor": 39.9,
+      "destaque": false,
+      "imagens": [
+        {
+          "url": "/assets/ofertas/blusa-lanca-perfume/img01.jpg"
+        },
+        {
+          "url": "/assets/ofertas/blusa-lanca-perfume/img02.jpg"
+        },
+        {
+          "url": "/assets/ofertas/blusa-lanca-perfume/img03.jpg"
+        },
+        {
+          "url": "/assets/ofertas/blusa-lanca-perfume/img04.jpg"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "categoria": "off30",
+      "titulo": "Vestido Sommer",
+      "descricao_oferta": "O visual moderno e cheio de estilo do Vestido Sommer ",
+      "anunciante": "Toperson",
+      "valor": 39.9,
+      "destaque": false,
+      "imagens": [
+        {
+          "url": "/assets/ofertas/vestido-sommer/img01.jpg"
+        },
+        {
+          "url": "/assets/ofertas/vestido-sommer/img02.jpg"
+        },
+        {
+          "url": "/assets/ofertas/vestido-sommer/img03.jpg"
+        },
+        {
+          "url": "/assets/ofertas/vestido-sommer/img04.jpg"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "categoria": "carnaval",
+      "titulo": "Camisa Florida",
+      "descricao_oferta": "Aproveite as festas com o que a de melhor",
+      "anunciante": "Toperson",
+      "valor": 39.9,
+      "destaque": false,
+      "imagens": [
+        {
+          "url": "/assets/ofertas/4/img1.jpg"
+        },
+        {
+          "url": "/assets/ofertas/4/img2.jpg"
+        },
+        {
+          "url": "/assets/ofertas/4/img3.jpg"
+        },
+        {
+          "url": "/assets/ofertas/4/img4.jpg"
+        },
+        {
+          "url": "/assets/ofertas/4/img5.jpg"
+        },
+        {
+          "url": "/assets/ofertas/4/img6.jpg"
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "categoria": "primaveira",
+      "titulo": "Primaveira",
+      "descricao_oferta": "Tudo com os maiores descontos do mercado",
+      "anunciante": "Toperson",
+      "valor": 39.9,
+      "destaque": false,
+      "imagens": [
+        {
+          "url": "/assets/ofertas/4/img1.jpg"
+        },
+        {
+          "url": "/assets/ofertas/4/img2.jpg"
+        },
+        {
+          "url": "/assets/ofertas/4/img3.jpg"
+        },
+        {
+          "url": "/assets/ofertas/4/img4.jpg"
+        },
+        {
+          "url": "/assets/ofertas/4/img5.jpg"
+        },
+        {
+          "url": "/assets/ofertas/4/img6.jpg"
+        }
+      ]
     }
   ],
   "como-usar": [
@@ -259,6 +386,26 @@
     {
       "id": 10,
       "descricao": "Topzeira"
+    },
+    {
+      "id": 11,
+      "descricao": "Topzeira"
+    },
+    {
+      "id": 12,
+      "descricao": "Topzeira"
+    },
+    {
+      "id": 13,
+      "descricao": "Topzeira"
+    },
+    {
+      "id": 14,
+      "descricao": "Topzeira"
+    },
+    {
+      "id": 15,
+      "descricao": "Topzeira"
     }
   ],
   "onde-fica": [
@@ -300,6 +447,26 @@
     },
     {
       "id": 10,
+      "descricao": "Rua Pé de papel, 27, Fortaleza-CE "
+    },
+    {
+      "id": 11,
+      "descricao": "Rua Pé de papel, 27, Fortaleza-CE "
+    },
+    {
+      "id": 12,
+      "descricao": "Rua Pé de papel, 27, Fortaleza-CE "
+    },
+    {
+      "id": 13,
+      "descricao": "Rua Pé de papel, 27, Fortaleza-CE "
+    },
+    {
+      "id": 14,
+      "descricao": "Rua Pé de papel, 27, Fortaleza-CE "
+    },
+    {
+      "id": 15,
       "descricao": "Rua Pé de papel, 27, Fortaleza-CE "
     }
   ],
@@ -379,6 +546,45 @@
         }
       ],
       "id": 6
+    },
+    {
+      "endereco": "Rua antonio ",
+      "numero": "32",
+      "complemento": "altos",
+      "formaPagamento": "dinheiro",
+      "item": [
+        {
+          "id": 14,
+          "img": {
+            "url": "/assets/ofertas/4/img1.jpg"
+          },
+          "titulo": "Camisa Florida",
+          "descricao_oferta": "Aproveite as festas com o que a de melhor",
+          "valor": 39.9,
+          "quantidade": 4
+        },
+        {
+          "id": 15,
+          "img": {
+            "url": "/assets/ofertas/4/img1.jpg"
+          },
+          "titulo": "Primaveira",
+          "descricao_oferta": "Tudo com os maiores descontos do mercado",
+          "valor": 39.9,
+          "quantidade": 3
+        },
+        {
+          "id": 12,
+          "img": {
+            "url": "/assets/ofertas/blusa-lanca-perfume/img01.jpg"
+          },
+          "titulo": "Blusa Lança Perfume",
+          "descricao_oferta": "descricao Oferta",
+          "valor": 39.9,
+          "quantidade": 1
+        }
+      ],
+      "id": 7
     }
   ]
 }
