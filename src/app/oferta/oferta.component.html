@@ -9,20 +9,25 @@
       </div>
     </div>
     -->
-    <div class="row">
+
+    <!-- <div class="row">
       <div class="col">
-        <h4>{{ oferta.descricao_oferta }}</h4>
+        
       </div>
-    </div>
+    </div> -->
 
     <div class="row">
       <div class="col-md-6">
-        <div class="img_capa">
-          <img [src]="oferta.imagens[0].url" />
+        <h4 class="oferta_title">{{ oferta.descricao_oferta }}</h4>
+
+        <div class="oferta_img-box">
+          <img [src]="oferta.imagens[0].url" class="img-fluid prod_oferta-img"/>
         </div>
 
-        <div class="thumbnails">
-          <img *ngFor="let imagem of oferta.imagens" [src]="imagem.url" />
+        <div class="row">
+          <figure *ngFor="let imagem of oferta.imagens" class="thumbnails col-3">
+            <img [src]="imagem.url" class="img-fluid prod_oferta-thumb"/>
+          </figure>
         </div>
       </div>
 
@@ -30,8 +35,7 @@
         <div class="row">
           <div class="col text-center">
             <p>Por apenas</p>
-          </div>
-          
+          </div>          
         </div>
 
         <div class="row">
