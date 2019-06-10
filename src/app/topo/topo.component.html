@@ -1,35 +1,68 @@
-<nav class="navbar navbar-expand-xl navbar-dark main navbar-fixed-top mt-n2 mb-n2">
+<header class="header">
+<!-- area do topo do header -->
+<div class="header_top">
+    <div class="container">
 
-    <a class="navbar-brand mt-n1 mb-n2" href="#">
-        <img class="logo" src="./assets/logo03.png" />
-    </a>
-<!--BUSCA -->
-    <div class="form-inline mt-n1 mb-n2">
-        <input  class="form-control ml-2  pesquisa" 
+    <div class="info_top">
+        <div class="contato_top">
+            <strong>contato:</strong> 
+            <span>(85) 98899 8899</span>
+        </div>
+
+        <div class="beneficios_top">
+            <strong>benefícios:</strong>
+            <span class="changeWord">5% desconto no Boleto</span>
+        </div>
+
+    </div>
+
+    <div class="loc_entrega">
+        <strong>Entrega:</strong>
+        <span>Avenida Presidente Castelo Branco, 123</span>
+    </div>
+
+    </div>
+</div>
+<!-- fim da area do topo do header -->
+        
+<!-- area do meio do header -->
+<!-- classes removidas: mt-n2 mb-n2 -->
+<nav class="navbar navbar-expand-xl navbar-dark main navbar-fixed-top header_meio" >
+    <div class="container">
+
+    <!-- espaço da logo -->
+    <h1 class="logo navbar-brand">
+        <!-- classes removidas: mt-n1 mb-n2 -->
+        <a class="logo_link" href="/">
+            <img class="img-fluid" src="./assets/logo03.png" />
+        </a>
+    </h1>
+
+    <!--BUSCA -->
+    <!-- classes removidas: mt-n1 mb-n2 -->
+    <div class="form-inline">
+        <!-- classes removidas: ml-2 -->
+        <input  class="form-control pesquisa" 
                 type="text" 
                 placeholder="Buscar..."
                 #termoDaPesquisa
                 (keyup)="pesquisa(termoDaPesquisa.value)">
-                <ul class="list-group" style="position: absolute; z-index: 999">
-                    <li class="list-group-item" *ngFor="let oferta of ofertas | async">
-                      <a [routerLink]="['/oferta', oferta.id ]" (click)="limpaPesquisa()">
-                        {{ oferta.titulo | descricaoReduzida:15 }}
-                      </a>
-                    </li>
-                  </ul>
+        <ul class="list-group" style="position: absolute; z-index: 999">
+            <li class="list-group-item" *ngFor="let oferta of ofertas | async">
+                <a [routerLink]="['/oferta', oferta.id ]" (click)="limpaPesquisa()">
+                {{ oferta.titulo | descricaoReduzida:15 }}
+                </a>
+            </li>
+        </ul>
         
-                </div>
-<!--/BUSCA-->
-
-    
-
-
-    <div class="navbar-text mt-n1 mb-n2" style="max-width: 200px">
-        <em>Entrega: Avenida Presidente Castelo Branco, 123</em>
     </div>
+    <!--/BUSCA-->
 
-    <div class="collapse navbar-collapse mt-n1 mb-n2 ml-5" id="navbarSite">
-        <ul class="navbar-nav mr-auto my-3">
+    <!-- espaço das categorias -->
+    <!-- classes removidas: mt-n1 mb-n2 ml-5 -->
+    <div class="menu_nav collapse navbar-collapse " id="navbarSite">
+        <!-- classes removidas: mr-auto  my-3 -->
+        <ul class="navbar-nav">
             <li class="nav-item dropdown">
                 <a  class="nav-link" 
                     data-toggle="dropdown" 
@@ -156,13 +189,22 @@
         </ul>
     </div>
 
-    <div class="navbar mt-n1 mb-n2">
+
+    <!-- espaço para o carrinho e login -->
+    <!-- classes removidas: mt-n1 mb-n2  -->
+    <div class="navbar">
         <button class="navbar navbar-toggler mt-n2 mb-n2 mr-1 mr-auto" type="button" data-toggle="collapse"
             data-target="#navbarSite" aria-controls="navbarSite" aria-expanded="false" aria-label="Alterna navegação">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a routerLink="/ordem-compra"><img class="itens-sacola mr-1" src="/assets/carrinho.png" /></a>
-        <a routerLink="#"><img class="itens-sacola" src="/assets/perfil.png" /></a>
+        <a class="bag" routerLink="/ordem-compra"></a>
+
+        <a class="login" routerLink="/"></a>
     </div>
 
+</div>
+<!-- fim do container     -->
 </nav>
+<!-- fim da area do meio do header -->
+
+</header>
