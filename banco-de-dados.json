@@ -2,350 +2,355 @@
   "ofertas": [
     {
       "id": 1,
-      "categoria": "restaurante",
-      "titulo": "Super Burger",
-      "descricao_oferta": "Rodízio de Mini-hambúrger com opção de entrada.",
-      "anunciante": "Original Burger",
-      "valor": 29.9,
+      "categoria": "masculino",
+      "titulo": "Blusa Clássica",
+      "descricao_oferta": "Camisa confeccionada em tecido leve de algodão com poliéster.", 
+      "anunciante": "riachuelo",
+      "valor": 59.90,
       "destaque": true,
       "imagens": [
         {
-          "url": "/assets/ofertas/1/img1.jpg"
+          "url": "/assets/ofertas/camisa-social/camisa-classica-01.jpg"
         },
         {
-          "url": "/assets/ofertas/1/img2.jpg"
+          "url": "/assets/ofertas/camisa-social/camisa-classica-02.jpg"
         },
         {
-          "url": "/assets/ofertas/1/img3.jpg"
+          "url": "/assets/ofertas/camisa-social/camisa-classica-03.jpg"
         },
         {
-          "url": "/assets/ofertas/1/img4.jpg"
+          "url": "/assets/ofertas/camisa-social/camisa-classica-04.jpg"
         }
       ]
     },
     {
       "id": 2,
-      "categoria": "restaurante",
-      "titulo": "Cozinha Mexicana",
-      "descricao_oferta": "Almoço ou Jantar com Rodízio Mexicano delicioso.",
-      "anunciante": "Mexicana",
-      "valor": 32.9,
+      "categoria": "masculino",
+      "titulo": "Camisa Polo Bolso",
+      "descricao_oferta": "Despojada e elegante, é ideal para o dia a dia no trabalho!",
+      "anunciante": "riachuelo",
+      "valor": 39.90,
       "destaque": true,
       "imagens": [
         {
-          "url": "/assets/ofertas/2/img1.jpg"
+          "url": "/assets/ofertas/camisa-polo/camisa-polo-bolso-01.jpg"
         },
         {
-          "url": "/assets/ofertas/2/img2.jpg"
+          "url": "/assets/ofertas/camisa-polo/camisa-polo-bolso-02.jpg"
         },
         {
-          "url": "/assets/ofertas/2/img3.jpg"
+          "url": "/assets/ofertas/camisa-polo/camisa-polo-bolso-03.jpg"
         },
         {
-          "url": "/assets/ofertas/2/img4.jpg"
+          "url": "/assets/ofertas/camisa-polo/camisa-polo-bolso-04.jpg"
         }
       ]
     },
     {
       "id": 3,
-      "categoria": "restaurante",
-      "titulo": "Pizzas Grandes",
-      "descricao_oferta": "Pizza Grande, Mussarela, Marguerita ou outras!",
-      "anunciante": "Nossa Pizza",
-      "valor": 21.9,
-      "destaque": false,
-      "imagens": [
-        {
-          "url": "/assets/ofertas/3/img1.jpg"
-        },
-        {
-          "url": "/assets/ofertas/3/img2.jpg"
-        },
-        {
-          "url": "/assets/ofertas/3/img3.jpg"
-        },
-        {
-          "url": "/assets/ofertas/3/img4.jpg"
-        }
-      ]
-    },
-    {
-      "id": 4,
-      "categoria": "diversao",
-      "titulo": "Estância das águas",
-      "descricao_oferta": "Diversão garantida com piscinas, trilhas e muito mais.",
-      "anunciante": "Estância das águas",
-      "valor": 31.9,
+      "categoria": "masculino",
+      "titulo": "Camisa Originals",
+      "descricao_oferta": "Clássica e atemporal, o modelo em malha macia possui gola",
+      "anunciante": "riachuelo",
+      "valor": 59.90,
       "destaque": true,
       "imagens": [
         {
-          "url": "/assets/ofertas/4/img1.jpg"
+          "url": "/assets/ofertas/camisa-recortes-originais/camisa-01.jpg"
         },
         {
-          "url": "/assets/ofertas/4/img2.jpg"
+          "url": "/assets/ofertas/camisa-recortes-originais/camisa-02.jpg"
         },
         {
-          "url": "/assets/ofertas/4/img3.jpg"
+          "url": "/assets/ofertas/camisa-recortes-originais/camisa-03.jpg"
         },
         {
-          "url": "/assets/ofertas/4/img4.jpg"
-        },
-        {
-          "url": "/assets/ofertas/4/img5.jpg"
-        },
-        {
-          "url": "/assets/ofertas/4/img6.jpg"
+          "url": "/assets/ofertas/camisa-recortes-originais/camisa-04.jpg"
         }
       ]
     },
     {
-      "id": 5,
-      "categoria": "diversao",
-      "titulo": "Kart",
-      "descricao_oferta": "Bateria de Kart de 30 minutos.",
-      "anunciante": "Speed Kart",
-      "valor": 54.9,
-      "destaque": false,
+      "id": 11,
+      "categoria": "feminino",
+      "titulo": "Vestido Midi Poá",
+      "descricao_oferta": "Modelo transpassado, conta com manga curta",
+      "anunciante": "Estância das águas",
+      "valor": 59.90,
+      "destaque": true,
       "imagens": [
         {
-          "url": "/assets/ofertas/5/img1.jpg"
+          "url": "/assets/ofertas/vestido-midi/vestido-01.jpg"
         },
         {
-          "url": "/assets/ofertas/5/img2.jpg"
+          "url": "/assets/ofertas/vestido-midi/vestido-02.jpg"
+        },
+        {
+          "url": "/assets/ofertas/vestido-midi/vestido-03.jpg"
+        },
+        {
+          "url": "/assets/ofertas/vestido-midi/vestido-04.jpg"
         }
       ]
     },
     {
-      "id": 6,
-      "categoria": "diversao",
-      "titulo": "Academia de tiro",
-      "descricao_oferta": "Sessão de tiro dinâmico com Instrutor, Estande, Alvo e Equipamentos.",
-      "anunciante": "Academia de Tiro",
-      "valor": 89.9,
-      "destaque": false,
+      "id": 12,
+      "categoria": "feminino",
+      "titulo": "Camiseta Peixes",
+      "descricao_oferta": "Divertida, ela também apresenta estampa frontal com temática do signo Peixes",
+      "anunciante": "riachuelo",
+      "valor": 25.90,
+      "destaque": true,
       "imagens": [
         {
-          "url": "/assets/ofertas/6/img1.jpg"
+          "url": "/assets/ofertas/camiseta-signos/camiseta-01.jpg"
         },
         {
-          "url": "/assets/ofertas/6/img2.jpg"
+          "url": "/assets/ofertas/camiseta-signos/camiseta-02.jpg"
+        },
+        {
+          "url": "/assets/ofertas/camiseta-signos/camiseta-03.jpg"
+        },
+        {
+          "url": "/assets/ofertas/camiseta-signos/camiseta-04.jpg"
         }
       ]
     },
     {
-      "id": 7,
+      "id": 13,
+      "categoria": "feminino",
+      "titulo": "Saia Floral",
+      "descricao_oferta": "A estampa floral por toda a peça leva um toque alegre à produção",
+      "anunciante": "riachuelo",
+      "valor": 79.90,
+      "destaque": true,
+      "imagens": [
+        {
+          "url": "/assets/ofertas/saia-floral/saia-01.jpg"
+        },
+        {
+          "url": "/assets/ofertas/saia-floral/saia-02.jpg"
+        },
+        {
+          "url": "/assets/ofertas/saia-floral/saia-03.jpg"
+        },
+        {
+          "url": "/assets/ofertas/saia-floral/saia-04.jpg"
+        }
+      ]
+    },
+    {
+      "id": 21,
       "categoria": "fitness",
-      "titulo": "Roupa Fitness",
-      "descricao_oferta": "Roupas de academia.",
-      "anunciante": "Loja de roupas de academia",
-      "valor": 89.9,
+      "titulo": "Camiseta Listras",
+      "descricao_oferta": "A peça é estilosa e confortável para te acompanhar na sua rotina fitness",
+      "anunciante": "Netshoes",
+      "valor": 29.90,
       "destaque": false,
       "imagens": [
         {
-          "url": "/assets/ofertas/6/img1.jpg"
+          "url": "/assets/ofertas/camiseta-listras/camiseta-01.jpg"
         },
         {
-          "url": "/assets/ofertas/6/img2.jpg"
+          "url": "/assets/ofertas/camiseta-listras/camiseta-02.jpg"
+        },
+        {
+          "url": "/assets/ofertas/camiseta-listras/camiseta-03.jpg"
+        },
+        {
+          "url": "/assets/ofertas/camiseta-listras/camiseta-04.jpg"
         }
       ]
     },
     {
-      "id": 8,
+      "id": 31,
       "categoria": "infantil",
-      "titulo": "Roupa infantil",
+      "titulo": "Blusa Mulher Maravilha",
       "descricao_oferta": "Roupas dos herois preferidos",
       "anunciante": "Kids",
       "valor": 54.9,
       "destaque": false,
       "imagens": [
         {
-          "url": "/assets/ofertas/5/img1.jpg"
+          "url": "/assets/ofertas/blusa-mulher-maravilha/blusa-01.jpg"
         },
         {
-          "url": "/assets/ofertas/5/img2.jpg"
+          "url": "/assets/ofertas/blusa-mulher-maravilha/blusa-02.jpg"
+        },
+        {
+          "url": "/assets/ofertas/blusa-mulher-maravilha/blusa-03.jpg"
+        },
+        {
+          "url": "/assets/ofertas/blusa-mulher-maravilha/blusa-04.jpg"
         }
       ]
     },
     {
-      "id": 9,
+      "id": 41,
       "categoria": "teen",
-      "titulo": "Roupas teen",
+      "titulo": "Camiseta Peanuts",
       "descricao_oferta": "Roupas teen, para adolecentes q querem ficar na moda",
       "anunciante": "TeenTãs",
-      "valor": 7.9,
+      "valor": 29.90,
       "destaque": true,
       "imagens": [
         {
-          "url": "/assets/ofertas/2/img1.jpg"
+          "url": "/assets/ofertas/camiseta-peanuts/camiseta-01.jpg"
         },
         {
-          "url": "/assets/ofertas/2/img2.jpg"
+          "url": "/assets/ofertas/camiseta-peanuts/camiseta-02.jpg"
         },
         {
-          "url": "/assets/ofertas/2/img3.jpg"
+          "url": "/assets/ofertas/camiseta-peanuts/camiseta-03.jpg"
         },
         {
-          "url": "/assets/ofertas/2/img4.jpg"
+          "url": "/assets/ofertas/camiseta-peanuts/camiseta-04.jpg"
         }
       ]
     },
     {
-      "id": 10,
+      "id": 51,
       "categoria": "calcados",
-      "titulo": "Calçados top",
-      "descricao_oferta": "Top ficar na moda",
+      "titulo": "Bota Hiking Molekinho",
+      "descricao_oferta": "A bota é confeccionada em material sintético. Possui acabamento atanado, bico redondo, solado em tom contrastante com sola levemente tratorada, cano médio com recorte em moletom acolchoado e fechamento por amarração. Moderna e confortável, é ideal para os dias de frio!",
       "anunciante": "Toperson",
-      "valor": 27.9,
+      "valor": 99.90,
       "destaque": true,
       "imagens": [
         {
-          "url": "/assets/ofertas/4/img1.jpg"
+          "url": "/assets/ofertas/bota-hiking/bota-01.jpg"
         },
         {
-          "url": "/assets/ofertas/4/img2.jpg"
+          "url": "/assets/ofertas/bota-hiking/bota-02.jpg"
         },
         {
-          "url": "/assets/ofertas/4/img3.jpg"
+          "url": "/assets/ofertas/bota-hiking/bota-03.jpg"
         },
         {
-          "url": "/assets/ofertas/4/img4.jpg"
-        },
-        {
-          "url": "/assets/ofertas/4/img5.jpg"
-        },
-        {
-          "url": "/assets/ofertas/4/img6.jpg"
+          "url": "/assets/ofertas/bota-hiking/bota-04.jpg"
         }
       ]
     },
     {
-      "id": 11,
+      "id": 61,
       "categoria": "off30",
-      "titulo": "Blusa Branca",
+      "titulo": "Camiseta Better",
       "descricao_oferta": "Simples perfeita para momentos casuais",
       "anunciante": "Toperson",
       "valor": 39.9,
       "destaque": false,
       "imagens": [
         {
-          "url": "/assets/ofertas/blusa-branca/img01.jpg"
+          "url": "/assets/ofertas/camiseta-better/camiseta-01.jpg"
         },
         {
-          "url": "/assets/ofertas/blusa-branca/img02.jpg"
+          "url": "/assets/ofertas/camiseta-better/camiseta-02.jpg"
         },
         {
-          "url": "/assets/ofertas/blusa-branca/img03.jpg"
+          "url": "/assets/ofertas/camiseta-better/camiseta-03.jpg"
         },
         {
-          "url": "/assets/ofertas/blusa-branca/img04.jpg"
+          "url": "/assets/ofertas/camiseta-better/camiseta-04.jpg"
         }
       ]
     },
     {
-      "id": 12,
-      "categoria": "off30",
-      "titulo": "Blusa Lança Perfume",
-      "descricao_oferta": "descricao Oferta",
+      "id": 71,
+      "categoria": "carnaval",
+      "titulo": "Camiseta Dark Floral",
+      "descricao_oferta": "Camiseta em malha macia que possui decote careca e mangas curtas. Com estampa floral por toda a peça, o modelo fica mais despojado e estiloso. Aposte em sobreposições.",
       "anunciante": "Toperson",
-      "valor": 39.9,
+      "valor": 39.90,
       "destaque": false,
       "imagens": [
         {
-          "url": "/assets/ofertas/blusa-lanca-perfume/img01.jpg"
+          "url": "/assets/ofertas/camiseta-dark-floral/camiseta-01.jpg"
         },
         {
-          "url": "/assets/ofertas/blusa-lanca-perfume/img02.jpg"
+          "url": "/assets/ofertas/camiseta-dark-floral/camiseta-02.jpg"
         },
         {
-          "url": "/assets/ofertas/blusa-lanca-perfume/img03.jpg"
+          "url": "/assets/ofertas/camiseta-dark-floral/camiseta-03.jpg"
         },
         {
-          "url": "/assets/ofertas/blusa-lanca-perfume/img04.jpg"
+          "url": "/assets/ofertas/camiseta-dark-floral/camiseta-04.jpg"
         }
       ]
     },
     {
-      "id": 13,
-      "categoria": "off30",
-      "titulo": "Vestido Sommer",
-      "descricao_oferta": "O visual moderno e cheio de estilo do Vestido Sommer ",
+      "id": 81,
+      "categoria": "primaveira",
+      "titulo": "Blusa State of Mind",
+      "descricao_oferta": "Blusa Confeccionada em malha mescla de algodão, apresenta modelagem ampla, mangas curtas e decote careca. Conta ainda com estampa localizado na região frontal da peça e babado na altura dos ombros. Ideal para compor looks criativos e estilosos para o dia a dia. Combine com jeans e botinhas.",
       "anunciante": "Toperson",
-      "valor": 39.9,
+      "valor": 39.90,
       "destaque": false,
       "imagens": [
         {
-          "url": "/assets/ofertas/vestido-sommer/img01.jpg"
+          "url": "/assets/ofertas/blusa-mind/blusa-01.jpg"
         },
         {
-          "url": "/assets/ofertas/vestido-sommer/img02.jpg"
+          "url": "/assets/ofertas/blusa-mind/blusa-02.jpg"
         },
         {
-          "url": "/assets/ofertas/vestido-sommer/img03.jpg"
+          "url": "/assets/ofertas/blusa-mind/blusa-03.jpg"
         },
         {
-          "url": "/assets/ofertas/vestido-sommer/img04.jpg"
+          "url": "/assets/ofertas/blusa-mind/blusa-04.jpg"
         }
       ]
     },
     {
       "id": 14,
-      "categoria": "carnaval",
-      "titulo": "Camisa Florida",
-      "descricao_oferta": "Aproveite as festas com o que a de melhor",
-      "anunciante": "Toperson",
-      "valor": 39.9,
-      "destaque": false,
+      "categoria": "feminino",
+      "titulo": "Camiseta Good",
+      "descricao_oferta": "Divertida e fresh, é ideal para os dias de verão.",
+      "anunciante": "Estância das águas",
+      "valor": 39.90,
+      "destaque": true,
       "imagens": [
         {
-          "url": "/assets/ofertas/4/img1.jpg"
+          "url": "/assets/ofertas/camiseta-good/camiseta-01.jpg"
         },
         {
-          "url": "/assets/ofertas/4/img2.jpg"
+          "url": "/assets/ofertas/camiseta-good/camiseta-02.jpg"
         },
         {
-          "url": "/assets/ofertas/4/img3.jpg"
+          "url": "/assets/ofertas/camiseta-good/camiseta-03.jpg"
         },
         {
-          "url": "/assets/ofertas/4/img4.jpg"
-        },
-        {
-          "url": "/assets/ofertas/4/img5.jpg"
-        },
-        {
-          "url": "/assets/ofertas/4/img6.jpg"
+          "url": "/assets/ofertas/camiseta-good/camiseta-04.jpg"
         }
       ]
     },
     {
       "id": 15,
-      "categoria": "primaveira",
-      "titulo": "Primaveira",
-      "descricao_oferta": "Tudo com os maiores descontos do mercado",
-      "anunciante": "Toperson",
-      "valor": 39.9,
-      "destaque": false,
+      "categoria": "feminino",
+      "titulo": "Camiseta Floral",
+      "descricao_oferta": "Delicada e fresh, é ideal para os dias de verão!",
+      "anunciante": "riachuelo",
+      "valor": 39.90,
+      "destaque": true,
       "imagens": [
         {
-          "url": "/assets/ofertas/4/img1.jpg"
+          "url": "/assets/ofertas/camiseta-floral/camiseta-01.jpg"
         },
         {
-          "url": "/assets/ofertas/4/img2.jpg"
+          "url": "/assets/ofertas/camiseta-floral/camiseta-02.jpg"
         },
         {
-          "url": "/assets/ofertas/4/img3.jpg"
+          "url": "/assets/ofertas/camiseta-floral/camiseta-03.jpg"
         },
         {
-          "url": "/assets/ofertas/4/img4.jpg"
-        },
-        {
-          "url": "/assets/ofertas/4/img5.jpg"
-        },
-        {
-          "url": "/assets/ofertas/4/img6.jpg"
+          "url": "/assets/ofertas/camiseta-floral/camiseta-04.jpg"
         }
       ]
     }
   ],
+
+
+
+
+
   "como-usar": [
     {
       "id": 1,
