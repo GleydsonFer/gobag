@@ -8,38 +8,44 @@
     <h5 class="text-center">Conheça as melhores ofertas para calçados:</h5>
   </div>
 
-  <hr />
+</div>
 
-  <div *ngFor="let oferta of ofertas">
-    <div class="row">
-      <div class="col-md-4">
-        <img [src]="oferta.imagens[0].url" class="img-fluid" />
-      </div>
+<!-- <hr /> -->
+<div class="prat_prod">
+<div class="container">
+<div class="row" style="border-top: 1px solid rgba(0,0,0,.1);
+padding-top: 20px;">
 
-      <div class="col-md-8">
-        <div class="row">
-          <h4>{{ oferta.titulo }}</h4>
-        </div>
-
-        <div class="row">
-          <h5>{{ oferta.descricao_oferta }}</h5>
-        </div>
-
-        <div class="row">
-          <p>Anunciado por: <b>{{ oferta.anunciante }}</b></p>
-        </div>
-
-        <div class="row">
-          <p>{{ oferta.valor | currency:'BRL':true }}</p>
-        </div>
-
-        <div class="row">
-          <button class="btn btn-outline-success" [routerLink]="['/oferta', oferta.id]">Ver oferta</button>
-        </div>
-      </div>
+<div class="col-md-3" *ngFor="let oferta of ofertas">
+  <div class="prod">
+    <div class="prod_title-box">
+      <h4 class="prod_title">{{ oferta.titulo }}</h4>
     </div>
 
-    <hr />
+    <figure class="prod_img-box">
+      <img [src]="oferta.imagens[0].url" class="img-fluid prod_img" />
+    </figure>
+
+    <div class="prod_price-box">
+      
+      <p class="prod_price">{{ oferta.valor | currency:'BRL':true }}</p>
+      <div class="add_bag account-login"></div>
+    </div>
+
+    <button class="btn btn-outline-success" [routerLink]="['/oferta', oferta.id]">Ver oferta</button>
+    <!-- <div class="row">
+      <h5>{{ oferta.descricao_oferta }}</h5>
+    </div>
+
+    <div class="row">
+      <p>Anunciado por: <b>{{ oferta.anunciante }}</b></p>
+    </div> --> 
+
+    
   </div>
-  <br />
+</div>
+
+  <!-- <hr /> -->
+</div>
+</div>
 </div>
