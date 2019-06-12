@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router'
 
 import { HomeComponent } from './home/home.component'
-import { RestaurantesComponent } from './restaurantes/restaurantes.component'
-import { DiversaoComponent } from './diversao/diversao.component'
+import { MasculinoComponent } from './masculino/masculino.component'
+import { FemininoComponent } from './feminino/feminino.component'
 import { OfertaComponent } from './oferta/oferta.component'
 import { ComoUsarComponent } from './oferta/como-usar/como-usar.component'
 import { OndeFicaComponent } from './oferta/onde-fica/onde-fica.component'
@@ -18,12 +18,12 @@ import { Categoria03Component } from './categoria03/categoria03.component';
 
 export const ROUTES: Routes = [
     { path: '', component: HomeComponent },
-    { path: 'restaurantes', component: RestaurantesComponent },
+    { path: 'masculino', component: MasculinoComponent },
     { path: 'infantil', component: InfantilComponent },
     { path: 'fitness', component: FitnessComponent },
     { path: 'teen', component: TeenComponent },
     { path: 'calcados', component: CalcadosComponent },
-    { path: 'diversao', component: DiversaoComponent },
+    { path: 'feminino', component: FemininoComponent },
     { path: 'oferta', component: HomeComponent },
     {
         path: 'oferta/:id', component: OfertaComponent,

@@ -14,8 +14,8 @@ import { AppComponent } from './app.component';
 import { TopoComponent } from './topo/topo.component';
 import { HomeComponent } from './home/home.component';
 import { RodapeComponent } from './rodape/rodape.component';
-import { RestaurantesComponent } from './restaurantes/restaurantes.component';
-import { DiversaoComponent } from './diversao/diversao.component';
+import { MasculinoComponent } from './masculino/masculino.component';
+import { FemininoComponent } from './feminino/feminino.component';
 import { FitnessComponent } from './fitness/fitness.component';
 import { InfantilComponent } from './infantil/infantil.component';
 import { OfertaComponent } from './oferta/oferta.component';
@@ -52,8 +52,8 @@ registerLocaleData(localePtBr);
     TopoComponent,
     HomeComponent,
     RodapeComponent,
-    RestaurantesComponent,
-    DiversaoComponent,
+    MasculinoComponent,
+    FemininoComponent,
     OfertaComponent,
     ComoUsarComponent,
     OndeFicaComponent,
