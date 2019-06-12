@@ -3,6 +3,7 @@ import { ActivatedRoute, Params } from '@angular/router'
 import { OfertasService } from '../ofertas.service'
 import  CarrinhoService  from '../carrinho.service'
 
+
 import { Oferta } from '../shared/oferta.model'
 
 @Component({
@@ -10,6 +11,7 @@ import { Oferta } from '../shared/oferta.model'
   templateUrl: './oferta.component.html',
   styleUrls: ['./oferta.component.css'],
   providers: [ OfertasService ]
+  
 })
 export class OfertaComponent implements OnInit, OnDestroy {
 
