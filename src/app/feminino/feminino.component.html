@@ -12,40 +12,32 @@
 
 <!-- <hr /> -->
 <div class="prat_prod">
-<div class="container">
-<div class="row" style="border-top: 1px solid rgba(0,0,0,.1);
-padding-top: 20px;">
-
-<div class="col-md-3" *ngFor="let oferta of ofertas">
-  <div class="prod">
-    <div class="prod_title-box">
-      <h4 class="prod_title">{{ oferta.titulo }}</h4>
-    </div>
-
-    <figure class="prod_img-box">
-      <img [src]="oferta.imagens[0].url" class="img-fluid prod_img" />
-    </figure>
-
-    <div class="prod_price-box">
-      
-      <p class="prod_price">{{ oferta.valor | currency:'BRL':true }}</p>
-      <div class="add_bag account-login"></div>
-    </div>
-
-    <button class="btn btn-outline-success" [routerLink]="['/oferta', oferta.id]">Ver oferta</button>
-    <!-- <div class="row">
-      <h5>{{ oferta.descricao_oferta }}</h5>
-    </div>
-
-    <div class="row">
-      <p>Anunciado por: <b>{{ oferta.anunciante }}</b></p>
-    </div> --> 
-
+    <div class="container">
+      <div class="row" style="border-top: 1px solid rgba(0,0,0,.1);
+    padding-top: 20px;">
+  
+        <div class="col-md-3" *ngFor="let oferta of ofertas">
+            <div class="prod">
+              <div class="prod_title-box">
+                <h4 class="prod_title">{{ oferta.titulo }}</h4>
+              </div>
     
+              <figure class="prod_img-box">
+                <img [src]="oferta.imagens[0].url" class="img-fluid prod_img" />
+                <img [src]="oferta.imagens[1].url" class="img-fluid prod_img second_img" />
+              </figure>
+    
+              <div class="prod_price-box">  
+                <p class="prod_price">{{ oferta.valor | currency:'BRL':true }}</p>
+                <div class="add_bag account-login"></div>
+              </div>
+    
+              <button class="btn_ofer" [routerLink]="['/oferta', oferta.id]">Ver oferta</button>
+  
+            </div>
+        </div>
+  
+        <!-- <hr /> -->
+      </div>
+    </div>
   </div>
-</div>
-
-  <!-- <hr /> -->
-</div>
-</div>
-</div>

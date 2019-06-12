@@ -6,7 +6,7 @@
 
 .header_top {
     background: #262728;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid rgba(255,255,255,.5);
     padding: 4px 0;
 }
 
