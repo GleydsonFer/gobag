@@ -6,7 +6,7 @@
 
 .header_top {
     background: #262728;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid rgba(255,255,255,.5);
     padding: 4px 0;
 }
 
@@ -59,6 +59,8 @@ margin: 0;
 .logo {
     width: 40px;
 }
+
+.area_user-top {display: none;}
 
 .logo_link {display: block;}
 
@@ -141,4 +143,39 @@ margin: 0;
     cursor: pointer;
     background: url('/assets/avatar.png') no-repeat center center;
     margin-left: 20px;
+}
+
+
+/* estilo responsivo */
+
+@media (max-width: 768px) {
+
+    .header_top {display: none;}
+
+    .header_meio {
+        padding-bottom: 20px;
+    }
+
+    .header_meio .container {flex-direction: column;}
+
+    .box_logo {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        padding-left: 8px;
+        padding-bottom: 8px;
+    }
+
+    .logo {
+        margin: 0 0 0 40px; 
+    }
+
+    .area_user-top {display: flex;}
+
+    .area_user-bottom {display: none;}
+
+    .form-inline {
+        width: 90%;
+    }
 }

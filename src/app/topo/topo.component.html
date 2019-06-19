@@ -30,13 +30,30 @@
 <nav class="navbar navbar-expand-xl navbar-dark main navbar-fixed-top header_meio" >
     <div class="container">
 
+    <!-- botão do menu dropdown mobile -->
+    
+
     <!-- espaço da logo -->
-    <h1 class="logo navbar-brand">
-        <!-- classes removidas: mt-n1 mb-n2 -->
-        <a class="logo_link" href="/">
-            <img class="img-fluid" src="./assets/logo03.png" />
-        </a>
-    </h1>
+    <div class="box_logo">
+        <!-- classes removidas: mt-n2 mb-n2 mr-1 mr-auto -->
+        <button class="navbar navbar-toggler" type="button" data-toggle="collapse"
+        data-target="#navbarSite" aria-controls="navbarSite" aria-expanded="false" aria-label="Alterna navegação">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <h1 class="logo">
+            <!-- classes removidas: mt-n1 mb-n2 -->
+            <a class="logo_link" href="/">
+                <img class="img-fluid" src="./assets/logo03.png" />
+            </a>
+        </h1>
+
+        <div class="navbar area_user-top">
+            <a class="bag" routerLink="/ordem-compra"></a>
+    
+            <a class="login" routerLink="/"></a>
+        </div>
+    </div>  
 
     <!--BUSCA -->
     <!-- classes removidas: mt-n1 mb-n2 -->
@@ -206,11 +223,7 @@
 
     <!-- espaço para o carrinho e login -->
     <!-- classes removidas: mt-n1 mb-n2  -->
-    <div class="navbar">
-        <button class="navbar navbar-toggler mt-n2 mb-n2 mr-1 mr-auto" type="button" data-toggle="collapse"
-            data-target="#navbarSite" aria-controls="navbarSite" aria-expanded="false" aria-label="Alterna navegação">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <div class="navbar area_user-bottom">
         <a class="bag" routerLink="/ordem-compra"></a>
 
         <a class="login" routerLink="/"></a>

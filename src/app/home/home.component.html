@@ -7,11 +7,39 @@
     <h5 class="text-center">Aproveite as super ofertas que separamos para você:</h5>
   </div>
 
-  <hr />
+  <!-- <hr /> -->
 
   <div class="row" style="margin-bottom: 50px">
-    <div class="col-sm-3 card_box" *ngFor="let oferta of ofertas">
-      <div class="card">
+
+      <div class="col-md-3" *ngFor="let oferta of ofertas">
+          <div class="prod">
+            <div class="prod_title-box">
+              <h4 class="prod_title">{{ oferta.titulo }}</h4>
+            </div>
+  
+            <figure class="prod_img-box">
+              <img [src]="oferta.imagens[0].url" class="img-fluid prod_img" />
+              <img [src]="oferta.imagens[1].url" class="img-fluid prod_img second_img" />
+            </figure>
+  
+            <div class="prod_price-box">  
+              <p class="prod_price">{{ oferta.valor | currency:'BRL':true }}</p>
+              <div class="add_bag account-login"></div>
+            </div>
+  
+            <button class="btn_ofer" [routerLink]="['/oferta', oferta.id]">Ver oferta</button>
+
+          </div>
+        </div>
+
+
+
+
+
+    <!-- modelo de card antigo -->
+
+    <!-- <div class="col-sm-3 card_box" *ngFor="let oferta of ofertas">
+      <div class="card">        
         <img class="card-img-top" [src]="oferta.imagens[0].url">
         <div class="card-block">
           <h4 class="card-title">{{ oferta.titulo }}</h4>
@@ -20,7 +48,9 @@
           <a [routerLink]="['/oferta', oferta.id]" class="btn btn-outline-primary">Ver oferta</a>
         </div>
       </div>
-    </div>
-  <hr />
+    </div> -->
+
+  </div>
+  <!-- <hr /> -->
   
 </div>
