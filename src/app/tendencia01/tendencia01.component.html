@@ -1,10 +1,10 @@
 <app-banner-slide></app-banner-slide>
-<app-categorias></app-categorias>
+<app-tendencias></app-tendencias>
 
 <div class="container">
 
   <div class="secao">
-    <h3 class="text-center">Primaveira</h3>
+    <h3 class="text-center">30% OFF</h3>
     <h5 class="text-center">Conheça as melhores ofertas, com os melhores descontos do mercado</h5>
   </div>
 
@@ -24,6 +24,7 @@
 
           <figure class="prod_img-box">
             <img [src]="oferta.imagens[0].url" class="img-fluid prod_img" />
+            <img [src]="oferta.imagens[1].url" class="img-fluid prod_img second_img" />
           </figure>
 
           <div class="prod_price-box">

@@ -8,6 +8,9 @@
       "anunciante": "riachuelo",
       "valor": 59.90,
       "destaque": true,
+      "data" : "1970-01-01 00:00:00",
+      "estoque": 10,
+      "tags": [ "primaveira", "classica", "azul", "off30" ],
       "imagens": [
         {
           "url": "/assets/ofertas/camisa-social/camisa-classica-01.jpg"
@@ -31,6 +34,9 @@
       "anunciante": "riachuelo",
       "valor": 39.90,
       "destaque": true,
+      "data" : "1970-01-01 00:00:00",
+      "estoque": 10,
+      "tags": [ "social", "camisa", "roxo", "lisa" ],
       "imagens": [
         {
           "url": "/assets/ofertas/camisa-polo/camisa-polo-bolso-01.jpg"
@@ -54,6 +60,9 @@
       "anunciante": "riachuelo",
       "valor": 59.90,
       "destaque": true,
+      "data" : "1970-01-01 00:00:00",
+      "estoque": 10,
+      "tags": [ "polo", "camisa", "azul", "casual" ],
       "imagens": [
         {
           "url": "/assets/ofertas/camisa-recortes-originais/camisa-01.jpg"
@@ -70,13 +79,16 @@
       ]
     },
     {
-      "id": 11,
+      "id": 4,
       "categoria": "feminino",
       "titulo": "Vestido Midi Poá",
       "descricao_oferta": "Modelo transpassado, conta com manga curta",
       "anunciante": "Estância das águas",
       "valor": 59.90,
       "destaque": true,
+      "data" : "1970-01-01 00:00:00",
+      "estoque": 10,
+      "tags": [ "vestido", "off30", "azul", "carnaval" ],
       "imagens": [
         {
           "url": "/assets/ofertas/vestido-midi/vestido-01.jpg"
@@ -93,13 +105,16 @@
       ]
     },
     {
-      "id": 12,
+      "id": 5,
       "categoria": "feminino",
       "titulo": "Camiseta Peixes",
       "descricao_oferta": "Divertida, ela também apresenta estampa frontal com temática do signo Peixes",
       "anunciante": "riachuelo",
       "valor": 25.90,
       "destaque": true,
+      "data" : "1970-01-01 00:00:00",
+      "estoque": 10,
+      "tags": [ "camiseta", "off30", "branca", "carnaval" ],
       "imagens": [
         {
           "url": "/assets/ofertas/camiseta-signos/camiseta-01.jpg"
@@ -116,13 +131,16 @@
       ]
     },
     {
-      "id": 13,
+      "id": 6,
       "categoria": "feminino",
       "titulo": "Saia Floral",
       "descricao_oferta": "A estampa floral por toda a peça leva um toque alegre à produção",
       "anunciante": "riachuelo",
       "valor": 79.90,
       "destaque": true,
+      "data" : "1970-01-01 00:00:00",
+      "estoque": 10,
+      "tags": [ "saia", "floral", "primaveira", "estampa" ],
       "imagens": [
         {
           "url": "/assets/ofertas/saia-floral/saia-01.jpg"
@@ -139,13 +157,16 @@
       ]
     },
     {
-      "id": 21,
+      "id": 7,
       "categoria": "fitness",
       "titulo": "Camiseta Listras",
       "descricao_oferta": "A peça é estilosa e confortável para te acompanhar na sua rotina fitness",
       "anunciante": "Netshoes",
       "valor": 29.90,
       "destaque": false,
+      "data" : "1970-01-01 00:00:00",
+      "estoque": 10,
+      "tags": [ "esporte", "camiseta", "primaveira", "off30" ],
       "imagens": [
         {
           "url": "/assets/ofertas/camiseta-listras/camiseta-01.jpg"
@@ -162,13 +183,16 @@
       ]
     },
     {
-      "id": 31,
+      "id": 8,
       "categoria": "infantil",
-      "titulo": "Blusa Mulher Maravilha",
+      "titulo": "Mulher Maravilha",
       "descricao_oferta": "Roupas dos herois preferidos",
       "anunciante": "Kids",
       "valor": 54.9,
       "destaque": false,
+      "data" : "1970-01-01 00:00:00",
+      "estoque": 10,
+      "tags": [ "teen", "camiseta", "primaveira", "estampa" ],
       "imagens": [
         {
           "url": "/assets/ofertas/blusa-mulher-maravilha/blusa-01.jpg"
@@ -185,13 +209,16 @@
       ]
     },
     {
-      "id": 41,
+      "id": 9,
       "categoria": "teen",
       "titulo": "Camiseta Peanuts",
       "descricao_oferta": "Roupas teen, para adolecentes q querem ficar na moda",
       "anunciante": "TeenTãs",
       "valor": 29.90,
       "destaque": true,
+      "data" : "1970-01-01 00:00:00",
+      "estoque": 10,
+      "tags": [ "teen", "camiseta", "amarela", "carnaval" ],
       "imagens": [
         {
           "url": "/assets/ofertas/camiseta-peanuts/camiseta-01.jpg"
@@ -208,13 +235,16 @@
       ]
     },
     {
-      "id": 51,
+      "id": 10,
       "categoria": "calcados",
-      "titulo": "Bota Hiking Molekinho",
+      "titulo": "Bota Hiking",
       "descricao_oferta": "A bota é confeccionada em material sintético. Possui acabamento atanado, bico redondo, solado em tom contrastante com sola levemente tratorada, cano médio com recorte em moletom acolchoado e fechamento por amarração. Moderna e confortável, é ideal para os dias de frio!",
       "anunciante": "Toperson",
       "valor": 99.90,
       "destaque": true,
+      "data" : "1970-01-01 00:00:00",
+      "estoque": 10,
+      "tags": [ "tenis", "social", "preto", "off30" ],
       "imagens": [
         {
           "url": "/assets/ofertas/bota-hiking/bota-01.jpg"
@@ -231,13 +261,16 @@
       ]
     },
     {
-      "id": 61,
-      "categoria": "off30",
+      "id": 11,
+      "categoria": "teen",
       "titulo": "Camiseta Better",
       "descricao_oferta": "Simples perfeita para momentos casuais",
       "anunciante": "Toperson",
       "valor": 39.9,
       "destaque": false,
+      "data" : "1970-01-01 00:00:00",
+      "estoque": 10,
+      "tags": [ "off30", "fitness", "masculino", "off30" ],
       "imagens": [
         {
           "url": "/assets/ofertas/camiseta-better/camiseta-01.jpg"
@@ -254,13 +287,16 @@
       ]
     },
     {
-      "id": 71,
-      "categoria": "carnaval",
+      "id": 12,
+      "categoria": "masculino",
       "titulo": "Camiseta Dark Floral",
       "descricao_oferta": "Camiseta em malha macia que possui decote careca e mangas curtas. Com estampa floral por toda a peça, o modelo fica mais despojado e estiloso. Aposte em sobreposições.",
       "anunciante": "Toperson",
       "valor": 39.90,
       "destaque": false,
+      "data" : "1970-01-01 00:00:00",
+      "estoque": 10,
+      "tags": [ "carnaval", "floral", "primaveira", "off30" ],
       "imagens": [
         {
           "url": "/assets/ofertas/camiseta-dark-floral/camiseta-01.jpg"
@@ -277,13 +313,16 @@
       ]
     },
     {
-      "id": 81,
-      "categoria": "primaveira",
+      "id": 13,
+      "categoria": "feminino",
       "titulo": "Blusa State of Mind",
       "descricao_oferta": "Blusa Confeccionada em malha mescla de algodão, apresenta modelagem ampla, mangas curtas e decote careca. Conta ainda com estampa localizado na região frontal da peça e babado na altura dos ombros. Ideal para compor looks criativos e estilosos para o dia a dia. Combine com jeans e botinhas.",
       "anunciante": "Toperson",
       "valor": 39.90,
       "destaque": false,
+      "data" : "1970-01-01 00:00:00",
+      "estoque": 10,
+      "tags": [ "feminino", "saia", "floral", "primaveira" ],
       "imagens": [
         {
           "url": "/assets/ofertas/blusa-mind/blusa-01.jpg"
@@ -307,6 +346,9 @@
       "anunciante": "Estância das águas",
       "valor": 39.90,
       "destaque": true,
+      "data" : "1970-01-01 00:00:00",
+      "estoque": 10,
+      "tags": [ "carnaval", "saia", "floral", "estampa" ],
       "imagens": [
         {
           "url": "/assets/ofertas/camiseta-good/camiseta-01.jpg"
@@ -330,6 +372,9 @@
       "anunciante": "riachuelo",
       "valor": 39.90,
       "destaque": true,
+      "data" : "1970-01-01 00:00:00",
+      "estoque": 10,
+      "tags": [ "carnaval", "saia", "primaveira", "estampa" ],
       "imagens": [
         {
           "url": "/assets/ofertas/camiseta-floral/camiseta-01.jpg"

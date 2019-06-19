@@ -58,4 +58,8 @@ export class OfertasService {
             .map((resposta: Response) => resposta.json())
 
     }
+    public getOfertasPorTendencia(tag: string): Observable<Oferta[]> {
+        return this.http.get(`${URL_API}/ofertas?tags_like=${tag}`)
+            .map((resposta: Response) => resposta.json())
+    }
 }
