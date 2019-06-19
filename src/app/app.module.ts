@@ -38,12 +38,11 @@ import { OrdemCompraSucessoComponent } from './ordem-compra-sucesso/ordem-compra
 import  CarrinhoService  from './carrinho.service'
 import { ReactiveFormsModule } from '@angular/forms'
 
-import { CategoriasComponent } from './categorias/categorias.component';
-import { Categoria01Component } from './categoria01/categoria01.component';
+import { TendenciasComponent } from './tendencias/tendencias.component';
+import { Tendencia01Component } from './tendencia01/tendencia01.component';
 import { OfertasService } from './ofertas.service';
-import { Categoria02Component } from './categoria02/categoria02.component';
-import { Categoria03Component } from './categoria03/categoria03.component';
-import { CategoriaSlideComponent } from './categoria-slide/categoria-slide.component';
+import { Tendencia02Component } from './tendencia02/tendencia02.component';
+import { Tendencia03Component } from './tendencia03/tendencia03.component';
 
 registerLocaleData(localePtBr);
 
@@ -66,11 +65,10 @@ registerLocaleData(localePtBr);
     CalcadosComponent,
     BannerSlideComponent,
     OrdemCompraSucessoComponent,
-    CategoriasComponent,
-    Categoria01Component,
-    Categoria02Component,
-    Categoria03Component,
-    CategoriaSlideComponent
+    TendenciasComponent,
+    Tendencia01Component,
+    Tendencia02Component,
+    Tendencia03Component,
     //ajustanto o erro ngIf
     
     //

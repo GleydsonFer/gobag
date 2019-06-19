@@ -12,9 +12,9 @@ import { FitnessComponent } from './fitness/fitness.component'
 import { InfantilComponent } from './infantil/infantil.component'
 import { CalcadosComponent } from './calcados/calcados.component'
 import { TeenComponent } from './teen/teen.component'
-import { Categoria01Component } from './categoria01/categoria01.component';
-import { Categoria02Component } from './categoria02/categoria02.component';
-import { Categoria03Component } from './categoria03/categoria03.component';
+import { Tendencia01Component } from './tendencia01/tendencia01.component';
+import { Tendencia02Component } from './tendencia02/tendencia02.component';
+import { Tendencia03Component } from './tendencia03/tendencia03.component';
 
 export const ROUTES: Routes = [
     { path: '', component: HomeComponent },
@@ -34,8 +34,8 @@ export const ROUTES: Routes = [
         ]
     },
     { path: 'ordem-compra', component: OrdemCompraComponent },
-    { path: 'categoria01', component: Categoria01Component },
-    { path: 'categoria02', component: Categoria02Component },
-    { path: 'categoria03', component: Categoria03Component }
+    { path: 'tendencia01', component: Tendencia01Component },
+    { path: 'tendencia02', component: Tendencia02Component },
+    { path: 'tendencia03', component: Tendencia03Component }
 
 ]
