@@ -43,6 +43,7 @@ import { Categoria01Component } from './categoria01/categoria01.component';
 import { OfertasService } from './ofertas.service';
 import { Categoria02Component } from './categoria02/categoria02.component';
 import { Categoria03Component } from './categoria03/categoria03.component';
+import { CategoriaSlideComponent } from './categoria-slide/categoria-slide.component';
 
 registerLocaleData(localePtBr);
 
@@ -68,7 +69,8 @@ registerLocaleData(localePtBr);
     CategoriasComponent,
     Categoria01Component,
     Categoria02Component,
-    Categoria03Component
+    Categoria03Component,
+    CategoriaSlideComponent
     //ajustanto o erro ngIf
     
     //
