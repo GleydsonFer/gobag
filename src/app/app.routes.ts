@@ -15,9 +15,11 @@ import { TeenComponent } from './teen/teen.component'
 import { Tendencia01Component } from './tendencia01/tendencia01.component';
 import { Tendencia02Component } from './tendencia02/tendencia02.component';
 import { Tendencia03Component } from './tendencia03/tendencia03.component';
+import { AcessoComponent } from './acesso/acesso.component';
 
 export const ROUTES: Routes = [
     { path: '', component: HomeComponent },
+    { path: 'acesso', component: AcessoComponent },
     { path: 'masculino', component: MasculinoComponent },
     { path: 'infantil', component: InfantilComponent },
     { path: 'fitness', component: FitnessComponent },
