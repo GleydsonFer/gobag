@@ -59,3 +59,4 @@ npm install --save web-animations-js
 
 cd c:/angular/projetos/nabag-app
 
+npm install --save @angular/animations

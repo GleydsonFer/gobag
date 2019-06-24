@@ -8,11 +8,15 @@ import { URL_API } from './app.api'
 import 'rxjs/add/operator/toPromise'
 import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/retry'
+import { Pedido } from './shared/pedido.model';
 
 @Injectable()
 export class OfertasService {
 
     //private url_api = 'http://localhost:3000/ofertas'
+
+    //identifica o ID do último pedido no banco de dados
+    private ultimoPedido: number = 7;
     
     constructor(private http: Http){}
     
@@ -61,5 +65,30 @@ export class OfertasService {
     public getOfertasPorTendencia(tag: string): Observable<Oferta[]> {
         return this.http.get(`${URL_API}/ofertas?tags_like=${tag}`)
             .map((resposta: Response) => resposta.json())
+    }
+
+    // public getTamanhoDePedidos(): Promise<Pedido> {
+    //     return this.http.get(`${URL_API}/pedidos`)
+    //     .toPromise()
+    //     .then((resposta: Response) => {
+    //         return resposta.json().lastindex;
+    //     })
+    // }
+
+    public getEnderecoDePedidos(): Promise<Pedido> {
+        // let tamanhoPedidos: number = 7;
+        return this.http.get(`${URL_API}/pedidos?id=${this.ultimoPedido}`)
+            .toPromise()
+            .then((resposta: Response) => {
+                return (resposta.json()[0]);
+            })
+    }
+    public getNumeroDePedidos(): Promise<Pedido> {
+        // let tamanhoPedidos: number = 7;
+        return this.http.get(`${URL_API}/pedidos?id=${this.ultimoPedido}`)
+            .toPromise()
+            .then((resposta: Response) => {
+                return (resposta.json()[0]);
+            })
     }
 }
