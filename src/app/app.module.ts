@@ -3,7 +3,15 @@ import { NgModule, LOCALE_ID, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@
 import { HttpModule } from '@angular/http'
 import { RouterModule } from '@angular/router'
 
-//ajustanto o erro ngIf
+//cadastro
+
+import { Autenticacao } from './autenticacao.service'
+import { CadastroComponent } from './acesso/cadastro/cadastro.component';
+import { AppRoutingModule } from './app-routing.module';
+import { AcessoComponent } from './acesso/acesso.component';
+import { BannerComponent } from './acesso/banner/banner.component';
+import { LoginComponent } from './acesso/login/login.component';
+
 
 
 
@@ -44,6 +52,11 @@ import { OfertasService } from './ofertas.service';
 import { Tendencia02Component } from './tendencia02/tendencia02.component';
 import { Tendencia03Component } from './tendencia03/tendencia03.component';
 
+
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+
+
 registerLocaleData(localePtBr);
 
 @NgModule({
@@ -69,6 +82,10 @@ registerLocaleData(localePtBr);
     Tendencia01Component,
     Tendencia02Component,
     Tendencia03Component,
+    AcessoComponent,
+    BannerComponent,
+    LoginComponent,
+    CadastroComponent,
     //ajustanto o erro ngIf
     
     //
@@ -76,14 +93,17 @@ registerLocaleData(localePtBr);
   imports: [
     BrowserModule,
     HttpModule,
+    BrowserAnimationsModule,
     //CategoriasModule,
     //ajustanto o erro ngIf
     ReactiveFormsModule,
-    RouterModule.forRoot(ROUTES)
+    RouterModule.forRoot(ROUTES),
+    AppRoutingModule
   ],
   providers: [ 
     CarrinhoService, { provide: LOCALE_ID, useValue: 'pt-Br' },
-    OfertasService   
+    OfertasService,
+    Autenticacao   
   ],
   bootstrap: [
     AppComponent
