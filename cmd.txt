@@ -47,3 +47,6 @@ Npm install bootstrap@numerodaversao (ver no site do bootstrap) --save
 Npm install jquery --save
 Npm install tether --save
 
+-- instalação dos pacotes de carousel --
+npm install ngx-owl-carousel --save
+npm install owl.carousel --save
