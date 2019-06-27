@@ -4,7 +4,7 @@ import { HomeComponent } from './home/home.component'
 import { MasculinoComponent } from './masculino/masculino.component'
 import { FemininoComponent } from './feminino/feminino.component'
 import { OfertaComponent } from './oferta/oferta.component'
-import { ComoUsarComponent } from './oferta/como-usar/como-usar.component'
+import { ProdutosRelacionadosComponent } from './oferta/produtos-relacionados/produtos-relacionados.component'
 import { OndeFicaComponent } from './oferta/onde-fica/onde-fica.component'
 import { OrdemCompraComponent } from './ordem-compra/ordem-compra.component'
 
@@ -30,8 +30,8 @@ export const ROUTES: Routes = [
     {
         path: 'oferta/:id', component: OfertaComponent,
         children: [
-            { path: '', component: ComoUsarComponent },
-            { path: 'como-usar', component: ComoUsarComponent },
+            { path: '', component: ProdutosRelacionadosComponent },
+            { path: 'produtos-relacionados', component: ProdutosRelacionadosComponent },
             { path: 'onde-fica', component: OndeFicaComponent },
         ]
     },

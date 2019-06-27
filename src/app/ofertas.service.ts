@@ -91,4 +91,10 @@ export class OfertasService {
                 return (resposta.json()[0]);
             })
     }
+
+    public getOfertasPorAnunciante(anunciante: string) : Promise<Oferta[]> {
+        return this.http.get(`${URL_API}/ofertas?anunciante=${anunciante}`)
+            .toPromise()
+            .then((resposta: Response) => resposta.json())
+    }
 }
