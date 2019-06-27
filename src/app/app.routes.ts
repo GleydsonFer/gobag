@@ -17,6 +17,8 @@ import { Tendencia02Component } from './tendencia02/tendencia02.component';
 import { Tendencia03Component } from './tendencia03/tendencia03.component';
 import { AcessoComponent } from './acesso/acesso.component';
 
+import { AutenticacaoGuard } from './autenticacao-guard.service'
+
 export const ROUTES: Routes = [
     { path: '', component: HomeComponent },
     { path: 'acesso', component: AcessoComponent },
@@ -38,6 +40,9 @@ export const ROUTES: Routes = [
     { path: 'ordem-compra', component: OrdemCompraComponent },
     { path: 'tendencia01', component: Tendencia01Component },
     { path: 'tendencia02', component: Tendencia02Component },
-    { path: 'tendencia03', component: Tendencia03Component }
+    { path: 'tendencia03', component: Tendencia03Component },
+
+
+    { path: 'topo-logado', component: HomeComponent, canActivate: [ AutenticacaoGuard ] },
 
 ]

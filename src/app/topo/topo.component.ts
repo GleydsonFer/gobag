@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable'
 import { Subject } from 'rxjs/Subject'
 
+import { AutenticacaoGuard } from '../autenticacao-guard.service'
+
 import '../util/rxjs-extensions'
 
 import { OfertasService } from '../ofertas.service'
@@ -19,7 +21,16 @@ export class TopoComponent implements OnInit {
   
   private subjectPesquisa: Subject<string> = new Subject<string>()
 
-  constructor(private ofertasService: OfertasService) { }
+  public naoLogado = this.autenticacaoGuard.canActivate();
+
+
+  
+
+  constructor(
+    private ofertasService: OfertasService,
+    private autenticacaoGuard : AutenticacaoGuard
+    
+    ) { }
 
   ngOnInit() {
     this.ofertas = this.subjectPesquisa //retorno Oferta[]
@@ -45,5 +56,13 @@ export class TopoComponent implements OnInit {
   public limpaPesquisa(): void {
     this.subjectPesquisa.next('')
   }
+
+
+ 
+  
+
+
+
+
 
 }
