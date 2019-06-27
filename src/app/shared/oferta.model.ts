@@ -6,5 +6,8 @@ export class Oferta {
     public anunciante: string
     public valor: number
     public destaque: boolean
+    public data: string
+    public estoque: number
+    public tags: Array<string>
     public imagens: Array<object>
 }
