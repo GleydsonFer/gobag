@@ -29,7 +29,7 @@ import { FemininoComponent } from './feminino/feminino.component';
 import { FitnessComponent } from './fitness/fitness.component';
 import { InfantilComponent } from './infantil/infantil.component';
 import { OfertaComponent } from './oferta/oferta.component';
-import { ComoUsarComponent } from './oferta/como-usar/como-usar.component';
+import { ProdutosRelacionadosComponent } from './oferta/produtos-relacionados/produtos-relacionados.component';
 import { OndeFicaComponent } from './oferta/onde-fica/onde-fica.component';
 
 //pipe
@@ -72,7 +72,7 @@ registerLocaleData(localePtBr);
     MasculinoComponent,
     FemininoComponent,
     OfertaComponent,
-    ComoUsarComponent,
+    ProdutosRelacionadosComponent,
     OndeFicaComponent,
     DescricaoReduzida,
     OrdemCompraComponent,

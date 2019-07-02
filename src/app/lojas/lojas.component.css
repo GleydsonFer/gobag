@@ -1,0 +1,16 @@
+.lojas {
+    margin-top: 50px;
+}
+
+.lojas_item {
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    height: 160px;
+    display: flex;
+    align-items: center;
+}
+
+.lojas_link {
+    display: block;
+    padding: 22px;
+}

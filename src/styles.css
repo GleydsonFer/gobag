@@ -1,3 +1,5 @@
+/* Estilo default */
+
 h5 {
     color:#999
 }
@@ -19,19 +21,15 @@ h3 {
     margin-bottom: 30px
 }
 
-.preco {
-    color: #f60;
-    font-weight: bold;
-    font-size: 20px
-}
 
+/* Início Estilo do carrossel das tendências */
 
 .owl-theme .owl-nav {
     margin: 0!important;
     height: 0;
 }
 
-.owl-carousel .owl-nav button.owl-prev {
+.tendencia .owl-carousel .owl-nav button.owl-prev {
     position: absolute;
     left: 0;
     top: 0;
@@ -55,7 +53,7 @@ h3 {
     background-repeat: repeat-x!important;
 }
 
-.owl-carousel .owl-nav button.owl-next {
+.tendencia .owl-carousel .owl-nav button.owl-next {
     position: absolute;
     right: 0;
     top: 0;
@@ -79,24 +77,97 @@ h3 {
     background-repeat: repeat-x!important;
 }
 
-.owl-carousel .owl-nav button.owl-prev:hover,
-.owl-carousel .owl-nav button.owl-next:hover,
-.owl-theme .owl-nav [class*=owl-]:hover {
+.tendencia .owl-carousel .owl-nav button.owl-prev:hover,
+.tendencia .owl-carousel .owl-nav button.owl-next:hover,
+.tendencia .owl-theme .owl-nav [class*=owl-]:hover {
     background: rgba(0, 0, 0, 0);
     filter: alpha(opacity=90);
     outline: 0;
     opacity: .9;
 }
 
-.owl-carousel .owl-nav button.owl-prev.disabled,
-.owl-carousel .owl-nav button.owl-next.disabled,
-.owl-carousel .owl-nav button.owl-prev.disabled:hover,
-.owl-carousel .owl-nav button.owl-next.disabled:hover {opacity: .5;}
+.tendencia .owl-carousel .owl-nav button.owl-prev.disabled,
+.tendencia .owl-carousel .owl-nav button.owl-next.disabled,
+.tendencia .owl-carousel .owl-nav button.owl-prev.disabled:hover,
+.tendencia .owl-carousel .owl-nav button.owl-next.disabled:hover {opacity: .5;}
 
-.owl-carousel .owl-nav button.owl-prev:focus,
-.owl-carousel .owl-nav button.owl-next:focus {outline: none;}
+.tendencia .owl-carousel .owl-nav button.owl-prev:focus,
+.tendencia .owl-carousel .owl-nav button.owl-next:focus {outline: none;}
 
-.nav-btn.prev-slide,
-.nav-btn.next-slide {font-size: 0;}
+.tendencia .nav-btn.prev-slide,
+.tendencia .nav-btn.next-slide {font-size: 0;}
 
 .owl-theme .owl-dots {display: none;}
+
+/* fim do Estilo do carrossel das tendências */
+
+/*---------------------------------------------*/
+
+/* Inicio do estilo do carrossel das lojas */
+
+.lojas .nav-btn.prev-slide,
+.lojas .nav-btn.next-slide {
+    height: 100%;
+    width: 20px;
+    position: absolute;
+    top: 0;
+    font-size: 0;
+}
+
+.lojas .nav-btn.prev-slide {
+    background: url('./assets/left.png') center center no-repeat;
+    left: 0;
+}
+
+.lojas .nav-btn.next-slide {
+    background: url('./assets/right.png') center center no-repeat;
+    right: 0;
+}
+
+.lojas .owl-carousel .owl-nav button.owl-prev {
+    position: absolute;
+    left: -20px;
+    top: 0;
+    height: 100%;
+    width: 20px;
+    margin: 0!important;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+
+    opacity: .5;
+    background-color: transparent;   
+}
+
+.owl-carousel .owl-nav button.owl-next {
+    position: absolute;
+    right: -20px;
+    top: 0;
+    height: 100%;
+    width: 20px;
+    margin: 0!important;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+
+    opacity: .5;
+    background-color: transparent;
+}
+
+.lojas .owl-carousel .owl-nav button.owl-prev.disabled,
+.lojas .owl-carousel .owl-nav button.owl-next.disabled,
+.lojas .owl-carousel .owl-nav button.owl-prev.disabled:hover,
+.lojas .owl-carousel .owl-nav button.owl-next.disabled:hover {opacity: .2;}
+
+.lojas .owl-carousel .owl-nav button.owl-prev:focus,
+.lojas .owl-carousel .owl-nav button.owl-next:focus {outline: none;}
+
+
+.lojas .owl-carousel .owl-nav button.owl-prev:hover,
+.lojas .owl-carousel .owl-nav button.owl-next:hover,
+.lojas .owl-theme .owl-nav [class*=owl-]:hover {
+    background: transparent;
+    outline: 0;
+    opacity: .9;
+}
+
+/* fim do carrossel lojas */
+

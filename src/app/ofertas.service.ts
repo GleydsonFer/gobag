@@ -67,6 +67,12 @@ export class OfertasService {
             .map((resposta: Response) => resposta.json())
     }
 
+    public getOfertasPorAnunciante(anunciante: string) : Promise<Oferta[]> {
+        return this.http.get(`${URL_API}/ofertas?anunciante=${anunciante}`)
+            .toPromise()
+            .then((resposta: Response) => resposta.json())
+    }
+
     // public getTamanhoDePedidos(): Promise<Pedido> {
     //     return this.http.get(`${URL_API}/pedidos`)
     //     .toPromise()

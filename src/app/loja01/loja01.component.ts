@@ -14,8 +14,8 @@ export class Loja01Component implements OnInit {
   constructor(private ofertasService: OfertasService) { }
 
   ngOnInit() {
-    this.ofertasService.getOfertasPorTendencia('off30')
-      .subscribe((ofertas: Oferta[]) => this.ofertas = ofertas)
+    this.ofertasService.getOfertasPorAnunciante('riachuelo')
+      .then((ofertas: Oferta[]) => this.ofertas = ofertas)
   }
 
 }
