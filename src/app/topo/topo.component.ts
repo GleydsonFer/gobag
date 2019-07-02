@@ -7,24 +7,27 @@ import '../util/rxjs-extensions'
 import { OfertasService } from '../ofertas.service'
 import { Oferta } from '../shared/oferta.model'
 import { ActivatedRoute, Params } from '@angular/router';
+import CarrinhoService from '../carrinho.service';
 
 @Component({
   selector: 'app-topo',
   templateUrl: './topo.component.html',
   styleUrls: ['./topo.component.css'],
-  providers: [ OfertasService ]
+  providers: [OfertasService]
 })
 export class TopoComponent implements OnInit {
 
   public ofertas: Observable<Oferta[]>
   public enderecoEntrega: string;
   public numeroEntrega: string;
-  
+  public numeroItensCarrinho: number;
+
   private subjectPesquisa: Subject<string> = new Subject<string>()
 
   constructor(
     private ofertasService: OfertasService,
-  ) {}
+    private carrinhoService: CarrinhoService
+  ) { }
 
   ngOnInit() {
 
@@ -35,19 +38,19 @@ export class TopoComponent implements OnInit {
     //       this.enderecoEntrega = endereco;
     //     })
     // })
-    
+
     this.ofertasService.getEnderecoDePedidos().then((resp) => {
       this.enderecoEntrega = resp.endereco;
     })
     this.ofertasService.getNumeroDePedidos().then((resp) => {
       this.numeroEntrega = resp.numero;
     })
-    
+
     this.ofertas = this.subjectPesquisa //retorno Oferta[]
       .debounceTime(1000) //executa a ação do switchMap após 1 segundo
       .distinctUntilChanged() //para fazer pesquisas distintas
       .switchMap((termo: string) => {
-        if(termo.trim() === ''){
+        if (termo.trim() === '') {
           //retornar um observable de array de ofertas vazio
           return Observable.of<Oferta[]>([])
         }
@@ -57,6 +60,11 @@ export class TopoComponent implements OnInit {
       .catch((err: any) => {
         return Observable.of<Oferta[]>([])
       })
+
+    //mostrar número de itens no carrinho
+    this.carrinhoService.emitirNumeroDeItens.subscribe(
+      numeroItens => this.numeroItensCarrinho = numeroItens
+    );
 
   }
 
