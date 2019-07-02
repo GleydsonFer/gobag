@@ -6,7 +6,7 @@ export class Autenticacao {
 
     public token_id: string
 
-
+    //Método para o inscreva-se
     public cadastrarUsuario(usuario: Usuario): Promise<any> {
         //console.log('Chegamos até o serviço: ', usuario)
 
@@ -25,6 +25,7 @@ export class Autenticacao {
         })
     }
 
+    //Método para o login
     public autenticar(email: string, senha: string): void {
         firebase.auth().signInWithEmailAndPassword(email, senha)
             .then((resposta: any) => {

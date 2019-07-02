@@ -30,15 +30,18 @@ export class ProdutosRelacionadosComponent implements OnInit {
       .then((oferta: Oferta) => {
         //seleciona a oferta a partir do id que é conseguido da rota pai (oferta)
         this.oferta = oferta
-  
-        //mostra a oferta selecionada
-        console.log(this.oferta)
         
         //função que retorna um array com as ofertas que tenham o mesmo anunciante 
         //da oferta selecionada
         this.ofertasService.getOfertasPorAnunciante(this.oferta.anunciante)
         .then((ofertas: Oferta[]) => {
-          this.ofertasPorAnunciante = ofertas;
+          //para o objeto selecionado não aparecer nos produtos relacionados também
+          for(let i = 0; i < ofertas.length; i++){
+            if(ofertas[i].id === this.oferta.id){
+              ofertas.splice(i, 1)
+            }
+          }
+          this.ofertasPorAnunciante = ofertas.splice(0, 4);
         });
       });
     });

@@ -30,7 +30,7 @@ import { FitnessComponent } from './fitness/fitness.component';
 import { InfantilComponent } from './infantil/infantil.component';
 import { OfertaComponent } from './oferta/oferta.component';
 import { ProdutosRelacionadosComponent } from './oferta/produtos-relacionados/produtos-relacionados.component';
-import { OndeFicaComponent } from './oferta/onde-fica/onde-fica.component';
+import { AvaliacaoComponent } from './oferta/avaliacao/avaliacao.component';
 
 //pipe
 import { DescricaoReduzida } from './util/descricao-reduzida.pipe';
@@ -45,7 +45,7 @@ import { BannerSlideComponent } from './banner-slide/banner-slide.component';
 import { OrdemCompraSucessoComponent } from './ordem-compra-sucesso/ordem-compra-sucesso.component';
 
 //
-import  CarrinhoService  from './carrinho.service'
+import CarrinhoService from './carrinho.service'
 import { ReactiveFormsModule } from '@angular/forms'
 
 import { TendenciasComponent } from './tendencias/tendencias.component';
@@ -56,7 +56,9 @@ import { Tendencia03Component } from './tendencia03/tendencia03.component';
 
 
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { ToastrModule } from 'ngx-toastr';
 
 
 registerLocaleData(localePtBr);
@@ -71,7 +73,7 @@ registerLocaleData(localePtBr);
     FemininoComponent,
     OfertaComponent,
     ProdutosRelacionadosComponent,
-    OndeFicaComponent,
+    AvaliacaoComponent,
     DescricaoReduzida,
     OrdemCompraComponent,
     InfantilComponent,
@@ -89,7 +91,7 @@ registerLocaleData(localePtBr);
     LoginComponent,
     CadastroComponent,
     //ajustanto o erro ngIf
-    
+
     //
   ],
   imports: [
@@ -101,19 +103,24 @@ registerLocaleData(localePtBr);
     //ajustanto o erro ngIf
     ReactiveFormsModule,
     RouterModule.forRoot(ROUTES),
-    AppRoutingModule
+    AppRoutingModule,
+    ToastrModule.forRoot({
+      timeOut: 5000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true
+    })
 
   ],
-  providers: [ 
+  providers: [
     CarrinhoService, { provide: LOCALE_ID, useValue: 'pt-Br' },
     OfertasService,
-    Autenticacao   
+    Autenticacao
   ],
   bootstrap: [
     AppComponent
   ],
   //
-  schemas: [ 
+  schemas: [
     CUSTOM_ELEMENTS_SCHEMA,
     NO_ERRORS_SCHEMA
   ]

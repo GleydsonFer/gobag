@@ -1,8 +1,10 @@
 import { ItemCarrinho } from './shared/item-carrinho.model'
 import { Oferta } from './shared/oferta.model';
+import { EventEmitter } from '@angular/core';
  
  class CarrinhoService {
      public itens: ItemCarrinho[] = []
+     public emitirNumeroDeItens: EventEmitter<number> = new EventEmitter<number>();
 
      public exibirItens(): ItemCarrinho[] {
          return this.itens
@@ -24,7 +26,8 @@ import { Oferta } from './shared/oferta.model';
         if(itemCarrinhoEncontrado) {
             itemCarrinhoEncontrado.quantidade += 1
         } else {
-            this.itens.push(itemCarrinho)
+            this.itens.push(itemCarrinho);
+            this.emitirNumeroDeItens.emit(this.itens.length);
         }
 
         
@@ -61,7 +64,8 @@ import { Oferta } from './shared/oferta.model';
             itemCarrinhoEncontrado.quantidade -=1
 
             if(itemCarrinhoEncontrado.quantidade === 0){
-                this.itens.splice(this.itens.indexOf(itemCarrinhoEncontrado), 1)
+                this.itens.splice(this.itens.indexOf(itemCarrinhoEncontrado), 1);
+                this.emitirNumeroDeItens.emit(this.itens.length);
             }
          }
      }
