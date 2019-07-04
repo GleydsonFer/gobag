@@ -1,3 +1,12 @@
+/* Este arquivo é para estilização geral do projeto
+e tem prioridade sobre o arquivo de css
+dentro de cada componente, 
+exemplo: Se nesse arquivo for
+colocado: header{background: #ccc;} 
+e no arquivo css de um componente for colocado a mesma chamada
+mas com um estilo diferente: header {background: #fff;} a desse arquivo
+é a que será exibida */
+
 /* Estilo default */
 
 h5 {
@@ -167,6 +176,32 @@ h3 {
     background: transparent;
     outline: 0;
     opacity: .9;
+}
+
+.lojas .owl-theme .owl-nav.disabled+.owl-dots {
+    margin-top: 20px;
+}
+
+/* Area de estilo para dispositivos mobile */
+@media (max-width: 768px) {
+
+.lojas .owl-theme .owl-dots {display: block; margin-top:20px;}
+
+.lojas .owl-carousel button.owl-dot:focus {
+    outline:none;
+}
+
+.lojas .owl-theme .owl-dots .owl-dot span {
+    border: 1px solid #ccc;
+    background: #fff;
+ }
+
+.lojas .owl-theme .owl-dots .owl-dot.active span,
+.lojas .owl-theme .owl-dots .owl-dot:hover span {
+    border: 2px solid #ccc;
+    background: #fff;
+ }
+    
 }
 
 /* fim do carrossel lojas */

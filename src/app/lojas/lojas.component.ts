@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class LojasComponent implements OnInit {
 
   mySlideOptions={
-    margin:15,
+    margin:10,
     dot: false, 
     nav: true,
     navText: ["<div class='nav-btn prev-slide'>prev</div>", "<div class='nav-btn next-slide'>next</div>"],    
@@ -16,8 +16,8 @@ export class LojasComponent implements OnInit {
     responsive: {
       0: {
         items: 2,
-        dot: false,
-        nav: true
+        dot: true,
+        nav: false
       },
       480: {
         items: 3,
