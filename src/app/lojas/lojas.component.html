@@ -1,0 +1,15 @@
+<section class="lojas">
+  <div class="container">
+  <owl-carousel 
+      [options]="mySlideOptions" 
+      [items]="images" 
+      [carouselClasses]="['owl-theme', 'sliding']" >
+  
+      <div class="item lojas_item" *ngFor="let image of mySlideImages;let i = index">
+          <a routerLinkActive="active" routerLink="/{{image.link}}" class="lojas_link">
+              <img class="slide-image img-fluid" src={{image.image}} alt="{{image.alt}}" />
+          </a>
+      </div>
+  </owl-carousel>
+  </div>
+  </section>

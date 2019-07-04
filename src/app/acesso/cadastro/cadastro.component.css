@@ -15,3 +15,18 @@
 .card-link:hover{
     color: blue;
 }
+
+input.ng-invalid.ng-touched {
+    border: 2px solid red;
+}
+select.ng-invalid.ng-touched {
+    border: 2px solid red;
+}
+
+select.ng-valid.ng-touched {
+    border: 2px solid green;
+}
+
+input.ng-valid.ng-touched {
+    border: 2px solid green;
+}

@@ -10,7 +10,11 @@
           placeholder="E-mail"
           formControlName="email"
         >
+        <small *ngIf="formulario.get('email').valid && formulario.get('email').touched" class="form-text text-success"></small>
+        <small *ngIf="!formulario.get('email').valid && formulario.get('email').touched" class="form-text text-danger">Email inválido!</small>
+
       </div>
+
       <div class="form-group">
         <input 
           type="text"
@@ -18,7 +22,11 @@
           placeholder="Nome completo"
           formControlName="nome_completo"
         >
+        <small *ngIf="formulario.get('nome_completo').valid && formulario.get('nome_completo').touched" class="form-text text-success"></small>
+        <small *ngIf="!formulario.get('nome_completo').valid && formulario.get('nome_completo').touched" class="form-text text-danger">Nome completo inválido!</small>
+
       </div>
+
       <div class="form-group">
         <input 
           type="text"
@@ -26,15 +34,61 @@
           placeholder="Nome de usuário"
           formControlName="nome_usuario"
         >
+        <small *ngIf="formulario.get('nome_usuario').valid && formulario.get('nome_usuario').touched" class="form-text text-success"></small>
+        <small *ngIf="!formulario.get('nome_usuario').valid && formulario.get('nome_usuario').touched" class="form-text text-danger">Nome do usuario inválido!</small>
+
       </div>
+
       <div class="form-group">
         <input 
           type="password"
           class="form-control" 
           placeholder="Senha"
           formControlName="senha"
-        >
+        > 
+        <small *ngIf="formulario.get('senha').valid && formulario.get('senha').touched" class="form-text text-success"></small>
+        <small *ngIf="!formulario.get('senha').valid && formulario.get('senha').touched" class="form-text text-danger">Senha inválida!</small>
+
       </div>
+
+        <div class="form-group">
+          <input 
+            type="text"
+            class="form-control" 
+            placeholder="Endereco"
+            formControlName="endereco"
+          >
+          <small *ngIf="formulario.get('endereco').valid && formulario.get('endereco').touched" class="form-text text-success"></small>
+        <small *ngIf="!formulario.get('endereco').valid && formulario.get('endereco').touched" class="form-text text-danger">Endereço inválido!</small>
+
+      </div>
+
+      <div class="form-group">
+        <input 
+          type="text"
+          class="form-control" 
+          placeholder="Numero"
+          formControlName="numero"
+        >
+        <small *ngIf="formulario.get('numero').valid && formulario.get('numero').touched" class="form-text text-success"></small>
+        <small *ngIf="!formulario.get('numero').valid && formulario.get('numero').touched" class="form-text text-danger">Número inválido!</small>
+
+    </div>
+
+    <div class="form-group">
+      <input 
+        type="text"
+        class="form-control" 
+        placeholder="Complemento"
+        formControlName="complemento"
+      >
+      <small *ngIf="formulario.get('complemento').valid && formulario.get('complemento').touched" class="form-text text-success"></small>
+      <small *ngIf="!formulario.get('complemento').valid && formulario.get('complemento').touched" class="form-text text-danger">Complemento inválido!</small>
+
+    </div>
+<div> <!--DIV DO ERRO-->
+  <p class="small text-danger text-center">{{mensagemErroCad}}</p>
+</div> <!-- /DIV DO ERRO-->
       <button type="submit" class="btn btn-primary btn-sm btn-block">Cadastre-se</button>
     </form>
     <hr />

@@ -15,7 +15,13 @@ import { TeenComponent } from './teen/teen.component'
 import { Tendencia01Component } from './tendencia01/tendencia01.component';
 import { Tendencia02Component } from './tendencia02/tendencia02.component';
 import { Tendencia03Component } from './tendencia03/tendencia03.component';
+import { Loja01Component } from './loja01/loja01.component'
 import { AcessoComponent } from './acesso/acesso.component';
+
+import { TopoLogadoComponent } from '../app/topo-logado/topo-logado.component'
+import { TopoComponent } from '../app/topo/topo.component'
+
+import { AutenticacaoGuard } from './autenticacao-guard.service'
 
 export const ROUTES: Routes = [
     { path: '', component: HomeComponent },
@@ -38,6 +44,7 @@ export const ROUTES: Routes = [
     { path: 'ordem-compra', component: OrdemCompraComponent },
     { path: 'tendencia01', component: Tendencia01Component },
     { path: 'tendencia02', component: Tendencia02Component },
-    { path: 'tendencia03', component: Tendencia03Component }
+    { path: 'tendencia03', component: Tendencia03Component },
+    { path: 'loja01', component: Loja01Component }
 
 ]
