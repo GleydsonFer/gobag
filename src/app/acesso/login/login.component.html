@@ -10,7 +10,10 @@
           placeholder="E-mail"
           formControlName="email"
         >
+        <small *ngIf="formulario.get('email').valid && formulario.get('email').touched" class="form-text text-success"></small>
+        <small *ngIf="!formulario.get('email').valid && formulario.get('email').touched" class="form-text text-danger">Email inválido!</small>
       </div>
+      
       <div class="form-group">
         <input 
           type="password"
@@ -18,12 +21,15 @@
           placeholder="Senha"
           formControlName="senha"
         >
+        <small *ngIf="formulario.get('senha').valid && formulario.get('senha').touched" class="form-text text-success"></small>
+        <small *ngIf="!formulario.get('senha').valid && formulario.get('senha').touched" class="form-text text-danger">Senha inválido!</small>
+
       </div>
-      <button type="submit" class="btn btn-primary btn-sm btn-block">Entrar</button>
+          <button type="submit" class="btn btn-primary btn-sm btn-block">Entrar</button>
     </form>
     <hr />
-
-    <p class="small text-danger text-center">O nome de usuário inserido não pertence a uma conta. Verifique seu nome de usuário e tente novamente.</p>
+<!-- https://pt.stackoverflow.com/questions/226496/retornar-a-mensagem-de-firebase-auth-no-typescript -->
+    <p class="small text-danger text-center">{{mensagemErro}}</p>
 
   </div>
 </div>

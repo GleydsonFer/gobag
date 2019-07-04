@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
-import { HttpModule } from '@angular/http'
-import { RouterModule } from '@angular/router'
+import { HttpModule } from '@angular/http';
+import { RouterModule } from '@angular/router';
+
 
 //cadastro
 
@@ -16,9 +17,10 @@ import { LoginComponent } from './acesso/login/login.component';
 
 
 //
-import { ROUTES } from './app.routes'
+import { ROUTES } from './app.routes';
 
 import { AppComponent } from './app.component';
+import { OwlModule } from 'ngx-owl-carousel';
 import { TopoComponent } from './topo/topo.component';
 import { HomeComponent } from './home/home.component';
 import { RodapeComponent } from './rodape/rodape.component';
@@ -95,6 +97,7 @@ registerLocaleData(localePtBr);
   ],
   imports: [
     BrowserModule,
+    OwlModule,
     HttpModule,
     BrowserAnimationsModule,
     //CategoriasModule,
@@ -102,6 +105,7 @@ registerLocaleData(localePtBr);
     ReactiveFormsModule,
     RouterModule.forRoot(ROUTES),
     AppRoutingModule
+
   ],
   providers: [ 
     CarrinhoService, { provide: LOCALE_ID, useValue: 'pt-Br' },

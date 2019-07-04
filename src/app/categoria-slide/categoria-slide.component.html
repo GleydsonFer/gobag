@@ -1,4 +1,15 @@
-<div id="carouselCat" class="carousel slide" data-ride="carousel">
+<owl-carousel
+[options]="mySlideOptions"
+[items]="images"
+[carouselClasses]="['owl-theme', 'row', 'sliding']">
+<div class="item" *ngFor="let image of mySlideImages;let i = index">
+  <div>
+      <img class="slide-image" src={{image.image}}/>
+  </div>
+</div>
+</owl-carousel>
+
+<!-- <div id="carouselCat" class="carousel slide" data-ride="carousel">
 
   <ol class="carousel-indicators">
       <li data-target="#carouselCat" data-slide-to="0" class="active"></li>
@@ -34,4 +45,4 @@
       <span class="carousel-control-next-icon"></span>
       <span class="sr-only">Avançar</span>
   </a>
-</div>
+</div> -->

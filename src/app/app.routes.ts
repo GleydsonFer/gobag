@@ -17,6 +17,9 @@ import { Tendencia02Component } from './tendencia02/tendencia02.component';
 import { Tendencia03Component } from './tendencia03/tendencia03.component';
 import { AcessoComponent } from './acesso/acesso.component';
 
+import { TopoLogadoComponent } from '../app/topo-logado/topo-logado.component'
+import { TopoComponent } from '../app/topo/topo.component'
+
 import { AutenticacaoGuard } from './autenticacao-guard.service'
 
 export const ROUTES: Routes = [
@@ -43,6 +46,6 @@ export const ROUTES: Routes = [
     { path: 'tendencia03', component: Tendencia03Component },
 
 
-    { path: 'topo-logado', component: HomeComponent, canActivate: [ AutenticacaoGuard ] },
+  
 
 ]

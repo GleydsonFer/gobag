@@ -1,22 +1,39 @@
-<div class="container">
+<!-- <div class="container">  
   <ul class="nav">
     <li>
-      <!-- 30% OFF -->
+      
       <a routerLinkActive="active" routerLink="/tendencia01">
         <img class="image" src="/assets/banners/banner1.png" alt="banner1-30%off">
       </a>
     </li>
     <li>
-      <!-- Carnaval -->
+      
       <a routerLinkActive="active" routerLink="/tendencia02">
         <img class="image" src="/assets/banners/banner2.png" alt="banner2-carnaval">
       </a>
     </li>
     <li>
-      <!-- Primaveira -->
+      
       <a routerLinkActive="active" routerLink="/tendencia03">
         <img class="image" src="/assets/banners/banner3.png" alt="banner3-primaveira">
       </a>
     </li>
   </ul>
+</div> -->
+
+<section class="tendencia">
+<div class="container">
+<owl-carousel 
+    [options]="mySlideOptions" 
+    [items]="images" 
+    [carouselClasses]="['owl-theme', 'sliding']" >
+
+    <div class="item tend_item" *ngFor="let image of mySlideImages;let i = index">
+        <a routerLinkActive="active" routerLink="/{{image.link}}" class="tend_link">
+            <img class="slide-image img-fluid" src={{image.image}} alt="{{image.alt}}" />
+        </a>
+    </div>
+</owl-carousel>
 </div>
+</section>
+
