@@ -1,16 +1,19 @@
 <app-banner-slide></app-banner-slide>
 <app-tendencias></app-tendencias>
-<app-lojas></app-lojas>
+
 <div class="container">
-  
+
   <div class="secao">
-    <h3 class="text-center">Destaques do dia!</h3>
-    <h5 class="text-center">Aproveite as super ofertas que separamos para você:</h5>
+    <h3 class="text-center">LOJA 01</h3>
+    <h5 class="text-center">Conheça as ofertas da loja 01</h5>
   </div>
 
-  <!-- <hr /> -->
+</div>
 
-  <div class="row" style="margin-bottom: 50px">
+<div class="prat_prod">
+  <div class="container">
+    <div class="row" style="border-top: 1px solid rgba(0,0,0,.1);
+  padding-top: 20px;">
 
       <div class="col-md-3" *ngFor="let oferta of ofertas">
           <div class="prod">
@@ -30,27 +33,9 @@
             <button class="btn_ofer" [routerLink]="['/oferta', oferta.id]">Ver oferta</button>
 
           </div>
-        </div>
-
-
-
-
-
-    <!-- modelo de card antigo -->
-
-    <!-- <div class="col-sm-3 card_box" *ngFor="let oferta of ofertas">
-      <div class="card">        
-        <img class="card-img-top" [src]="oferta.imagens[0].url">
-        <div class="card-block">
-          <h4 class="card-title">{{ oferta.titulo }}</h4>
-          <p class="card-text">{{ oferta.descricao_oferta }}</p>
-          <p class="preco">{{ oferta.valor | currency:'BRL':true }}</p>
-          <a [routerLink]="['/oferta', oferta.id]" class="btn btn-outline-primary">Ver oferta</a>
-        </div>
       </div>
-    </div> -->
 
+    
+    </div>
   </div>
-  <!-- <hr /> -->
-  
 </div>

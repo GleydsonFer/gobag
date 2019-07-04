@@ -15,6 +15,7 @@ import { TeenComponent } from './teen/teen.component'
 import { Tendencia01Component } from './tendencia01/tendencia01.component';
 import { Tendencia02Component } from './tendencia02/tendencia02.component';
 import { Tendencia03Component } from './tendencia03/tendencia03.component';
+import { Loja01Component } from './loja01/loja01.component'
 import { AcessoComponent } from './acesso/acesso.component';
 
 import { TopoLogadoComponent } from '../app/topo-logado/topo-logado.component'
@@ -44,8 +45,12 @@ export const ROUTES: Routes = [
     { path: 'tendencia01', component: Tendencia01Component },
     { path: 'tendencia02', component: Tendencia02Component },
     { path: 'tendencia03', component: Tendencia03Component },
+<<<<<<< HEAD
+    { path: 'loja01', component: Loja01Component }
+=======
 
 
   
+>>>>>>> 1feac8d24c7dc7890f4cc1e3c64dc62bcaa84615
 
 ]
