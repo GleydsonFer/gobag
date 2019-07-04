@@ -45,12 +45,6 @@ export const ROUTES: Routes = [
     { path: 'tendencia01', component: Tendencia01Component },
     { path: 'tendencia02', component: Tendencia02Component },
     { path: 'tendencia03', component: Tendencia03Component },
-<<<<<<< HEAD
     { path: 'loja01', component: Loja01Component }
-=======
-
-
-  
->>>>>>> 1feac8d24c7dc7890f4cc1e3c64dc62bcaa84615
 
 ]

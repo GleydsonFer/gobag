@@ -1,66 +1,54 @@
 <div *ngIf="!naoLogado; else logado" >
-    <header class="header">
+<header class="header">
     <!-- area do topo do header -->
     <div class="header_top">
         <div class="container">
-
-        <div class="info_top">
-            <div class="contato_top">
-                <strong>contato:</strong> 
-                <span>(85) 98899 8899</span>
+            <div class="info_top">
+                <div class="contato_top">
+                    <strong>contato:</strong> 
+                    <span>(85) 98899 8899</span>
+                </div>
+                <div class="beneficios_top">
+                    <strong>benefícios:</strong>
+                    <span class="changeWord">5% desconto no Boleto</span>
+                </div>
             </div>
 
-            <div class="beneficios_top">
-                <strong>benefícios:</strong>
-                <span class="changeWord">5% desconto no Boleto</span>
+            <div>
+                <a class="loc_entrega" routerLink="/acesso">Faça seu login</a>
             </div>
-
-        </div>
-
-        <div>
-            <a class="loc_entrega" routerLink="/acesso">Faça seu login</a>
-        </div>
 
         </div>
     </div>
     <!-- fim da area do topo do header -->
             
     <!-- area do meio do header -->
-    <!-- classes removidas: mt-n2 mb-n2 -->
-    <nav class="navbar navbar-expand-xl navbar-dark main navbar-fixed-top header_meio" >
+    <nav class="navbar navbar-expand-lg navbar-dark main navbar-fixed-top header_meio" >
         <div class="container">
-
         <!-- botão do menu dropdown mobile -->
-        
 
         <!-- espaço da logo -->
         <div class="box_logo">
-            <!-- classes removidas: mt-n2 mb-n2 mr-1 mr-auto -->
             <button class="navbar navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSite" aria-controls="navbarSite" aria-expanded="false" aria-label="Alterna navegação">
             <span class="navbar-toggler-icon"></span>
             </button>
 
             <h1 class="logo">
-                <!-- classes removidas: mt-n1 mb-n2 -->
                 <a class="logo_link" href="/">
                     <img class="img-fluid" src="./assets/logo03.png" />
                 </a>
             </h1>
-  
 
             <div class="navbar area_user-top">
-                <a class="bag" routerLink="/ordem-compra"></a>
-        
-<<<<<<< HEAD
+                <a class="bag" routerLink="/ordem-compra">
+                    <div class="numeroItensCarrinho">{{numeroItensCarrinho}}</div>
+                </a>       
                 <a class="login" routerLink="/"></a>
             </div>
-        </div>  
-
-        <!--BUSCA -->
-        <!-- classes removidas: mt-n1 mb-n2 -->
+        </div>
+        <!--/BUSCA-->
         <div class="form-inline">
-            <!-- classes removidas: ml-2 -->
             <input  class="form-control pesquisa" 
                     type="text" 
                     placeholder="Buscar..."
@@ -73,49 +61,10 @@
                     </a>
                 </li>
             </ul>
-            <!-- FUNÇÃO QUE DEVE SER IMPLEMENTADA PARA QUE O USUARIO POSSA 
-                    SAIR DA SUA CONTA.
-                    ------------------
-            <div>
-                <a href="#" (click)="sair()" style="margin-left: 25px">Sair</a>
-            </div>
-                    ------------------
-                FIM DA FUNÇÃO QUE SAI DA CONTA O USUARIO /-->
-
-=======
-<!-- area do meio do header -->
-<!-- classes removidas: mt-n2 mb-n2 -->
-<nav class="navbar navbar-expand-lg navbar-dark main navbar-fixed-top header_meio" >
-    <div class="container">
-
-    <!-- botão do menu dropdown mobile -->
-    
-
-    <!-- espaço da logo -->
-    <div class="box_logo">
-        <!-- classes removidas: mt-n2 mb-n2 mr-1 mr-auto -->
-        <button class="navbar navbar-toggler" type="button" data-toggle="collapse"
-        data-target="#navbarSite" aria-controls="navbarSite" aria-expanded="false" aria-label="Alterna navegação">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <h1 class="logo">
-            <!-- classes removidas: mt-n1 mb-n2 -->
-            <a class="logo_link" href="/">
-                <img class="img-fluid" src="./assets/logo03.png" />
-            </a>
-        </h1>
-
-        <div class="navbar area_user-top">
-            <a class="bag" routerLink="/ordem-compra"></a>
-    
-            <a class="login" routerLink="/"></a>
->>>>>>> 916b5b33f9dd5484cdab3b8e22d8128b323b43ae
         </div>
-        <!--/BUSCA-->
+        
 
         <!-- espaço das categorias -->
-        <!-- classes removidas: mt-n1 mb-n2 ml-5 -->
         <div class="menu_nav collapse navbar-collapse " id="navbarSite">
             <!-- classes removidas: mr-auto  my-3 -->
             <ul class="navbar-nav">
@@ -258,31 +207,19 @@
                 </li>
             </ul>
         </div>
-
-
-<<<<<<< HEAD
         <!-- espaço para o carrinho e login -->
-        <!-- classes removidas: mt-n1 mb-n2  -->
         <div class="navbar area_user-bottom">
-            <a class="bag" routerLink="/ordem-compra"></a>
-
-            <a class="login" routerLink="/acesso"></a>
+            <a class="bag" routerLink="/ordem-compra">
+                <div class="numeroItensCarrinho">{{numeroItensCarrinho}}</div>
+            </a>
+            <a class="login" routerLink="/"></a>
         </div>
-=======
-    <!-- espaço para o carrinho e login -->
-    <!-- classes removidas: mt-n1 mb-n2  -->
-    <div class="navbar area_user-bottom">
-        <a class="bag" routerLink="/ordem-compra">
-            <div class="numeroItensCarrinho">{{numeroItensCarrinho}}</div>
-        </a>
->>>>>>> 916b5b33f9dd5484cdab3b8e22d8128b323b43ae
-
+        
     </div>
-    <!-- fim do container     -->
     </nav>
     <!-- fim da area do meio do header -->
 
-    </header>
+</header>
 </div>
 
 <ng-template #logado>
