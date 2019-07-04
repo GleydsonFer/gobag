@@ -47,7 +47,7 @@ export class AcessoComponent implements OnInit {
   public estadoBanner: string = "criado"
   public estadoPainel: string = "criado"
 
-  public cadastro:boolean = true
+  public cadastro:boolean = false
 
   constructor() { }
 

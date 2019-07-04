@@ -28,6 +28,9 @@ npm install --save firebase
 npm install --save web-animations-js
 npm install --save @angular/animations
 
+-- INSTALAÇÃO DA NOTIFICAÇÃO DE ADICIONADO AO CARRINHO --
+npm install ngx-toastr --save
+
 Após instalar todos os pacotes 
 
 -- PARA INICIAR A APLICAÇÃO --
@@ -69,3 +72,5 @@ ng build
 ng build -- prod
 
 -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+
+

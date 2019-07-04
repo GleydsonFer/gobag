@@ -30,7 +30,7 @@ import { FitnessComponent } from './fitness/fitness.component';
 import { InfantilComponent } from './infantil/infantil.component';
 import { OfertaComponent } from './oferta/oferta.component';
 import { ProdutosRelacionadosComponent } from './oferta/produtos-relacionados/produtos-relacionados.component';
-import { OndeFicaComponent } from './oferta/onde-fica/onde-fica.component';
+import { AvaliacaoComponent } from './oferta/avaliacao/avaliacao.component';
 
 //pipe
 import { DescricaoReduzida } from './util/descricao-reduzida.pipe';
@@ -45,7 +45,7 @@ import { BannerSlideComponent } from './banner-slide/banner-slide.component';
 import { OrdemCompraSucessoComponent } from './ordem-compra-sucesso/ordem-compra-sucesso.component';
 
 //
-import  CarrinhoService  from './carrinho.service'
+import CarrinhoService from './carrinho.service'
 import { ReactiveFormsModule } from '@angular/forms'
 
 import { TendenciasComponent } from './tendencias/tendencias.component';
@@ -57,8 +57,15 @@ import { Tendencia03Component } from './tendencia03/tendencia03.component';
 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+<<<<<<< HEAD
 import { Loja01Component } from './loja01/loja01.component';
 import { LojasComponent } from './lojas/lojas.component'
+=======
+import { TopoLogadoComponent } from './topo-logado/topo-logado.component'
+import { AutenticacaoGuard } from './autenticacao-guard.service';
+
+import { ToastrModule } from 'ngx-toastr';
+>>>>>>> 1feac8d24c7dc7890f4cc1e3c64dc62bcaa84615
 
 
 registerLocaleData(localePtBr);
@@ -73,7 +80,7 @@ registerLocaleData(localePtBr);
     FemininoComponent,
     OfertaComponent,
     ProdutosRelacionadosComponent,
-    OndeFicaComponent,
+    AvaliacaoComponent,
     DescricaoReduzida,
     OrdemCompraComponent,
     InfantilComponent,
@@ -90,10 +97,14 @@ registerLocaleData(localePtBr);
     BannerComponent,
     LoginComponent,
     CadastroComponent,
+<<<<<<< HEAD
     Loja01Component,
     LojasComponent,
+=======
+    TopoLogadoComponent,
+>>>>>>> 1feac8d24c7dc7890f4cc1e3c64dc62bcaa84615
     //ajustanto o erro ngIf
-    
+
     //
   ],
   imports: [
@@ -105,18 +116,29 @@ registerLocaleData(localePtBr);
     //ajustanto o erro ngIf
     ReactiveFormsModule,
     RouterModule.forRoot(ROUTES),
+<<<<<<< HEAD
     AppRoutingModule
+=======
+    AppRoutingModule,
+    ToastrModule.forRoot({
+      timeOut: 5000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true
+    })
+
+>>>>>>> 1feac8d24c7dc7890f4cc1e3c64dc62bcaa84615
   ],
-  providers: [ 
+  providers: [
     CarrinhoService, { provide: LOCALE_ID, useValue: 'pt-Br' },
     OfertasService,
-    Autenticacao   
+    Autenticacao,
+    AutenticacaoGuard   
   ],
   bootstrap: [
     AppComponent
   ],
   //
-  schemas: [ 
+  schemas: [
     CUSTOM_ELEMENTS_SCHEMA,
     NO_ERRORS_SCHEMA
   ]

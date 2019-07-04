@@ -5,7 +5,7 @@ import { MasculinoComponent } from './masculino/masculino.component'
 import { FemininoComponent } from './feminino/feminino.component'
 import { OfertaComponent } from './oferta/oferta.component'
 import { ProdutosRelacionadosComponent } from './oferta/produtos-relacionados/produtos-relacionados.component'
-import { OndeFicaComponent } from './oferta/onde-fica/onde-fica.component'
+import { AvaliacaoComponent } from './oferta/avaliacao/avaliacao.component'
 import { OrdemCompraComponent } from './ordem-compra/ordem-compra.component'
 
 import { FitnessComponent } from './fitness/fitness.component'
@@ -17,6 +17,11 @@ import { Tendencia02Component } from './tendencia02/tendencia02.component';
 import { Tendencia03Component } from './tendencia03/tendencia03.component';
 import { Loja01Component } from './loja01/loja01.component'
 import { AcessoComponent } from './acesso/acesso.component';
+
+import { TopoLogadoComponent } from '../app/topo-logado/topo-logado.component'
+import { TopoComponent } from '../app/topo/topo.component'
+
+import { AutenticacaoGuard } from './autenticacao-guard.service'
 
 export const ROUTES: Routes = [
     { path: '', component: HomeComponent },
@@ -33,13 +38,19 @@ export const ROUTES: Routes = [
         children: [
             { path: '', component: ProdutosRelacionadosComponent },
             { path: 'produtos-relacionados', component: ProdutosRelacionadosComponent },
-            { path: 'onde-fica', component: OndeFicaComponent },
+            { path: 'avaliacao', component: AvaliacaoComponent },
         ]
     },
     { path: 'ordem-compra', component: OrdemCompraComponent },
     { path: 'tendencia01', component: Tendencia01Component },
     { path: 'tendencia02', component: Tendencia02Component },
     { path: 'tendencia03', component: Tendencia03Component },
+<<<<<<< HEAD
     { path: 'loja01', component: Loja01Component }
+=======
+
+
+  
+>>>>>>> 1feac8d24c7dc7890f4cc1e3c64dc62bcaa84615
 
 ]

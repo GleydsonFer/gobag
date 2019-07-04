@@ -9,6 +9,7 @@ import 'rxjs/add/operator/toPromise'
 import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/retry'
 import { Pedido } from './shared/pedido.model';
+import { EventEmitter } from 'events';
 
 @Injectable()
 export class OfertasService {
@@ -17,7 +18,7 @@ export class OfertasService {
 
     //identifica o ID do último pedido no banco de dados
     private ultimoPedido: number = 7;
-    
+
     constructor(private http: Http){}
     
     public getOfertas(): Promise<Oferta[]> {
