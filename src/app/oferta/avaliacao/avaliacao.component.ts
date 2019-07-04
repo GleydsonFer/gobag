@@ -3,12 +3,12 @@ import { ActivatedRoute, Params } from '@angular/router'
 import { OfertasService } from '../../ofertas.service'
 
 @Component({
-  selector: 'app-onde-fica',
-  templateUrl: './onde-fica.component.html',
-  styleUrls: ['./onde-fica.component.css'],
+  selector: 'app-avaliacao',
+  templateUrl: './avaliacao.component.html',
+  styleUrls: ['./avaliacao.component.css'],
   providers: [ OfertasService ]
 })
-export class OndeFicaComponent implements OnInit {
+export class AvaliacaoComponent implements OnInit {
 
   public ondeFica: string = ''
 

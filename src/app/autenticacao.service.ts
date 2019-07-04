@@ -67,9 +67,8 @@ public cadastrarUsuarioValido(usuario: Usuario): Promise<any> {
 
 
 
-
-    
-    public autenticar(email: string, senha: string): Promise<any> {
+    //Método para o login
+    public autenticar(email: string, senha: string): Promise <any> {
         return new Promise((resolve, reject) => {
         firebase.auth().signInWithEmailAndPassword(email, senha)
             .then((resposta: any) => {
@@ -79,19 +78,22 @@ public cadastrarUsuarioValido(usuario: Usuario): Promise<any> {
                         localStorage.setItem('idToken', idToken)
                         this.router.navigate(['/'])
                         
+                        })
+                        
                         .then(nav => {
                             window.location.reload();
                         })
 
                       })
-                    })
+                    
                     .catch((erro: Error) => {
                         reject(erro)
                 })
             })
-            
-          
         }
+    
+          
+    
 
 
     public autenticado(): boolean {

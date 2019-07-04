@@ -1,0 +1,119 @@
+/* img {
+    border-radius: 5px;
+    width: 320px;
+    height: 200px
+} */
+
+.container {
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+/* edições wilson */
+
+/* edições de estilo do card do produto */
+/* .prat_prod {
+    margin: 50px 0;
+} */
+
+.prod {
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 15px;
+}
+
+.prod_title,
+.prod_price {
+   text-align: center;
+}
+
+.prod_title {
+    text-transform: capitalize;
+    padding: 10px 0;
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+    color: #212529;
+    font-size: 20px;
+}
+
+.prod_img-box {
+    margin: 0;
+    height: 250px;
+    position: relative;    
+}
+
+.prod_img { height: 100%;}
+
+.prod_img-box:hover .second_img {
+    z-index: 2; 
+    opacity: 1;
+}
+
+.second_img {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity .4s ease;
+}
+
+.prod_price-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 15px 0;
+}
+
+.prod_price {
+    margin: 0;
+    font-size: 22px;
+    font-family: 'Lato', sans-serif;
+    color: #212529;
+    font-weight: bold;
+}
+
+.add_bag {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    cursor: pointer;
+    text-align: center;
+}
+
+/*caso o novo ícone n tenha ficado legal  content:'👜'; */
+
+.add_bag::before {
+    content:'';
+    background: url('/assets/bag-card.png') no-repeat center center;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    line-height: 30px;
+}
+
+.btn_ofer {
+    border: 1px solid #212529;
+    background: #212529;
+    padding: 8px 15px;
+    border-radius: 4px;
+    color: #fff;
+    transition: all .4s ease-out;
+    font-family: 'Lato', sans-serif;
+    
+}
+
+.btn_ofer:hover {
+    color: #212529;
+    background: #fff;
+}
+
+/* fim da edição de estilo do card do produto */

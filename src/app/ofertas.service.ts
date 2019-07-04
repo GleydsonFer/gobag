@@ -9,6 +9,7 @@ import 'rxjs/add/operator/toPromise'
 import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/retry'
 import { Pedido } from './shared/pedido.model';
+import { EventEmitter } from 'events';
 
 @Injectable()
 export class OfertasService {
@@ -17,7 +18,7 @@ export class OfertasService {
 
     //identifica o ID do último pedido no banco de dados
     private ultimoPedido: number = 7;
-    
+
     constructor(private http: Http){}
     
     public getOfertas(): Promise<Oferta[]> {
@@ -90,5 +91,11 @@ export class OfertasService {
             .then((resposta: Response) => {
                 return (resposta.json()[0]);
             })
+    }
+
+    public getOfertasPorAnunciante(anunciante: string) : Promise<Oferta[]> {
+        return this.http.get(`${URL_API}/ofertas?anunciante=${anunciante}`)
+            .toPromise()
+            .then((resposta: Response) => resposta.json())
     }
 }

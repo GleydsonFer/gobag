@@ -29,8 +29,8 @@ import { FemininoComponent } from './feminino/feminino.component';
 import { FitnessComponent } from './fitness/fitness.component';
 import { InfantilComponent } from './infantil/infantil.component';
 import { OfertaComponent } from './oferta/oferta.component';
-import { ComoUsarComponent } from './oferta/como-usar/como-usar.component';
-import { OndeFicaComponent } from './oferta/onde-fica/onde-fica.component';
+import { ProdutosRelacionadosComponent } from './oferta/produtos-relacionados/produtos-relacionados.component';
+import { AvaliacaoComponent } from './oferta/avaliacao/avaliacao.component';
 
 //pipe
 import { DescricaoReduzida } from './util/descricao-reduzida.pipe';
@@ -45,7 +45,7 @@ import { BannerSlideComponent } from './banner-slide/banner-slide.component';
 import { OrdemCompraSucessoComponent } from './ordem-compra-sucesso/ordem-compra-sucesso.component';
 
 //
-import  CarrinhoService  from './carrinho.service'
+import CarrinhoService from './carrinho.service'
 import { ReactiveFormsModule } from '@angular/forms'
 
 import { TendenciasComponent } from './tendencias/tendencias.component';
@@ -60,6 +60,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TopoLogadoComponent } from './topo-logado/topo-logado.component'
 import { AutenticacaoGuard } from './autenticacao-guard.service';
 
+import { ToastrModule } from 'ngx-toastr';
+
 
 registerLocaleData(localePtBr);
 
@@ -72,8 +74,8 @@ registerLocaleData(localePtBr);
     MasculinoComponent,
     FemininoComponent,
     OfertaComponent,
-    ComoUsarComponent,
-    OndeFicaComponent,
+    ProdutosRelacionadosComponent,
+    AvaliacaoComponent,
     DescricaoReduzida,
     OrdemCompraComponent,
     InfantilComponent,
@@ -92,7 +94,7 @@ registerLocaleData(localePtBr);
     CadastroComponent,
     TopoLogadoComponent,
     //ajustanto o erro ngIf
-    
+
     //
   ],
   imports: [
@@ -104,10 +106,15 @@ registerLocaleData(localePtBr);
     //ajustanto o erro ngIf
     ReactiveFormsModule,
     RouterModule.forRoot(ROUTES),
-    AppRoutingModule
+    AppRoutingModule,
+    ToastrModule.forRoot({
+      timeOut: 5000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true
+    })
 
   ],
-  providers: [ 
+  providers: [
     CarrinhoService, { provide: LOCALE_ID, useValue: 'pt-Br' },
     OfertasService,
     Autenticacao,
@@ -117,7 +124,7 @@ registerLocaleData(localePtBr);
     AppComponent
   ],
   //
-  schemas: [ 
+  schemas: [
     CUSTOM_ELEMENTS_SCHEMA,
     NO_ERRORS_SCHEMA
   ]

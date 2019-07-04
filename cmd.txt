@@ -66,3 +66,6 @@ cd c:/angular/projetos/nabag-app
 
 npm install --save @angular/animations
 
+-- instalação da notificação de adicionado ao carrinho
+npm install ngx-toastr --save
+
