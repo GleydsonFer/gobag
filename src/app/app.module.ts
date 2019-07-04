@@ -57,15 +57,12 @@ import { Tendencia03Component } from './tendencia03/tendencia03.component';
 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-<<<<<<< HEAD
 import { Loja01Component } from './loja01/loja01.component';
 import { LojasComponent } from './lojas/lojas.component'
-=======
 import { TopoLogadoComponent } from './topo-logado/topo-logado.component'
 import { AutenticacaoGuard } from './autenticacao-guard.service';
 
 import { ToastrModule } from 'ngx-toastr';
->>>>>>> 1feac8d24c7dc7890f4cc1e3c64dc62bcaa84615
 
 
 registerLocaleData(localePtBr);
@@ -97,12 +94,9 @@ registerLocaleData(localePtBr);
     BannerComponent,
     LoginComponent,
     CadastroComponent,
-<<<<<<< HEAD
     Loja01Component,
     LojasComponent,
-=======
     TopoLogadoComponent,
->>>>>>> 1feac8d24c7dc7890f4cc1e3c64dc62bcaa84615
     //ajustanto o erro ngIf
 
     //
@@ -116,9 +110,6 @@ registerLocaleData(localePtBr);
     //ajustanto o erro ngIf
     ReactiveFormsModule,
     RouterModule.forRoot(ROUTES),
-<<<<<<< HEAD
-    AppRoutingModule
-=======
     AppRoutingModule,
     ToastrModule.forRoot({
       timeOut: 5000,
@@ -126,7 +117,6 @@ registerLocaleData(localePtBr);
       preventDuplicates: true
     })
 
->>>>>>> 1feac8d24c7dc7890f4cc1e3c64dc62bcaa84615
   ],
   providers: [
     CarrinhoService, { provide: LOCALE_ID, useValue: 'pt-Br' },
