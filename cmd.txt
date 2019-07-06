@@ -1,45 +1,62 @@
+INSTRUÇÕES PARA O PROJETO
+
+Após baixar o repositório no GIT
+
+-- PARA INICIAR O PROJETO --
+
+Apontar o diretório do projeto dentro do prompt
+ex: 
 cd c:\angular\projetos\nabag-app
+
+Baixar o pacote npm com o seguinte comando:
+
+npm install
+
+Para as funcionalidades do projeto baixe os seguintes pacotes via npm:
+
+-- SIMULADOR DE SERVIDOR VIA JSON --
+npm install -g json-server
+
+-- INSTALAÇÃO DOS PACOTES DO CARROSSEL --
+npm install ngx-owl-carousel --save
+npm install owl.carousel --save
+
+
+-- FIREBASE --
+npm install --save firebase
+
+-- ANIMAÇÕES
+npm install --save web-animations-js
+npm install --save @angular/animations
+
+-- INSTALAÇÃO DA NOTIFICAÇÃO DE ADICIONADO AO CARRINHO --
+npm install ngx-toastr --save
+
+Após instalar todos os pacotes 
+
+-- PARA INICIAR A APLICAÇÃO --
+
 ng serve
 
-npm start
---------
-cd c:\angular\projetos\app1
-
-ng build
-
-ng build -- prod
-
---------
-
-cd c:\angular\projetos\nabag-app
+-- PARA SIMULAR O SERVIDOR/BD VIA JSON --
 
 json-server --watch banco-de-dados.json
 
---criar um novo componente
+-- PARA VISUALIZAR NO NAVEGADOR --
+(colocar no campo da url)
 
-cd c:\angular\projetos\nabag-app
-
-ng g c nome_novo_componente --spec=false
+localhost:4200 
 
 
---instalação
+OBS SOBRE ANGULAR
+
+--instalação --
 
 Dowload nodejs
 Node -v
 Npm -v
 Npm install -g @angular/cli
 npm install -g json-server
-
-
-
-json-server --watch banco-de-dados.json
-
----
-npm install -g json-server
-
-json-server --watch banco-de-dados.json
-
-ng serve
 
 --novo projeto--
 
@@ -49,23 +66,12 @@ Npm install bootstrap@numerodaversao (ver no site do bootstrap) --save
 Npm install jquery --save
 Npm install tether --save
 
+-- execução --
 
--- instalação dos pacotes de carousel --
-npm install ngx-owl-carousel --save
-npm install owl.carousel --save
+npm start
+ng build
+ng build -- prod
 
+-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
 
-
--- firebase
-npm install --save firebase
-
---animations
-npm install --save web-animations-js
-
-cd c:/angular/projetos/nabag-app
-
-npm install --save @angular/animations
-
--- instalação da notificação de adicionado ao carrinho
-npm install ngx-toastr --save
 

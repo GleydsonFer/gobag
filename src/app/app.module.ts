@@ -57,6 +57,8 @@ import { Tendencia03Component } from './tendencia03/tendencia03.component';
 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Loja01Component } from './loja01/loja01.component';
+import { LojasComponent } from './lojas/lojas.component'
 import { TopoLogadoComponent } from './topo-logado/topo-logado.component'
 import { AutenticacaoGuard } from './autenticacao-guard.service';
 
@@ -92,6 +94,8 @@ registerLocaleData(localePtBr);
     BannerComponent,
     LoginComponent,
     CadastroComponent,
+    Loja01Component,
+    LojasComponent,
     TopoLogadoComponent,
     //ajustanto o erro ngIf
 

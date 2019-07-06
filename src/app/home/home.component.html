@@ -1,5 +1,6 @@
 <app-banner-slide></app-banner-slide>
 <app-tendencias></app-tendencias>
+<app-lojas></app-lojas>
 <div class="container">
   
   <div class="secao">
@@ -11,7 +12,7 @@
 
   <div class="row" style="margin-bottom: 50px">
 
-      <div class="col-md-3" *ngFor="let oferta of ofertas">
+      <div class="col-md-3 col-6" *ngFor="let oferta of ofertas">
           <div class="prod">
             <div class="prod_title-box">
               <h4 class="prod_title">{{ oferta.titulo }}</h4>
@@ -24,7 +25,6 @@
   
             <div class="prod_price-box">  
               <p class="prod_price">{{ oferta.valor | currency:'BRL':true }}</p>
-              <div class="add_bag account-login"></div>
             </div>
   
             <button class="btn_ofer" [routerLink]="['/oferta', oferta.id]">Ver oferta</button>
