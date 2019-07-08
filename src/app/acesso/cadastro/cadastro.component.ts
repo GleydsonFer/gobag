@@ -5,11 +5,6 @@ import { Usuario } from '../usuario.model'
 
 import { Autenticacao } from '../../autenticacao.service'
 //
-import { Router } from '@angular/router'
-
-
-
-
 
 
 @Component({
@@ -17,9 +12,6 @@ import { Router } from '@angular/router'
   templateUrl: './cadastro.component.html',
   styleUrls: ['./cadastro.component.css']
 })
-
-
-
 export class CadastroComponent implements OnInit {
 
   public mensagemErroCad: string
@@ -31,21 +23,18 @@ export class CadastroComponent implements OnInit {
   
   public formulario: FormGroup = new FormGroup({
     'email': new FormControl(null, [Validators.required, Validators.email]),
-    'nome_completo': new FormControl(null,[Validators.required, Validators.minLength(3), Validators.maxLength(120)]),
-    'nome_usuario': new FormControl(null,[Validators.required, Validators.minLength(3)]),
+    'nome_completo': new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(120)]),
+    'nome_usuario': new FormControl(null, [Validators.required, Validators.minLength(3)]),
     'senha': new FormControl(null, [Validators.required, Validators.minLength(6)]),
-    'endereco': new FormControl (null,[Validators.required, Validators.minLength(3), Validators.maxLength(120)]),
-    'numero': new FormControl (null,[Validators.required, Validators.minLength(1), Validators.maxLength(20)]),
-    'complemento': new FormControl (null)
-    
+    'endereco': new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(120)]),
+    'numero': new FormControl(null, [Validators.required, Validators.minLength(1), Validators.maxLength(20)]),
+    'complemento': new FormControl(null)
   })
   
 
   constructor(
-    private authcad : Autenticacao,
-    //
-    private router: Router
-  ) {  }
+    private auth: Autenticacao,
+  ) { }
 
   ngOnInit() {
   }
@@ -54,87 +43,50 @@ export class CadastroComponent implements OnInit {
     this.exibirPainel.emit('login')
   }
 
-  public exibirPainelCadastro(): void {
-    this.exibirPainel.emit('cadastro')
+  public cadastrarUsuario(): void {
+    let usuario = new Usuario(
+      this.formulario.value.email,
+      this.formulario.value.nome_completo,
+      this.formulario.value.nome_usuario,
+      this.formulario.value.senha,
+      this.formulario.value.endereco,
+      this.formulario.value.numero,
+      this.formulario.value.complemento
+    )
+
+    var aux = true;
+
+    if (this.formulario.status == "INVALID") {
+      this.formulario.get('email').markAsTouched()
+      this.formulario.get('nome_completo').markAsTouched()
+      this.formulario.get('nome_usuario').markAsTouched()
+      this.formulario.get('senha').markAsTouched()
+      this.formulario.get('endereco').markAsTouched()
+      this.formulario.get('numero').markAsTouched()
+      this.formulario.get('complemento').markAsTouched()
+
+    } else {
+      this.auth.cadastrarUsuario(usuario)
+        .then(() => {
+
+          if (this.mensagemErroCad !== undefined) {
+            this.auth.message = undefined;
+          }
+
+          this.mensagemErroCad = this.auth.message;
+          console.log(this.mensagemErroCad);
+
+          if (this.mensagemErroCad === 'The email address is already in use by another account.') {
+            this.mensagemErroCad = "O endereço de email já está em uso por uma outra conta."
+          }
+
+          if (this.mensagemErroCad === undefined) {
+            this.exibirPainelLogin()
+            this.mensagemErroCad = undefined;
+          }
+        });
+    }
   }
-
-  
-
-
-  /* v1.0 */
-    public  cadastrarUsuario(): void {
-      let usuario = new Usuario ( 
-        this.formulario.value.email,      
-        this.formulario.value.nome_completo,      
-        this.formulario.value.nome_usuario,      
-        this.formulario.value.senha,
-        this.formulario.value.endereco, 
-        this.formulario.value.numero,
-        this.formulario.value.complemento
-        ) 
-
-        
-        this.authcad.cadastrarUsuario( usuario )    
-
-        
-                
-          .catch((erro: any) => {
-            console.log('primeiro console')
-            
-              if(erro){
-              console.log(erro)
-                if (erro.code === 'auth/email-already-in-use') {
-                  
-                  this.mensagemErroCad = "erro login cadastrado!!!!!"
-                  this.aux = false
-                  this.router.navigate(['/acesso'])
-                  } 
-                } 
-              }) 
-
-      if (this.formulario.status == "INVALID") {
-        this.formulario.get('email').markAsTouched()
-        this.formulario.get('nome_completo').markAsTouched()
-        this.formulario.get('nome_usuario').markAsTouched()
-        this.formulario.get('senha').markAsTouched()
-        this.formulario.get('endereco').markAsTouched()
-        this.formulario.get('numero').markAsTouched()
-        this.formulario.get('complemento').markAsTouched()
-        
-
-        // } else {
-        //   this.authcad.cadastrarUsuario( usuario )    
-                
-        //   .catch((erro: any) => {
-        //     console.log('primeiro console')
-            
-        //       if(erro){
-        //       console.log(erro)
-        //         if (erro.code === 'auth/email-already-in-use') {
-                  
-        //           this.mensagemErroCad = "erro login cadastrado!!!!!"
-        //           aux = false
-                  
-        //           } 
-        //         } 
-        //       }) 
-
-            
-        
-        //       }  
-       
-          }
-          console.log('meu delus do ceuss!')
-
-        if (this.aux===true){
-          this.exibirPainelLogin()
-          //this.exibirPainelCadastro()
-          } else {
-            console.log('caiu no else!')
-          }
-
-        }
-        
 }
 
 
@@ -151,7 +103,7 @@ export class CadastroComponent implements OnInit {
 .then(( ) => {
         console.log(aux)
       /*this.exibirPainelLogin()
-      this.authcad.cadastrarUsuario( usuario ) 
+      this.authcad.cadastrarUsuario( usuario )
       if(aux == true )  {
 
         this.exibirPainelLogin()

@@ -9,36 +9,28 @@ import { Router } from '@angular/router'
 
 export class Autenticacao {
 
-
+    public message: string;
     public token_id: string
 
     constructor(private router: Router) {  }
 
 
     public cadastrarUsuario(usuario: Usuario): Promise<any> {
-        //console.log('Chegamos até o serviço: ', usuario)
-        return new Promise((resolve, reject) => {
-        //return 
-        firebase.auth().createUserWithEmailAndPassword(usuario.email,usuario.senha)
-        .then((resposta: any)=> {
-            //remover a senha do atributo senha do opbjeto usuario
-            delete usuario.senha 
-            //registrando dados complementares do usuario no patth email na base64
-            firebase.database().ref(`usuario_detalhe/${btoa(usuario.email)}`)
-                .set(usuario)
-                /////////////////////////////
-                
+        // console.log('Chegamos até o seriviço', usuario);
+        return firebase.auth().createUserWithEmailAndPassword(usuario.email, usuario.senha)
+            .then((resposta: any) => {
+                //remover o atributo senha do objeto usuario
+                delete usuario.senha;
 
+                //registrando dados complementares do usuário no path email na base 64 
+                firebase.database().ref(`usuario_detalhe/${btoa(usuario.email)}`)
+                    .set({ usuario })
+            })
+            .catch((error: Error) => {
+                this.message = error.message;
+            });
+    }
 
-        })
-        .catch((erro:any)=> {
-            reject(erro)
-                       
-                
-        
-        })
-    })
-}
 /*
 public cadastrarUsuarioValido(usuario: Usuario): Promise<any> {
     //console.log('Chegamos até o serviço: ', usuario)
@@ -77,12 +69,12 @@ public cadastrarUsuarioValido(usuario: Usuario): Promise<any> {
                         this.token_id = idToken
                         localStorage.setItem('idToken', idToken)
                         this.router.navigate(['/'])
-                        
-                        })
-                        
                         .then(nav => {
                             window.location.reload();
                         })
+                        })
+                        
+                       
 
                       })
                     
