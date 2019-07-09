@@ -39,11 +39,12 @@ ng serve
 
 -- PARA SIMULAR O SERVIDOR/BD VIA JSON --
 
+(executar em um prompt separado)
 json-server --watch banco-de-dados.json
 
 -- PARA VISUALIZAR NO NAVEGADOR --
-(colocar no campo da url)
 
+(colocar no campo da url)
 localhost:4200 
 
 

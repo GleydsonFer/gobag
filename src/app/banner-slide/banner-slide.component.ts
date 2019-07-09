@@ -6,6 +6,31 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./banner-slide.component.css']
 })
 export class BannerSlideComponent implements OnInit {
+  mySlideOptions={
+    dot: false, 
+    nav: true,
+    navText: ["<div class='nav-btn prev-slide'>prev</div>", "<div class='nav-btn next-slide'>next</div>"],    
+    responsiveClass: true,
+    responsive: {
+      0: {
+        items: 1,
+        dot: false,
+        nav: true
+      }
+    }
+  };
+
+  mySlideImages = [
+    {
+      alt: "Gobag",
+      image: "assets/banners/home/banner-1.jpg"
+    },
+    {
+      alt: "como funciona",
+      image: "assets/banners/home/banner-2.jpg"
+    }
+  ]
+
 
   constructor() { }
 
