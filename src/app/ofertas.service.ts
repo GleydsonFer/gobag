@@ -1,15 +1,16 @@
-import { Http, Response } from '@angular/http'
-import { Injectable } from '@angular/core'
-import { Observable } from 'rxjs/Observable'
-import { Oferta } from './shared/oferta.model'
-
-import { URL_API } from './app.api'
-
-import 'rxjs/add/operator/toPromise'
-import 'rxjs/add/operator/map'
-import 'rxjs/add/operator/retry'
+import { Injectable } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { Http, Response } from '@angular/http';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/retry';
+import 'rxjs/add/operator/toPromise';
+import { Observable } from 'rxjs/Observable';
+import { map } from 'rxjs/operators';
+import { URL_API } from './app.api';
+import { Oferta } from './shared/oferta.model';
 import { Pedido } from './shared/pedido.model';
-import { EventEmitter } from 'events';
+
+
 
 @Injectable()
 export class OfertasService {
@@ -19,7 +20,15 @@ export class OfertasService {
     //identifica o ID do último pedido no banco de dados
     private ultimoPedido: number = 7;
 
-    constructor(private http: Http){}
+    // referência à coleção 'produtos do firestore
+    // private refProdutos = firebase.firestore().collection('produtos');
+
+    constructor(
+        private http: Http,
+        private db: AngularFirestore    
+    ){}
+
+    // Métodos para API fake
     
     public getOfertas(): Promise<Oferta[]> {
         return this.http.get(`${URL_API}/ofertas?destaque=true`)
@@ -74,14 +83,6 @@ export class OfertasService {
             .then((resposta: Response) => resposta.json())
     }
 
-    // public getTamanhoDePedidos(): Promise<Pedido> {
-    //     return this.http.get(`${URL_API}/pedidos`)
-    //     .toPromise()
-    //     .then((resposta: Response) => {
-    //         return resposta.json().lastindex;
-    //     })
-    // }
-
     public getEnderecoDePedidos(): Promise<Pedido> {
         // let tamanhoPedidos: number = 7;
         return this.http.get(`${URL_API}/pedidos?id=${this.ultimoPedido}`)
@@ -97,5 +98,19 @@ export class OfertasService {
             .then((resposta: Response) => {
                 return (resposta.json()[0]);
             })
+    }
+
+    /**
+     * Métodos para o Firebase
+     */
+
+    public getAllProdutos(){
+        return this.db.collection('produtos')
+          .snapshotChanges()
+          .pipe(
+            map(changes => {
+              return changes.map(c => ({ key: c.payload.doc.id, ...c.payload.doc.data() }));
+            })
+          );
     }
 }

@@ -4,9 +4,7 @@ import * as firebase from 'firebase'
 import { Injectable } from '@angular/core'
 import { Router } from '@angular/router'
 
-
 @Injectable()
-
 export class Autenticacao {
 
     public message: string;
@@ -14,7 +12,7 @@ export class Autenticacao {
 
     constructor(private router: Router) {  }
 
-
+    // método para cadastrar usuário
     public cadastrarUsuario(usuario: Usuario): Promise<any> {
         // console.log('Chegamos até o seriviço', usuario);
         return firebase.auth().createUserWithEmailAndPassword(usuario.email, usuario.senha)
@@ -31,34 +29,6 @@ export class Autenticacao {
             });
     }
 
-/*
-public cadastrarUsuarioValido(usuario: Usuario): Promise<any> {
-    //console.log('Chegamos até o serviço: ', usuario)
-    return new Promise((resolve, reject) => {
-    //return 
-    firebase.auth().createUserWithEmailAndPassword(usuario.email,usuario.senha)
-    .then((resposta: any)=> {
-        //remover a senha do atributo senha do opbjeto usuario
-        delete usuario.senha 
-        //registrando dados complementares do usuario no patth email na base64
-        firebase.database().ref(`usuario_detalhe/${btoa(usuario.email)}`)
-            .set(usuario)
-            /////////////////////////////
-            
-
-
-    })
-    .catch((erro:any)=> {
-        reject(erro)
-        console.log('teste do autenticacao : ',erro)           
-            
-    
-    })
-})
-} */
-
-
-
     //Método para o login
     public autenticar(email: string, senha: string): Promise <any> {
         return new Promise((resolve, reject) => {
@@ -68,25 +38,19 @@ public cadastrarUsuarioValido(usuario: Usuario): Promise<any> {
                     .then((idToken: string) => {
                         this.token_id = idToken
                         localStorage.setItem('idToken', idToken)
+                        
                         this.router.navigate(['/'])
-                        
-                        })
-                        
-                        .then(nav => {
-                            window.location.reload();
-                        })
-
-                      })
-                    
-                    .catch((erro: Error) => {
-                        reject(erro)
+                        console.log('passa aqui');
+                    })
+                })
+                .then(() => {
+                    window.location.reload();
+                })
+                .catch((erro: Error) => {
+                    reject(erro)
                 })
             })
-        }
-    
-          
-    
-
+    }
 
     public autenticado(): boolean {
 
@@ -96,7 +60,6 @@ public cadastrarUsuarioValido(usuario: Usuario): Promise<any> {
 
         if( this.token_id === undefined ){
             this.router.navigate(['/'])
-            
         }
         
         return this.token_id !== undefined
@@ -111,13 +74,8 @@ public cadastrarUsuarioValido(usuario: Usuario): Promise<any> {
                 
                 .then(nav => {
                     window.location.reload();
-                    
               });
             })
-        
     }
-
-    ////////////////
-    
 
 }
