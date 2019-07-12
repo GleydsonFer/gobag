@@ -5,7 +5,8 @@ Após baixar o repositório no GIT
 -- PARA INICIAR O PROJETO --
 
 Apontar o diretório do projeto dentro do prompt
-ex: cd c:\angular\projetos\nabag-app
+ex: 
+cd c:\angular\projetos\nabag-app
 
 Baixar o pacote npm com o seguinte comando:
 
@@ -40,11 +41,12 @@ ng serve
 
 -- PARA SIMULAR O SERVIDOR/BD VIA JSON --
 
+(executar em um prompt separado)
 json-server --watch banco-de-dados.json
 
 -- PARA VISUALIZAR NO NAVEGADOR --
-(colocar no campo da url)
 
+(colocar no campo da url)
 localhost:4200 
 
 

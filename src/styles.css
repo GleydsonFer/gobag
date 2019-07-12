@@ -30,6 +30,10 @@ h3 {
     margin-bottom: 30px
 }
 
+/* Inicio Estilo do carrossel dos banners da página inicial */
+
+/* FIm do estilo do carrossel dos banners da página inicial */
+
 
 /* Início Estilo do carrossel das tendências */
 
@@ -38,7 +42,8 @@ h3 {
     height: 0;
 }
 
-.tendencia .owl-carousel .owl-nav button.owl-prev {
+.tendencia .owl-carousel .owl-nav button.owl-prev,
+.banner_home .owl-carousel .owl-nav button.owl-prev {
     position: absolute;
     left: 0;
     top: 0;
@@ -62,7 +67,8 @@ h3 {
     background-repeat: repeat-x!important;
 }
 
-.tendencia .owl-carousel .owl-nav button.owl-next {
+.tendencia .owl-carousel .owl-nav button.owl-next,
+.banner_home .owl-carousel .owl-nav button.owl-next {
     position: absolute;
     right: 0;
     top: 0;
@@ -88,7 +94,11 @@ h3 {
 
 .tendencia .owl-carousel .owl-nav button.owl-prev:hover,
 .tendencia .owl-carousel .owl-nav button.owl-next:hover,
-.tendencia .owl-theme .owl-nav [class*=owl-]:hover {
+.tendencia .owl-theme .owl-nav [class*=owl-]:hover,
+
+.banner_home .owl-carousel .owl-nav button.owl-prev:hover,
+.banner_home .owl-carousel .owl-nav button.owl-next:hover,
+.banner_home .owl-theme .owl-nav [class*=owl-]:hover{
     background: rgba(0, 0, 0, 0);
     filter: alpha(opacity=90);
     outline: 0;
@@ -98,13 +108,43 @@ h3 {
 .tendencia .owl-carousel .owl-nav button.owl-prev.disabled,
 .tendencia .owl-carousel .owl-nav button.owl-next.disabled,
 .tendencia .owl-carousel .owl-nav button.owl-prev.disabled:hover,
-.tendencia .owl-carousel .owl-nav button.owl-next.disabled:hover {opacity: .5;}
+.tendencia .owl-carousel .owl-nav button.owl-next.disabled:hover,
+
+.banner_home .owl-carousel .owl-nav button.owl-prev.disabled,
+.banner_home .owl-carousel .owl-nav button.owl-next.disabled,
+.banner_home .owl-carousel .owl-nav button.owl-prev.disabled:hover,
+.banner_home .owl-carousel .owl-nav button.owl-next.disabled:hover {opacity: .5;}
 
 .tendencia .owl-carousel .owl-nav button.owl-prev:focus,
-.tendencia .owl-carousel .owl-nav button.owl-next:focus {outline: none;}
+.tendencia .owl-carousel .owl-nav button.owl-next:focus,
+
+.banner_home .owl-carousel .owl-nav button.owl-prev:focus,
+.banner_home .owl-carousel .owl-nav button.owl-next:focus{outline: none;}
 
 .tendencia .nav-btn.prev-slide,
-.tendencia .nav-btn.next-slide {font-size: 0;}
+.tendencia .nav-btn.next-slide,
+
+.banner_home .nav-btn.prev-slide,
+.banner_home .nav-btn.next-slide{font-size: 0;}
+
+.banner_home .nav-btn.prev-slide,
+.banner_home .nav-btn.next-slide {
+    height: 100%;
+    width: 20px;
+    position: absolute;
+    top: 0;
+    font-size: 0;
+}
+
+.banner_home .nav-btn.prev-slide {
+    background: url('./assets/left-w.png') center center no-repeat;
+    left: 0;
+}
+
+.banner_home .nav-btn.next-slide {
+    background: url('./assets/right-w.png') center center no-repeat;
+    right: 0;
+}
 
 .owl-theme .owl-dots {display: none;}
 

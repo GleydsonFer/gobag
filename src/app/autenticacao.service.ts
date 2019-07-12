@@ -1,4 +1,4 @@
-import { Usuario }  from './acesso/usuario.model'
+import { Usuario } from './acesso/usuario.model'
 import * as firebase from 'firebase'
 
 import { Injectable } from '@angular/core'
@@ -10,7 +10,7 @@ export class Autenticacao {
     public message: string;
     public token_id: string
 
-    constructor(private router: Router) {  }
+    constructor(private router: Router) { }
 
     // método para cadastrar usuário
     public cadastrarUsuario(usuario: Usuario): Promise<any> {
@@ -30,38 +30,36 @@ export class Autenticacao {
     }
 
     //Método para o login
-    public autenticar(email: string, senha: string): Promise <any> {
+    public autenticar(email: string, senha: string): Promise<any> {
         return new Promise((resolve, reject) => {
-        firebase.auth().signInWithEmailAndPassword(email, senha)
-            .then((resposta: any) => {
-                firebase.auth().currentUser.getIdToken()
-                    .then((idToken: string) => {
-                        this.token_id = idToken
-                        localStorage.setItem('idToken', idToken)
-                        
-                        this.router.navigate(['/'])
-                        console.log('passa aqui');
-                    })
-                })
-                .then(() => {
-                    window.location.reload();
+            firebase.auth().signInWithEmailAndPassword(email, senha)
+                .then((resposta: any) => {
+                    firebase.auth().currentUser.getIdToken()
+                        .then((idToken: string) => {
+                            this.token_id = idToken
+                            localStorage.setItem('idToken', idToken)
+                            this.router.navigate(['/'])
+                                .then(nav => {
+                                    window.location.reload();
+                                })
+                        })
                 })
                 .catch((erro: Error) => {
                     reject(erro)
                 })
-            })
+        })
     }
 
     public autenticado(): boolean {
 
-        if(this.token_id === undefined && localStorage.getItem('idToken') != null) {
+        if (this.token_id === undefined && localStorage.getItem('idToken') != null) {
             this.token_id = localStorage.getItem('idToken')
         }
 
-        if( this.token_id === undefined ){
+        if (this.token_id === undefined) {
             this.router.navigate(['/'])
         }
-        
+
         return this.token_id !== undefined
     }
 
@@ -71,10 +69,10 @@ export class Autenticacao {
                 localStorage.removeItem('idToken')
                 this.token_id = undefined
                 this.router.navigate(['/'])
-                
-                .then(nav => {
-                    window.location.reload();
-              });
+
+                    .then(nav => {
+                        window.location.reload();
+                    });
             })
     }
 
