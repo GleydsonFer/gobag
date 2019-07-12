@@ -24,6 +24,7 @@ npm install owl.carousel --save
 
 -- FIREBASE --
 npm install --save firebase
+npm install @angular/fire --save
 
 -- ANIMAÇÕES
 npm install --save web-animations-js

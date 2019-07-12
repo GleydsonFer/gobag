@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OfertasService } from '../ofertas.service'
 import { Oferta } from '../shared/oferta.model'
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -11,7 +12,8 @@ import { Oferta } from '../shared/oferta.model'
 })
 export class HomeComponent implements OnInit {
 
-  public ofertas: Oferta[]
+  public ofertas: Oferta[];
+  public produtos: Observable<any>;
 
   constructor(
     private ofertasService: OfertasService,
@@ -22,12 +24,17 @@ export class HomeComponent implements OnInit {
     //this.ofertas = this.ofertasService.getOfertas()
     //console.log(this.ofertas)
 
-    this.ofertasService.getOfertas()
-      .then(( ofertas: Oferta[] ) => { 
-        this.ofertas = ofertas 
-      })
-      .catch(( param: any ) => { 
-      })
+    // Puxando ofertas da API fake
+    // this.ofertasService.getOfertas()
+    //   .then(( ofertas: Oferta[] ) => { 
+    //     this.ofertas = ofertas 
+    //   })
+    //   .catch(( param: any ) => { 
+    //   });
+
+    this.produtos = this.ofertasService.getAllProdutos();
+    console.log(this.produtos);
+
   }
 
   
