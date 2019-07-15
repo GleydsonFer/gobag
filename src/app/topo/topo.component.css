@@ -1,11 +1,21 @@
 .header {
     padding: 0;
+    height: ;
+}
+
+.left_col{
+    height: 60px;
+    margin-left: 0px;
+    background-color:blue;
+}
+.right_col{
+background-color:red;
 }
 
 /* inicio do estilo do header_top */
 
 .header_top {
-    background: #262728;
+    background: #f6f9fc;
     border-bottom: 1px solid rgba(255,255,255,.5);
     padding: 4px 0;
 }
@@ -51,16 +61,19 @@
 /* inicio do estilo do header_meio */
 
 .header_meio {
-background: #262728;
+background:white;
 padding: 0;
 margin: 0;
 }
 
 .logo {
     width: 40px;
+    background-color:blue;
 }
-
-.area_user-top {display: none;}
+.area_user-top {
+    display: none;
+    background-color:black;
+}
 
 .logo_link {display: block;}
 
@@ -84,7 +97,7 @@ margin: 0;
 
 .list-group-item a {
     font-family: 'Lato', sans-serif;
-    color: #262728;
+    color: black;
     font-size: 18px;
     padding: 12px 20px;
     display: block;
@@ -98,6 +111,8 @@ margin: 0;
 
 .menu_nav {
     flex-grow: initial;
+    background-color:#fff;
+    color:black;
 }
 
 .itens-sacola{
@@ -164,15 +179,21 @@ margin: 0;
         padding-bottom: 20px;
     }
 
-    .header_meio .container {flex-direction: column;}
+    .header_meio .container {
+        flex-direction: column;
+        background-color:blue;
+    }
 
     .box_logo {
-        display: flex;
+        /* display: flex;
         width: 100%;
         align-items: center;
         justify-content: space-between;
         padding-left: 8px;
         padding-bottom: 8px;
+        margin-left: 5px;
+         */
+         margin-right:50px;
     }
 
     .logo {
@@ -181,7 +202,10 @@ margin: 0;
 
     .area_user-top {display: flex;}
 
-    .area_user-bottom {display: none;}
+    .area_user-bottom {
+        display: none;
+        background-color:black;
+    }
 
     .form-inline {
         width: 90%;
