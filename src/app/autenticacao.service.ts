@@ -12,6 +12,11 @@ export class Autenticacao {
     public message: string;
     public token_id: string
 
+    //dados do usuario logado
+    public endereco: string;
+    public numero: string;
+    public nome_usuario: string;
+
     constructor(private router: Router) {  }
 
 
@@ -65,6 +70,8 @@ public cadastrarUsuarioValido(usuario: Usuario): Promise<any> {
         firebase.auth().signInWithEmailAndPassword(email, senha)
             .then((resposta: any) => {
                 firebase.auth().currentUser.getIdToken()
+                //pegando dados do usuarioLogado (numero, rua e nomeId)
+                
                     .then((idToken: string) => {
                         this.token_id = idToken
                         localStorage.setItem('idToken', idToken)
@@ -72,11 +79,11 @@ public cadastrarUsuarioValido(usuario: Usuario): Promise<any> {
                         .then(nav => {
                             window.location.reload();
                         })
-                        })
+                    })
                         
                        
 
-                      })
+                    })
                     
                     .catch((erro: Error) => {
                         reject(erro)
