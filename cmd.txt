@@ -74,6 +74,10 @@ npm start
 ng build
 ng build -- prod
 
+-- Criação de um novo component --
+
+ ng g c nomeDoComponente
+
 -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
 
 -- INSTALAÇÃO DA BIBLIOTECA ANIMATE.CSS --
@@ -81,6 +85,8 @@ ng build -- prod
 npm install animate.css --save
 incluir em styles:  "node_modules/animate.css/animate.min.css"
 consultar documentação em: https://github.com/daneden/animate.css
+
+
 
 
 
