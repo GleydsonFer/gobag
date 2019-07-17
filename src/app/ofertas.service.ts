@@ -9,6 +9,7 @@ import { map } from 'rxjs/operators';
 import { URL_API } from './app.api';
 import { Oferta } from './shared/oferta.model';
 import { Pedido } from './shared/pedido.model';
+import { pipe } from 'rxjs';
 
 
 
@@ -25,18 +26,18 @@ export class OfertasService {
 
     constructor(
         private http: Http,
-        private db: AngularFirestore    
-    ){}
+        private db: AngularFirestore
+    ) { }
 
     // Métodos para API fake
-    
+
     public getOfertas(): Promise<Oferta[]> {
         return this.http.get(`${URL_API}/ofertas?destaque=true`)
             .toPromise()
             .then((resposta: Response) => { return resposta.json() })
     }
 
-    public getOfertasPorCategoria(categoria: string) : Promise<Oferta[]> {
+    public getOfertasPorCategoria(categoria: string): Promise<Oferta[]> {
         return this.http.get(`${URL_API}/ofertas?categoria=${categoria}`)
             .toPromise()
             .then((resposta: Response) => resposta.json())
@@ -77,7 +78,7 @@ export class OfertasService {
             .map((resposta: Response) => resposta.json())
     }
 
-    public getOfertasPorAnunciante(anunciante: string) : Promise<Oferta[]> {
+    public getOfertasPorAnunciante(anunciante: string): Promise<Oferta[]> {
         return this.http.get(`${URL_API}/ofertas?anunciante=${anunciante}`)
             .toPromise()
             .then((resposta: Response) => resposta.json())
@@ -104,13 +105,48 @@ export class OfertasService {
      * Métodos para o Firebase
      */
 
-    public getAllProdutos(){
+    // retorna todos os produtos do banco
+    public getAllProdutos() {
         return this.db.collection('produtos')
-          .snapshotChanges()
-          .pipe(
-            map(changes => {
-              return changes.map(c => ({ key: c.payload.doc.id, ...c.payload.doc.data() }));
-            })
-          );
+            .snapshotChanges()
+            .pipe(
+                map(changes => {
+                    return changes.map(c => ({ key: c.payload.doc.id, ...c.payload.doc.data() }));
+                })
+            );
     }
+
+    // retorna um produto do banco
+    public getOneProduto(key: string) {
+        return this.db.collection('produtos', ref => ref.where(ref.id, '==', key))
+            .snapshotChanges()
+            .pipe(
+                map(changes => {
+                    return changes.map(c => ({ key: c.payload.doc.id, ...c.payload.doc.data() }));
+                })
+            );
+    }
+
+    // retorna os produtos por categoria
+    public getProdutosByCategorias(categoria: string) {
+        return this.db.collection('produtos', ref => ref.where('categoria', 'array-contains', categoria))
+            .snapshotChanges()
+            .pipe(
+                map(changes => {
+                    return changes.map(c => ({ key: c.payload.doc.id, ...c.payload.doc.data() }));
+                })
+            );
+    }
+
+    // retorna os produtos por loja
+    public getProdutosByLojas(loja: string) {
+        return this.db.collection('produtos', ref => ref.where('loja', '==', loja))
+            .snapshotChanges()
+            .pipe(
+                map(changes => {
+                    return changes.map(c => ({ key: c.payload.doc.id, ...c.payload.doc.data() }));
+                })
+            );
+    }
+
 }

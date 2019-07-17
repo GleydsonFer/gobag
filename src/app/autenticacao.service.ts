@@ -3,6 +3,8 @@ import * as firebase from 'firebase'
 
 import { Injectable } from '@angular/core'
 import { Router } from '@angular/router'
+import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Injectable()
 export class Autenticacao {
@@ -10,19 +12,24 @@ export class Autenticacao {
     public message: string;
     public token_id: string
 
-    constructor(private router: Router) { }
+    constructor(
+        private router: Router,
+        private db: AngularFirestore,
+        private authFire: AngularFireAuth
+    ) { }
 
     // método para cadastrar usuário
     public cadastrarUsuario(usuario: Usuario): Promise<any> {
         // console.log('Chegamos até o seriviço', usuario);
-        return firebase.auth().createUserWithEmailAndPassword(usuario.email, usuario.senha)
+        return this.authFire.auth.createUserWithEmailAndPassword(usuario.email, usuario.senha)
             .then((resposta: any) => {
                 //remover o atributo senha do objeto usuario
                 delete usuario.senha;
 
                 //registrando dados complementares do usuário no path email na base 64 
-                firebase.database().ref(`usuario_detalhe/${btoa(usuario.email)}`)
-                    .set({ usuario })
+                // firebase.database().ref(`usuario_detalhe/${btoa(usuario.email)}`)
+                //     .set({ usuario })
+                this.db.collection('usuarios').doc(btoa(usuario.email)).set({ email: usuario.email });
             })
             .catch((error: Error) => {
                 this.message = error.message;
