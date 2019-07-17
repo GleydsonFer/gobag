@@ -1,12 +1,14 @@
-export class Produto {
-    public id: number
-    public titulo: string
-    public categoria: Array<string>
-    public complemento?: string
-    public data: Date
-    public descricao: string
-    public destaque: boolean
-    public loja: string
-    public valor: number
-    public imagens: Array<string>
+export interface Produto {
+    id: number
+    nome: string
+    descricao: string
+    valor: number
+    categoria: Array<string>
+    complemento?: string
+    data: Date
+    loja: string
+    tamanho: string
+    estoque: number
+    observacoes: string
+    imagens: Array<string>
 }
