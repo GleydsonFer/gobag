@@ -39,6 +39,6 @@ export class AppComponent implements OnInit {
     //   appId: "1:1048871905386:web:a2d1f1903162af2b"
     // };
 
-    firebase.initializeApp(firebaseConfig);
+    // firebase.initializeApp(firebaseConfig);
   }
 }

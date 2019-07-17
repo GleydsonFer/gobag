@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
         this.formulario.value.email,
         this.formulario.value.senha
       ).catch((erro: any) => {
-        console.log()
+        console.log('erro no login');
 
         if(erro){
           if (erro.code === 'auth/wrong-password') {

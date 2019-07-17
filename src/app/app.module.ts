@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from "@angular/forms";
 
 
 //cadastro
@@ -63,6 +64,10 @@ import { TopoLogadoComponent } from './topo-logado/topo-logado.component'
 import { AutenticacaoGuard } from './autenticacao-guard.service';
 
 import { ToastrModule } from 'ngx-toastr';
+import { AngularFireModule } from "@angular/fire";
+import { AngularFirestoreModule } from "@angular/fire/firestore";
+import { environment } from "../environments/environment";
+import { CadastroDeProdutosComponent } from './cadastro-de-produtos/cadastro-de-produtos.component';
 
 
 registerLocaleData(localePtBr);
@@ -97,6 +102,7 @@ registerLocaleData(localePtBr);
     Loja01Component,
     LojasComponent,
     TopoLogadoComponent,
+    CadastroDeProdutosComponent,
     //ajustanto o erro ngIf
 
     //
@@ -115,7 +121,10 @@ registerLocaleData(localePtBr);
       timeOut: 5000,
       positionClass: 'toast-bottom-right',
       preventDuplicates: true
-    })
+    }),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
+    FormsModule
 
   ],
   providers: [
