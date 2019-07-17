@@ -1,9 +1,135 @@
-.header {
-    padding: 0;
+
+
+.navbar-toggler{
+    float:left;
 }
 
-/* inicio do estilo do header_top */
+.pesquisar{
+   width: 20px;
+}
 
+.pesquisar input{
+    width: 100%;
+    margin-left: 15px;  
+    background: url('/assets/lupa.png') no-repeat;
+    background-position:right 5px bottom 6px;
+    background-size: 25px 25px;
+
+}
+.col_left{
+
+}
+.col_right{
+
+}
+
+.logo{
+    width: 30px;
+    height: 30px;;
+    margin-left: 40px;
+}
+
+.bag {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    background: url('/assets/bag.png') no-repeat center center;
+    background-size: 100% 100%;
+    text-decoration: none;
+    margin-right: 20px
+}
+
+.bag .numeroItensCarrinho{
+ color:white;
+ margin-top:13px;
+ margin-left: 16px;
+}
+
+.login {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    /* background: url('/assets/avatar.png') no-repeat center center; */
+    background-color:black;
+    border-radius: 100%;
+
+}
+.endereco  {
+    margin-top: 5px;
+}
+.dropdown-menu{
+    font-family: museo-sans, sans-serif;
+    font-style: normal;
+    font-weight: 100;
+    animation-duration: 0.5s;
+}
+
+.dropdown-menu li a{
+    color:black
+}
+.list-group{
+    position: absolute;
+    z-index: 999;
+    top: 0;
+    margin-top:40px;
+    margin-left:15px;
+}
+
+.list-group-item a {
+    font-family: 'Lato', sans-serif;
+    color: black;
+    font-size: 18px;
+    padding: 12px 20px;
+    display: block;
+    transition: all ease-in .5;
+}
+
+
+@media (max-width: 768px) {
+    .logo{
+        width: 30px;
+        height: 30px;;
+        margin-left: 10px;
+    }
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+.header {
+    padding: 0;
+} */
+
+/* inicio do estilo do header_top */
+/* 
 .header_top {
     background: #262728;
     border-bottom: 1px solid rgba(255,255,255,.5);
@@ -44,11 +170,11 @@
     margin: 0;
     padding: 0;
     color: #fff; 
-}
+} */
 
 /* fim do estilo header_top */
 
-/* inicio do estilo do header_meio */
+/* inicio do estilo do header_meio
 
 .header_meio {
 background: #262728;
@@ -150,10 +276,10 @@ margin: 0;
     position: relative;
     left: 16px;
     top: 11px;
-}
+} */
 
 /* estilo responsivo */
-
+/* 
 @media (max-width: 768px) {
 
     .header_top {display: none;}
@@ -184,4 +310,4 @@ margin: 0;
     .form-inline {
         width: 90%;
     }
-}
+} */

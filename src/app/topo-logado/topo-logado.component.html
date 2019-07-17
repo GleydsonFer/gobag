@@ -1,252 +1,95 @@
-<header class="header">
-  <!-- area do topo do header -->
-
-  
-  <div class="header_top">
-      <div class="container">
-  
-      <div class="info_top">
-          <div class="contato_top">
-              <strong>contato:</strong> 
-              <span>(85) 98899 8899</span>
-          </div>
-  
-          <div class="beneficios_top">
-              <strong>benefícios:</strong>
-              <span class="changeWord">5% desconto no Boleto</span>
-          </div>
-  
-      </div>
-  <!-- endereço deve aparecer apenas no componente topo-logado puxando do BD -->
-      <div class="loc_entrega">
-        <strong>Entrega:</strong>
-        <span>{{enderecoEntrega}}, {{numeroEntrega}}</span>
+<div *ngIf="!naoLogado; else logado">
+        <nav class="navbar  fixed-top navbar-light bg-light align-items-start row">
+            <!-- coluna da direita com menu de pesquisa, logo e dropdown-->
+            <div class="col-7 col-md-7 col_left row">
+                <!-- menu dropdown com ascategorias -->
+                <div class="dropdown " aria-labelledby="dropdownMenuButton">
+                    <button class="navbar-toggler ml-3" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <ul class="dropdown-menu  animated fadeInLeftBig">
+                        <li class="dropdown-item">
+                            <a class="nav-link" data-toggle="dropdown" role="button" aria-haspopup="true"
+                                aria-expanded="false" routerLink="">
+                                Novidades
+                            </a>
+                        </li>
+                        <li class="dropdown-item">
+                            <a class="nav-link" data-toggle="dropdown" role="button" aria-haspopup="true"
+                                aria-expanded="false" routerLinkActive="active" routerLink="/feminino">
+                                Feminino
+                            </a>
+                        </li>
+                        <li class="dropdown-item">
+                            <a class="nav-link" data-toggle="dropdown" role="button" aria-haspopup="true"
+                                aria-expanded="false" routerLinkActive="active" routerLink="/masculino">
+                                Masculino
+                            </a>
+                        </li>
+                        <li class="dropdown-item">
+                            <a class="nav-link" data-toggle="dropdown" role="button" aria-haspopup="true"
+                                aria-expanded="false" routerLinkActive="active" routerLink="/calcados">
+                                Calçados
+                            </a>
+                        </li>
+                        <li class="dropdown-item">
+                            <a class="nav-link" data-toggle="dropdown" role="button" aria-haspopup="true"
+                                aria-expanded="false" routerLinkActive="active" routerLink="/fitness">
+                                Fitness
+                            </a>
+    
+                        </li>
+                        <li class="dropdown-item">
+                            <a class="nav-link" data-toggle="dropdown" role="button" aria-haspopup="true"
+                                aria-expanded="false" routerLinkActive="active" routerLink="/fitness">
+                                Fitness
+                            </a>
+    
+                        </li>
+                        <li class="dropdown-item">
+                            <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                                aria-expanded="false" routerLinkActive="active" routerLink="/teen">
+                                Teen
+                            </a>
+                        </li>
+                        <li class="dropdown-item">
+                            <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                                aria-expanded="false" routerLinkActive="active" routerLink="/infantil">
+                                Infantil
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="logo ">
+                    <a class="logo_link" href="/">
+                        <img class="img-fluid" src="./assets/logo03.png" />
+                    </a>
+                </div>
+                <form class=" col-7 col-sm col-md-7 col-lg-8 pesquisar ">
+                    <input class="form-control mr-sm-2" placeholder="Buscar qualquer produto" type="text" #termoDaPesquisa
+                        (keyup)="pesquisa(termoDaPesquisa.value)" aria-label="Pesquisar">
+    
+                    <ul class="list-group">
+                        <li class="list-group-item" *ngFor="let oferta of ofertas | async">
+                            <a [routerLink]="['/oferta', oferta.id ]" (click)="limpaPesquisa()">
+                                {{ oferta.titulo | descricaoReduzida:15 }}
+                            </a>
+                        </li>
+                    </ul>
+                </form>
+            </div>
+            <!-- coluna da direita onde fica o endereço do cliente e a bag -->
+            <div class="col-5 col-md-5 col_right d-flex justify-content-end">
+                <a class="login mr-3" routerLink="/acesso"></a>
+                <a class="mr-3 mt-1" href="#" (click)="sair()" >Sair</a>
+                <div class="endereco  mr-3">
+                    <span class="">Entrega: {{enderecoEntrega}}, {{numeroEntrega}}</span>
+                </div>
+                <a class="bag" routerLink="/ordem-compra">
+                    <div class="numeroItensCarrinho">{{numeroItensCarrinho}}</div>
+                </a>
+            </div>
+        </nav>
     </div>
-  
-      </div>
-  </div>
-  <!-- fim da area do topo do header -->
-          
-  <!-- area do meio do header -->
-  <!-- classes removidas: mt-n2 mb-n2 -->
-  <nav class="navbar navbar-expand-lg navbar-dark main navbar-fixed-top header_meio" >
-      <div class="container">
-  
-      <!-- botão do menu dropdown mobile -->
-      
-  
-      <!-- espaço da logo -->
-      <div class="box_logo">
-          <!-- classes removidas: mt-n2 mb-n2 mr-1 mr-auto -->
-          <button class="navbar navbar-toggler" type="button" data-toggle="collapse"
-          data-target="#navbarSite" aria-controls="navbarSite" aria-expanded="false" aria-label="Alterna navegação">
-          <span class="navbar-toggler-icon"></span>
-          </button>
-  
-          <h1 class="logo">
-              <!-- classes removidas: mt-n1 mb-n2 -->
-              <a class="logo_link" href="/">
-                  <img class="img-fluid" src="./assets/logo03.png" />
-              </a>
-          </h1>
-  
-          <div class="navbar area_user-top">
-            <a class="bag" routerLink="/ordem-compra">
-                <div class="numeroItensCarrinho">{{numeroItensCarrinho}}</div>
-            </a>
-      
-              <a class="login" routerLink="/"></a>
-          </div>
-      </div>  
-  
-      <!--BUSCA -->
-      <!-- classes removidas: mt-n1 mb-n2 -->
-      <div class="form-inline">
-          <!-- classes removidas: ml-2 -->
-          <input  class="form-control pesquisa" 
-                  type="text" 
-                  placeholder="Buscar..."
-                  #termoDaPesquisa
-                  (keyup)="pesquisa(termoDaPesquisa.value)">
-          <ul class="list-group" style="position: absolute; z-index: 999">
-              <li class="list-group-item" *ngFor="let oferta of ofertas | async">
-                  <a [routerLink]="['/oferta', oferta.id ]" (click)="limpaPesquisa()">
-                  {{ oferta.titulo | descricaoReduzida:15 }}
-                  </a>
-              </li>
-          </ul>
-          <!-- FUNÇÃO QUE DEVE SER IMPLEMENTADA PARA QUE O USUARIO POSSA 
-                  SAIR DA SUA CONTA./-->
-                  
-          <div>
-              <a href="#" (click)="sair()" style="margin-left: 25px">Sair</a>
-              <a href="#" (click)="console()" style="margin-left: 25px">console.log</a>
-          </div>
-          
-                 <!-- ------------------
-                FIM DA FUNÇÃO QUE SAI DA CONTA O USUARIO /-->
-  
-      </div>
-      <!--/BUSCA-->
-  
-      <!-- espaço das categorias -->
-      <!-- classes removidas: mt-n1 mb-n2 ml-5 -->
-      <div class="menu_nav collapse navbar-collapse " id="navbarSite">
-          <!-- classes removidas: mr-auto  my-3 -->
-          <ul class="navbar-nav">
-              <li class="nav-item dropdown">
-                  <a  class="nav-link" 
-                      data-toggle="dropdown" 
-                      role="button" 
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                      routerLink=""
-                      
-                      >
-                      Novidades <!-- AINDA FALTA CRIAR COMPONENTE NOVIDADES! -->
-                  </a> 
-                      <!-- FAZER PARA A PROXIMA VERSÃO
-                  <div class="dropdown-menu mt-0">
-                      <a class="dropdown-item" href="#">Promoções</a>
-                      <a class="dropdown-item" href="#">Outono</a>
-                      <a class="dropdown-item" href="#">Inverno</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">Ver tudo</a>
-                  </div>  -->
-              </li>
-              <li class="nav-item dropdown">
-                  <a  class="nav-link" 
-                      data-toggle="dropdown" 
-                      
-                      role="button" 
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                      routerLinkActive="active"
-                      routerLink="/feminino"
-                      >
-                      Feminino
-                  </a> 
-                  <!-- FAZER PARA A PROXIMA VERSÃO 
-  
-                         
-                  <div class="dropdown-menu mt-0">
-                      <a class="dropdown-item" href="#">Saias</a>
-                      <a class="dropdown-item" href="#">Vestidos</a>
-                      <a class="dropdown-item" href="#">Bodies</a>
-                      <a class="dropdown-item" href="#">Camisetas</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">Ver tudo</a>
-                  </div> -->
-              </li>
-              <li class="nav-item dropdown">
-                  <a  class="nav-link" 
-                      data-toggle="dropdown" 
-                       
-                      role="button" 
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                      routerLinkActive="active"
-                      routerLink="/masculino"
-                      >
-                      Masculino
-                  </a>
-                       <!-- FAZER PARA A PROXIMA VERSÃO
-                          
-                  <div class="dropdown-menu mt-0">
-                      <a class="dropdown-item" href="#">Camisas Polo</a>
-                      <a class="dropdown-item" href="#">Camisetas</a>
-                      <a class="dropdown-item" href="#">Calças</a>
-                      <a class="dropdown-item" href="#">Shorts</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">Ver tudo</a>
-                  </div> -->
-              </li>
-              <li class="nav-item dropdown">
-                  <a  class="nav-link" 
-                      data-toggle="dropdown" 
-                      role="button" 
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                      routerLinkActive="active"
-                      routerLink="/calcados" 
-                      >
-                       
-                      Calçados <!-- AINDA FALTA CRIAR COMPONENTE ACESSORIOS! -->
-                  </a>
-                      <!-- FAZER PARA A PROXIMA VERSÃO
-                  <div class="dropdown-menu mt-0">
-                      <a class="dropdown-item" href="#">Óculos</a>
-                      <a class="dropdown-item" href="#">Coláres</a>
-                      <a class="dropdown-item" href="#">Pulseiras</a>
-                      <a class="dropdown-item" href="#">Relógios</a>
-                      <a class="dropdown-item" href="#">Bonés</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">Ver tudo</a>
-                  </div>
-                  -->
-              </li>
-              <li class="nav-item dropdown">
-                  <a  class="nav-link" 
-                      data-toggle="dropdown" 
-                      role="button" 
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                      routerLinkActive="active"
-                      routerLink="/fitness" 
-                      >
-                      Fitness
-                  </a>
-                      <!-- FAZER PARA A PROXIMA VERSÃO
-                  <div class="dropdown-menu mt-0">
-                      <a class="dropdown-item" href="#">Ténis</a>
-                      <a class="dropdown-item" href="#">Acessórios</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">Ver tudo</a>
-                  </div>
-              -->
-              </li>
-              <li class="nav-item dropdown">
-                  <a  class="nav-link" 
-                      data-toggle="dropdown" 
-                      href="#" 
-                      role="button" 
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                      routerLinkActive="active"
-                      routerLink="/teen"
-                      >
-                      Teen
-                  </a> 
-              </li>
-              <li class="nav-item dropdown">
-                  <a  class="nav-link" 
-                      data-toggle="dropdown" 
-                      href="#" 
-                      role="button" 
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                      routerLinkActive="active"
-                      routerLink="/infantil"
-                      >
-                      Infantil
-                  </a> 
-              </li>
-          </ul>
-      </div>
-  
-  
-      <!-- espaço para o carrinho e login -->
-      <!-- classes removidas: mt-n1 mb-n2  -->
-      <div class="navbar area_user-bottom"> 
-        <a class="bag" routerLink="/ordem-compra">
-            <div class="numeroItensCarrinho">{{numeroItensCarrinho}}</div>
-        </a>
-  
-          <a class="login" routerLink="/acesso"></a>
-      </div>
-  
-  </div>
-  <!-- fim do container     -->
-  </nav>
-  <!-- fim da area do meio do header -->  
-  </header>
+    

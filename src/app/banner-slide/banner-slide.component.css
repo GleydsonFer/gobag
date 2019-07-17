@@ -13,3 +13,130 @@
 .imagem-banner{
     width: 100%;
 }
+
+.row{
+    margin-top:40px;
+    font-size: 100%;
+}
+
+.col_left img{
+    width: 100px;
+    height: 100px;
+}
+.col_left p{
+    margin-top:20px;
+    margin-left: 10px;
+}
+.col_left p span:first-child{
+    font-family: museo-sans, sans-serif;
+    font-style: normal;
+    font-weight: 100;
+    font-size:1.2em;
+}
+.col_left p span:last-child{
+    font-family: museo-sans, sans-serif;
+    font-style: normal;
+    font-weight: 100;
+}
+
+.col_center img{
+    width: 100px;
+    height: 100px;
+}
+.col_center p{
+    margin-top:20px;
+    margin-left: 10px;
+}
+.col_center p span:first-child{
+    font-family: museo-sans, sans-serif;
+    font-style: normal;
+    font-weight: 100;
+    font-size:1.2em;
+}
+.col_center p span:last-child{
+    font-family: museo-sans, sans-serif;
+    font-style: normal;
+    font-weight: 100;
+}
+
+.col_right img{
+    width: 100px;
+    height: 100px;
+}
+.col_right p{
+    margin-top:20px;
+    margin-left: 10px;
+}
+.col_right p span:first-child{
+    font-family: museo-sans, sans-serif;
+    font-style: normal;
+    font-weight: 100;
+    font-size:1.2em;
+}
+.col_right p span:last-child{
+    font-family: museo-sans, sans-serif;
+    font-style: normal;
+    font-weight: 100;
+}
+@media (max-width: 900px) {
+    .col_left img{
+        width: 80px;
+        height: 80px;
+    }
+    .col_left p{
+        margin-top:20px;
+        margin-left: 10px;
+    }
+    
+    .col_center img{
+        width: 80px;
+        height: 80px;
+    }
+    .col_center p{
+        margin-top:20px;
+        margin-left: 10px;
+    }
+    
+    .col_right img{
+        width: 80px;
+        height: 80px;
+    }
+    .col_right p{
+        margin-top:20px;
+        margin-left: 10px;
+    }
+}
+
+@media (max-width: 767px) {
+    .col_left img{
+        width: 80px;
+        height: 80px;
+        margin-right: 7px;
+    }
+    
+    .col_center img{
+        width: 80px;
+        height: 80px;
+        margin-right: 7px;
+    }
+    .col_center p{
+        margin-right: 58px;
+    }
+    
+    .col_right img{
+        width: 80px;
+        height: 80px;
+        margin-left: 50px;
+    }
+}
+/* .col_left{
+background-color:blue;
+
+}
+.col_right{
+ background-color:red;
+}
+.col_center{
+background-color: beige;
+}
+ */
