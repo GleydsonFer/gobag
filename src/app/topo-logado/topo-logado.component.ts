@@ -74,6 +74,10 @@ export class TopoLogadoComponent implements OnInit {
     this.autenticacao.sair()
   }
 
+  public console(): void {
+    console.log('funcionando')
+  }
+
 
 
 }

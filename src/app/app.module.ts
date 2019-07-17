@@ -68,6 +68,7 @@ import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { environment } from "../environments/environment";
+import { CadastroDeProdutosComponent } from './cadastro-de-produtos/cadastro-de-produtos.component';
 
 
 registerLocaleData(localePtBr);
@@ -102,6 +103,7 @@ registerLocaleData(localePtBr);
     Loja01Component,
     LojasComponent,
     TopoLogadoComponent,
+    CadastroDeProdutosComponent,
     //ajustanto o erro ngIf
 
     //

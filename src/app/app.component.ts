@@ -13,19 +13,22 @@ export class AppComponent implements OnInit {
     
     //AQUI FICA AS CONFIGURAÇÕES DO SDK EXTRAIDA DO FIREBASE!
     // SDK DE TESTE
-    // var firebaseConfig = {
-    //   apiKey: "AIzaSyCn5sb89NEIW_cV5Xp86rOQoT8rZ-6rels",
-    //   authDomain: "cadastro-2accc.firebaseapp.com",
-    //   databaseURL: "https://cadastro-2accc.firebaseio.com",
-    //   projectId: "cadastro-2accc",
-    //   storageBucket: "",
-    //   messagingSenderId: "486427866121",
-    //   appId: "1:486427866121:web:3a5a6b4d4a285426"
-    // };
+
+    //nabag@gmail.com - cadastro
+    var firebaseConfig = {
+      apiKey: "AIzaSyCn5sb89NEIW_cV5Xp86rOQoT8rZ-6rels",
+      authDomain: "cadastro-2accc.firebaseapp.com",
+      databaseURL: "https://cadastro-2accc.firebaseio.com",
+      projectId: "cadastro-2accc",
+      storageBucket: "",
+      messagingSenderId: "486427866121",
+      appId: "1:486427866121:web:3a5a6b4d4a285426"
+    };
     //fim.
 
     // CONFIGURAÇÃO DO SDK DO FIREBASE DA NABAG
-
+    //
+    //nabag@gmail.com - /nabag-delivery
     // var firebaseConfig = {
     //   apiKey: "AIzaSyCL_mKpDYSoTSapdSn4Fiolb5hAXUaFSGE",
     //   authDomain: "nabag-delivery.firebaseapp.com",

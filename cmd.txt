@@ -74,6 +74,12 @@ npm start
 ng build
 ng build -- prod
 
+-- Criação de um novo component --
+
+ ng g c nomeDoComponente
+
 -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+
+
 
 

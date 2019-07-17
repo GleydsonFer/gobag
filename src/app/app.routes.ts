@@ -22,6 +22,7 @@ import { TopoLogadoComponent } from '../app/topo-logado/topo-logado.component'
 import { TopoComponent } from '../app/topo/topo.component'
 
 import { AutenticacaoGuard } from './autenticacao-guard.service'
+import { CadastroDeProdutosComponent } from './cadastro-de-produtos/cadastro-de-produtos.component';
 
 export const ROUTES: Routes = [
     { path: '', component: HomeComponent },
@@ -45,6 +46,7 @@ export const ROUTES: Routes = [
     { path: 'tendencia01', component: Tendencia01Component },
     { path: 'tendencia02', component: Tendencia02Component },
     { path: 'tendencia03', component: Tendencia03Component },
-    { path: 'loja01', component: Loja01Component }
+    { path: 'loja01', component: Loja01Component },
+    { path: 'cadastroprodutos', component: CadastroDeProdutosComponent}
 
 ]
