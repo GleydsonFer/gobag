@@ -15,7 +15,7 @@ export class UsuarioService {
     // exemplo: usuario.endereco.logradouro para recuperar a rua do usuário
     //       ou usuario.nome para recuperar o nome do usuário
     public getEnderecoByUsuario(key: string){
-      return this.db.collection('usuarios', ref => ref.where(ref.id, '==', key))
+      return this.db.collection('usuarios', ref => ref.where('email', '==', key))
           .snapshotChanges()
           .pipe(
               map(changes => {
