@@ -10,9 +10,8 @@ import { Observable } from 'rxjs';
 export class UsuarioService {
 
   constructor(private db: AngularFirestore) { }
-  
+
   public getEnderecoByUsuario(key: string) {
-    console.log(key + "isso é ")
     return this.db.collection("usuarios", ref => ref.where('email', '==', key))
       .snapshotChanges()
       .pipe(

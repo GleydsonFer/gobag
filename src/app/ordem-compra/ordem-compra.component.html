@@ -1,8 +1,8 @@
 <div class="container">
   <div class="ordem-compra" *ngIf="idPedidoCompra === undefined">
-    <form (ngSubmit)="confirmarCompra()">
+    <form [formGroup]="formulario" novalidate (ngSubmit)="confirmarCompra()">
 
-      <!-- <h5>Sua Compra</h5>
+      <h5>Sua Compra</h5>
       <hr />
       <div *ngIf="carrinhoService.exibirItens().length; else carrinhoVazio">
         <div *ngFor="let item of itensCarrinho" class="form-row"
@@ -35,7 +35,7 @@
             <h4>Total do pedido: {{ carrinhoService.totalCarrinhoCompras() | currency: 'BRL': true }}</h4>
           </div>
         </div>
-      </div> -->
+      </div>
       <!--CARRINHO VAZIO-->
 
       <ng-template #carrinhoVazio>
@@ -44,15 +44,16 @@
           Seu carrinho está vazio! Não perca tempo, aproveite as ofertas.
         </div>
       </ng-template>
-
+      
       <br />
 
       <h5>Dados de entrega</h5>
       <hr />
 
-      <div class="form-row">
-        <h2>adasdasdfsdfadsf</h2>
-
+      <div class="form-row" *ngIf="usuario != null">
+        {{ usuario.endereco }}<br>
+        {{usuario.numero}}<br>
+        {{usuario.complemento}}<br>
       </div>
       <br />
 
@@ -61,7 +62,7 @@
 
       <div class="form-row">
 
-        <!-- <div class="form-group col-md-3">
+        <div class="form-group col-md-3">
           <select class="form-control" formControlName="formaPagamento">
             <option value="">Selecione uma opção</option>
             <option value="dinheiro">Dinheiro</option>
@@ -71,7 +72,7 @@
             class="form-text text-success">Ok</small>
           <small *ngIf="!formulario.get('formaPagamento').valid && formulario.get('formaPagamento').touched"
             class="form-text text-danger">Forma de pagamento inválido!</small>
-        </div> -->
+        </div>
       </div>
 
       <hr />
@@ -81,5 +82,8 @@
 
   <div class="ordem-compra" *ngIf="idPedidoCompra !== undefined">
     <app-ordem-compra-sucesso [idPedidoCompra]=idPedidoCompra></app-ordem-compra-sucesso>
+
   </div>
+
+
 </div>
