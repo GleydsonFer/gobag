@@ -10,6 +10,8 @@ import { URL_API } from './app.api';
 import { Oferta } from './shared/oferta.model';
 import { Pedido } from './shared/pedido.model';
 import { pipe } from 'rxjs';
+import { Produto } from './shared/produto.model';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 
 
@@ -26,7 +28,8 @@ export class OfertasService {
 
     constructor(
         private http: Http,
-        private db: AngularFirestore
+        private db: AngularFirestore,
+        private storage: AngularFireStorage
     ) { }
 
     // Métodos para API fake
@@ -147,6 +150,19 @@ export class OfertasService {
                     return changes.map(c => ({ key: c.payload.doc.id, ...c.payload.doc.data() }));
                 })
             );
+    }
+
+    public setProduto(produto: Produto){
+
+        // Aciona o produto no Firestore 
+        this.db.collection('produtos').add(produto);
+        console.log('Produto adiconado com sucesso', produto);
+
+        // percorre todas as imagens inseridas e faz o upload para o Storage do Firebase
+        for( let i = 0; i < produto.imagens.length; i++ ){
+            let imagePath = `produtos/${produto.id_produto}/img${i}`;
+            this.storage.upload(imagePath, produto.imagens[i]);
+        }
     }
 
 }
