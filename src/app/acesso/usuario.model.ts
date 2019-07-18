@@ -12,7 +12,8 @@ export class Usuario {
             complemento: ''
         },
         public complemento: string,
-        public cpf: string,
+        public cpf: string
+        
         
     ) {}
 }

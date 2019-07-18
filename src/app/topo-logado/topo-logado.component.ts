@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable'
 import { Subject } from 'rxjs/Subject'
+import { map } from 'rxjs/operators';
+import { AngularFirestore } from '@angular/fire/firestore';
+
 
 import { Autenticacao } from '../autenticacao.service'
 
@@ -9,6 +12,7 @@ import { Oferta } from '../shared/oferta.model'
 
 import '../util/rxjs-extensions'
 import CarrinhoService from '../carrinho.service';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-topo-logado',
@@ -28,7 +32,9 @@ export class TopoLogadoComponent implements OnInit {
   constructor(
     private ofertasService: OfertasService,
     private autenticacao: Autenticacao,
-    private carrinhoService: CarrinhoService
+    private carrinhoService: CarrinhoService,
+    private db: AngularFirestore,
+    public afauth: AngularFireAuth
   ) { }
 
   ngOnInit() {
@@ -60,6 +66,8 @@ export class TopoLogadoComponent implements OnInit {
     this.carrinhoService.emitirNumeroDeItens.subscribe(
       numeroItens => this.numeroItensCarrinho = numeroItens
     );
+
+
   }
 
   public pesquisa(termoDaBusca: string): void {
@@ -74,10 +82,25 @@ export class TopoLogadoComponent implements OnInit {
     this.autenticacao.sair()
   }
 
-  public console(): void {
+  public consolelog(): void {
     console.log('funcionando')
+    
+      console.log(this.afauth)
+      console.log('fim!!')
+    }
   }
+//"WP4jMzPFzoY3Pzpm0s8TIJ0E2YM2"
+//"AIzaSyDHlhcl79LOrYH6I71RWFDn_Y_Vnjugj1M:[DEFAULT]"  
+ 
+
+//eyJhbGciOiJSUzI1NiIsImtpZCI6IjYwZTQxMjczMzMwYTg2ZmRjMjhlMjgzMDVhNDRkYzlhODgzZTI2YTciLCJ0eXAiOiJKV1QifQ
 
 
 
-}
+
+
+
+
+
+
+
