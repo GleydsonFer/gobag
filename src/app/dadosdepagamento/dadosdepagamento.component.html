@@ -1,0 +1,54 @@
+<div class="container">
+  <form [formGroup]="formulario" (ngSubmit)="teste()">
+    <h3>Teste de pagamento</h3>
+    <!-- Dados do cliente -->
+    <div class="cliente">
+      <h4>Cliente</h4>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Nome completo</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Nome completo">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+          placeholder="Seu email">
+        <small id="emailHelp" class="form-text text-muted">Nunca vamos compartilhar seu email, com ninguém.</small>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputPassword1">CPF</label>
+        <input type="text" class="form-control" id="cpf" placeholder="CPF">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Endereço</label>
+        <input type="text" class="form-control" id="endereco" placeholder="Endereço">
+      </div>
+    </div>
+    <!-- informação de cartão -->
+    <div class="cartao">
+      <hr>
+        <h4 class="">Cliente</h4>
+      <div class="form-group">
+        <label for="exampleInputPassword1">cartao</label>
+        <input type="text" class="form-control" id="numero do cartão" placeholder="cartao">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Verification_value</label>
+        <input type="text" class="form-control" id="Verification_value" placeholder="Verification_value">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">expiration</label>
+        <input type="text" class="form-control" id="expiration" placeholder="expiration">
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputPassword1">full_name</label>
+        <input type="text" class="form-control" id="full_name" placeholder="full_name">
+      </div>
+      <div class="botao text-center ">
+          <button type="submit" class="btn btn-primary">Enviar</button>
+      </div>
+    </div>
+  </form>
+
+</div>

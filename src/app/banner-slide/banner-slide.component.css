@@ -1,3 +1,7 @@
+
+.banner_home{
+    margin-top:56px;
+}
 .texto1{
     color: rgb(1, 80, 47);
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
@@ -12,16 +16,20 @@
 }
 .imagem-banner{
     width: 100%;
+    align-content: center;
 }
 
 .row{
     margin-top:40px;
-    font-size: 100%;
+    margin-left: 5px;
+}
+.row .col-12{
+
 }
 
 .col_left img{
-    width: 100px;
-    height: 100px;
+    width: 20%;
+    height: 20%;
 }
 .col_left p{
     margin-top:20px;
@@ -40,8 +48,8 @@
 }
 
 .col_center img{
-    width: 100px;
-    height: 100px;
+    width: 20%;
+    height: 20%;
 }
 .col_center p{
     margin-top:20px;
@@ -60,8 +68,9 @@
 }
 
 .col_right img{
-    width: 100px;
-    height: 100px;
+    width: 20%;
+    height: 20%;
+    margin-top:15px;
 }
 .col_right p{
     margin-top:20px;
@@ -78,36 +87,61 @@
     font-style: normal;
     font-weight: 100;
 }
-@media (max-width: 900px) {
+
+@media (max-width: 1000px) and (min-width:768px) {
+     .col_left img{
+        margin-bottom:40px;
+    }
+    .col_right img{
+        margin-top: 30px;
+    } 
+    .col_center img{
+        
+    } 
+}
+
+@media (max-width: 766) and (min-width:769px) {
+
+}
+
+@media (max-width: 818px) and (min-width:768px) {
+   .col_center img{
+       margin-bottom: 40px
+   } 
+}
+@media (max-width: 768px) and (min-width:768px) {
+    .col_center img{
+        margin-bottom: 160px;
+        background-color:blue;
+    } 
+ }
+
+@media (max-width: 768px) and (min-width: 434px) {
     .col_left img{
         width: 80px;
         height: 80px;
-    }
-    .col_left p{
-        margin-top:20px;
-        margin-left: 10px;
+        margin-right: 7px;
+        margin-left: 20%;
     }
     
     .col_center img{
         width: 80px;
         height: 80px;
+        margin-right: 7px;
+        margin-left: 20%;
     }
     .col_center p{
-        margin-top:20px;
-        margin-left: 10px;
+        margin-right: 58px;
     }
     
     .col_right img{
         width: 80px;
         height: 80px;
+        margin-left: 20%;
     }
-    .col_right p{
-        margin-top:20px;
-        margin-left: 10px;
-    }
-}
+} 
 
-@media (max-width: 767px) {
+@media (max-width: 360px) {
     .col_left img{
         width: 80px;
         height: 80px;
@@ -126,9 +160,12 @@
     .col_right img{
         width: 80px;
         height: 80px;
-        margin-left: 50px;
     }
-}
+} 
+
+
+
+
 /* .col_left{
 background-color:blue;
 

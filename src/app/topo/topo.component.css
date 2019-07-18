@@ -59,11 +59,13 @@ nav{
     /* background: url('/assets/avatar.png') no-repeat center center; */
     background-color:black;
     border-radius: 100%;
+    margin-left:3px;
 
 }
 .endereco  {
     margin-top: 7px;
     cursor: pointer;
+    margin-left:3px;
 }
 .dropdown-menu{
     font-family: museo-sans, sans-serif;
