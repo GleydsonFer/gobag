@@ -1,3 +1,4 @@
+import { DadosdepagamentoComponent } from './dadosdepagamento/dadosdepagamento.component';
 import { Routes } from '@angular/router'
 
 import { HomeComponent } from './home/home.component'
@@ -47,6 +48,7 @@ export const ROUTES: Routes = [
     { path: 'tendencia02', component: Tendencia02Component },
     { path: 'tendencia03', component: Tendencia03Component },
     { path: 'loja01', component: Loja01Component },
-    { path: 'cadastroprodutos', component: CadastroDeProdutosComponent}
+    { path: 'cadastroprodutos', component: CadastroDeProdutosComponent},
+    { path: 'dadosdepagamento', component: DadosdepagamentoComponent }
 
 ]
