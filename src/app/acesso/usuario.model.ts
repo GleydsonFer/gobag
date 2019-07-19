@@ -4,16 +4,9 @@ export class Usuario {
         public nome_completo: string,
         public nome_usuario: string,
         public senha: string,
-        public endereco = {
-            numero: 0,
-            logradouro: '',
-            bairro: '',
-            cep: '',
-            complemento: ''
-        },
+        public endereco: string,
+        public numero: string,
         public complemento: string,
-        public cpf: string
-        
-        
+        public cpf?: string
     ) {}
 }

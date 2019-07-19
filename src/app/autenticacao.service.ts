@@ -29,7 +29,14 @@ export class Autenticacao {
                 //registrando dados complementares do usuário no path email na base 64 
                 // firebase.database().ref(`usuario_detalhe/${btoa(usuario.email)}`)
                 //     .set({ usuario })
-                this.db.collection('usuarios').doc(btoa(usuario.email)).set({ email: usuario.email });
+                this.db.collection('usuarios').doc(btoa(usuario.email)).set({ 
+                    email: usuario.email,
+                    nome_completo: usuario.nome_completo,
+                    nome_usuario: usuario.nome_usuario,
+                    endereco: usuario.endereco,
+                    numero: usuario.numero,
+                    complemento: usuario.complemento
+                });
             })
             .catch((error: Error) => {
                 this.message = error.message;

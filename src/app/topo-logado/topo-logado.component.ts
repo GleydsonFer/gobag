@@ -13,6 +13,8 @@ import { Oferta } from '../shared/oferta.model'
 import '../util/rxjs-extensions'
 import CarrinhoService from '../carrinho.service';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { UsuarioService } from '../usuario.service';
+import { Usuario } from '../acesso/usuario.model';
 
 @Component({
   selector: 'app-topo-logado',
@@ -26,6 +28,10 @@ export class TopoLogadoComponent implements OnInit {
   public numeroEntrega: string;
   public numeroItensCarrinho: number;
 
+ 
+  
+
+
   public ofertas: Observable<Oferta[]>
   private subjectPesquisa: Subject<string> = new Subject<string>()
 
@@ -34,10 +40,15 @@ export class TopoLogadoComponent implements OnInit {
     private autenticacao: Autenticacao,
     private carrinhoService: CarrinhoService,
     private db: AngularFirestore,
-    public afauth: AngularFireAuth
+    public afauth: AngularFireAuth,
+    public userService: UsuarioService
   ) { }
 
   ngOnInit() {
+    var aux
+    var endereco
+    var numero
+    
     this.ofertas = this.subjectPesquisa //retorno Oferta[]
       .debounceTime(1000) //executa a ação do switchMap após 1 segundo
       .distinctUntilChanged() //para fazer pesquisas distintas
@@ -67,6 +78,24 @@ export class TopoLogadoComponent implements OnInit {
       numeroItens => this.numeroItensCarrinho = numeroItens
     );
 
+    this.afauth.auth.onAuthStateChanged (user => {
+      
+      this.userService.getEnderecoByUsuario (user.email).subscribe(usuario =>{
+        console.log(usuario[0])
+        aux = usuario[0]
+        this.enderecoEntrega = aux.endereco
+        this.numeroEntrega = aux.numero
+        
+       
+        
+        //endereco = aux.endereco;
+        //numero = aux.numero;
+        //console.log(numero + endereco)
+        
+        
+      })
+    })
+
 
   }
 
@@ -81,21 +110,7 @@ export class TopoLogadoComponent implements OnInit {
   public sair(): void {
     this.autenticacao.sair()
   }
-
-  public consolelog(): void {
-    console.log('funcionando')
-    
-      console.log(this.afauth)
-      console.log('fim!!')
-    }
-  }
-//"WP4jMzPFzoY3Pzpm0s8TIJ0E2YM2"
-//"AIzaSyDHlhcl79LOrYH6I71RWFDn_Y_Vnjugj1M:[DEFAULT]"  
- 
-
-//eyJhbGciOiJSUzI1NiIsImtpZCI6IjYwZTQxMjczMzMwYTg2ZmRjMjhlMjgzMDVhNDRkYzlhODgzZTI2YTciLCJ0eXAiOiJKV1QifQ
-
-
+}
 
 
 
