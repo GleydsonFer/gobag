@@ -154,14 +154,21 @@ export class OfertasService {
 
     public setProduto(produto: Produto){
 
+        // Id único que servirá tanto para o firestore quanto para o storage
+        let fireUID = '';
+
         // Aciona o produto no Firestore 
-        this.db.collection('produtos').add(produto);
+        this.db.collection('produtos').add({...produto}).then(user => {
+            fireUID = user.id;
+        });
         console.log('Produto adiconado com sucesso', produto);
 
         // percorre todas as imagens inseridas e faz o upload para o Storage do Firebase
         for( let i = 0; i < produto.imagens.length; i++ ){
-            let imagePath = `produtos/${produto.id_produto}/img${i}`;
-            this.storage.upload(imagePath, produto.imagens[i]);
+            let imagePath = `produtos/${fireUID}/img${i}`;
+            this.storage.upload(imagePath, produto.imagens[i]).then(() => {
+                console.log('Imagem adicionada com sucesso!');
+            });
         }
     }
 
