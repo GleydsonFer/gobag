@@ -14,7 +14,6 @@ import '../util/rxjs-extensions'
 import CarrinhoService from '../carrinho.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { UsuarioService } from '../usuario.service';
-import { Usuario } from '../acesso/usuario.model';
 
 @Component({
   selector: 'app-topo-logado',

@@ -119,6 +119,10 @@ export class OfertasService {
             );
     }
 
+    public getImagensStorage(filePath: string) {
+        return this.storage.storage.ref(filePath).getDownloadURL();
+    }
+
     // retorna um produto do banco
     public getOneProduto(key: string) {
         return this.db.collection('produtos', ref => ref.where(ref.id, '==', key))
@@ -152,24 +156,40 @@ export class OfertasService {
             );
     }
 
-    public setProduto(produto: Produto){
+    public setProduto(produto: Produto) {
 
         // Id único que servirá tanto para o firestore quanto para o storage
         let fireUID = '';
 
-        // Aciona o produto no Firestore 
-        this.db.collection('produtos').add({...produto}).then(user => {
+        // Adiciona o produto no Firestore 
+        this.db.collection('produtos').add({
+            id_produto: produto.id_produto,
+            nome: produto.nome,
+            descricao: produto.descricao,
+            valor: produto.valor,
+            categoria: produto.categoria,
+            loja: produto.loja,
+            tamanho: produto.tamanho,
+            estoque: produto.estoque,
+            observacoes: produto.observacoes ? produto.observacoes : '',
+        }).then(user => {
+            
+            // id único do produto é adicionado a variável para referenciar a pasta no storage
             fireUID = user.id;
-        });
-        console.log('Produto adiconado com sucesso', produto);
+            console.log('Produto adiconado com sucesso', produto);
 
-        // percorre todas as imagens inseridas e faz o upload para o Storage do Firebase
-        for( let i = 0; i < produto.imagens.length; i++ ){
-            let imagePath = `produtos/${fireUID}/img${i}`;
-            this.storage.upload(imagePath, produto.imagens[i]).then(() => {
-                console.log('Imagem adicionada com sucesso!');
-            });
-        }
+           
+
+            // percorre todas as imagens inseridas e faz o upload para o Storage do Firebase
+            for (let i = 0; i < produto.imagens.length; i++) {
+                let imagePath = `produtos/${fireUID}/img${i}`;
+                this.storage.upload(imagePath, produto.imagens[i]).then(() => {
+                    console.log('Imagem adicionada com sucesso!');
+                });
+            }
+        });
+
+
     }
 
 }
