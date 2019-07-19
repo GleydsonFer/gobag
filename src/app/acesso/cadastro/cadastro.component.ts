@@ -1,7 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms'
 
-import { Usuario } from '../usuario.model'
+import { Usuario } from '../../shared/usuario.model'
 
 import { Autenticacao } from '../../autenticacao.service'
 //

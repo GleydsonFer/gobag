@@ -1,14 +1,13 @@
 export interface Produto {
-    id: number
+    id_produto: number
     nome: string
     descricao: string
     valor: number
     categoria: Array<string>
-    complemento?: string
-    data: Date
+    data?: Date
     loja: string
     tamanho: string
     estoque: number
-    observacoes: string
-    imagens: Array<string>
+    observacoes?: string
+    imagens: Array<any>
 }

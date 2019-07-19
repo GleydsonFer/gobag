@@ -1,179 +1,94 @@
-<!-- Modal -->
-      
-<form [formGroup]="formulario" (ngSubmit)="publicar()">
-  <div>
-      <h3>Loja</h3>
-      <input 
-          type="email" 
-          class="form-control" 
-          placeholder="E-mail"
-          formControlName="email"
-        >
-        <small *ngIf="formulario.get('email').valid && formulario.get('email').touched" class="form-text text-success"></small>
-        <small *ngIf="!formulario.get('email').valid && formulario.get('email').touched" class="form-text text-danger">Email inválido!</small>
-      </div>
+<div class="container mt-5 mb-5">
+  <form [formGroup]="cadastro" (ngSubmit)="cadastrarProduto()">
 
-      <div class="form-group">
-        <input 
-          type="text"
-          class="form-control" 
-          placeholder="Nome da Loja"
-          formControlName="nome_loja"
-        >
-        <small *ngIf="formulario.get('nome_loja').valid && formulario.get('nome_loja').touched" class="form-text text-success"></small>
-        <small *ngIf="!formulario.get('nome_loja').valid && formulario.get('nome_loja').touched" class="form-text text-danger">Nome da Loja inválido!</small>
+    <h3 class="mb-3">Loja</h3>
 
-      </div>
+    <!-- <div class="form-group">
+      <input type="email" class="form-control" placeholder="E-mail">
+    </div> -->
 
-      <div class="form-group">
-        <input 
-          type="test"
-          class="form-control" 
-          placeholder="Cnpj"
-          formControlName="cnpj"
-        > 
-        <small *ngIf="formulario.get('cnpj').valid && formulario.get('cnpj').touched" class="form-text text-success"></small>
-        <small *ngIf="!formulario.get('cnpj').valid && formulario.get('cnpj').touched" class="form-text text-danger">Cnpj inválida!</small>
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Nome da Loja" formControlName="loja">
+    </div>
 
-      </div>
-
-        <div class="form-group">
-          <input 
-            type="text"
-            class="form-control" 
-            placeholder="Endereco"
-            formControlName="endereco"
-          >
-          <small *ngIf="formulario.get('endereco').valid && formulario.get('endereco').touched" class="form-text text-success"></small>
-        <small *ngIf="!formulario.get('endereco').valid && formulario.get('endereco').touched" class="form-text text-danger">Endereço inválido!</small>
-
-      </div>
-
-      <div class="form-group">
-        <input 
-          type="text"
-          class="form-control" 
-          placeholder="Numero do local"
-          formControlName="numero_local"
-        >
-        <small *ngIf="formulario.get('numero_local').valid && formulario.get('numero_local').touched" class="form-text text-success"></small>
-        <small *ngIf="!formulario.get('numero_local').valid && formulario.get('numero_local').touched" class="form-text text-danger">Numero do local inválido!</small>
-
+    <!-- <div class="form-group">
+      <input type="test" class="form-control" placeholder="CNPJ">
     </div>
 
     <div class="form-group">
-      <input 
-        type="text"
-        class="form-control" 
-        placeholder="Complemento"
-        formControlName="complemento"
-      >
-      <small *ngIf="formulario.get('complemento').valid && formulario.get('complemento').touched" class="form-text text-success"></small>
-      <small *ngIf="!formulario.get('complemento').valid && formulario.get('complemento').touched" class="form-text text-danger">Complemento inválido!</small>
-
+      <input type="text" class="form-control" placeholder="Endereco" >
     </div>
+
     <div class="form-group">
-      <input 
-        type="text"
-        class="form-control" 
-        placeholder="Telefone"
-        formControlName="telefone"
-      >
-      <small *ngIf="formulario.get('telefone').valid && formulario.get('telefone').touched" class="form-text text-success"></small>
-      <small *ngIf="!formulario.get('telefone').valid && formulario.get('telefone').touched" class="form-text text-danger">Telefone inválido!</small>
-     
-      <h3>Produto</h3>
-      <div class="form-group">
-          <input 
-            type="text"
-            class="form-control" 
-            placeholder="Nome do produto"
-            formControlName="nome_produto"
-          >
-          <small *ngIf="formulario.get('nome_produto').valid && formulario.get('nome_produto').touched" class="form-text text-success"></small>
-          <small *ngIf="!formulario.get('nome_produto').valid && formulario.get('nome_produto').touched" class="form-text text-danger">Nome do produto inválido!</small>
-      </div>
-      <div class="form-group">
-          <input 
-            type="text"
-            class="form-control" 
-            placeholder="Descrição do produto"
-            formControlName="descricao_produto"
-          >
-          <small *ngIf="formulario.get('descricao_produto').valid && formulario.get('descricao_produto').touched" class="form-text text-success"></small>
-          <small *ngIf="!formulario.get('descricao_produto').valid && formulario.get('descricao_produto').touched" class="form-text text-danger">Descrição do produto inválido!</small>
-      </div>
-  
-      <div class="form-group">
-          <input 
-            type="text"
-            class="form-control" 
-            placeholder="Valor do produto"
-            formControlName="valor_produto"
-          >
-          <small *ngIf="formulario.get('valor_produto').valid && formulario.get('valor_produto').touched" class="form-text text-success"></small>
-          <small *ngIf="!formulario.get('valor_produto').valid && formulario.get('valor_produto').touched" class="form-text text-danger">Descrição do produto inválido!</small>
-        
-          <div class="form-group">
-              <input 
-                type="text"
-                class="form-control" 
-                placeholder="Categoria do produto"
-                formControlName="categoria"
-              >
-              <small *ngIf="formulario.get('categoria').valid && formulario.get('categoria').touched" class="form-text text-success"></small>
-              <small *ngIf="!formulario.get('categoria').valid && formulario.get('categoria').touched" class="form-text text-danger">Categoria do produto inválido!</small>
-          </div>
-
-
-<!--tamanho-->
-          <div class="form-group">
-            <select 
-              class="form-control"
-              formControlName = "tamanho"
-  
-            >
-              <option value="">Tamanho do produto</option>
-              <option value="PP">PP</option>
-              <option value="P">P</option>
-              <option value="M">M</option>
-              <option value="G">G</option>
-              <option value="GG">GG</option>
-              <option value="XG">XG</option>
-            </select>
-           </div>
-  <!--ESTOQUE-->
-          <div class="form-group">
-              <input 
-                type="text"
-                class="form-control" 
-                placeholder="Estoque do produto"
-                formControlName="estoque"
-              >
-              <small *ngIf="formulario.get('categoria').valid && formulario.get('categoria').touched" class="form-text text-success"></small>
-              <small *ngIf="!formulario.get('categoria').valid && formulario.get('categoria').touched" class="form-text text-danger">Categoria do produto inválido!</small>
-          </div>
-          <div class="form-group">
-              <input 
-                type="text"
-                class="form-control" 
-                placeholder="Observações "
-                formControlName="observacoes"
-              >
-              <small *ngIf="formulario.get('observacoes').valid && formulario.get('observacoes').touched" class="form-text text-success"></small>
-              <small *ngIf="!formulario.get('observacoes').valid && formulario.get('observacoes').touched" class="form-text text-danger">Categoria do produto inválido!</small>
-          </div>
-
-          <input
-            type = "file"
-            class = "form-control"
-            accept="image/*"
-            (change) = "preparaImagemUpload($event)"
-            />
-      
-      </div>
-      <div>
-        <button type="submit" class="btn btn-primary">Publicar</button>
-      </div>
+      <input type="text" class="form-control" placeholder="Numero do local">
     </div>
-</form>
+
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Complemento" >
+    </div>
+
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Telefone" >
+    </div> -->
+
+    <h3 class="mt-4 mb-3">Produto</h3>
+
+    <div class="form-group row w-100">
+      <label for="tamanho" class="col-form-label col-sm-3 w-100">Nome do produto:</label>
+      <input type="text" class="form-control col-sm-9 w-100" placeholder="Nome do produto" formControlName="nome">
+    </div>
+
+    <div class="form-group row w-100">
+      <label for="tamanho" class="col-form-label col-sm-3 w-100">Descrição do produto:</label>
+      <input type="text" class="form-control col-sm-9 w-100" placeholder="Descrição do produto"
+        formControlName="descricao">
+    </div>
+
+    <div class="form-group row w-100">
+      <label for="tamanho" class="col-form-label col-sm-3 w-100">Valor do produto:</label>
+      <input type="text" class="form-control col-sm-9 w-100" placeholder="R$0,00" formControlName="valor">
+    </div>
+
+    <div class="form-group row w-100">
+      <label for="tamanho" class="col-form-label col-sm-3 w-100">Categoria do produto:</label>
+      <input type="text" class="form-control col-sm-9 w-100" placeholder="Categoria do produto"
+        formControlName="categoria">
+    </div>
+
+    <!--tamanho-->
+    <div class="form-group row w-100">
+      <label for="tamanho" class="col-form-label col-sm-3 w-100">Tamanho do produto:</label>
+      <select id="tamanho" class="form-control col-sm-9 w-100" formControlName="tamanho">
+        <option value="PP">PP</option>
+        <option value="P">P</option>
+        <option value="M" selected>M</option>
+        <option value="G">G</option>
+        <option value="GG">GG</option>
+        <option value="XG">XG</option>
+      </select>
+    </div>
+
+    <!--ESTOQUE-->
+    <div class="form-group row w-100">
+      <label for="estoque" class="col-form-label col-sm-3">Estoque: </label>
+      <input type="text" class="form-control col-sm-9" id="estoque" placeholder="Estoque do produto"
+        formControlName="estoque">
+    </div>
+
+    <div class="form-group row w-100">
+      <label for="observacoes" class="col-form-label col-sm-3">Observações: </label>
+      <input type="text" id="observacoes" class="form-control col-sm-9" placeholder="Observações "
+        formControlName="observacoes">
+    </div>
+
+    <div class="form-group row w-100">
+      <label for="imagens" class="col-form-label col-sm-3">Inserir imagens: </label>
+      <input id="imagens" type="file" class="form-control col-sm-9" accept="image/*" (change)="uploadFile($event)"
+        multiple />
+    </div>
+
+    <div class="d-flex justify-content-around">
+      <button type="submit" class="btn btn-primary mt-4 ">Cadastrar</button>
+    </div>
+  </form>
+</div>
