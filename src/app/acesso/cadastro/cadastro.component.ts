@@ -29,6 +29,7 @@ export class CadastroComponent implements OnInit {
     'endereco': new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(120)]),
     'numero': new FormControl(null, [Validators.required, Validators.minLength(1), Validators.maxLength(20)]),
     'complemento': new FormControl(null)
+    
   })
   
 

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable'
 import { Subject } from 'rxjs/Subject'
+import { map } from 'rxjs/operators';
+import { AngularFirestore } from '@angular/fire/firestore';
+
 
 import { Autenticacao } from '../autenticacao.service'
 
@@ -9,6 +12,9 @@ import { Oferta } from '../shared/oferta.model'
 
 import '../util/rxjs-extensions'
 import CarrinhoService from '../carrinho.service';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { UsuarioService } from '../usuario.service';
+import { Usuario } from '../acesso/usuario.model';
 
 @Component({
   selector: 'app-topo-logado',
@@ -22,16 +28,27 @@ export class TopoLogadoComponent implements OnInit {
   public numeroEntrega: string;
   public numeroItensCarrinho: number;
 
+ 
+  
+
+
   public ofertas: Observable<Oferta[]>
   private subjectPesquisa: Subject<string> = new Subject<string>()
 
   constructor(
     private ofertasService: OfertasService,
     private autenticacao: Autenticacao,
-    private carrinhoService: CarrinhoService
+    private carrinhoService: CarrinhoService,
+    private db: AngularFirestore,
+    public afauth: AngularFireAuth,
+    public userService: UsuarioService
   ) { }
 
   ngOnInit() {
+    var aux
+    var endereco
+    var numero
+    
     this.ofertas = this.subjectPesquisa //retorno Oferta[]
       .debounceTime(1000) //executa a ação do switchMap após 1 segundo
       .distinctUntilChanged() //para fazer pesquisas distintas
@@ -60,6 +77,26 @@ export class TopoLogadoComponent implements OnInit {
     this.carrinhoService.emitirNumeroDeItens.subscribe(
       numeroItens => this.numeroItensCarrinho = numeroItens
     );
+
+    this.afauth.auth.onAuthStateChanged (user => {
+      
+      this.userService.getEnderecoByUsuario (user.email).subscribe(usuario =>{
+        console.log(usuario[0])
+        aux = usuario[0]
+        this.enderecoEntrega = aux.endereco
+        this.numeroEntrega = aux.numero
+        
+       
+        
+        //endereco = aux.endereco;
+        //numero = aux.numero;
+        //console.log(numero + endereco)
+        
+        
+      })
+    })
+
+
   }
 
   public pesquisa(termoDaBusca: string): void {
@@ -73,11 +110,12 @@ export class TopoLogadoComponent implements OnInit {
   public sair(): void {
     this.autenticacao.sair()
   }
-
-  public console(): void {
-    console.log('funcionando')
-  }
-
-
-
 }
+
+
+
+
+
+
+
+
