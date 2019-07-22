@@ -84,6 +84,13 @@ ng build -- prod
 
 npm install animate.css --save
 
+-- Mandar para git
+git add .
+git commit -m "texto"
+git push
+
+-- Receber do git
+
 
 
 
