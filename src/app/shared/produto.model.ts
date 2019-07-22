@@ -1,4 +1,4 @@
-export interface Produto {
+export class Produto {
     id_produto: number
     nome: string
     descricao: string
@@ -9,5 +9,5 @@ export interface Produto {
     tamanho: string
     estoque: number
     observacoes?: string
-    imagens: Array<any>
+    imagens: Array<string>
 }
