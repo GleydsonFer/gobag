@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Oferta } from '../shared/oferta.model'
 import { OfertasService } from '../ofertas.service'
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-masculino',
@@ -10,15 +11,13 @@ import { OfertasService } from '../ofertas.service'
 })
 export class MasculinoComponent implements OnInit {
 
-  public ofertas: Oferta[]
+  public ofertas: Oferta[];
+  public produtos: Observable<any>;
 
   constructor(private ofertasService: OfertasService) { }
 
   ngOnInit() {
-    this.ofertasService.getOfertasPorCategoria('masculino')
-      .then(( ofertas: Oferta[]) => {
-        this.ofertas = ofertas
-      })
+    this.produtos = this.ofertasService.getProdutosByCategorias('masculino');
   }
 
 }

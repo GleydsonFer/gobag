@@ -18,25 +18,12 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private ofertasService: OfertasService,
-    
-    ) { }
+  ) { }
 
   ngOnInit() {
-    //this.ofertas = this.ofertasService.getOfertas()
-    //console.log(this.ofertas)
-
-    // Puxando ofertas da API fake
-    // this.ofertasService.getOfertas()
-    //   .then(( ofertas: Oferta[] ) => { 
-    //     this.ofertas = ofertas 
-    //   })
-    //   .catch(( param: any ) => { 
-    //   });
 
     this.ofertasService.getAllProdutos().subscribe(prod => {
-      console.log(prod);
       this.produtos = prod;
-      console.log(this.produtos);
     });
 
   }
