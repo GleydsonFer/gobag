@@ -119,24 +119,21 @@ export class OfertasService {
             );
     }
 
-    public getImagensStorage(filePath: string) {
-        return this.storage.storage.ref(filePath).getDownloadURL();
-    }
-
     // retorna um produto do banco
-    public getOneProduto(key: string) {
-        return this.db.collection('produtos', ref => ref.where(ref.id, '==', key))
+    public getProdutoByID(id: string) {
+        return this.db.collection('produtos', ref => ref.where('id_produto', '==', id).limit(1))
             .snapshotChanges()
             .pipe(
                 map(changes => {
-                    return changes.map(c => ({ key: c.payload.doc.id, ...c.payload.doc.data() }));
+                    console.log('changes',changes);
+                    return changes.map(c => ({ key: c.payload.doc.id, ...c.payload.doc.data() }))[0];
                 })
             );
     }
 
     // retorna os produtos por categoria
     public getProdutosByCategorias(categoria: string) {
-        return this.db.collection('produtos', ref => ref.where('categoria', 'array-contains', categoria))
+        return this.db.collection('produtos', ref => ref.where('categoria', '==', categoria.toLowerCase()))
             .snapshotChanges()
             .pipe(
                 map(changes => {
@@ -147,7 +144,7 @@ export class OfertasService {
 
     // retorna os produtos por loja
     public getProdutosByLojas(loja: string) {
-        return this.db.collection('produtos', ref => ref.where('loja', '==', loja))
+        return this.db.collection('produtos', ref => ref.where('loja', '==', loja.toLowerCase()))
             .snapshotChanges()
             .pipe(
                 map(changes => {
@@ -161,19 +158,6 @@ export class OfertasService {
         // Id único que servirá tanto para o firestore quanto para o storage
         let fireUID = '';
         let stringImagens: Array<string> = [];
-
-        // Adiciona o produto no Firestore 
-        // this.db.collection('produtos').add({
-        //     id_produto: produto.id_produto,
-        //     nome: produto.nome,
-        //     descricao: produto.descricao,
-        //     valor: produto.valor,
-        //     categoria: produto.categoria,
-        //     loja: produto.loja,
-        //     tamanho: produto.tamanho,
-        //     estoque: produto.estoque,
-        //     observacoes: produto.observacoes ? produto.observacoes : '',
-        // }).then(user => {
 
         // adiciono os produtos sem o campo de imagens no firestore,
         this.db.collection('produtos').add(produto).then(user => {

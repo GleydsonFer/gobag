@@ -7,6 +7,8 @@ import { ToastrService } from 'ngx-toastr';
 
 import { Oferta } from '../shared/oferta.model'
 import { AutenticacaoGuard } from '../autenticacao-guard.service';
+import { Observable } from 'rxjs';
+import { Produto } from '../shared/produto.model';
 
 @Component({
   selector: 'app-oferta',
@@ -18,6 +20,7 @@ import { AutenticacaoGuard } from '../autenticacao-guard.service';
 export class OfertaComponent implements OnInit, OnDestroy {
 
   public oferta: Oferta;
+  public produto: any;
 
   public naoLogado : any;
 
@@ -32,12 +35,8 @@ export class OfertaComponent implements OnInit, OnDestroy {
   ngOnInit() {
 
     this.route.params.subscribe((parametros: Params) => {
-
-      this.ofertasService.getOfertaPorId(parametros.id)
-        .then((oferta: Oferta) => {
-          this.oferta = oferta
-          //console.log(this.oferta)
-        })
+      console.log('parametros da rota', parametros);
+      this.produto = this.ofertasService.getProdutoByID(parametros.id_produto);
     })
   }
 
