@@ -29,7 +29,9 @@ export class CadastroDeProdutosComponent implements OnInit {
   ngOnInit() {
   }
 
+  // envia o produto com as imagens no formato de string vazio,
   cadastrarProduto() {
+    this.produto = new Produto();
     this.produto = {
       id_produto: Date.now(),
       nome: this.cadastro.value.nome,
@@ -40,16 +42,18 @@ export class CadastroDeProdutosComponent implements OnInit {
       tamanho: this.cadastro.value.tamanho,
       estoque: this.cadastro.value.estoque,
       observacoes: this.cadastro.value.observacoes,
-      imagens: this.imagens ? this.imagens : []
+      // as imagens começam vazias, só são preenchidas se o usuário inserir imagens
+      imagens: []
     }
 
-    this.ofertasService.setProduto(this.produto);
+    // envia as imagens em separado como parametro para o setProduto(),
+    this.ofertasService.setProduto(this.produto, this.imagens);
   }
 
+  // insere as imagens seleiconadas pelo usuário ao Array de imagens
   uploadFile(event){
     for(let imagem of event.target.files){
       this.imagens.push( imagem );
-      console.log( imagem );
     }
   }
 
