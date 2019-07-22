@@ -66,6 +66,7 @@ nav{
     margin-top: 7px;
     cursor: pointer;
     margin-left:3px;
+    margin-right: 5px;
 }
 .dropdown-menu{
     font-family: museo-sans, sans-serif;

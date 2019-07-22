@@ -14,7 +14,6 @@ import '../util/rxjs-extensions'
 import CarrinhoService from '../carrinho.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { UsuarioService } from '../usuario.service';
-import { Usuario } from '../acesso/usuario.model';
 
 @Component({
   selector: 'app-topo-logado',
@@ -81,22 +80,12 @@ export class TopoLogadoComponent implements OnInit {
     this.afauth.auth.onAuthStateChanged (user => {
       
       this.userService.getEnderecoByUsuario (user.email).subscribe(usuario =>{
-        console.log(usuario[0])
+        
         aux = usuario[0]
         this.enderecoEntrega = aux.endereco
-        this.numeroEntrega = aux.numero
-        
-       
-        
-        //endereco = aux.endereco;
-        //numero = aux.numero;
-        //console.log(numero + endereco)
-        
-        
+        this.numeroEntrega = aux.numero        
       })
     })
-
-
   }
 
   public pesquisa(termoDaBusca: string): void {

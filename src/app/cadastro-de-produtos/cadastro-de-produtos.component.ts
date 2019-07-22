@@ -40,7 +40,7 @@ export class CadastroDeProdutosComponent implements OnInit {
       tamanho: this.cadastro.value.tamanho,
       estoque: this.cadastro.value.estoque,
       observacoes: this.cadastro.value.observacoes,
-      imagens: this.imagens ? this.imagens : []
+      imagens: this.cadastro.value.imagens
     }
 
     this.ofertasService.setProduto(this.produto);

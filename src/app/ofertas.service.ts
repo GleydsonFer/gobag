@@ -164,12 +164,12 @@ export class OfertasService {
         console.log('Produto adiconado com sucesso', produto);
 
         // percorre todas as imagens inseridas e faz o upload para o Storage do Firebase
-        for( let i = 0; i < produto.imagens.length; i++ ){
-            let imagePath = `produtos/${fireUID}/img${i}`;
-            this.storage.upload(imagePath, produto.imagens[i]).then(() => {
-                console.log('Imagem adicionada com sucesso!');
-            });
-        }
+        // for( let i = 0; i < produto.imagens.length; i++ ){
+        //     let imagePath = `produtos/${fireUID}/img${i}`;
+        //     this.storage.upload(imagePath, produto.imagens[i]).then(() => {
+        //         console.log('Imagem adicionada com sucesso!');
+        //     });
+        // }
     }
 
 }

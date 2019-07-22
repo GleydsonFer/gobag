@@ -21,7 +21,7 @@ export class UsuarioService {
           .snapshotChanges()
           .pipe(
               map(changes => {
-                console.log('chamando getEnderecoByUsuario')
+                
                   return changes.map(c => ({ key: c.payload.doc.id, ...c.payload.doc.data() }));
                   
               })

@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 
 
 import { Oferta } from '../shared/oferta.model'
+import { AutenticacaoGuard } from '../autenticacao-guard.service';
 
 @Component({
   selector: 'app-oferta',
@@ -18,11 +19,14 @@ export class OfertaComponent implements OnInit, OnDestroy {
 
   public oferta: Oferta;
 
+  public naoLogado : any;
+
   constructor(
     private route: ActivatedRoute,
     private ofertasService: OfertasService,
     private carrinhoService: CarrinhoService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private autenticacaoGuard : AutenticacaoGuard,
   ) { }
 
   ngOnInit() {
@@ -41,9 +45,15 @@ export class OfertaComponent implements OnInit, OnDestroy {
   }
 
   public adicionarItemCarrinho(): void {
-    this.carrinhoService.incluirItem(this.oferta);
-    this.toastr.success('Oferta adicionada com sucesso!', `${this.oferta.titulo}`);
-    console.log(this.carrinhoService.exibirItens());
+      
+      this.naoLogado = this.autenticacaoGuard.canActivateVerOfertaNaoLogado();
+      console.log(this.naoLogado)
+      if(this.naoLogado){
+      this.carrinhoService.incluirItem(this.oferta);
+      this.toastr.success('Oferta adicionada com sucesso!', `${this.oferta.titulo}`);
+      console.log(this.carrinhoService.exibirItens());
+    }
+    
   }
 
 

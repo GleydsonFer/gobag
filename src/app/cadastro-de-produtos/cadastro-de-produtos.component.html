@@ -83,8 +83,13 @@
 
     <div class="form-group row w-100">
       <label for="imagens" class="col-form-label col-sm-3">Inserir imagens: </label>
-      <input id="imagens" type="file" class="form-control col-sm-9" accept="image/*" (change)="uploadFile($event)"
-        multiple />
+      <input 
+        id="imagens" 
+        type="file" 
+        class="form-control col-sm-9" 
+        accept="image/*" 
+        (change)="uploadFile($event)" 
+        />
     </div>
 
     <div class="d-flex justify-content-around">
