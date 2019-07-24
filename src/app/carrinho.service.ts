@@ -17,7 +17,8 @@ import { EventEmitter } from '@angular/core';
              oferta.titulo,
              oferta.descricao_oferta,
              oferta.valor,
-             1
+             1,
+             oferta.anunciante
          )
 
          //verificar se o item em questão já não existe dentro de this.itens

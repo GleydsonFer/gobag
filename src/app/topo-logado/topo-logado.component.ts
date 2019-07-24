@@ -1,3 +1,5 @@
+import { UsuarioService } from './../usuario.service';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable'
 import { Subject } from 'rxjs/Subject'
@@ -12,8 +14,6 @@ import { Oferta } from '../shared/oferta.model'
 
 import '../util/rxjs-extensions'
 import CarrinhoService from '../carrinho.service';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { UsuarioService } from '../usuario.service';
 
 @Component({
   selector: 'app-topo-logado',
@@ -22,10 +22,11 @@ import { UsuarioService } from '../usuario.service';
   providers: [OfertasService]
 })
 export class TopoLogadoComponent implements OnInit {
-
+  public usuario:any
   public enderecoEntrega: string;
   public numeroEntrega: string;
   public numeroItensCarrinho: number;
+  public widthScreen:boolean = true;
 
  
   
@@ -43,6 +44,17 @@ export class TopoLogadoComponent implements OnInit {
     public userService: UsuarioService
   ) { }
 
+  ngAfterViewInit(): void {
+    this.resize()
+  }
+  resize(){
+    if(screen.width > 820){
+      this.widthScreen = true
+    }else{
+      this.widthScreen = false
+    }
+    // console.log(this.widthScreen);
+  }
   ngOnInit() {
     var aux
     var endereco
@@ -65,14 +77,14 @@ export class TopoLogadoComponent implements OnInit {
 
     //Puxa o endereço de entrega do banco de dados
     this.ofertasService.getEnderecoDePedidos().then((resp) => {
-      this.enderecoEntrega = resp.endereco;
+     this.enderecoEntrega = resp.endereco;
     })
     //Puxa o número da casa de entrega do banco de dados
-    this.ofertasService.getNumeroDePedidos().then((resp) => {
-      this.numeroEntrega = resp.numero;
-    })
+    // this.ofertasService.getNumeroDePedidos().then((resp) => {
+    //   this.numeroEntrega = resp.numero;
+    // })
 
-    //mostrar número de itens no carrinho
+   // mostrar número de itens no carrinho
     this.carrinhoService.emitirNumeroDeItens.subscribe(
       numeroItens => this.numeroItensCarrinho = numeroItens
     );
