@@ -1,8 +1,9 @@
-import { Usuario } from './shared/usuario.model'
-import * as firebase from 'firebase'
+import { Usuario } from './shared/usuario.model';
+import * as firebase from 'firebase/app';
+import 'firebase/auth';
 
-import { Injectable } from '@angular/core'
-import { Router } from '@angular/router'
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { ToastrService } from 'ngx-toastr';

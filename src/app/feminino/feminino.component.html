@@ -28,7 +28,7 @@
               </figure>
     
               <div class="prod_price-box">  
-                <p class="prod_price">{{ produto.valor | currency:'BRL':true }}</p>
+                <p class="prod_price">{{ produto.valor | currency : 'BRL' : 'symbol' }}</p>
               </div>
     
               <button class="btn_ofer" [routerLink]="['/oferta', produto.id]">Ver oferta</button>
