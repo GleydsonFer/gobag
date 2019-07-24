@@ -65,6 +65,7 @@ import { AutenticacaoGuard } from './autenticacao-guard.service';
 
 import { ToastrModule } from 'ngx-toastr';
 import { AngularFireModule } from "@angular/fire";
+import { AngularFireStorageModule } from "@angular/fire/storage";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { environment } from "../environments/environment";
@@ -130,6 +131,7 @@ registerLocaleData(localePtBr);
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AngularFireAuthModule,
+    AngularFireStorageModule,
     FormsModule
 
   ],

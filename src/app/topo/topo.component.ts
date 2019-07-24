@@ -20,9 +20,7 @@ import CarrinhoService from '../carrinho.service';
 export class TopoComponent implements OnInit {
 
   public ofertas: Observable<Oferta[]>
-  /* VAI TER Q TER NO TOPO-LOGADO */
-  // public enderecoEntrega: string;
-  // public numeroEntrega: string;
+  
   public numeroItensCarrinho: number;
 
   private subjectPesquisa: Subject<string> = new Subject<string>()

@@ -1,10 +1,11 @@
-import { Usuario } from './acesso/usuario.model'
+import { Usuario } from './shared/usuario.model'
 import * as firebase from 'firebase'
 
 import { Injectable } from '@angular/core'
 import { Router } from '@angular/router'
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable()
 export class Autenticacao {
@@ -15,7 +16,8 @@ export class Autenticacao {
     constructor(
         private router: Router,
         private db: AngularFirestore,
-        private authFire: AngularFireAuth
+        private authFire: AngularFireAuth,
+        private toastr: ToastrService,
     ) { }
 
     // método para cadastrar usuário
@@ -76,6 +78,22 @@ export class Autenticacao {
 
         return this.token_id !== undefined
     }
+
+    
+
+    public autenticadoVerOferta(): boolean {
+
+        if (this.token_id === undefined && localStorage.getItem('idToken') != null) {
+            this.token_id = localStorage.getItem('idToken')
+        }
+
+        if (this.token_id === undefined) {
+            this.toastr.warning('Faça seu login primeiro');
+        }
+
+        return this.token_id !== undefined
+    }
+
 
     public sair(): void {
         firebase.auth().signOut()

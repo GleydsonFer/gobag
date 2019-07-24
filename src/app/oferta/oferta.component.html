@@ -1,30 +1,15 @@
 <div class="container">
-  <div class="oferta" *ngIf="oferta !== undefined">
-    <!--
-    <div class="row">
-      <div class="col">
-        <a [routerLink]="['/oferta', 1]">Oferta 1</a>
-        <a [routerLink]="['/oferta', 3]">Oferta 3</a>
-        <a [routerLink]="['/oferta', 6]">Oferta 6</a>
-      </div>
-    </div>
-    -->
-
-    <!-- <div class="row">
-      <div class="col">
-        
-      </div>
-    </div> -->
-
+  <div class="oferta" *ngIf="produto != undefined">
+  
     <div class="row">
       <div class="col-md-6">
         <div class="oferta_img-box">
-          <img [src]="oferta.imagens[0].url" class="img-fluid prod_oferta-img"/>
+          <img [src]="produto.imagens[0]" class="img-fluid prod_oferta-img"/>
         </div>
 
         <div class="row">
-          <figure *ngFor="let imagem of oferta.imagens" class="thumbnails col-3">
-            <img [src]="imagem.url" class="img-fluid prod_oferta-thumb"/>
+          <figure *ngFor="let imagem of produto.imagens" class="thumbnails col-3">
+            <img [src]="imagem" class="img-fluid prod_oferta-thumb"/>
           </figure>
         </div>
       </div>
@@ -33,12 +18,12 @@
         <div class="row">
 
           <div class="info_prod">
-            <h2 class="tit_prod">{{ oferta.titulo }}</h2>
-            <h4 class="desc_prod"><strong>descrição:</strong> {{ oferta.descricao_oferta }}</h4>
+            <h2 class="tit_prod">{{ produto.nome }}</h2>
+            <h4 class="desc_prod"><strong>descrição:</strong> {{ produto.descricao }}</h4>
 
             <div class="price_box">
                 <p>Por apenas:</p>
-                <span class="price_prod">{{ oferta.valor | currency:'BRL':true }}</span>
+                <span class="price_prod">{{ produto.valor | currency:'BRL':true }}</span>
             </div>
 
             <div class="medidas_box">

@@ -13,5 +13,10 @@ export class AutenticacaoGuard implements CanActivate {
         
         return this.autenticacao.autenticado()
     }
+    canActivateVerOfertaNaoLogado(): boolean {
+        
+        return this.autenticacao.autenticadoVerOferta()
+    }
+    
 
 }

@@ -10,6 +10,8 @@ import { URL_API } from './app.api';
 import { Oferta } from './shared/oferta.model';
 import { Pedido } from './shared/pedido.model';
 import { pipe } from 'rxjs';
+import { Produto } from './shared/produto.model';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 
 
@@ -26,7 +28,8 @@ export class OfertasService {
 
     constructor(
         private http: Http,
-        private db: AngularFirestore
+        private db: AngularFirestore,
+        private storage: AngularFireStorage
     ) { }
 
     // Métodos para API fake
@@ -117,19 +120,20 @@ export class OfertasService {
     }
 
     // retorna um produto do banco
-    public getOneProduto(key: string) {
-        return this.db.collection('produtos', ref => ref.where(ref.id, '==', key))
+    public getProdutoByID(id: string) {
+        return this.db.collection('produtos', ref => ref.where('id_produto', '==', id).limit(1))
             .snapshotChanges()
             .pipe(
                 map(changes => {
-                    return changes.map(c => ({ key: c.payload.doc.id, ...c.payload.doc.data() }));
+                    console.log('changes',changes);
+                    return changes.map(c => ({ key: c.payload.doc.id, ...c.payload.doc.data() }))[0];
                 })
             );
     }
 
     // retorna os produtos por categoria
     public getProdutosByCategorias(categoria: string) {
-        return this.db.collection('produtos', ref => ref.where('categoria', 'array-contains', categoria))
+        return this.db.collection('produtos', ref => ref.where('categoria', '==', categoria.toLowerCase()))
             .snapshotChanges()
             .pipe(
                 map(changes => {
@@ -140,13 +144,49 @@ export class OfertasService {
 
     // retorna os produtos por loja
     public getProdutosByLojas(loja: string) {
-        return this.db.collection('produtos', ref => ref.where('loja', '==', loja))
+        return this.db.collection('produtos', ref => ref.where('loja', '==', loja.toLowerCase()))
             .snapshotChanges()
             .pipe(
                 map(changes => {
                     return changes.map(c => ({ key: c.payload.doc.id, ...c.payload.doc.data() }));
                 })
             );
+    }
+
+    public setProduto(produto: Produto, imagens: any) {
+
+        // Id único que servirá tanto para o firestore quanto para o storage
+        let fireUID = '';
+        let stringImagens: Array<string> = [];
+
+        // adiciono os produtos sem o campo de imagens no firestore,
+        this.db.collection('produtos').add(produto).then(user => {
+
+            // id único do produto é adicionado a variável para referenciar a pasta no storage
+            fireUID = user.id;
+            console.log('Produto adiconado com sucesso', produto);
+
+            // percorre todas as imagens inseridas e faz o upload para o Storage do Firebase
+            for (let i = 0; i < imagens.length; i++) {
+                let imagePath = `produtos/${fireUID}/img${i}`;
+
+                // adiciona todas as imagens no storage, com a referencia do produto,
+                this.storage.upload(imagePath, imagens[i]).then(() => {
+                    console.log('Imagem adicionada com sucesso!');
+
+                    // recupera o getDownloadURL de cada imagem e adiciona ao array de strings,
+                    this.storage.ref(imagePath).getDownloadURL().subscribe(url => {
+                        stringImagens.push(url);
+                        produto.imagens = stringImagens;
+
+                        // atualiza o produto no banco, o campo de imagens com seus respectivos links para download 
+                        this.db.collection('produtos').doc(fireUID).update(produto);
+                    })
+                });
+            }
+        })
+
+
     }
 
 }

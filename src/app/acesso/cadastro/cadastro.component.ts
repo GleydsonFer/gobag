@@ -1,7 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms'
 
-import { Usuario } from '../usuario.model'
+import { Usuario } from '../../shared/usuario.model'
 
 import { Autenticacao } from '../../autenticacao.service'
 //
@@ -29,6 +29,7 @@ export class CadastroComponent implements OnInit {
     'endereco': new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(120)]),
     'numero': new FormControl(null, [Validators.required, Validators.minLength(1), Validators.maxLength(20)]),
     'complemento': new FormControl(null)
+    
   })
   
 

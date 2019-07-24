@@ -17,7 +17,7 @@ export class FemininoComponent implements OnInit {
   constructor(private ofertasService: OfertasService ) { }
 
   ngOnInit() {
-    this.produtos = this.ofertasService.getProdutosByCategorias('feminino')
+    this.produtos = this.ofertasService.getProdutosByCategorias('feminino');
   }
 
 }

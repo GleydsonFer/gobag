@@ -3,6 +3,9 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable'
 import { Subject } from 'rxjs/Subject'
+import { map } from 'rxjs/operators';
+import { AngularFirestore } from '@angular/fire/firestore';
+
 
 import { Autenticacao } from '../autenticacao.service'
 
@@ -25,6 +28,10 @@ export class TopoLogadoComponent implements OnInit {
   public numeroItensCarrinho: number;
   public widthScreen:boolean = true;
 
+ 
+  
+
+
   public ofertas: Observable<Oferta[]>
   private subjectPesquisa: Subject<string> = new Subject<string>()
 
@@ -32,8 +39,9 @@ export class TopoLogadoComponent implements OnInit {
     private ofertasService: OfertasService,
     private autenticacao: Autenticacao,
     private carrinhoService: CarrinhoService,
-    private afAuth:AngularFireAuth,
-    private userService:UsuarioService
+    private db: AngularFirestore,
+    public afauth: AngularFireAuth,
+    public userService: UsuarioService
   ) { }
 
   ngAfterViewInit(): void {
@@ -48,6 +56,10 @@ export class TopoLogadoComponent implements OnInit {
     // console.log(this.widthScreen);
   }
   ngOnInit() {
+    var aux
+    var endereco
+    var numero
+    
     this.ofertas = this.subjectPesquisa //retorno Oferta[]
       .debounceTime(1000) //executa a ação do switchMap após 1 segundo
       .distinctUntilChanged() //para fazer pesquisas distintas
@@ -77,11 +89,13 @@ export class TopoLogadoComponent implements OnInit {
       numeroItens => this.numeroItensCarrinho = numeroItens
     );
 
-    this.afAuth.auth.onAuthStateChanged(user => {
-        this.userService.getEnderecoByUsuario(user.email).subscribe((usuario)=>{
-          usuario.forEach(usuario =>{
-            this.usuario = usuario
-          })
+    this.afauth.auth.onAuthStateChanged (user => {
+      
+      this.userService.getEnderecoByUsuario (user.email).subscribe(usuario =>{
+        
+        aux = usuario[0]
+        this.enderecoEntrega = aux.endereco
+        this.numeroEntrega = aux.numero        
       })
     })
   }
@@ -97,11 +111,12 @@ export class TopoLogadoComponent implements OnInit {
   public sair(): void {
     this.autenticacao.sair()
   }
-
-  public console(): void {
-    console.log('funcionando')
-  }
-
-
-
 }
+
+
+
+
+
+
+
+

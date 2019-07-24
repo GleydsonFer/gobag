@@ -36,7 +36,7 @@ export const ROUTES: Routes = [
     { path: 'feminino', component: FemininoComponent },
     { path: 'oferta', component: HomeComponent },
     {
-        path: 'oferta/:id', component: OfertaComponent,
+        path: 'oferta/:id_produto', component: OfertaComponent,
         children: [
             { path: '', component: ProdutosRelacionadosComponent },
             { path: 'produtos-relacionados', component: ProdutosRelacionadosComponent },

@@ -181,7 +181,18 @@
                     </ul>
                 </form>
             </div>
-
+            
+            <!-- coluna da direita onde fica o endereço do cliente e a bag -->
+            <div class="col-5 col-md-5 col_right d-flex justify-content-end">
+                <a class="login mr-3" routerLink="/acesso"></a>
+                <a class="mr-3 mt-1" href="#" (click)="sair()" >Sair</a>
+                <div class="endereco  mr-3">
+                    <span>Entrega: {{ this.enderecoEntrega}}, {{ this.numeroEntrega}}</span>
+                </div>
+                <a class="bag" routerLink="/ordem-compra">
+                    <div class="numeroItensCarrinho">{{numeroItensCarrinho}}</div>
+                </a>
+            </div>
         </nav>
     </ng-template>
 </div>

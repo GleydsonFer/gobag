@@ -83,8 +83,13 @@ ng build -- prod
 -- INSTALAÇÃO DA BIBLIOTECA ANIMATE.CSS --
 
 npm install animate.css --save
-incluir em styles:  "node_modules/animate.css/animate.min.css"
-consultar documentação em: https://github.com/daneden/animate.css
+
+-- Mandar para git
+git add .
+git commit -m "texto"
+git push
+
+-- Receber do git
 
 
 
