@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Output } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router'
 import { OfertasService } from '../ofertas.service'
 import CarrinhoService from '../carrinho.service'
@@ -20,7 +20,8 @@ import { Produto } from '../shared/produto.model';
 export class OfertaComponent implements OnInit, OnDestroy {
 
   public oferta: Oferta;
-  public produto: any;
+  public produto: Observable<any>;
+  @Output() public prod: Produto;
 
   public naoLogado : any;
 
@@ -35,8 +36,12 @@ export class OfertaComponent implements OnInit, OnDestroy {
   ngOnInit() {
 
     this.route.params.subscribe((parametros: Params) => {
-      console.log('parametros da rota', parametros);
+      console.log('parametros da rota', parametros.id_produto);
       this.produto = this.ofertasService.getProdutoByID(parametros.id_produto);
+      this.produto.subscribe(prod => {
+        this.prod = prod[0];
+        console.log(prod);
+      })
     })
   }
 

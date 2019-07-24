@@ -119,13 +119,12 @@ export class OfertasService {
     }
 
     // retorna um produto do banco
-    public getProdutoByID(id: string) {
-        return this.db.collection('produtos', ref => ref.where('id_produto', '==', id).limit(1))
+    public getProdutoByID(id: number) {
+        return this.db.collection('produtos', ref => ref.where('id_produto', '==', id))
             .snapshotChanges()
             .pipe(
                 map(changes => {
-                    console.log('changes', changes);
-                    return changes.map(c => ({ key: c.payload.doc.id, ...c.payload.doc.data() }))[0];
+                    return changes.map(c => ({ key: c.payload.doc.id, ...c.payload.doc.data() }));
                 })
             );
     }
