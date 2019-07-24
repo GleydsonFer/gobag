@@ -41,13 +41,6 @@
 
                     </li>
                     <li class="dropdown-item">
-                        <a class="nav-link" data-toggle="dropdown" role="button" aria-haspopup="true"
-                            aria-expanded="false" routerLinkActive="active" routerLink="/fitness">
-                            Fitness
-                        </a>
-
-                    </li>
-                    <li class="dropdown-item">
                         <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                             aria-expanded="false" routerLinkActive="active" routerLink="/teen">
                             Teen
@@ -80,7 +73,6 @@
             </form>
         </div>
 
-=
         <!-- coluna da direita onde fica o endereço do cliente e a bag -->
         <div class="col-5 col-md-5 col_right d-flex justify-content-end">
             <a class="login" routerLink="/acesso"></a>
@@ -88,7 +80,7 @@
                 <a routerLink="/acesso">Faça seu login</a>
             </div>
             <a class="bag" routerLink="/ordem-compra">
-                <div class="numeroItensCarrinho">{{numeroItensCarrinho}}</div>
+                <div class="numeroItensCarrinho d-flex justify-content-center">{{numeroItensCarrinho}}</div>
             </a>
         </div>
     </nav>

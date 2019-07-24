@@ -1,7 +1,7 @@
-
+/* 
 .banner_home{
     margin-top:56px;
-}
+} */
 .texto1{
     color: rgb(1, 80, 47);
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
@@ -112,7 +112,6 @@
 @media (max-width: 768px) and (min-width:768px) {
     .col_center img{
         margin-bottom: 160px;
-        background-color:blue;
     } 
  }
 
@@ -163,6 +162,12 @@
     }
 } 
 
+@media (max-width: 820px){
+    .banner_home{
+        margin-top:120px;
+        background-color: blue;
+    }
+}
 
 
 

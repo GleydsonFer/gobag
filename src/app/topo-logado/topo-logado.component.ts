@@ -1,3 +1,5 @@
+import { UsuarioService } from './../usuario.service';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable'
 import { Subject } from 'rxjs/Subject'
@@ -17,10 +19,11 @@ import CarrinhoService from '../carrinho.service';
   providers: [OfertasService]
 })
 export class TopoLogadoComponent implements OnInit {
-
+  public usuario:any
   public enderecoEntrega: string;
   public numeroEntrega: string;
   public numeroItensCarrinho: number;
+  public widthScreen:boolean = true;
 
   public ofertas: Observable<Oferta[]>
   private subjectPesquisa: Subject<string> = new Subject<string>()
@@ -28,9 +31,22 @@ export class TopoLogadoComponent implements OnInit {
   constructor(
     private ofertasService: OfertasService,
     private autenticacao: Autenticacao,
-    private carrinhoService: CarrinhoService
+    private carrinhoService: CarrinhoService,
+    private afAuth:AngularFireAuth,
+    private userService:UsuarioService
   ) { }
 
+  ngAfterViewInit(): void {
+    this.resize()
+  }
+  resize(){
+    if(screen.width > 820){
+      this.widthScreen = true
+    }else{
+      this.widthScreen = false
+    }
+    // console.log(this.widthScreen);
+  }
   ngOnInit() {
     this.ofertas = this.subjectPesquisa //retorno Oferta[]
       .debounceTime(1000) //executa a ação do switchMap após 1 segundo
@@ -49,17 +65,25 @@ export class TopoLogadoComponent implements OnInit {
 
     //Puxa o endereço de entrega do banco de dados
     this.ofertasService.getEnderecoDePedidos().then((resp) => {
-      this.enderecoEntrega = resp.endereco;
+     this.enderecoEntrega = resp.endereco;
     })
     //Puxa o número da casa de entrega do banco de dados
-    this.ofertasService.getNumeroDePedidos().then((resp) => {
-      this.numeroEntrega = resp.numero;
-    })
+    // this.ofertasService.getNumeroDePedidos().then((resp) => {
+    //   this.numeroEntrega = resp.numero;
+    // })
 
-    //mostrar número de itens no carrinho
+   // mostrar número de itens no carrinho
     this.carrinhoService.emitirNumeroDeItens.subscribe(
       numeroItens => this.numeroItensCarrinho = numeroItens
     );
+
+    this.afAuth.auth.onAuthStateChanged(user => {
+        this.userService.getEnderecoByUsuario(user.email).subscribe((usuario)=>{
+          usuario.forEach(usuario =>{
+            this.usuario = usuario
+          })
+      })
+    })
   }
 
   public pesquisa(termoDaBusca: string): void {
