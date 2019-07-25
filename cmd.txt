@@ -94,6 +94,17 @@ git push
 
 -- Receber do git
 
+--------------instalar ngx-chips ---------------------
+
+npm install ngx-chips --save
+
+*incluir em app.module.ts:
+    import { TagInputModule } from 'ngx-chips';
+    import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // this is needed!
+    import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+    
+    imports: [ TagInputModule, BrowserAnimationsModule, FormsModule, ReactiveFormsModule]
+
 
 
 
