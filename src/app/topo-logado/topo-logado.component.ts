@@ -31,7 +31,6 @@ export class TopoLogadoComponent implements OnInit {
  
   
 
-
   public ofertas: Observable<Oferta[]>
   private subjectPesquisa: Subject<string> = new Subject<string>()
 
@@ -57,9 +56,7 @@ export class TopoLogadoComponent implements OnInit {
   }
   ngOnInit() {
     var aux
-    var endereco
-    var numero
-    
+
     this.ofertas = this.subjectPesquisa //retorno Oferta[]
       .debounceTime(1000) //executa a ação do switchMap após 1 segundo
       .distinctUntilChanged() //para fazer pesquisas distintas

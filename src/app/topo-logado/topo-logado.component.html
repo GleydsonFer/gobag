@@ -77,7 +77,7 @@
             <a class="login mr-3" routerLink="/acesso"></a>
             <a class=" btn_sair" href="#" (click)="sair()">Sair</a>
             <div class="endereco  mr-3">
-                <span class="" *ngIf="usuario !== null">Entrega: Martins de Carvalho, 2724 </span>
+                <span class="" *ngIf="usuario !== null">{{ enderecoEntrega }}, {{ numeroEntrega }} </span>
             </div>
             <a class="bag" routerLink="/ordem-compra">
                 <div class="numeroItensCarrinho d-flex justify-content-center">{{numeroItensCarrinho}}</div>
@@ -151,7 +151,7 @@
                 <a class="login mr-3" routerLink="/acesso"></a>
                 <a class="btn_sair" href="#" (click)="sair()">Sair</a>
                 <div class="endereco  mr-3">
-                    <span class="" *ngIf="usuario !== null">Martins de Carvalho, 2724</span>
+                    <span class="" *ngIf="usuario !== null">{{ enderecoEntrega }}, {{ numeroEntrega }}</span>
                 </div>
 
                 <div class="logo">

@@ -155,6 +155,8 @@ export class OfertasService {
 
     public setProduto(produto: Produto, imagens: any) {
 
+        console.log("analizar produto \n" + produto.categoria)
+
         // Id único que servirá tanto para o firestore quanto para o storage
         let fireUID = '';
         let stringImagens: Array<string> = [];
@@ -187,6 +189,6 @@ export class OfertasService {
         })
 
 
-    }
+     }
 
 }
