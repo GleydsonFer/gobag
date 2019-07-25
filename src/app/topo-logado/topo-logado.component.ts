@@ -1,13 +1,13 @@
-import { UsuarioService } from './../usuario.service';
-import { AngularFireAuth } from '@angular/fire/auth';
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { Autenticacao } from '../autenticacao.service';
 import CarrinhoService from '../carrinho.service';
 import { OfertasService } from '../ofertas.service';
-import { Oferta } from '../shared/oferta.model';
+import { Produto } from '../shared/produto.model';
+import { UsuarioService } from './../usuario.service';
 
 @Component({
   selector: 'app-topo-logado',
@@ -22,10 +22,10 @@ export class TopoLogadoComponent implements OnInit {
   public numeroItensCarrinho: number;
   public widthScreen:boolean = true;
 
-  public ofertas: Observable<Oferta[]>
+  // public ofertas: Observable<Oferta[]>
+  public produtos: Observable<Produto[]>
   private subjectPesquisa: Subject<string> = new Subject<string>()
   
-  produtos: any;
   searchValue: string = '';
 
   constructor(
@@ -46,48 +46,27 @@ export class TopoLogadoComponent implements OnInit {
     }else{
       this.widthScreen = false
     }
-    // console.log(this.widthScreen);
   }
   ngOnInit() {
     var aux
 
-    this.ofertas = this.subjectPesquisa //retorno Oferta[]
-      .debounceTime(1000) //executa a ação do switchMap após 1 segundo
+    this.produtos = this.subjectPesquisa //retorno Produto[]
+      .debounceTime(500) //executa a ação do switchMap após 1/2 segundo
       .distinctUntilChanged() //para fazer pesquisas distintas
       .switchMap((termo: string) => {
         if (termo.trim() === '') {
-          //retornar um observable de array de ofertas vazio
-          return Observable.of<Oferta[]>([])
+          //retornar um observable de array de produtos vazio
+          return Observable.of<Produto[]>([])
         }
-
-        return this.ofertasService.pesquisaOfertas(termo)
+        return this.ofertasService.pesquisaProdutos(termo).subscribe(prods => prods);
       })
       .catch((err: any) => {
-        return Observable.of<Oferta[]>([])
+        return Observable.of<Produto[]>([])
       })
 
-    // this.ofertas = this.subjectPesquisa //retorno Oferta[]
-    //   .debounceTime(1000) //executa a ação do switchMap após 1 segundo
-    //   .distinctUntilChanged() //para fazer pesquisas distintas
-    //   .switchMap((termo: string) => {
-    //     if (termo.trim() === '') {
-    //       //retornar um observable de array de ofertas vazio
-    //       return Observable.of<Oferta[]>([])
-    //     }
-    //     return this.ofertasService.pesquisaOfertas(termo)
-    //   })
-    //   .catch((err: any) => {
-    //     return Observable.of<Oferta[]>([])
-    //   })
-    
-    //Puxa o endereço de entrega do banco de dados
-    this.ofertasService.getEnderecoDePedidos().then((resp) => {
-     this.enderecoEntrega = resp.endereco;
+    this.produtos.subscribe(prods => {
+      console.log(prods);
     })
-    //Puxa o número da casa de entrega do banco de dados
-    // this.ofertasService.getNumeroDePedidos().then((resp) => {
-    //   this.numeroEntrega = resp.numero;
-    // })
 
    // mostrar número de itens no carrinho
     this.carrinhoService.emitirNumeroDeItens.subscribe(
@@ -105,19 +84,15 @@ export class TopoLogadoComponent implements OnInit {
     })
   }
 
-  search(){
-    this.produtos = this.ofertasService.pesquisaProdutos(this.searchValue);
-  }
-
   public pesquisa(termoDaBusca: string): void {
-    this.subjectPesquisa.next(termoDaBusca)
+    this.subjectPesquisa.next(termoDaBusca);
   }
 
   public limpaPesquisa(): void {
-    this.subjectPesquisa.next('')
+    this.subjectPesquisa.next('');
   }
 
   public sair(): void {
-    this.autenticacao.sair()
+    this.autenticacao.sair();
   }
 }

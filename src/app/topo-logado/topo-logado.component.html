@@ -64,9 +64,9 @@
                     (keyup)="pesquisa(termoDaPesquisa.value)" aria-label="Pesquisar">
 
                 <ul class="list-group">
-                    <li class="list-group-item" *ngFor="let oferta of ofertas | async">
-                        <a [routerLink]="['/oferta', oferta.id ]" (click)="limpaPesquisa()">
-                            {{ oferta.titulo | descricaoReduzida:15 }}
+                    <li class="list-group-item" *ngFor="let produto of produtos | async">
+                        <a [routerLink]="['/oferta', produto.id_produto ]" (click)="limpaPesquisa()">
+                            {{ produto.nome | descricaoReduzida:15 }}
                         </a>
                     </li>
                 </ul>

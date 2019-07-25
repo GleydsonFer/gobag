@@ -152,9 +152,9 @@ export class OfertasService {
     }
 
     // retorna os produtos por nome 
-    public pesquisaProdutos(searchValue: string) {
+    public pesquisaProdutos(searchValue: string): Observable<Produto[]> {
 
-        return this.db.collection('produtos', ref =>
+        return this.db.collection<Produto>('produtos', ref =>
             ref
                 .orderBy('nome')
                 .startAt(searchValue.toLowerCase())
