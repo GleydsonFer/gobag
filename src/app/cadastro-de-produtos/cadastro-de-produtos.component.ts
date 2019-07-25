@@ -33,7 +33,7 @@ export class CadastroDeProdutosComponent implements OnInit {
   cadastrarProduto() {
     this.produto = new Produto();
     this.produto = {
-      id_produto: Date.now(),
+      id_produto: Date.now().toString(),
       nome: this.cadastro.value.nome,
       descricao: this.cadastro.value.descricao,
       valor: this.cadastro.value.valor,
