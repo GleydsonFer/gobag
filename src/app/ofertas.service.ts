@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
 import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/retry';
@@ -11,9 +10,9 @@ import { Oferta } from './shared/oferta.model';
 import { Pedido } from './shared/pedido.model';
 import { pipe } from 'rxjs';
 import { Produto } from './shared/produto.model';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage';
-
-
+import { FirebaseListObservable } from "@angular/fire/database-deprecated";
 
 @Injectable()
 export class OfertasService {
@@ -120,13 +119,12 @@ export class OfertasService {
     }
 
     // retorna um produto do banco
-    public getProdutoByID(id: string) {
-        return this.db.collection('produtos', ref => ref.where('id_produto', '==', id).limit(1))
+    public getProdutoByID(id: number) {
+        return this.db.collection('produtos', ref => ref.where('id_produto', '==', id))
             .snapshotChanges()
             .pipe(
                 map(changes => {
-                    console.log('changes',changes);
-                    return changes.map(c => ({ key: c.payload.doc.id, ...c.payload.doc.data() }))[0];
+                    return changes.map(c => ({ key: c.payload.doc.id, ...c.payload.doc.data() }));
                 })
             );
     }
@@ -151,6 +149,18 @@ export class OfertasService {
                     return changes.map(c => ({ key: c.payload.doc.id, ...c.payload.doc.data() }));
                 })
             );
+    }
+
+    // retorna os produtos por nome 
+    public pesquisaProdutos(searchValue: string) {
+
+        return this.db.collection('produtos', ref =>
+            ref
+                .orderBy('nome')
+                .startAt(searchValue.toLowerCase())
+                .endAt(searchValue.toLowerCase()+"\uf8ff")
+                .limit(5))
+                .valueChanges();
     }
 
     public setProduto(produto: Produto, imagens: any) {
