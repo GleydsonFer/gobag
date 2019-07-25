@@ -7,11 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LojasComponent implements OnInit {
 
-  mySlideOptions={
-    margin:10,
-    dot: false, 
+  mySlideOptions = {
+    margin: 10,
+    dot: false,
     nav: true,
-    navText: ["<div class='nav-btn prev-slide'>prev</div>", "<div class='nav-btn next-slide'>next</div>"],    
+    navText: [
+     // "<div class='nav-btn prev-slide'>prev</div>",
+     "<button type='button' role='presentation' style='background-color:red' class='owl-prev disabled'></button>",
+      "<div class='nav-btn next-slide'>next</div>"],
     responsiveClass: true,
     responsive: {
       0: {
@@ -89,8 +92,8 @@ export class LojasComponent implements OnInit {
       link: "loja01",
       alt: "loja01",
       image: "assets/logos-lojas/renner.png"
-    }    
-  
+    }
+
   ]
 
   constructor() { }

@@ -1,7 +1,7 @@
-<div *ngIf="!naoLogado; else logado">
-    <nav class="navbar  sticky-top navbar-light bg-light align-items-start row">
+<div *ngIf="!naoLogado; else logado" class="" (window:resize)="resize()">
+    <nav *ngIf="widthScreen;else para_Mobile" class="navbar  sticky-top navbar-light bg-light align-items-start row">
         <!-- coluna da direita com menu de pesquisa, logo e dropdown-->
-        <div class="col-7 col-md-7 col_left row">
+        <div class="col-md-7 col_left row ">
             <!-- menu dropdown com ascategorias -->
             <div class="dropdown " aria-labelledby="dropdownMenuButton">
                 <button class="navbar-toggler ml-3" type="button" id="dropdownMenuButton" data-toggle="dropdown"
@@ -41,13 +41,6 @@
 
                     </li>
                     <li class="dropdown-item">
-                        <a class="nav-link" data-toggle="dropdown" role="button" aria-haspopup="true"
-                            aria-expanded="false" routerLinkActive="active" routerLink="/fitness">
-                            Fitness
-                        </a>
-
-                    </li>
-                    <li class="dropdown-item">
                         <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                             aria-expanded="false" routerLinkActive="active" routerLink="/teen">
                             Teen
@@ -66,38 +59,146 @@
                     <img class="img-fluid" src="./assets/logo03.png" />
                 </a>
             </div>
-            <div class=" col-7 col-sm col-md-7 col-lg-8 pesquisar ">
+            <form class=" col-7 col-sm col-md-7 col-lg-8 pesquisar ">
                 <input class="form-control mr-sm-2" placeholder="Buscar qualquer produto" type="text" #termoDaPesquisa
-                    (keyup)="search()" [(ngModel)]="searchValue" aria-label="Pesquisar">
+                    (keyup)="pesquisa(termoDaPesquisa.value)" aria-label="Pesquisar">
 
-                <!-- <ul class="list-group">
-                        <li class="list-group-item" *ngFor="let produto of produtos | async">
-                            <a [routerLink]="['/oferta', produto.id_produto ]" (click)="limpaPesquisa()">
-                                {{ produto.nome | descricaoReduzida:15 }}
-                            </a>
-                        </li>
-                    </ul> -->
-                <!-- <input type="text" (keyup)="search()" [(ngModel)]="searchValue"> -->
-                <div class="search-results">
-                    <div class="search-result" *ngFor="let produto of produtos | async">
-                        <a [routerLink]="['/oferta', produto.id_produto ]" (click)="limpaPesquisa()">
-                            {{ produto.nome | descricaoReduzida:15 }}
+                <ul class="list-group">
+                    <li class="list-group-item" *ngFor="let oferta of ofertas | async">
+                        <a [routerLink]="['/oferta', oferta.id ]" (click)="limpaPesquisa()">
+                            {{ oferta.titulo | descricaoReduzida:15 }}
                         </a>
-                    </div>
-                </div>
-            </div>
+                    </li>
+                </ul>
+            </form>
         </div>
-
         <!-- coluna da direita onde fica o endereço do cliente e a bag -->
-        <div class="col-5 col-md-5 col_right d-flex justify-content-end">
+        <div class="col-md-5 col_right row d-flex justify-content-end flex-nowrap">
             <a class="login mr-3" routerLink="/acesso"></a>
-            <a class="mr-3 mt-1" href="#" (click)="sair()">Sair</a>
+            <a class=" btn_sair" href="#" (click)="sair()">Sair</a>
             <div class="endereco  mr-3">
-                <span>Entrega: {{ this.enderecoEntrega}}, {{ this.numeroEntrega}}</span>
+                <span class="" *ngIf="usuario !== null">Entrega: Martins de Carvalho, 2724 </span>
             </div>
             <a class="bag" routerLink="/ordem-compra">
-                <div class="numeroItensCarrinho">{{numeroItensCarrinho}}</div>
+                <div class="numeroItensCarrinho d-flex justify-content-center">{{numeroItensCarrinho}}</div>
             </a>
         </div>
     </nav>
+
+
+    <!-- template para visualização em dispositivos médios e pequenos portes -->
+    <ng-template #para_Mobile>
+        <nav class="navbar  fixed-top navbar-light bg-light align-items-start row">
+            <!-- coluna da direita com menu de pesquisa, logo e dropdown-->
+            <div class="col-1 col-sm-3 col_left row">
+                <!-- menu dropdown com ascategorias -->
+                <div class="dropdown " aria-labelledby="dropdownMenuButton">
+                    <button class="navbar-toggler ml-3" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <ul class="dropdown-menu  animated fadeInLeftBig">
+                        <li class="dropdown-item">
+                            <a class="nav-link" data-toggle="dropdown" role="button" aria-haspopup="true"
+                                aria-expanded="false" routerLink="">
+                                Novidades
+                            </a>
+                        </li>
+                        <li class="dropdown-item">
+                            <a class="nav-link" data-toggle="dropdown" role="button" aria-haspopup="true"
+                                aria-expanded="false" routerLinkActive="active" routerLink="/feminino">
+                                Feminino
+                            </a>
+                        </li>
+                        <li class="dropdown-item">
+                            <a class="nav-link" data-toggle="dropdown" role="button" aria-haspopup="true"
+                                aria-expanded="false" routerLinkActive="active" routerLink="/masculino">
+                                Masculino
+                            </a>
+                        </li>
+                        <li class="dropdown-item">
+                            <a class="nav-link" data-toggle="dropdown" role="button" aria-haspopup="true"
+                                aria-expanded="false" routerLinkActive="active" routerLink="/calcados">
+                                Calçados
+                            </a>
+                        </li>
+                        <li class="dropdown-item">
+                            <a class="nav-link" data-toggle="dropdown" role="button" aria-haspopup="true"
+                                aria-expanded="false" routerLinkActive="active" routerLink="/fitness">
+                                Fitness
+                            </a>
+
+                        </li>
+                        <li class="dropdown-item">
+                            <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                                aria-expanded="false" routerLinkActive="active" routerLink="/teen">
+                                Teen
+                            </a>
+                        </li>
+                        <li class="dropdown-item">
+                            <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                                aria-expanded="false" routerLinkActive="active" routerLink="/infantil">
+                                Infantil
+                            </a>
+                        </li>
+                    </ul> -->
+                    <!-- <input type="text" (keyup)="search()" [(ngModel)]="searchValue"> -->
+                    <div class="search-results">
+                        <div class="search-result" *ngFor="let produto of produtos | async">
+                            <a [routerLink]="['/oferta', produto.id_produto ]" (click)="limpaPesquisa()">
+                                {{ produto.nome | descricaoReduzida:15 }}
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- coluna da direita onde fica o endereço do cliente e a bag -->
+                <div class="col-11 col-sm-9 col_right row d-flex justify-content-end">
+                    <a class="login mr-3" routerLink="/acesso"></a>
+                    <a class="btn_sair" href="#" (click)="sair()">Sair</a>
+                    <div class="endereco  mr-3">
+                        <span class="" *ngIf="usuario !== null">Martins de Carvalho, 2724</span>
+                    </div>
+
+                    <div class="logo">
+                        <a class="logo_link" href="/">
+                            <img class="img-fluid" src="./assets/logo03.png" />
+                        </a>
+                    </div>
+                </div>
+                <div class="container row d-flex justify-content-center">
+                    <form class=" col-12 col-sm-12 row pesquisar">
+                        <input class="form-control mr-sm-2 col-10" placeholder="Buscar qualquer produto" type="text"
+                            #termoDaPesquisa (keyup)="pesquisa(termoDaPesquisa.value)" aria-label="Pesquisar">
+                        <div class="col-1">
+                            <a class="bag" routerLink="/ordem-compra">
+                                <img src="/assets/bag-topo.png" alt="">
+                                <div class="numeroItensCarrinho d-flex justify-content-center">{{numeroItensCarrinho}}
+                                </div>
+                            </a>
+                        </div>
+
+
+                        <ul class="list-group">
+                            <li class="list-group-item" *ngFor="let oferta of ofertas | async">
+                                <a [routerLink]="['/oferta', oferta.id ]" (click)="limpaPesquisa()">
+                                    {{ oferta.titulo | descricaoReduzida:15 }}
+                                </a>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+
+            <!-- coluna da direita onde fica o endereço do cliente e a bag -->
+            <div class="col-5 col-md-5 col_right d-flex justify-content-end">
+                <a class="login mr-3" routerLink="/acesso"></a>
+                <a class="mr-3 mt-1" href="#" (click)="sair()">Sair</a>
+                <div class="endereco  mr-3">
+                    <span>Entrega: {{ this.enderecoEntrega}}, {{ this.numeroEntrega}}</span>
+                </div>
+            </div>
+        </nav>
+    </ng-template>
 </div>

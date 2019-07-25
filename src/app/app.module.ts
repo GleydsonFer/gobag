@@ -62,6 +62,7 @@ import { AngularFireAuthModule } from "@angular/fire/auth";
 import { environment } from "../environments/environment";
 import { CadastroDeProdutosComponent } from './cadastro-de-produtos/cadastro-de-produtos.component';
 import { DadosdepagamentoComponent } from './dadosdepagamento/dadosdepagamento.component';
+import { CarouselOrdemCompraComponent } from './ordem-compra/carousel-ordem-compra/carousel-ordem-compra.component';
 
 registerLocaleData(localePtBr);
 
@@ -97,6 +98,7 @@ registerLocaleData(localePtBr);
     TopoLogadoComponent,
     CadastroDeProdutosComponent,
     DadosdepagamentoComponent,
+    CarouselOrdemCompraComponent,
     //ajustanto o erro ngIf
 
     //

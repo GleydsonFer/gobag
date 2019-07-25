@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { UsuarioService } from './../usuario.service';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
@@ -7,9 +8,6 @@ import { Autenticacao } from '../autenticacao.service';
 import CarrinhoService from '../carrinho.service';
 import { OfertasService } from '../ofertas.service';
 import { Oferta } from '../shared/oferta.model';
-import { Produto } from '../shared/produto.model';
-import { UsuarioService } from '../usuario.service';
-import '../util/rxjs-extensions';
 
 @Component({
   selector: 'app-topo-logado',
@@ -18,10 +16,11 @@ import '../util/rxjs-extensions';
   providers: [OfertasService]
 })
 export class TopoLogadoComponent implements OnInit {
-
+  public usuario:any
   public enderecoEntrega: string;
   public numeroEntrega: string;
   public numeroItensCarrinho: number;
+  public widthScreen:boolean = true;
 
   public ofertas: Observable<Oferta[]>
   private subjectPesquisa: Subject<string> = new Subject<string>()
@@ -38,6 +37,17 @@ export class TopoLogadoComponent implements OnInit {
     public userService: UsuarioService
   ) { }
 
+  ngAfterViewInit(): void {
+    this.resize()
+  }
+  resize(){
+    if(screen.width > 820){
+      this.widthScreen = true
+    }else{
+      this.widthScreen = false
+    }
+    // console.log(this.widthScreen);
+  }
   ngOnInit() {
     var aux
     var endereco
@@ -59,14 +69,14 @@ export class TopoLogadoComponent implements OnInit {
     
     //Puxa o endereço de entrega do banco de dados
     this.ofertasService.getEnderecoDePedidos().then((resp) => {
-      this.enderecoEntrega = resp.endereco;
+     this.enderecoEntrega = resp.endereco;
     })
     //Puxa o número da casa de entrega do banco de dados
-    this.ofertasService.getNumeroDePedidos().then((resp) => {
-      this.numeroEntrega = resp.numero;
-    })
+    // this.ofertasService.getNumeroDePedidos().then((resp) => {
+    //   this.numeroEntrega = resp.numero;
+    // })
 
-    //mostrar número de itens no carrinho
+   // mostrar número de itens no carrinho
     this.carrinhoService.emitirNumeroDeItens.subscribe(
       numeroItens => this.numeroItensCarrinho = numeroItens
     );
