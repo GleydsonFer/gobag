@@ -17,6 +17,7 @@ import { ROUTES } from './app.routes';
 
 import { AppComponent } from './app.component';
 import { OwlModule } from 'ngx-owl-carousel';
+import { TagInputModule } from 'ngx-chips';
 import { TopoComponent } from './topo/topo.component';
 import { HomeComponent } from './home/home.component';
 import { RodapeComponent } from './rodape/rodape.component';
@@ -65,6 +66,8 @@ import { DadosdepagamentoComponent } from './dadosdepagamento/dadosdepagamento.c
 import { CarouselOrdemCompraComponent } from './ordem-compra/carousel-ordem-compra/carousel-ordem-compra.component';
 
 registerLocaleData(localePtBr);
+
+
 
 @NgModule({
   declarations: [
@@ -123,12 +126,16 @@ registerLocaleData(localePtBr);
     AngularFireAuthModule,
     AngularFireStorageModule,
     FormsModule,
+<<<<<<< HEAD
+    TagInputModule
+=======
+>>>>>>> 4378c789b0250de6ec17e5190683a4c589e4d669
   ],
   providers: [
     CarrinhoService, { provide: LOCALE_ID, useValue: 'pt-Br' },
     OfertasService,
     Autenticacao,
-    AutenticacaoGuard   
+    AutenticacaoGuard
   ],
   bootstrap: [
     AppComponent
