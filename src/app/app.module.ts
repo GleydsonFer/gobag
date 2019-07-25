@@ -126,10 +126,7 @@ registerLocaleData(localePtBr);
     AngularFireAuthModule,
     AngularFireStorageModule,
     FormsModule,
-<<<<<<< HEAD
     TagInputModule
-=======
->>>>>>> 4378c789b0250de6ec17e5190683a4c589e4d669
   ],
   providers: [
     CarrinhoService, { provide: LOCALE_ID, useValue: 'pt-Br' },

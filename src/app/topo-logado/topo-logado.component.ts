@@ -22,12 +22,6 @@ export class TopoLogadoComponent implements OnInit {
   public numeroItensCarrinho: number;
   public widthScreen:boolean = true;
 
-<<<<<<< HEAD
- 
-  
-
-=======
->>>>>>> 4378c789b0250de6ec17e5190683a4c589e4d669
   public ofertas: Observable<Oferta[]>
   private subjectPesquisa: Subject<string> = new Subject<string>()
   
@@ -56,7 +50,6 @@ export class TopoLogadoComponent implements OnInit {
   }
   ngOnInit() {
     var aux
-<<<<<<< HEAD
 
     this.ofertas = this.subjectPesquisa //retorno Oferta[]
       .debounceTime(1000) //executa a ação do switchMap após 1 segundo
@@ -72,10 +65,6 @@ export class TopoLogadoComponent implements OnInit {
       .catch((err: any) => {
         return Observable.of<Oferta[]>([])
       })
-=======
-    var endereco
-    var numero
->>>>>>> 4378c789b0250de6ec17e5190683a4c589e4d669
 
     // this.ofertas = this.subjectPesquisa //retorno Oferta[]
     //   .debounceTime(1000) //executa a ação do switchMap após 1 segundo
