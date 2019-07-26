@@ -72,6 +72,10 @@ import { environment } from "../environments/environment";
 import { CadastroDeProdutosComponent } from './cadastro-de-produtos/cadastro-de-produtos.component';
 import { DadosdepagamentoComponent } from './dadosdepagamento/dadosdepagamento.component';
 
+// app.module.ts
+
+import { OrdemPagamentoComponent } from './ordem-pagamento/ordem-pagamento.component';
+import { StatusPedidoComponent } from './status-pedido/status-pedido.component';
 
 registerLocaleData(localePtBr);
 
@@ -107,6 +111,8 @@ registerLocaleData(localePtBr);
     TopoLogadoComponent,
     CadastroDeProdutosComponent,
     DadosdepagamentoComponent,
+    OrdemPagamentoComponent,
+    StatusPedidoComponent,
     //ajustanto o erro ngIf
 
     //
@@ -130,14 +136,14 @@ registerLocaleData(localePtBr);
     AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
-    FormsModule
-
+    FormsModule,
   ],
   providers: [
     CarrinhoService, { provide: LOCALE_ID, useValue: 'pt-Br' },
     OfertasService,
     Autenticacao,
-    AutenticacaoGuard   
+    AutenticacaoGuard,
+      
   ],
   bootstrap: [
     AppComponent

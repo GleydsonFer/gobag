@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable'
 import { Subject } from 'rxjs/Subject'
-import { map } from 'rxjs/operators';
 import { AngularFirestore } from '@angular/fire/firestore';
 
 
@@ -45,8 +44,6 @@ export class TopoLogadoComponent implements OnInit {
 
   ngOnInit() {
     var aux
-    var endereco
-    var numero
     
     this.ofertas = this.subjectPesquisa //retorno Oferta[]
       .debounceTime(1000) //executa a ação do switchMap após 1 segundo

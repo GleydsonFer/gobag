@@ -29,9 +29,6 @@ import { EventEmitter } from '@angular/core';
             this.itens.push(itemCarrinho);
             this.emitirNumeroDeItens.emit(this.itens.length);
         }
-
-        
-        
      }
 
      public totalCarrinhoCompras(): number {
@@ -40,7 +37,6 @@ import { EventEmitter } from '@angular/core';
          this.itens.map((item:ItemCarrinho)=> {
              total= total +(item.valor * item.quantidade)
          })
-
          return total
      }
 
@@ -49,8 +45,6 @@ import { EventEmitter } from '@angular/core';
 
          //incrementar quantidade
          let itemCarrinhoEncontrado = this.itens.find((item:ItemCarrinho)=> item.id === itemCarrinho.id)
-
-        
          if(itemCarrinhoEncontrado) {
             itemCarrinhoEncontrado.quantidade +=1
          }
@@ -73,7 +67,6 @@ import { EventEmitter } from '@angular/core';
      public limparCarrinho(): void {
          this.itens = []
      }
-
 }
 
 export default CarrinhoService

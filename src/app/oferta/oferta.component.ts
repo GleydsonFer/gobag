@@ -4,7 +4,6 @@ import { OfertasService } from '../ofertas.service'
 import CarrinhoService from '../carrinho.service'
 import { ToastrService } from 'ngx-toastr';
 
-
 import { Oferta } from '../shared/oferta.model'
 import { AutenticacaoGuard } from '../autenticacao-guard.service';
 

@@ -9,6 +9,8 @@ import * as firebase from 'firebase'
 })
   
 export class AppComponent implements OnInit {
+ 
+  
   ngOnInit(): void {
     
     //AQUI FICA AS CONFIGURAÇÕES DO SDK EXTRAIDA DO FIREBASE!
@@ -24,6 +26,7 @@ export class AppComponent implements OnInit {
       messagingSenderId: "486427866121",
       appId: "1:486427866121:web:3a5a6b4d4a285426"
     };
+    
     //fim.
 
     // CONFIGURAÇÃO DO SDK DO FIREBASE DA NABAG
@@ -40,5 +43,7 @@ export class AppComponent implements OnInit {
     // };
 
     // firebase.initializeApp(firebaseConfig);
+
+    
   }
 }
