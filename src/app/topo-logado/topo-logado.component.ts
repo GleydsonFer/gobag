@@ -8,6 +8,7 @@ import CarrinhoService from '../carrinho.service';
 import { OfertasService } from '../ofertas.service';
 import { Produto } from '../shared/produto.model';
 import { UsuarioService } from './../usuario.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-topo-logado',
@@ -16,18 +17,17 @@ import { UsuarioService } from './../usuario.service';
   providers: [OfertasService]
 })
 export class TopoLogadoComponent implements OnInit {
+
   public usuario:any
   public enderecoEntrega: string;
   public numeroEntrega: string;
   public numeroItensCarrinho: number;
   public widthScreen:boolean = true;
 
-  // public ofertas: Observable<Oferta[]>
-  public produtos: Observable<Produto[]>
+  produtos: Observable<any[]>
+  startAt: BehaviorSubject<string | null> = new BehaviorSubject('');
   private subjectPesquisa: Subject<string> = new Subject<string>()
   
-  searchValue: string = '';
-
   constructor(
     private ofertasService: OfertasService,
     private autenticacao: Autenticacao,
@@ -50,19 +50,7 @@ export class TopoLogadoComponent implements OnInit {
   ngOnInit() {
     var aux
 
-    this.produtos = this.subjectPesquisa //retorno Produto[]
-      .debounceTime(500) //executa a ação do switchMap após 1/2 segundo
-      .distinctUntilChanged() //para fazer pesquisas distintas
-      .switchMap((termo: string) => {
-        if (termo.trim() === '') {
-          //retornar um observable de array de produtos vazio
-          return Observable.of<Produto[]>([])
-        }
-        return this.ofertasService.pesquisaProdutos(termo).subscribe(prods => prods);
-      })
-      .catch((err: any) => {
-        return Observable.of<Produto[]>([])
-      })
+    this.produtos = this.ofertasService.pesquisaProdutos(this.startAt);
 
     this.produtos.subscribe(prods => {
       console.log(prods);
@@ -84,8 +72,8 @@ export class TopoLogadoComponent implements OnInit {
     })
   }
 
-  public pesquisa(termoDaBusca: string): void {
-    this.subjectPesquisa.next(termoDaBusca);
+  public pesquisa(termoDaBusca) {
+    this.startAt.next(termoDaBusca);
   }
 
   public limpaPesquisa(): void {
