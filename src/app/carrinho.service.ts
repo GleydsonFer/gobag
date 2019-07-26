@@ -1,72 +1,74 @@
-import { ItemCarrinho } from './shared/item-carrinho.model'
-import { Oferta } from './shared/oferta.model';
 import { EventEmitter } from '@angular/core';
- 
- class CarrinhoService {
-     public itens: ItemCarrinho[] = []
-     public emitirNumeroDeItens: EventEmitter<number> = new EventEmitter<number>();
+import { ItemCarrinho } from './shared/item-carrinho.model';
+import { Produto } from './shared/produto.model';
 
-     public exibirItens(): ItemCarrinho[] {
-         return this.itens
-     }
+class CarrinhoService {
+    public itens: ItemCarrinho[] = []
+    public emitirNumeroDeItens: EventEmitter<number> = new EventEmitter<number>();
 
-     public incluirItem(oferta: Oferta): void {
-         let itemCarrinho: ItemCarrinho = new ItemCarrinho(
-             oferta.id,
-             oferta.imagens[0],
-             oferta.titulo,
-             oferta.descricao_oferta,
-             oferta.valor,
-             1
-         )
+    public exibirItens(): ItemCarrinho[] {
+        return this.itens
+    }
 
-         //verificar se o item em questão já não existe dentro de this.itens
-        let itemCarrinhoEncontrado = this.itens.find((item:ItemCarrinho)=> item.id === itemCarrinho.id)
+    public incluirItem(produto: Produto): void {
+        let itemCarrinho: ItemCarrinho = new ItemCarrinho(
+            produto.id_produto,
+            produto.imagens[0],
+            produto.nome,
+            produto.descricao,
+            produto.valor,
+            1
+        )
 
-        if(itemCarrinhoEncontrado) {
+        //verificar se o item em questão já não existe dentro de this.itens
+        let itemCarrinhoEncontrado = this.itens.find((item: ItemCarrinho) => item.id === itemCarrinho.id)
+
+        if (itemCarrinhoEncontrado) {
             itemCarrinhoEncontrado.quantidade += 1
         } else {
             this.itens.push(itemCarrinho);
             this.emitirNumeroDeItens.emit(this.itens.length);
         }
-     }
+    }
 
-     public totalCarrinhoCompras(): number {
-         let total: number = 0
+    public totalCarrinhoCompras(): number {
+        let total: number = 0
 
-         this.itens.map((item:ItemCarrinho)=> {
-             total= total +(item.valor * item.quantidade)
-         })
-         return total
-     }
+        this.itens.map((item: ItemCarrinho) => {
+            total = total + (item.valor * item.quantidade)
+        })
 
-     public adicionarQuantidade(itemCarrinho: ItemCarrinho): void {
-         
+        return total
+    }
 
-         //incrementar quantidade
-         let itemCarrinhoEncontrado = this.itens.find((item:ItemCarrinho)=> item.id === itemCarrinho.id)
-         if(itemCarrinhoEncontrado) {
-            itemCarrinhoEncontrado.quantidade +=1
-         }
-     }
+    public adicionarQuantidade(itemCarrinho: ItemCarrinho): void {
 
-     public diminuirQuantidade(itemCarrinho: ItemCarrinho): void {
-         //decrementar quantidade
-         let itemCarrinhoEncontrado = this.itens.find((item:ItemCarrinho)=> item.id === itemCarrinho.id)
+        //incrementar quantidade
+        let itemCarrinhoEncontrado = this.itens.find((item: ItemCarrinho) => item.id === itemCarrinho.id)
 
-         if(itemCarrinhoEncontrado) {
-            itemCarrinhoEncontrado.quantidade -=1
+        if (itemCarrinhoEncontrado) {
+            itemCarrinhoEncontrado.quantidade += 1
+        }
+    }
 
-            if(itemCarrinhoEncontrado.quantidade === 0){
+    public diminuirQuantidade(itemCarrinho: ItemCarrinho): void {
+        //decrementar quantidade
+        let itemCarrinhoEncontrado = this.itens.find((item: ItemCarrinho) => item.id === itemCarrinho.id)
+
+        if (itemCarrinhoEncontrado) {
+            itemCarrinhoEncontrado.quantidade -= 1
+
+            if (itemCarrinhoEncontrado.quantidade === 0) {
                 this.itens.splice(this.itens.indexOf(itemCarrinhoEncontrado), 1);
                 this.emitirNumeroDeItens.emit(this.itens.length);
             }
-         }
-     }
+        }
+    }
 
-     public limparCarrinho(): void {
-         this.itens = []
-     }
+    public limparCarrinho(): void {
+        this.itens = []
+    }
+
 }
 
 export default CarrinhoService

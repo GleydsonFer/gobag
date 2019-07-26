@@ -33,6 +33,9 @@ npm install --save @angular/animations
 -- INSTALAÇÃO DA NOTIFICAÇÃO DE ADICIONADO AO CARRINHO --
 npm install ngx-toastr --save
 
+-- INSTALAÇÃO NG-BOOTSTRAP --
+npm install --save @ng-bootstrap/ng-bootstrap
+
 Após instalar todos os pacotes 
 
 -- PARA INICIAR A APLICAÇÃO --

@@ -12,6 +12,7 @@ export class CadastroDeProdutosComponent implements OnInit {
 
   private produto: Produto;
   private imagens: Array<any> = [];
+  private categorias = [];
 
   constructor(private ofertasService: OfertasService) { }
 
@@ -31,13 +32,21 @@ export class CadastroDeProdutosComponent implements OnInit {
 
   // envia o produto com as imagens no formato de string vazio,
   cadastrarProduto() {
+    //reorganizando categorias para ser array de strings, e não de objetos
+    var aux = [];
+    this.categorias.forEach(element => {
+      aux.push(element.display)
+    });
+    this.categorias = aux;
+    console.log(this.categorias)
+
     this.produto = new Produto();
     this.produto = {
-      id_produto: Date.now(),
+      id_produto: Date.now().toString(),
       nome: this.cadastro.value.nome,
       descricao: this.cadastro.value.descricao,
       valor: this.cadastro.value.valor,
-      categoria: this.cadastro.value.categoria,
+      categoria: this.categorias,
       loja: this.cadastro.value.loja,
       tamanho: this.cadastro.value.tamanho,
       estoque: this.cadastro.value.estoque,
@@ -51,9 +60,9 @@ export class CadastroDeProdutosComponent implements OnInit {
   }
 
   // insere as imagens seleiconadas pelo usuário ao Array de imagens
-  uploadFile(event){
-    for(let imagem of event.target.files){
-      this.imagens.push( imagem );
+  uploadFile(event) {
+    for (let imagem of event.target.files) {
+      this.imagens.push(imagem);
     }
   }
 

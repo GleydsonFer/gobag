@@ -4,8 +4,8 @@
 <div class="container">
   
   <div class="secao">
-    <h3 class="text-center">MODA MASCULINA</h3>
-    <h5 class="text-center">Conheça as melhores ofertas para roupas masculinas:</h5>
+    <h3 class="text-center">MODA INFANTIL</h3>
+    <h5 class="text-center">Conheça as melhores ofertas para roupas infantis:</h5>
   </div>
 
 </div>
@@ -16,22 +16,22 @@
       <div class="row" style="border-top: 1px solid rgba(0,0,0,.1);
     padding-top: 20px;">
   
-        <div class="col-md-3" *ngFor="let oferta of ofertas">
+        <div class="col-md-3" *ngFor="let produto of produtos | async">
             <div class="prod">
               <div class="prod_title-box">
-                <h4 class="prod_title">{{ oferta.titulo }}</h4>
+                <h4 class="prod_title">{{ produto.titulo }}</h4>
               </div>
     
               <figure class="prod_img-box">
-                <img [src]="oferta.imagens[0].url" class="img-fluid prod_img" />
-                <img [src]="oferta.imagens[1].url" class="img-fluid prod_img second_img" />
+                <img [src]="produto.imagens[0]" class="img-fluid prod_img" />
+                <img [src]="produto.imagens[1]" class="img-fluid prod_img second_img" />
               </figure>
     
               <div class="prod_price-box">  
-                <p class="prod_price">{{ oferta.valor | currency:'BRL':true }}</p>
+                <p class="prod_price">{{ produto.valor | currency : 'BRL' : 'symbol' }}</p>
               </div>
     
-              <button class="btn_ofer" [routerLink]="['/oferta', oferta.id]">Ver oferta</button>
+              <button class="btn_ofer" [routerLink]="['/oferta', produto.id]">Ver oferta</button>
   
             </div>
         </div>

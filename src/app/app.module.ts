@@ -4,9 +4,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from "@angular/forms";
 
-
 //cadastro
-
 import { Autenticacao } from './autenticacao.service'
 import { CadastroComponent } from './acesso/cadastro/cadastro.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -14,14 +12,12 @@ import { AcessoComponent } from './acesso/acesso.component';
 import { BannerComponent } from './acesso/banner/banner.component';
 import { LoginComponent } from './acesso/login/login.component';
 
-
-
-
 //
 import { ROUTES } from './app.routes';
 
 import { AppComponent } from './app.component';
 import { OwlModule } from 'ngx-owl-carousel';
+import { TagInputModule } from 'ngx-chips';
 import { TopoComponent } from './topo/topo.component';
 import { HomeComponent } from './home/home.component';
 import { RodapeComponent } from './rodape/rodape.component';
@@ -44,8 +40,6 @@ import { TeenComponent } from './teen/teen.component';
 import { CalcadosComponent } from './calcados/calcados.component';
 import { BannerSlideComponent } from './banner-slide/banner-slide.component';
 import { OrdemCompraSucessoComponent } from './ordem-compra-sucesso/ordem-compra-sucesso.component';
-
-//
 import CarrinhoService from './carrinho.service'
 import { ReactiveFormsModule } from '@angular/forms'
 
@@ -54,8 +48,6 @@ import { Tendencia01Component } from './tendencia01/tendencia01.component';
 import { OfertasService } from './ofertas.service';
 import { Tendencia02Component } from './tendencia02/tendencia02.component';
 import { Tendencia03Component } from './tendencia03/tendencia03.component';
-
-
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Loja01Component } from './loja01/loja01.component';
@@ -76,8 +68,11 @@ import { DadosdepagamentoComponent } from './dadosdepagamento/dadosdepagamento.c
 
 import { OrdemPagamentoComponent } from './ordem-pagamento/ordem-pagamento.component';
 import { StatusPedidoComponent } from './status-pedido/status-pedido.component';
+import { CarouselOrdemCompraComponent } from './ordem-compra/carousel-ordem-compra/carousel-ordem-compra.component';
 
 registerLocaleData(localePtBr);
+
+
 
 @NgModule({
   declarations: [
@@ -113,6 +108,7 @@ registerLocaleData(localePtBr);
     DadosdepagamentoComponent,
     OrdemPagamentoComponent,
     StatusPedidoComponent,
+    CarouselOrdemCompraComponent,
     //ajustanto o erro ngIf
 
     //
@@ -137,13 +133,13 @@ registerLocaleData(localePtBr);
     AngularFireAuthModule,
     AngularFireStorageModule,
     FormsModule,
+    TagInputModule
   ],
   providers: [
     CarrinhoService, { provide: LOCALE_ID, useValue: 'pt-Br' },
     OfertasService,
     Autenticacao,
-    AutenticacaoGuard,
-      
+    AutenticacaoGuard
   ],
   bootstrap: [
     AppComponent

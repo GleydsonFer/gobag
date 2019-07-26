@@ -6,7 +6,6 @@
     <!-- <div class="form-group">
       <input type="email" class="form-control" placeholder="E-mail">
     </div> -->
-
     <div class="form-group">
       <input type="text" class="form-control" placeholder="Nome da Loja" formControlName="loja">
     </div>
@@ -49,10 +48,24 @@
       <input type="text" class="form-control col-sm-9 w-100" placeholder="R$0,00" formControlName="valor">
     </div>
 
+    <!-- <div class="form-group row w-100" [formArrayName]="categoria" *ngFor="let item of QuantCateg; let i=index">
+      <span class="row w-100" *ngIf="i == 0">
+        <label for="tamanho" class="col-form-label col-sm-3 w-100">Categoria do produto:</label>
+        <input type="text" class="form-control col-sm-8 w-100" placeholder="Categoria do produto"
+          formControlName="1">
+        <div class="col-sm-1 ">
+          <button class="btn_adicionar btn btn-primary col-sm-12 d-flex justify-content-center" (click)="addCampo()"> +
+          </button>
+        </div>
+      </span>
+      <input type="text" class="input_categoria w-100 mt-1 form-control col-sm-8 w-100"
+        placeholder="Categoria do produto" formControlName="i">
+    </div> -->
+
     <div class="form-group row w-100">
-      <label for="tamanho" class="col-form-label col-sm-3 w-100">Categoria do produto:</label>
-      <input type="text" class="form-control col-sm-9 w-100" placeholder="Categoria do produto"
-        formControlName="categoria">
+        <label for="tamanho" class="col-form-label col-sm-3 w-100">Categoria do produto:</label>
+        <!-- <input type="text" class="form-control col-sm-9 w-100" data-role="tagsinput"placeholder="Categoria do produto" formControlName="1"> --> 
+        <tag-input class="input_tag col-sm-9 w-100" placeholder="categorias" secondaryPlaceholder="categorias" [(ngModel)]='categorias'  formControlName="categoria"></tag-input>
     </div>
 
     <!--tamanho-->
@@ -83,13 +96,8 @@
 
     <div class="form-group row w-100">
       <label for="imagens" class="col-form-label col-sm-3">Inserir imagens: </label>
-      <input 
-        id="imagens" 
-        type="file" 
-        class="form-control col-sm-9" 
-        accept="image/*" 
-        (change)="uploadFile($event)" 
-        />
+      <input id="imagens" type="file" class="form-control col-sm-9" accept="image/*" (change)="uploadFile($event)"
+        multiple />
     </div>
 
     <div class="d-flex justify-content-around">
@@ -97,3 +105,4 @@
     </div>
   </form>
 </div>
+

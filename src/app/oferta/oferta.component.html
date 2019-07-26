@@ -1,15 +1,15 @@
 <div class="container">
-  <div class="oferta" *ngIf="oferta !== undefined">
-  
+  <div class="oferta" *ngIf="prod; else loading">
+
     <div class="row">
       <div class="col-md-6">
         <div class="oferta_img-box">
-          <img [src]="oferta.imagens[0].url" class="img-fluid prod_oferta-img"/>
+          <img [src]="prod.imagens" class="img-fluid prod_oferta-img" />
         </div>
 
         <div class="row">
-          <figure *ngFor="let imagem of oferta.imagens" class="thumbnails col-3">
-            <img [src]="imagem.url" class="img-fluid prod_oferta-thumb"/>
+          <figure *ngFor="let imagem of prod.imagens" class="thumbnails col-3">
+            <img [src]="imagem" class="img-fluid prod_oferta-thumb" />
           </figure>
         </div>
       </div>
@@ -18,12 +18,12 @@
         <div class="row">
 
           <div class="info_prod">
-            <h2 class="tit_prod">{{ oferta.titulo }}</h2>
-            <h4 class="desc_prod"><strong>descrição:</strong> {{ oferta.descricao_oferta }}</h4>
+            <h2 class="tit_prod">{{ prod.nome }}</h2>
+            <h4 class="desc_prod"><strong>descrição:</strong> {{ prod.descricao }}</h4>
 
             <div class="price_box">
-                <p>Por apenas:</p>
-                <span class="price_prod">{{ oferta.valor | currency:'BRL':true }}</span>
+              <p>Por apenas:</p>
+              <span class="price_prod">{{ prod.valor | currency : 'BRL' : 'symbol' }}</span>
             </div>
 
             <div class="medidas_box">
@@ -32,31 +32,35 @@
               <div class="medida">G</div>
             </div>
 
-            <button 
-                type="button" 
-                class="btn_pedido"
-                (click)="adicionarItemCarrinho()"
-                > Adicionar ao carrinho
-            </button> 
+            <button type="button" class="btn_pedido" (click)="adicionarItemCarrinho()"> Adicionar ao carrinho
+            </button>
+
           </div>
+
         </div>
+
       </div>
     </div>
   </div>
   <!-- Fim da div oferta -->
-  
+
+  <ng-template #loading>Loading&hellip;</ng-template>
+
   <div class="row mt-3" style="margin-bottom: 25px; margin-bottom: 150px">
     <div class="col">
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
-          <a class="nav-link active" routerLink="produtos-relacionados" data-toggle="tab" role="tab" aria-expanded="true">Produtos Relacionados</a>
+          <a class="nav-link active" routerLink="produtos-relacionados" data-toggle="tab" role="tab"
+            aria-expanded="true">Produtos Relacionados</a>
         </li>
         <!-- <li class="nav-item">
           <a class="nav-link" routerLink="avaliacao" data-toggle="tab" role="tab">Avaliações</a>
         </li> -->
       </ul>
       <div class="tab-content">
-        <router-outlet></router-outlet>
+        <div *ngIf="prod">
+          <app-produtos-relacionados [prod]="prod"></app-produtos-relacionados>
+        </div>
       </div>
     </div>
   </div>

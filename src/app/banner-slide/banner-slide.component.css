@@ -1,5 +1,5 @@
-
-/* .banner_home{
+/* 
+.banner_home{
     margin-top:56px;
 } */
 .texto1{
@@ -112,7 +112,6 @@
 @media (max-width: 768px) and (min-width:768px) {
     .col_center img{
         margin-bottom: 160px;
-        background-color:blue;
     } 
  }
 
@@ -163,6 +162,12 @@
     }
 } 
 
+@media (max-width: 820px){
+    .banner_home{
+        margin-top:120px;
+        background-color: blue;
+    }
+}
 
 
 

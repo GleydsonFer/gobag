@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
 import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/retry';
@@ -11,9 +10,9 @@ import { Oferta } from './shared/oferta.model';
 import { Pedido } from './shared/pedido.model';
 import { pipe } from 'rxjs';
 import { Produto } from './shared/produto.model';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage';
-
-
+import { FirebaseListObservable } from "@angular/fire/database-deprecated";
 
 @Injectable()
 export class OfertasService {
@@ -119,13 +118,9 @@ export class OfertasService {
             );
     }
 
-    public getImagensStorage(filePath: string) {
-        return this.storage.storage.ref(filePath).getDownloadURL();
-    }
-
     // retorna um produto do banco
-    public getOneProduto(key: string) {
-        return this.db.collection('produtos', ref => ref.where(ref.id, '==', key))
+    public getProdutoByID(id: number) {
+        return this.db.collection('produtos', ref => ref.where('id_produto', '==', id))
             .snapshotChanges()
             .pipe(
                 map(changes => {
@@ -136,7 +131,7 @@ export class OfertasService {
 
     // retorna os produtos por categoria
     public getProdutosByCategorias(categoria: string) {
-        return this.db.collection('produtos', ref => ref.where('categoria', 'array-contains', categoria))
+        return this.db.collection('produtos', ref => ref.where('categoria', '==', categoria.toLowerCase()))
             .snapshotChanges()
             .pipe(
                 map(changes => {
@@ -147,7 +142,7 @@ export class OfertasService {
 
     // retorna os produtos por loja
     public getProdutosByLojas(loja: string) {
-        return this.db.collection('produtos', ref => ref.where('loja', '==', loja))
+        return this.db.collection('produtos', ref => ref.where('loja', '==', loja.toLowerCase()))
             .snapshotChanges()
             .pipe(
                 map(changes => {
@@ -156,24 +151,25 @@ export class OfertasService {
             );
     }
 
+    // retorna os produtos por nome 
+    public pesquisaProdutos(searchValue: string) {
+
+        return this.db.collection('produtos', ref =>
+            ref
+                .orderBy('nome')
+                .startAt(searchValue.toLowerCase())
+                .endAt(searchValue.toLowerCase()+"\uf8ff")
+                .limit(5))
+                .valueChanges();
+    }
+
     public setProduto(produto: Produto, imagens: any) {
+
+        console.log("analizar produto \n" + produto.categoria)
 
         // Id único que servirá tanto para o firestore quanto para o storage
         let fireUID = '';
         let stringImagens: Array<string> = [];
-
-        // Adiciona o produto no Firestore 
-        // this.db.collection('produtos').add({
-        //     id_produto: produto.id_produto,
-        //     nome: produto.nome,
-        //     descricao: produto.descricao,
-        //     valor: produto.valor,
-        //     categoria: produto.categoria,
-        //     loja: produto.loja,
-        //     tamanho: produto.tamanho,
-        //     estoque: produto.estoque,
-        //     observacoes: produto.observacoes ? produto.observacoes : '',
-        // }).then(user => {
 
         // adiciono os produtos sem o campo de imagens no firestore,
         this.db.collection('produtos').add(produto).then(user => {
@@ -203,6 +199,6 @@ export class OfertasService {
         })
 
 
-    }
+     }
 
 }

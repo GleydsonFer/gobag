@@ -1,18 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/Observable'
-import { Subject } from 'rxjs/Subject'
-import { AngularFirestore } from '@angular/fire/firestore';
-
-
-import { Autenticacao } from '../autenticacao.service'
-
-import { OfertasService } from '../ofertas.service'
-import { Oferta } from '../shared/oferta.model'
-
-import '../util/rxjs-extensions'
-import CarrinhoService from '../carrinho.service';
+import { UsuarioService } from './../usuario.service';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { UsuarioService } from '../usuario.service';
+import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
+import { Autenticacao } from '../autenticacao.service';
+import CarrinhoService from '../carrinho.service';
+import { OfertasService } from '../ofertas.service';
+import { Oferta } from '../shared/oferta.model';
 
 @Component({
   selector: 'app-topo-logado',
@@ -21,17 +16,17 @@ import { UsuarioService } from '../usuario.service';
   providers: [OfertasService]
 })
 export class TopoLogadoComponent implements OnInit {
-
+  public usuario:any
   public enderecoEntrega: string;
   public numeroEntrega: string;
   public numeroItensCarrinho: number;
-
- 
-  
-
+  public widthScreen:boolean = true;
 
   public ofertas: Observable<Oferta[]>
   private subjectPesquisa: Subject<string> = new Subject<string>()
+  
+  produtos: any;
+  searchValue: string = '';
 
   constructor(
     private ofertasService: OfertasService,
@@ -42,9 +37,19 @@ export class TopoLogadoComponent implements OnInit {
     public userService: UsuarioService
   ) { }
 
+  ngAfterViewInit(): void {
+    this.resize()
+  }
+  resize(){
+    if(screen.width > 820){
+      this.widthScreen = true
+    }else{
+      this.widthScreen = false
+    }
+    // console.log(this.widthScreen);
+  }
   ngOnInit() {
     var aux
-    
     this.ofertas = this.subjectPesquisa //retorno Oferta[]
       .debounceTime(1000) //executa a ação do switchMap após 1 segundo
       .distinctUntilChanged() //para fazer pesquisas distintas
@@ -60,29 +65,47 @@ export class TopoLogadoComponent implements OnInit {
         return Observable.of<Oferta[]>([])
       })
 
+    // this.ofertas = this.subjectPesquisa //retorno Oferta[]
+    //   .debounceTime(1000) //executa a ação do switchMap após 1 segundo
+    //   .distinctUntilChanged() //para fazer pesquisas distintas
+    //   .switchMap((termo: string) => {
+    //     if (termo.trim() === '') {
+    //       //retornar um observable de array de ofertas vazio
+    //       return Observable.of<Oferta[]>([])
+    //     }
+    //     return this.ofertasService.pesquisaOfertas(termo)
+    //   })
+    //   .catch((err: any) => {
+    //     return Observable.of<Oferta[]>([])
+    //   })
+    
     //Puxa o endereço de entrega do banco de dados
     this.ofertasService.getEnderecoDePedidos().then((resp) => {
-      this.enderecoEntrega = resp.endereco;
+     this.enderecoEntrega = resp.endereco;
     })
     //Puxa o número da casa de entrega do banco de dados
-    this.ofertasService.getNumeroDePedidos().then((resp) => {
-      this.numeroEntrega = resp.numero;
-    })
+    // this.ofertasService.getNumeroDePedidos().then((resp) => {
+    //   this.numeroEntrega = resp.numero;
+    // })
 
-    //mostrar número de itens no carrinho
+   // mostrar número de itens no carrinho
     this.carrinhoService.emitirNumeroDeItens.subscribe(
       numeroItens => this.numeroItensCarrinho = numeroItens
     );
 
-    this.afauth.auth.onAuthStateChanged (user => {
-      
-      this.userService.getEnderecoByUsuario (user.email).subscribe(usuario =>{
-        
+    this.afauth.auth.onAuthStateChanged(user => {
+
+      this.userService.getEnderecoByUsuario(user.email).subscribe(usuario => {
+
         aux = usuario[0]
         this.enderecoEntrega = aux.endereco
-        this.numeroEntrega = aux.numero        
+        this.numeroEntrega = aux.numero
       })
     })
+  }
+
+  search(){
+    this.produtos = this.ofertasService.pesquisaProdutos(this.searchValue);
   }
 
   public pesquisa(termoDaBusca: string): void {
@@ -97,11 +120,3 @@ export class TopoLogadoComponent implements OnInit {
     this.autenticacao.sair()
   }
 }
-
-
-
-
-
-
-
-
