@@ -23,9 +23,6 @@ export class TopoLogadoComponent implements OnInit {
   public numeroEntrega: string;
   public numeroItensCarrinho: number;
   public widthScreen: boolean = true;
-  mostraListaDePesquisa: boolean = false;
-  inputPesquisa: any;
-
   produtos: Observable<any[]>;
   startAt: BehaviorSubject<string | null> = new BehaviorSubject('');
 
@@ -57,8 +54,6 @@ export class TopoLogadoComponent implements OnInit {
     this.produtos.subscribe(prods => {
       console.log(prods);
     })
-
-    this.inputPesquisa = document.querySelector('#termoDaPesquisa');
 
     // mostrar número de itens no carrinho
     this.carrinhoService.emitirNumeroDeItens.subscribe(
