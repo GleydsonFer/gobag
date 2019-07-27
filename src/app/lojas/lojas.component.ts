@@ -12,8 +12,7 @@ export class LojasComponent implements OnInit {
     dot: false,
     nav: true,
     navText: [
-     "<div class='nav-btn prev-slide'>prev</div>",
-    //  "<button type='button' role='presentation' style='background-color:red' class='owl-prev disabled'></button>",
+      "<div class='nav-btn prev-slide'>prev</div>",
       "<div class='nav-btn next-slide'>next</div>"],
     responsiveClass: true,
     responsive: {

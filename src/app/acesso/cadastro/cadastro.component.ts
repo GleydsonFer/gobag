@@ -1,3 +1,4 @@
+import { AngularFireAuth } from '@angular/fire/auth';
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms'
 
@@ -18,8 +19,17 @@ import { Autenticacao } from '../../autenticacao.service'
   
 })
 export class CadastroComponent implements OnInit {
-
-
+  usuario:Usuario = {
+     email: "",
+     nome_completo: "",
+     nome_usuario: "",
+     senha: "",
+     endereco: "",
+     numero: "",
+     complemento: "",
+     cpf:"",
+     foto_perfil: ""
+  }
   public mensagemErroCad: string
 
   //
@@ -43,8 +53,7 @@ export class CadastroComponent implements OnInit {
 
   constructor(
     private auth: Autenticacao,
-    
-    
+    private fireAuth:AngularFireAuth
   ) { }
 
   ngOnInit() {
@@ -55,6 +64,7 @@ export class CadastroComponent implements OnInit {
   }
 
   public cadastrarUsuario(): void {
+    
     let usuario = new Usuario(
       this.formulario.value.email,
       this.formulario.value.nome_completo,
@@ -77,8 +87,18 @@ export class CadastroComponent implements OnInit {
       this.formulario.get('complemento').markAsTouched()
 
     } else {
-      this.auth.cadastrarUsuario(usuario)
+      Object.assign(this.usuario,usuario)
+      this.usuario.foto_perfil = ""
+      console.log(this.usuario);
+      this.auth.cadastrarUsuario(this.usuario)
         .then(() => {
+
+          var user =  this.fireAuth.auth.currentUser
+          user.sendEmailVerification().then(function() {
+            // Email sent.
+          }).catch(function(error) {
+            // An error happened.
+          });
 
           if (this.mensagemErroCad !== undefined) {
             this.auth.message = undefined;

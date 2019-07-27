@@ -23,11 +23,15 @@ export class BannerSlideComponent implements OnInit {
   mySlideImages = [
     {
       alt: "Gobag",
-      image: "assets/banners/home/banner-1.jpg"
+      image: "assets/banners/home/banner_home_1.jpg"
     },
     {
       alt: "como funciona",
-      image: "assets/banners/home/banner-2.jpg"
+      image: "assets/banners/home/banner_home_2.jpg"
+    },
+    {
+      alt: "como funciona",
+      image: "assets/banners/home/banner_home_3.jpg"
     }
   ]
 
