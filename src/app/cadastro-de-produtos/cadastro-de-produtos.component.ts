@@ -38,12 +38,15 @@ export class CadastroDeProdutosComponent implements OnInit {
       aux.push(element.display)
     });
     this.categorias = aux;
-    console.log(this.categorias)
+    console.log(this.categorias);
+
+    let nome: string = this.cadastro.value.nome;
 
     this.produto = new Produto();
     this.produto = {
       id_produto: Date.now().toString(),
-      nome: this.cadastro.value.nome,
+      nome: nome,
+      nome_insensitive: nome.toLowerCase(),
       descricao: this.cadastro.value.descricao,
       valor: this.cadastro.value.valor,
       categoria: this.categorias,
