@@ -64,6 +64,7 @@ import { environment } from "../environments/environment";
 import { CadastroDeProdutosComponent } from './cadastro-de-produtos/cadastro-de-produtos.component';
 import { DadosdepagamentoComponent } from './dadosdepagamento/dadosdepagamento.component';
 import { CarouselOrdemCompraComponent } from './ordem-compra/carousel-ordem-compra/carousel-ordem-compra.component';
+import { MenuUsuarioComponent } from './acesso/menu-usuario/menu-usuario.component';
 
 registerLocaleData(localePtBr);
 
@@ -102,6 +103,7 @@ registerLocaleData(localePtBr);
     CadastroDeProdutosComponent,
     DadosdepagamentoComponent,
     CarouselOrdemCompraComponent,
+    MenuUsuarioComponent,
     //ajustanto o erro ngIf
 
     //

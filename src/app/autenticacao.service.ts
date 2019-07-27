@@ -1,3 +1,4 @@
+import { AngularFireStorage } from '@angular/fire/storage';
 import { Usuario } from './shared/usuario.model';
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
@@ -7,6 +8,7 @@ import { Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { ToastrService } from 'ngx-toastr';
+import { promise } from 'protractor';
 
 @Injectable()
 export class Autenticacao {
@@ -19,7 +21,36 @@ export class Autenticacao {
         private db: AngularFirestore,
         private authFire: AngularFireAuth,
         private toastr: ToastrService,
+        private storage: AngularFireStorage,
+        private ngxToastr: ToastrService
     ) { }
+
+    updateUsuario(usuario: Usuario) {
+
+
+        this.authFire.auth.onAuthStateChanged(user => {
+            var fireUID = btoa(user.email);
+
+            console.log("entrou na função")
+            let imagePath = `Imagem_perfil/${fireUID}/usuario.foto_perfil`;
+            if (usuario.foto_perfil !== null) {
+                this.storage.upload(imagePath, usuario.foto_perfil).then(() => {
+                    console.log("fazendo upload")
+                });
+            }
+            // recupera o getDownloadURL de cada imagem
+            this.storage.ref(imagePath).getDownloadURL().subscribe(url => {
+                usuario.foto_perfil = url
+                this.db.collection('usuarios').doc(fireUID).update(usuario).then(() => {
+                    this.ngxToastr.success("Informções atualizadas com sucesso")
+                }).catch((error) => {
+                    console.log("o erro é " + error)
+                })
+            })
+
+        })
+
+    }
 
     // método para cadastrar usuário
     public cadastrarUsuario(usuario: Usuario): Promise<any> {
@@ -32,7 +63,7 @@ export class Autenticacao {
                 //registrando dados complementares do usuário no path email na base 64 
                 // firebase.database().ref(`usuario_detalhe/${btoa(usuario.email)}`)
                 //     .set({ usuario })
-                this.db.collection('usuarios').doc(btoa(usuario.email)).set({ 
+                this.db.collection('usuarios').doc(btoa(usuario.email)).set({
                     email: usuario.email,
                     nome_completo: usuario.nome_completo,
                     nome_usuario: usuario.nome_usuario,
@@ -80,7 +111,7 @@ export class Autenticacao {
         return this.token_id !== undefined
     }
 
-    
+
 
     public autenticadoVerOferta(): boolean {
 
