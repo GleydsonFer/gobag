@@ -30,8 +30,7 @@ export class Autenticacao {
                 delete usuario.senha;
 
                 //registrando dados complementares do usuário no path email na base 64 
-                // firebase.database().ref(`usuario_detalhe/${btoa(usuario.email)}`)
-                //     .set({ usuario })
+
                 this.db.collection('usuarios').doc(btoa(usuario.email)).set({ 
                     email: usuario.email,
                     nome_completo: usuario.nome_completo,

@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
   
 export class AppComponent implements OnInit {
+ 
+  
   ngOnInit(): void {
     
     //AQUI FICA AS CONFIGURAÇÕES DO SDK EXTRAIDA DO FIREBASE!
@@ -38,5 +40,7 @@ export class AppComponent implements OnInit {
     // };
 
     // firebase.initializeApp(firebaseConfig);
+
+    
   }
 }
