@@ -18,16 +18,17 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class TopoLogadoComponent implements OnInit {
 
-  public usuario:any
+  public usuario: any
   public enderecoEntrega: string;
   public numeroEntrega: string;
   public numeroItensCarrinho: number;
-  public widthScreen:boolean = true;
+  public widthScreen: boolean = true;
+  mostraListaDePesquisa: boolean = false;
+  inputPesquisa: any;
 
-  produtos: Observable<any[]>
+  produtos: Observable<any[]>;
   startAt: BehaviorSubject<string | null> = new BehaviorSubject('');
-  private subjectPesquisa: Subject<string> = new Subject<string>()
-  
+
   constructor(
     private ofertasService: OfertasService,
     private autenticacao: Autenticacao,
@@ -40,10 +41,10 @@ export class TopoLogadoComponent implements OnInit {
   ngAfterViewInit(): void {
     this.resize()
   }
-  resize(){
-    if(screen.width > 820){
+  resize() {
+    if (screen.width > 820) {
       this.widthScreen = true
-    }else{
+    } else {
       this.widthScreen = false
     }
   }
@@ -56,7 +57,9 @@ export class TopoLogadoComponent implements OnInit {
       console.log(prods);
     })
 
-   // mostrar número de itens no carrinho
+    this.inputPesquisa = document.querySelector('#termoDaPesquisa');
+
+    // mostrar número de itens no carrinho
     this.carrinhoService.emitirNumeroDeItens.subscribe(
       numeroItens => this.numeroItensCarrinho = numeroItens
     );
@@ -77,7 +80,7 @@ export class TopoLogadoComponent implements OnInit {
   }
 
   public limpaPesquisa(): void {
-    this.subjectPesquisa.next('');
+    this.startAt.next('--------------------------------------');
   }
 
   public sair(): void {

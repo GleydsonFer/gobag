@@ -62,14 +62,15 @@
             <div class=" col-7 col-sm col-md-7 col-lg-8 pesquisar ">
                 <input class="form-control mr-sm-2" placeholder="Buscar qualquer produto" type="text" #termoDaPesquisa
                     (keyup)="pesquisa(termoDaPesquisa.value)" aria-label="Pesquisar">
-
-                <ul class="list-group">
-                    <li class="list-group-item" *ngFor="let produto of produtos | async">
-                        <a [routerLink]="['/oferta', produto.id_produto ]" (click)="limpaPesquisa()">
-                            {{ produto.nome | descricaoReduzida:15 }}
-                        </a>
-                    </li>
-                </ul>
+                <div *ngIf="termoDaPesquisa.value">
+                    <ul class="list-group">
+                        <li class="list-group-item" *ngFor="let produto of produtos | async">
+                            <a [routerLink]="['/oferta', produto.id_produto ]" (click)="limpaPesquisa()">
+                                {{ produto.nome | descricaoReduzida:15 }}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
         <!-- coluna da direita onde fica o endereço do cliente e a bag -->
