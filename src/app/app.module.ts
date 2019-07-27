@@ -69,6 +69,7 @@ import { DadosdepagamentoComponent } from './dadosdepagamento/dadosdepagamento.c
 import { OrdemPagamentoComponent } from './ordem-pagamento/ordem-pagamento.component';
 import { StatusPedidoComponent } from './status-pedido/status-pedido.component';
 import { CarouselOrdemCompraComponent } from './ordem-compra/carousel-ordem-compra/carousel-ordem-compra.component';
+import { MenuUsuarioComponent } from './acesso/menu-usuario/menu-usuario.component';
 
 registerLocaleData(localePtBr);
 
@@ -109,6 +110,7 @@ registerLocaleData(localePtBr);
     OrdemPagamentoComponent,
     StatusPedidoComponent,
     CarouselOrdemCompraComponent,
+    MenuUsuarioComponent,
     //ajustanto o erro ngIf
 
     //

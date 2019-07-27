@@ -1,0 +1,39 @@
+.conteudo{
+    height:650px;
+    margin-bottom: 40px;
+}
+form{
+    margin-top:50px;
+}
+.foto_user{
+    background-color:rgb(212, 211, 211);
+    height: 200px;
+    width: 200px;
+    background-image: url("../../../assets/icon_user.png");
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    border-radius: 100%;
+    transition-duration: 0.5s;
+    border: 5px solid rgb(173, 171, 171);
+}
+.foto_user:hover{
+    /* transform: scale(1.05, 1.05); */
+    box-shadow: inset 0 0 0 10000px rgba(170, 170, 170, 0.664);
+    transition-duration: 0.5s;
+    cursor: pointer;
+}
+.custom-file-input{
+    background-color:blue !important;
+}
+.text_image{
+    color:white;
+    text-align: center
+ 
+    
+}
+.preview_img{
+    height:100%;
+    width: 100%;
+    border-radius: 100%;
+}

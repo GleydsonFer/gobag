@@ -1,5 +1,5 @@
-<div *ngIf="!naoLogado; else logado" class="" (window:resize)="resize()">
-    <nav *ngIf="widthScreen;else para_Mobile" class="navbar  sticky-top navbar-light bg-light align-items-start row">
+<div *ngIf="!naoLogado; else logado" (window:resize)="resize()">
+    <nav *ngIf="widthScreen;else para_Mobile" class="navbar  fixed-top navbar-light bg-light align-items-start row">
         <!-- coluna da direita com menu de pesquisa, logo e dropdown-->
         <div class="col-md-7 col_left row ">
             <!-- menu dropdown com ascategorias -->
@@ -75,7 +75,8 @@
         </div>
         <!-- coluna da direita onde fica o endereço do cliente e a bag -->
         <div class="col-md-5 col_right row d-flex justify-content-end flex-nowrap">
-            <a class="login mr-3" routerLink="/acesso"></a>
+            <a class="login mr-3"   routerLink="/menuUsuario"></a>
+          
             <a class=" btn_sair" href="#" (click)="sair()">Sair</a>
             <div class="endereco  mr-3">
                 <span class="" *ngIf="usuario !== null">{{ enderecoEntrega }}, {{ numeroEntrega }} </span>
@@ -87,9 +88,9 @@
     </nav>
 
 
-    <!-- template para visualização em dispositivos médios e pequenos portes -->
+    <!-------------- template para visualização em dispositivos médios e pequenos portes--------------->
     <ng-template #para_Mobile>
-        <nav class="navbar  fixed-top navbar-light bg-light align-items-start row">
+        <nav class="navbar  sticky-top navbar-light bg-light align-items-start row">
             <!-- coluna da direita com menu de pesquisa, logo e dropdown-->
             <div class="col-1 col-sm-3 col_left row">
                 <!-- menu dropdown com ascategorias -->
@@ -154,7 +155,7 @@
 
                     <!-- coluna da direita onde fica o endereço do cliente e a bag -->
                     <div class="col-11 col-sm-9 col_right row d-flex justify-content-end">
-                        <a class="login mr-3" routerLink="/acesso"></a>
+                        <a class="login foto_perfil mr-3" id="foto_perfil" routerLink="/menuUsuario"></a>
                         <a class="btn_sair" href="#" (click)="sair()">Sair</a>
                         <div class="endereco  mr-3">
                             <span class="" *ngIf="usuario !== null">{{ enderecoEntrega }}, {{ numeroEntrega }}</span>
@@ -191,7 +192,7 @@
 
                     <!-- coluna da direita onde fica o endereço do cliente e a bag -->
                     <div class="col-5 col-md-5 col_right d-flex justify-content-end">
-                        <a class="login mr-3" routerLink="/acesso"></a>
+                        <a class="login mr-3" routerLink="/menuUsuario"></a>
                         <a class="mr-3 mt-1" href="#" (click)="sair()">Sair</a>
                         <div class="endereco  mr-3">
                             <span>Entrega: {{ this.enderecoEntrega}}, {{ this.numeroEntrega}}</span>
