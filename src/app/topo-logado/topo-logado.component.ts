@@ -1,13 +1,14 @@
-import { UsuarioService } from './../usuario.service';
-import { AngularFireAuth } from '@angular/fire/auth';
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { Autenticacao } from '../autenticacao.service';
 import CarrinhoService from '../carrinho.service';
 import { OfertasService } from '../ofertas.service';
-import { Oferta } from '../shared/oferta.model';
+import { Produto } from '../shared/produto.model';
+import { UsuarioService } from './../usuario.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-topo-logado',
@@ -16,17 +17,17 @@ import { Oferta } from '../shared/oferta.model';
   providers: [OfertasService]
 })
 export class TopoLogadoComponent implements OnInit {
-  public usuario:any
+
+  public usuario: any
   public enderecoEntrega: string;
   public numeroEntrega: string;
   public numeroItensCarrinho: number;
-  public widthScreen:boolean = true;
+  public widthScreen: boolean = true;
+  mostraListaDePesquisa: boolean = false;
+  inputPesquisa: any;
 
-  public ofertas: Observable<Oferta[]>
-  private subjectPesquisa: Subject<string> = new Subject<string>()
-  
-  produtos: any;
-  searchValue: string = '';
+  produtos: Observable<any[]>;
+  startAt: BehaviorSubject<string | null> = new BehaviorSubject('');
 
   constructor(
     private ofertasService: OfertasService,
@@ -44,53 +45,22 @@ export class TopoLogadoComponent implements OnInit {
   resize(){
     if(screen.width > 820){
       this.widthScreen = true
-    }else{
+    } else {
       this.widthScreen = false
     }
-    // console.log(this.widthScreen);
   }
   ngOnInit() {
     var aux
 
-    this.ofertas = this.subjectPesquisa //retorno Oferta[]
-      .debounceTime(1000) //executa a ação do switchMap após 1 segundo
-      .distinctUntilChanged() //para fazer pesquisas distintas
-      .switchMap((termo: string) => {
-        if (termo.trim() === '') {
-          //retornar um observable de array de ofertas vazio
-          return Observable.of<Oferta[]>([])
-        }
+    this.produtos = this.ofertasService.pesquisaProdutos(this.startAt);
 
-        return this.ofertasService.pesquisaOfertas(termo)
-      })
-      .catch((err: any) => {
-        return Observable.of<Oferta[]>([])
-      })
-
-    // this.ofertas = this.subjectPesquisa //retorno Oferta[]
-    //   .debounceTime(1000) //executa a ação do switchMap após 1 segundo
-    //   .distinctUntilChanged() //para fazer pesquisas distintas
-    //   .switchMap((termo: string) => {
-    //     if (termo.trim() === '') {
-    //       //retornar um observable de array de ofertas vazio
-    //       return Observable.of<Oferta[]>([])
-    //     }
-    //     return this.ofertasService.pesquisaOfertas(termo)
-    //   })
-    //   .catch((err: any) => {
-    //     return Observable.of<Oferta[]>([])
-    //   })
-    
-    //Puxa o endereço de entrega do banco de dados
-    this.ofertasService.getEnderecoDePedidos().then((resp) => {
-     this.enderecoEntrega = resp.endereco;
+    this.produtos.subscribe(prods => {
+      console.log(prods);
     })
-    //Puxa o número da casa de entrega do banco de dados
-    // this.ofertasService.getNumeroDePedidos().then((resp) => {
-    //   this.numeroEntrega = resp.numero;
-    // })
 
-   // mostrar número de itens no carrinho
+    this.inputPesquisa = document.querySelector('#termoDaPesquisa');
+
+    // mostrar número de itens no carrinho
     this.carrinhoService.emitirNumeroDeItens.subscribe(
       numeroItens => this.numeroItensCarrinho = numeroItens
     );
@@ -112,19 +82,15 @@ export class TopoLogadoComponent implements OnInit {
 
 
 
-  search(){
-    this.produtos = this.ofertasService.pesquisaProdutos(this.searchValue);
-  }
-
-  public pesquisa(termoDaBusca: string): void {
-    this.subjectPesquisa.next(termoDaBusca)
+  public pesquisa(termoDaBusca) {
+    this.startAt.next(termoDaBusca);
   }
 
   public limpaPesquisa(): void {
-    this.subjectPesquisa.next('')
+    this.startAt.next('--------------------------------------');
   }
 
   public sair(): void {
-    this.autenticacao.sair()
+    this.autenticacao.sair();
   }
 }

@@ -20,9 +20,9 @@
     <div class="col-12 col-sm-12 col-md-4 total ">
       <p>
         <span>TOTAL</span>
-        <span> {{ carrinhoService.totalCarrinhoCompras() | currency: 'BRL': true }}</span><br>
+        <span> {{ carrinhoService.totalCarrinhoCompras() | currency: 'BRL': 'symbol' }}</span><br>
         <span class="envio">ENVIO</span>
-        <span> {{ 0 | currency: 'BRL': true }}</span>
+        <span> {{ 0 | currency: 'BRL': 'symbol' }}</span>
       </p>
     </div>
     <div class="col-12 col-sm-12 col-md-4 continuar"><button class="btn_confirmar" (click)="confirmarCompra()">CONFIRMAR</button></div>

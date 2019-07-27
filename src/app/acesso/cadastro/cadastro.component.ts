@@ -5,13 +5,18 @@ import { FormGroup, FormControl, Validators } from '@angular/forms'
 import { Usuario } from '../../shared/usuario.model'
 
 import { Autenticacao } from '../../autenticacao.service'
-//
+
+
+
+
+
 
 
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.component.html',
-  styleUrls: ['./cadastro.component.css']
+  styleUrls: ['./cadastro.component.css'],
+  
 })
 export class CadastroComponent implements OnInit {
   usuario:Usuario = {
@@ -29,6 +34,8 @@ export class CadastroComponent implements OnInit {
 
   //
   public aux  = true;
+
+  
   
   @Output() public exibirPainel: EventEmitter<string> = new EventEmitter<string>()
   
@@ -103,6 +110,9 @@ export class CadastroComponent implements OnInit {
           if (this.mensagemErroCad === 'The email address is already in use by another account.') {
             this.mensagemErroCad = "O endereço de email já está em uso por uma outra conta."
           }
+          if (this.mensagemErroCad === 'The email address is badly formatted.') {
+            this.mensagemErroCad = "emeil com formatação errada"
+          }
 
           if (this.mensagemErroCad === undefined) {
             this.exibirPainelLogin()
@@ -114,72 +124,3 @@ export class CadastroComponent implements OnInit {
 }
 
 
-
-/////////////////////////////
-
-
-
-
-
-
-//////////////////////////
-/*
-.then(( ) => {
-        console.log(aux)
-      /*this.exibirPainelLogin()
-      this.authcad.cadastrarUsuario( usuario )
-      if(aux == true )  {
-
-        this.exibirPainelLogin()
-        } else {
-          aux = true
-        }
-      })
-
-      ////////////////////////////////////
-
-       
-       .then (()=>{
-        console.log(aux)
-      if(aux === true){
-        this.exibirPainelLogin()
-
-        console.log('true!!!!!!')
-      } else {
-        console.log('else!!!!!')
-        aux = true
-      } 
-       })
-       
-
-       /////////////////////////////////////
-
-
-       /* certo 
-  public cadastrarUsuarioValido(): void {
-
-    
-    let usuario: Usuario = new Usuario(
-      this.formulario.value.email,      
-      this.formulario.value.nome_completo,      
-      this.formulario.value.nome_usuario,      
-      this.formulario.value.senha,
-      this.formulario.value.endereco, 
-      this.formulario.value.numero,
-      this.formulario.value.complemento,
-      
-    )
-     this.authcad.cadastrarUsuarioValido(usuario)
-      .then(() => {
-        
-          console.log('primeiro if do cadrastrar valido')          
-        
-      })
-    
-  
-    }
-
-
-/*fim certo*/
-
-  

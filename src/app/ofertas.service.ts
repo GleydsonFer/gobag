@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
 import { URL_API } from './app.api';
 import { Oferta } from './shared/oferta.model';
 import { Pedido } from './shared/pedido.model';
-import { pipe } from 'rxjs';
+import { pipe, BehaviorSubject } from 'rxjs';
 import { Produto } from './shared/produto.model';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage';
@@ -27,7 +27,7 @@ export class OfertasService {
 
     constructor(
         private http: Http,
-        private db: AngularFirestore,
+        private afs: AngularFirestore,
         private storage: AngularFireStorage
     ) { }
 
@@ -109,7 +109,7 @@ export class OfertasService {
 
     // retorna todos os produtos do banco
     public getAllProdutos() {
-        return this.db.collection('produtos')
+        return this.afs.collection('produtos')
             .snapshotChanges()
             .pipe(
                 map(changes => {
@@ -120,7 +120,7 @@ export class OfertasService {
 
     // retorna um produto do banco
     public getProdutoByID(id: number) {
-        return this.db.collection('produtos', ref => ref.where('id_produto', '==', id))
+        return this.afs.collection('produtos', ref => ref.where('id_produto', '==', id))
             .snapshotChanges()
             .pipe(
                 map(changes => {
@@ -131,7 +131,7 @@ export class OfertasService {
 
     // retorna os produtos por categoria
     public getProdutosByCategorias(categoria: string) {
-        return this.db.collection('produtos', ref => ref.where('categoria', '==', categoria.toLowerCase()))
+        return this.afs.collection('produtos', ref => ref.where('categoria', '==', categoria.toLowerCase()))
             .snapshotChanges()
             .pipe(
                 map(changes => {
@@ -142,7 +142,7 @@ export class OfertasService {
 
     // retorna os produtos por loja
     public getProdutosByLojas(loja: string) {
-        return this.db.collection('produtos', ref => ref.where('loja', '==', loja.toLowerCase()))
+        return this.afs.collection('produtos', ref => ref.where('loja', '==', loja.toLowerCase()))
             .snapshotChanges()
             .pipe(
                 map(changes => {
@@ -152,16 +152,42 @@ export class OfertasService {
     }
 
     // retorna os produtos por nome 
-    public pesquisaProdutos(searchValue: string) {
+    // public pesquisaProdutos(searchValue: string): Observable<Produto[]> {
 
-        return this.db.collection('produtos', ref =>
-            ref
-                .orderBy('nome')
-                .startAt(searchValue.toLowerCase())
-                .endAt(searchValue.toLowerCase()+"\uf8ff")
-                .limit(5))
-                .valueChanges();
-    }
+    //     return this.db.collection<Produto>('produtos', ref =>
+    //         ref
+    //             .orderBy('nome')
+    //             .startAt(searchValue.toLowerCase())
+    //             .endAt(searchValue.toLowerCase()+"\uf8ff")
+    //             .limit(5))
+    //             .valueChanges();
+    // }
+    public pesquisaProdutos(start: BehaviorSubject<string>): Observable<any[]> {
+        return start
+          .switchMap(startText => {
+            startText = startText.toLowerCase();
+            const endText = startText + '\uf8ff';
+            return this.afs
+              .collection('produtos', ref =>
+                ref
+                  .orderBy('nome_insensitive')
+                  .startAt(startText)
+                  .endAt(endText)
+                  .limit(5)
+              )
+              .snapshotChanges()
+              .debounceTime(200)
+              .distinctUntilChanged()
+              .map(changes => {
+                return changes.map(c => {
+                //   console.log(c);
+                  const data = c.payload.doc.data();
+                  const id = c.payload.doc.id;
+                  return { id, ...data };
+                });
+              });
+          });
+      }
 
     public setProduto(produto: Produto, imagens: any) {
 
@@ -172,7 +198,7 @@ export class OfertasService {
         let stringImagens: Array<string> = [];
 
         // adiciono os produtos sem o campo de imagens no firestore,
-        this.db.collection('produtos').add(produto).then(user => {
+        this.afs.collection('produtos').add(produto).then(user => {
 
             // id único do produto é adicionado a variável para referenciar a pasta no storage
             fireUID = user.id;
@@ -192,7 +218,7 @@ export class OfertasService {
                         produto.imagens = stringImagens;
 
                         // atualiza o produto no banco, o campo de imagens com seus respectivos links para download 
-                        this.db.collection('produtos').doc(fireUID).update(produto);
+                        this.afs.collection('produtos').doc(fireUID).update(produto);
                     })
                 });
             }
