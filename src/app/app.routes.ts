@@ -28,6 +28,7 @@ import { MenuUsuarioComponent } from './acesso/menu-usuario/menu-usuario.compone
 
 export const ROUTES: Routes = [
     { path: '', component: HomeComponent },
+    { path: 'home', component: HomeComponent },
     { path: 'acesso', component: AcessoComponent },
     { path: 'masculino', component: MasculinoComponent },
     { path: 'infantil', component: InfantilComponent },

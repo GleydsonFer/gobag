@@ -23,8 +23,11 @@ export class CadastroDeProdutosComponent implements OnInit {
     'categoria': new FormControl(null, [Validators.required]),
     'observacoes': new FormControl(null, [Validators.required]),
     'loja': new FormControl(null, [Validators.required]),
-    'tamanho': new FormControl(null, [Validators.required]),
-    'estoque': new FormControl(null, [Validators.required])
+    'tamanhoPP': new FormControl(),
+    'tamanhoP': new FormControl(),
+    'tamanhoM': new FormControl(),
+    'tamanhoG': new FormControl(),
+    'tamanhoGG': new FormControl(),
   })
 
   ngOnInit() {
@@ -51,8 +54,13 @@ export class CadastroDeProdutosComponent implements OnInit {
       valor: this.cadastro.value.valor,
       categoria: this.categorias,
       loja: this.cadastro.value.loja,
-      tamanho: this.cadastro.value.tamanho,
-      estoque: this.cadastro.value.estoque,
+      tamanho: {
+        PP: this.cadastro.value.tamanhoPP,
+        P: this.cadastro.value.tamanhoP,
+        M: this.cadastro.value.tamanhoM,
+        G: this.cadastro.value.tamanhoG,
+        GG: this.cadastro.value.tamanhoGG
+      },
       observacoes: this.cadastro.value.observacoes,
       // as imagens começam vazias, só são preenchidas se o usuário inserir imagens
       imagens: []

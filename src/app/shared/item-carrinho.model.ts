@@ -1,9 +1,10 @@
 class ItemCarrinho {
     constructor(
-        public id: string,
-        public img: string,
-        public titulo: string,
+        public id_produto: string,
+        public imagem: string,
+        public nome: string,
         public descricao: string,
+        public anunciante: string,
         public valor: number,
         public quantidade: number
     ) { }

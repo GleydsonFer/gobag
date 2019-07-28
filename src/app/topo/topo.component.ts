@@ -38,10 +38,6 @@ export class TopoComponent implements OnInit {
 
     this.produtos = this.ofertasService.pesquisaProdutos(this.startAt);
 
-    this.produtos.subscribe(prods => {
-      console.log(prods);
-    })
-
     //mostrar número de itens no carrinho
     this.carrinhoService.emitirNumeroDeItens.subscribe(
       numeroItens => this.numeroItensCarrinho = numeroItens

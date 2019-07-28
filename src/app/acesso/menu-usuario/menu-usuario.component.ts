@@ -47,7 +47,7 @@ export class MenuUsuarioComponent implements OnInit {
 
     this.fireAuth.auth.onAuthStateChanged(user => {
 
-      this.userService.getEnderecoByUsuario(user.email).subscribe(user => {
+      this.userService.getUsuario(user.email).subscribe(user => {
         user.forEach((user: any) => {
           this.usuario.nome_usuario = user.nome_usuario
           this.usuario.email = user.email;
