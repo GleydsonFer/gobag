@@ -7,7 +7,7 @@ class CarrinhoService {
     public emitirNumeroDeItens: EventEmitter<number> = new EventEmitter<number>();
 
     public exibirItens(): ItemCarrinho[] {
-        return this.itens
+        return this.itens;
     }
 
     public incluirItem(produto: Produto): void {
@@ -16,12 +16,13 @@ class CarrinhoService {
             produto.imagens[0],
             produto.nome,
             produto.descricao,
+            produto.loja,
             produto.valor,
             1
         )
 
         //verificar se o item em questão já não existe dentro de this.itens
-        let itemCarrinhoEncontrado = this.itens.find((item: ItemCarrinho) => item.id === itemCarrinho.id)
+        let itemCarrinhoEncontrado = this.itens.find((item: ItemCarrinho) => item.id_produto === itemCarrinho.id_produto)
 
         if (itemCarrinhoEncontrado) {
             itemCarrinhoEncontrado.quantidade += 1
@@ -32,19 +33,19 @@ class CarrinhoService {
     }
 
     public totalCarrinhoCompras(): number {
-        let total: number = 0
+        let total: number = 0;
 
         this.itens.map((item: ItemCarrinho) => {
             total = total + (item.valor * item.quantidade)
         })
 
-        return total
+        return total;
     }
 
     public adicionarQuantidade(itemCarrinho: ItemCarrinho): void {
 
         //incrementar quantidade
-        let itemCarrinhoEncontrado = this.itens.find((item: ItemCarrinho) => item.id === itemCarrinho.id)
+        let itemCarrinhoEncontrado = this.itens.find((item: ItemCarrinho) => item.id_produto === itemCarrinho.id_produto)
 
         if (itemCarrinhoEncontrado) {
             itemCarrinhoEncontrado.quantidade += 1
@@ -53,7 +54,7 @@ class CarrinhoService {
 
     public diminuirQuantidade(itemCarrinho: ItemCarrinho): void {
         //decrementar quantidade
-        let itemCarrinhoEncontrado = this.itens.find((item: ItemCarrinho) => item.id === itemCarrinho.id)
+        let itemCarrinhoEncontrado = this.itens.find((item: ItemCarrinho) => item.id_produto === itemCarrinho.id_produto)
 
         if (itemCarrinhoEncontrado) {
             itemCarrinhoEncontrado.quantidade -= 1

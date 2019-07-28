@@ -18,7 +18,6 @@ import { Produto } from '../shared/produto.model';
 })
 export class OfertaComponent implements OnInit, OnDestroy {
 
-  public oferta: Oferta;
   public produto: Observable<any>;
   @Output() public prod: Produto;
 
