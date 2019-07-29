@@ -1,27 +1,20 @@
-import { Injectable } from '@angular/core'
-import { Http, RequestOptions, Headers, Response } from '@angular/http'
-import { Observable } from 'rxjs/Observable'
-
-import { URL_API } from './app.api'
-
-import { Pedido } from './shared/pedido.model'
+import { Injectable } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { Pedido } from './shared/pedido.model';
 
 @Injectable()
 export class OrdemCompraService {
 
-    constructor(private http: Http) {}
+    constructor(
+        private afs: AngularFirestore
+    ) {}
 
-    public efetivarCompra(pedido: Pedido): Observable<number> {
+    public efetivarCompra(pedido: Pedido): Promise<string>{
 
-        let headers: Headers = new Headers()
+        console.log(pedido);
+        return this.afs.collection('pedidos').add({...pedido}).then(pedido => {
+            return pedido.id;
+        })
 
-        headers.append('Content-type', 'application/json')
-
-        return this.http.post(
-            `${URL_API}/pedidos`,
-            JSON.stringify(pedido),
-            new RequestOptions({ headers: headers })
-        )
-        .map((resposta: Response) => resposta.json().id )
     }
 }

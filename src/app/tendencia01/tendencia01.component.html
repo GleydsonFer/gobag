@@ -18,7 +18,7 @@
       <div class="col-md-3" *ngFor="let oferta of ofertas">
           <div class="prod">
             <div class="prod_title-box">
-              <h4 class="prod_title">{{ oferta.titulo }}</h4>
+              <h4 class="prod_title">{{ oferta.nome }}</h4>
             </div>
   
             <figure class="prod_img-box">
@@ -30,7 +30,7 @@
               <p class="prod_price">{{ oferta.valor | currency:'BRL':true }}</p>
             </div>
   
-            <button class="btn_ofer" [routerLink]="['/oferta', oferta.id]">Ver oferta</button>
+            <button class="btn_ofer" [routerLink]="['/oferta', oferta.id_produto]">Ver oferta</button>
 
           </div>
       </div>

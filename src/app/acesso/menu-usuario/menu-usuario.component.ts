@@ -56,7 +56,7 @@ export class MenuUsuarioComponent implements OnInit {
 
     this.fireAuth.auth.onAuthStateChanged(user => {
 
-      this.userService.getEnderecoByUsuario(user.email).subscribe(user => {
+      this.userService.getUsuario(user.email).subscribe(user => {
         user.forEach((user: any) => {
           //setando informações do usuario na tela de cadastro
           this.formulario.controls['nome'].setValue(user.nome_completo)

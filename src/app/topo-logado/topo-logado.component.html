@@ -1,5 +1,5 @@
 <div *ngIf="!naoLogado; else logado" (window:resize)="resize()">
-    <nav *ngIf="widthScreen;else para_Mobile" class="navbar  sticky-top navbar-light bg-light align-items-start row">
+    <nav *ngIf="widthScreen;else para_Mobile" class="navbar  fixed-top navbar-light bg-light align-items-start row">
         <!-- coluna da direita com menu de pesquisa, logo e dropdown-->
         <div class="col-md-7 col_left row ">
             <!-- menu dropdown com ascategorias -->
@@ -55,7 +55,7 @@
                 </ul>
             </div>
             <div class="logo ">
-                <a class="logo_link" href="/">
+                <a class="logo_link" [routerLink]="['/home']">
                     <img class="img-fluid" src="./assets/logo03.png" />
                 </a>
             </div>
@@ -161,29 +161,32 @@
                             <span class="" *ngIf="usuario !== null">{{ enderecoEntrega }}, {{ numeroEntrega }}</span>
                         </div>
 
-                        <div class="container row d-flex justify-content-center">
-                            <form class=" col-12 col-sm-12 row pesquisar">
-                                <input class="form-control mr-sm-2 col-10" placeholder="Buscar qualquer produto"
-                                    type="text" #termoDaPesquisa (keyup)="pesquisa(termoDaPesquisa.value)"
-                                    aria-label="Pesquisar">
-                                <div class="col-1">
-                                    <a class="bag" routerLink="/ordem-compra">
-                                        <img src="/assets/bag-topo.png" alt="">
-                                        <div class="numeroItensCarrinho d-flex justify-content-center">
-                                            {{numeroItensCarrinho}}
-                                        </div>
-                                    </a>
-                                </div>
+                        <!-- coluna da direita onde fica o endereço do cliente e a bag -->
+                        <div class="col-11 col-sm-9 col_right row d-flex justify-content-end">
+                            <a class="login mr-3" routerLink="/acesso"></a>
+                            <a class="btn_sair" href="#" (click)="sair()">Sair</a>
+                            <div class="endereco  mr-3">
+                                <span class="" *ngIf="usuario !== null">Martins de Carvalho, 2724</span>
+                            </div>
 
-
+                            <div class="logo">
+                                <a class="logo_link" href="/">
+                                    <img class="img-fluid" src="./assets/logo03.png" />
+                                </a>
+                            </div>
+                        </div>
+                        <div class=" col-7 col-sm col-md-7 col-lg-8 pesquisar ">
+                            <input class="form-control mr-sm-2" placeholder="Buscar qualquer produto" type="text" #termoDaPesquisa
+                                (keyup)="pesquisa(termoDaPesquisa.value)" aria-label="Pesquisar">
+                            <div *ngIf="termoDaPesquisa.value">
                                 <ul class="list-group">
-                                    <li class="list-group-item" *ngFor="let oferta of ofertas | async">
-                                        <a [routerLink]="['/oferta', oferta.id ]" (click)="limpaPesquisa()">
-                                            {{ oferta.titulo | descricaoReduzida:15 }}
+                                    <li class="list-group-item" *ngFor="let produto of produtos | async">
+                                        <a [routerLink]="['/oferta', produto.id_produto ]" (click)="limpaPesquisa()">
+                                            {{ produto.nome | descricaoReduzida:15 }}
                                         </a>
                                     </li>
                                 </ul>
-                            </form>
+                            </div>
                         </div>
                     </div>
 

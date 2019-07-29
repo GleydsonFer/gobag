@@ -31,7 +31,7 @@
                 <p class="prod_price">{{ produto.valor | currency : 'BRL' : 'symbol' }}</p>
               </div>
     
-              <button class="btn_ofer" [routerLink]="['/oferta', produto.id]">Ver oferta</button>
+              <button class="btn_ofer" [routerLink]="['/oferta', produto.id_produto]">Ver oferta</button>
   
             </div>
         </div>

@@ -7,8 +7,13 @@ export class Produto {
     categoria: Array<string>;
     data?: Date;
     loja: string;
-    tamanho: string;
-    estoque: number;
+    tamanho: {
+        PP: number,
+        P: number,
+        M: number,
+        G: number,
+        GG: number,
+    };
     observacoes?: string;
     imagens: Array<string>;
 }

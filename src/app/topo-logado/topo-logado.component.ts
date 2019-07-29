@@ -23,9 +23,6 @@ export class TopoLogadoComponent implements OnInit {
   public numeroEntrega: string;
   public numeroItensCarrinho: number;
   public widthScreen: boolean = true;
-  mostraListaDePesquisa: boolean = false;
-  inputPesquisa: any;
-
   produtos: Observable<any[]>;
   startAt: BehaviorSubject<string | null> = new BehaviorSubject('');
 
@@ -54,24 +51,18 @@ export class TopoLogadoComponent implements OnInit {
 
     this.produtos = this.ofertasService.pesquisaProdutos(this.startAt);
 
-    this.produtos.subscribe(prods => {
-      console.log(prods);
-    })
-
-    this.inputPesquisa = document.querySelector('#termoDaPesquisa');
-
     // mostrar número de itens no carrinho
     this.carrinhoService.emitirNumeroDeItens.subscribe(
       numeroItens => this.numeroItensCarrinho = numeroItens
     );
 
     this.afauth.auth.onAuthStateChanged(user => {
-
-      this.userService.getEnderecoByUsuario(user.email).subscribe(usuario => {
+      // console.log(user.email);
+      this.userService.getUsuario(user.email).subscribe(usuario => {
        
         aux = usuario[0]
 
-        var foto_user = document.querySelector(".login")
+        var foto_user = document.querySelector(".login");
         foto_user.setAttribute("style" , `background-image:url(${aux.foto_perfil}); background-size:100%; background-repeat:no-repeat`)
 
         this.enderecoEntrega = aux.endereco
