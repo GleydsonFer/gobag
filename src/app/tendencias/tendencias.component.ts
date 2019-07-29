@@ -43,32 +43,32 @@ export class TendenciasComponent implements OnInit {
     {
       link: "tendencia01",
       alt: "30%off",
-      image: "assets/banners/home/Promoções_2.jpg"
+      image: "assets/banners/home/Promoções_3.jpg"
     },
     {
       link: "tendencia02",
       alt: "carnaval",
-      image: "assets/banners/home/Novidades_2.jpg"
+      image: "assets/banners/home/Novidades_4.jpg"
     },
     {
       link: "tendencia03",
       alt: "primaveira",
-      image: "assets/banners/home/Primavera_2.jpg"
+      image: "assets/banners/home/Primavera_3.jpg"
     },
     {
       link: "tendencia01",
       alt: "30%off",
-      image: "assets/banners/home/Promoções_2.jpg"
+      image: "assets/banners/home/Promoções_3.jpg"
     },
     {
       link: "tendencia02",
       alt: "carnaval",
-      image: "assets/banners/home/Novidades_2.jpg"
+      image: "assets/banners/home/Novidades_4.jpg"
     },
     {
       link: "tendencia03",
       alt: "primaveira",
-      image: "assets/banners/home/Primavera_2.jpg"
+      image: "assets/banners/home/Primavera_3.jpg"
     }
   ]
 
