@@ -30,8 +30,6 @@ export class Autenticacao {
 
         this.authFire.auth.onAuthStateChanged(user => {
             var fireUID = btoa(user.email);
-
-            console.log("entrou na função")
             let imagePath = `Imagem_perfil/${fireUID}/usuario.foto_perfil`;
             if (usuario.foto_perfil !== null) {
                 this.storage.upload(imagePath, usuario.foto_perfil).then(() => {
@@ -44,6 +42,7 @@ export class Autenticacao {
                 this.db.collection('usuarios').doc(fireUID).update(usuario).then(() => {
                     this.ngxToastr.success("Informções atualizadas com sucesso")
                 }).catch((error) => {
+                    this.ngxToastr.error("Informções atualizadas com sucesso")
                     console.log("o erro é " + error)
                 })
             })

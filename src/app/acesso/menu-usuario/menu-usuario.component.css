@@ -1,10 +1,43 @@
 .conteudo{
-    height:650px;
+    height:800px;
     margin-bottom: 40px;
+}
+.topo{
+    margin-bottom: 50px
 }
 form{
     margin-top:50px;
 }
+.inputs{
+    margin-left: 16%;
+}
+
+.inputs input{
+   border:none;
+   border-bottom: 4px solid #cfcbcb;
+   border-radius:0px;
+}
+.inputs input:cli{
+    border:none;
+    border-bottom: 4px solid #cfcbcb;
+    border-radius:0px;
+ }
+ .inputs[_ngcontent-c4] input[_ngcontent-c4]{
+     background-color:white;
+ }
+form h4:nth-child(1){
+    margin-left: 13%;
+}
+form h4:nth-child(2){
+    color: #afadad;
+    font-weight: 700;  
+    margin-left:2%;
+}
+form h5{
+    color: #505050; 
+    margin-left:2%; 
+}
+
 .foto_user{
     background-color:rgb(212, 211, 211);
     height: 200px;
@@ -36,4 +69,15 @@ form{
     height:100%;
     width: 100%;
     border-radius: 100%;
+}
+
+.btn_salvar{
+font-weight: 700;
+color:#252424;
+padding: 10px;
+padding-left: 250px;
+padding-right: 250px;
+border: none;
+background-color:#bdbdbdbb;
+font-size: 1.6em
 }

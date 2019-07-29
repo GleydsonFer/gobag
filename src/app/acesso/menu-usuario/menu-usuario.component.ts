@@ -18,11 +18,15 @@ export class MenuUsuarioComponent implements OnInit {
   usuario: Usuario = {
     email: "",
     nome_completo: "",
+    sobrenome: "",
     nome_usuario: "",
     senha: "",
     endereco: "",
     numero: "",
-    complemento: ""
+    complemento: "",
+    data_nascimento: "",
+    celular: "",
+    bairro: ""
   }
   imagem: any = null;
 
@@ -32,33 +36,57 @@ export class MenuUsuarioComponent implements OnInit {
     private userService: UsuarioService,
     private fireAuth: AngularFireAuth,
     private authService: Autenticacao,
-    private ngxToastr:ToastrService
+    private ngxToastr: ToastrService
   ) { }
 
   ngOnInit() {
 
     this.formulario = this.formBuilder.group({
       foto: [],
-      nome: [''],
-      endereco: [''],
-      numero: [''],
-
+      nome: ['',[Validators.required]],
+      email: [''],
+      cpf: ['', [Validators.minLength(11), Validators.maxLength(11),Validators.required]],
+      data_nascimento: ['',[Validators.required]],
+      celular: ['',[Validators.required]],
+      endereco: ['', [Validators.minLength(3),Validators.required]],
+      numero: ['', [Validators.minLength(1), Validators.required]],
+      bairro: ['',[Validators.required]],
+      nome_usuario: ['',[Validators.required]],
     })
 
     this.fireAuth.auth.onAuthStateChanged(user => {
 
       this.userService.getEnderecoByUsuario(user.email).subscribe(user => {
         user.forEach((user: any) => {
-          this.usuario.nome_usuario = user.nome_usuario
-          this.usuario.email = user.email;
+          //setando informações do usuario na tela de cadastro
           this.formulario.controls['nome'].setValue(user.nome_completo)
           this.formulario.controls['endereco'].setValue(user.endereco)
           this.formulario.controls['numero'].setValue(user.numero)
+          this.formulario.controls['email'].setValue(user.email)
+          this.formulario.controls['cpf'].setValue(user.cpf)
+          this.formulario.controls['data_nascimento'].setValue(user.data_nascimento)
+          this.formulario.controls['nome_usuario'].setValue(user.nome_usuario)
+          this.formulario.controls['celular'].setValue(user.celular)
+          this.formulario.controls['bairro'].setValue(user.bairro)
 
-          var foto_user = document.getElementById("foto_user");
-          foto_user.style.backgroundImage = `url(${user.foto_perfil})`;
-          foto_user.style.backgroundSize = "300px";
+          //atribuindo dados do banco ao objeto usuario
+          this.usuario.nome_usuario = user.nome_usuario
+          this.usuario.nome_completo = user.nome_completo;
+          this.usuario.sobrenome = user.sobrenome;
+          this.usuario.email = user.email;
+          this.usuario.cpf = user.cpf;
+          this.usuario.data_nascimento = user.data_nascimento;
+          this.usuario.endereco = user.endereco;
+          this.usuario.numero = user.numero;
+          this.usuario.celular = user.celular;
+          this.usuario.bairro = user.bairro;
 
+          if (user.foto_perfil) {
+            //colocar url da imagem como background na foto de perfil 
+            var foto_user = document.getElementById("foto_user");
+            foto_user.style.backgroundImage = `url(${user.foto_perfil})`;
+            foto_user.style.backgroundSize = "300px";
+          }
         })
       })
     })
@@ -85,13 +113,40 @@ export class MenuUsuarioComponent implements OnInit {
   salvar() {
 
     delete this.usuario.senha;
+    //atribuindo dados do formulário ao objeto usuário
     this.usuario.nome_completo = this.formulario.value.nome
-
+    this.usuario.nome_usuario = this.formulario.value.nome_usuario
+    this.usuario.email = this.formulario.value.email
+    this.usuario.cpf = this.formulario.value.cpf
+    this.usuario.data_nascimento = this.formulario.value.data_nascimento
     this.usuario.endereco = this.formulario.value.endereco
     this.usuario.numero = this.formulario.value.numero
+    this.usuario.celular = this.formulario.value.celular
+    this.usuario.bairro = this.formulario.value.bairro
+
     this.usuario.foto_perfil = this.imagem
 
-   
+    console.log(this.usuario)
     this.authService.updateUsuario(this.usuario)
+
+  }
+
+  aplicaCssErro(campo) {
+    switch (campo) {
+      case "endereco":
+        return {
+          'is-invalid': this.formulario.get(campo).invalid && this.formulario.get(campo).touched
+        }
+      case 'cpf':
+        return {
+          'is-invalid': this.formulario.get(campo).invalid && this.formulario.get(campo).touched
+        }
+      case 'numero':
+        return {
+          'is-invalid': this.formulario.get(campo).invalid && this.formulario.get(campo).touched
+        }
+      default:
+        break;
+    }
   }
 }
