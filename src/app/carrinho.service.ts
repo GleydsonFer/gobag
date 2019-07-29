@@ -67,7 +67,8 @@ class CarrinhoService {
     }
 
     public limparCarrinho(): void {
-        this.itens = []
+        this.itens = [];
+        this.emitirNumeroDeItens.emit();
     }
 
 }
