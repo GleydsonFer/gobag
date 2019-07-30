@@ -25,6 +25,8 @@ import { TopoComponent } from '../app/topo/topo.component'
 import { AutenticacaoGuard } from './autenticacao-guard.service'
 import { CadastroDeProdutosComponent } from './cadastro-de-produtos/cadastro-de-produtos.component';
 import { MenuUsuarioComponent } from './acesso/menu-usuario/menu-usuario.component';
+import { TermosDeUsoComponent } from './termos-de-uso/termos-de-uso.component';
+import { PoliticasDePrivacidadeComponent } from './politicas-de-privacidade/politicas-de-privacidade.component';
 
 export const ROUTES: Routes = [
     { path: '', component: HomeComponent },
@@ -52,6 +54,8 @@ export const ROUTES: Routes = [
     { path: 'loja01', component: Loja01Component },
     { path: 'cadastroprodutos', component: CadastroDeProdutosComponent},
     { path: 'dadosdepagamento', component: DadosdepagamentoComponent },
-    { path: 'menuUsuario', component: MenuUsuarioComponent }
+    { path: 'menuUsuario', component: MenuUsuarioComponent },
+    { path: 'termos-de-uso', component: TermosDeUsoComponent },
+    { path: 'politicas-de-privacidade', component: PoliticasDePrivacidadeComponent }
 
 ]
