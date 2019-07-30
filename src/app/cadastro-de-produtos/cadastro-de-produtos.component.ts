@@ -53,7 +53,9 @@ export class CadastroDeProdutosComponent implements OnInit {
       descricao: this.cadastro.value.descricao,
       valor: this.cadastro.value.valor,
       categoria: this.categorias,
+      data: new Date(Date.now()),
       loja: this.cadastro.value.loja,
+      promocao: false,
       tamanho: {
         PP: this.cadastro.value.tamanhoPP,
         P: this.cadastro.value.tamanhoP,
