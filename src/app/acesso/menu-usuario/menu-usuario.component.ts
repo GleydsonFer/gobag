@@ -18,7 +18,6 @@ export class MenuUsuarioComponent implements OnInit {
   usuario: Usuario = {
     email: "",
     nome_completo: "",
-    sobrenome: "",
     nome_usuario: "",
     senha: "",
     endereco: "",
@@ -72,7 +71,6 @@ export class MenuUsuarioComponent implements OnInit {
           //atribuindo dados do banco ao objeto usuario
           this.usuario.nome_usuario = user.nome_usuario
           this.usuario.nome_completo = user.nome_completo;
-          this.usuario.sobrenome = user.sobrenome;
           this.usuario.email = user.email;
           this.usuario.cpf = user.cpf;
           this.usuario.data_nascimento = user.data_nascimento;
@@ -85,7 +83,8 @@ export class MenuUsuarioComponent implements OnInit {
             //colocar url da imagem como background na foto de perfil 
             var foto_user = document.getElementById("foto_user");
             foto_user.style.backgroundImage = `url(${user.foto_perfil})`;
-            foto_user.style.backgroundSize = "300px";
+            foto_user.style.backgroundSize = "100%";
+
           }
         })
       })
@@ -124,9 +123,10 @@ export class MenuUsuarioComponent implements OnInit {
     this.usuario.celular = this.formulario.value.celular
     this.usuario.bairro = this.formulario.value.bairro
 
+
     this.usuario.foto_perfil = this.imagem
 
-    console.log(this.usuario)
+    
     this.authService.updateUsuario(this.usuario)
 
   }

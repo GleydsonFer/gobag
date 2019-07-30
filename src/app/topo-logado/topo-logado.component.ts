@@ -57,9 +57,7 @@ export class TopoLogadoComponent implements OnInit {
     );
 
     this.afauth.auth.onAuthStateChanged(user => {
-      // console.log(user.email);
       this.userService.getUsuario(user.email).subscribe(usuario => {
-       
         aux = usuario[0]
 
         var foto_user = document.querySelector(".login");
