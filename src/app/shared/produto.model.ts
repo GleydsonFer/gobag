@@ -5,8 +5,9 @@ export class Produto {
     descricao: string;
     valor: number;
     categoria: Array<string>;
-    data?: Date;
+    data: Date;
     loja: string;
+    promocao: boolean;
     tamanho: {
         PP: number,
         P: number,

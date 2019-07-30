@@ -7,6 +7,7 @@ export class Pedido {
         public numero: string,
         public complemento: string,
         public formaPagamento: string,
+        public data: Date,
         // recebe: 'processando', 'experimentando' , 'finalizada', 'cancelada'
         public status: string,
         public itens: Array <ItemCarrinho>,

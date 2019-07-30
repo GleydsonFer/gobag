@@ -61,6 +61,8 @@ export class OrdemCompraComponent implements OnInit {
         this.usuario.complemento,
         // forma de pagamento
         '',
+        // data do pedido
+        new Date(Date.now()),
         // status
         'processando',
         // itens do carrinho
