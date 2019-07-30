@@ -30,24 +30,32 @@ export class Autenticacao {
 
         this.authFire.auth.onAuthStateChanged(user => {
             var fireUID = btoa(user.email);
-
-            console.log("entrou na função")
             let imagePath = `Imagem_perfil/${fireUID}/usuario.foto_perfil`;
             if (usuario.foto_perfil !== null) {
+
                 this.storage.upload(imagePath, usuario.foto_perfil).then(() => {
                     console.log("fazendo upload")
+                }).then(() => {
+                    // recupera o getDownloadURL de cada imagem
+                    this.storage.ref(imagePath).getDownloadURL().subscribe(url => {
+                        usuario.foto_perfil = url
+                        console.log(usuario)
+                        this.db.collection('usuarios').doc(fireUID).update(usuario).then(() => {
+                            this.ngxToastr.success("Informações atualizadas com sucesso")
+                        }).catch((error) => {
+                            this.ngxToastr.error("Informações não atualizadas")
+                            console.log("o erro é " + error)
+                        })
+                    })
                 });
-            }
-            // recupera o getDownloadURL de cada imagem
-            this.storage.ref(imagePath).getDownloadURL().subscribe(url => {
-                usuario.foto_perfil = url
+            } else {
                 this.db.collection('usuarios').doc(fireUID).update(usuario).then(() => {
-                    this.ngxToastr.success("Informções atualizadas com sucesso")
+                    this.ngxToastr.success("Informações atualizadas com sucesso")
                 }).catch((error) => {
+                    this.ngxToastr.error("Informações não atualizadas")
                     console.log("o erro é " + error)
                 })
-            })
-
+            }
         })
 
     }
