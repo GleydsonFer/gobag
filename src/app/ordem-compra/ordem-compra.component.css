@@ -113,6 +113,105 @@ p{
         margin-left:0px;
         text-align:center;
     }
+    body{
+  background-color: #282828;
+}
+
+button{
+  margin: 0;
+  display: inline-block;
+  padding: 10px 12px;
+  background: transparent;
+  border: 1px solid #92c83e;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: normal;
+  font-family: "Titillium Web", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  letter-spacing: 1px;
+  vertical-align: middle;
+  line-height: 13px;
+  color: #92c83e;
+  -webkit-transition: opacity cubic-bezier(0.23, 1, 0.32, 1) 0.28s;
+  transition: opacity cubic-bezier(0.23, 1, 0.32, 1) 0.28s;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+button:hover{
+  background-color: #92c83e;
+  border-color: #92c83e;
+  color: #FFF;
+}
+
+button:active{
+  background: none;
+  color: #92c83e;
+  margin-top: 1px;
+}
+
+button:focus{
+  box-shadow: none;
+}
+
+/***************************************** 
+***************css pagar.me***************
+******************************************/
+
+body{
+    background-color: #282828;
+  }
+  
+  button{
+    margin: 0;
+    display: inline-block;
+    padding: 10px 12px;
+    background: transparent;
+    border: 1px solid #92c83e;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: normal;
+    font-family: "Titillium Web", Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+    letter-spacing: 1px;
+    vertical-align: middle;
+    line-height: 13px;
+    color: #92c83e;
+    -webkit-transition: opacity cubic-bezier(0.23, 1, 0.32, 1) 0.28s;
+    transition: opacity cubic-bezier(0.23, 1, 0.32, 1) 0.28s;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  button:hover{
+    background-color: #92c83e;
+    border-color: #92c83e;
+    color: #FFF;
+  }
+  
+  button:active{
+    background: none;
+    color: #92c83e;
+    margin-top: 1px;
+  }
+  
+  button:focus{
+    box-shadow: none;
+  }
+  
+
+
+
 }
 
 

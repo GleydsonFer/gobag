@@ -24,6 +24,7 @@ import { TopoComponent } from '../app/topo/topo.component'
 
 import { AutenticacaoGuard } from './autenticacao-guard.service'
 import { CadastroDeProdutosComponent } from './cadastro-de-produtos/cadastro-de-produtos.component';
+import { OrdemPagamentoComponent } from './ordem-pagamento/ordem-pagamento.component';
 
 export const ROUTES: Routes = [
     { path: '', component: HomeComponent },
@@ -31,6 +32,7 @@ export const ROUTES: Routes = [
     { path: 'masculino', component: MasculinoComponent },
     { path: 'infantil', component: InfantilComponent },
     { path: 'fitness', component: FitnessComponent },
+    { path: 'testepagamento', component: OrdemPagamentoComponent },
     { path: 'teen', component: TeenComponent },
     { path: 'calcados', component: CalcadosComponent },
     { path: 'feminino', component: FemininoComponent },

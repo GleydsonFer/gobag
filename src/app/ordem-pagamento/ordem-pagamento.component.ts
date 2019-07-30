@@ -10,6 +10,13 @@ export class OrdemPagamentoComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
   }
+  
 
 }
+
+
+////////////////////////
+
+
