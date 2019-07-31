@@ -4,6 +4,7 @@ import { Produto } from './shared/produto.model';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Carrinho } from './shared/carrinho.model';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 class CarrinhoService {
@@ -45,10 +46,12 @@ class CarrinhoService {
                 this.itens.push(itemCarrinho);
                 this.carrinho = {
                     email : user.email,
-                    itens : this.itens.map((obj)=> {return Object.assign({}, obj)})
+                    itens : this.itens.map((obj)=> {return Object.assign({}, obj)}),
+                    valor_total : this.totalCarrinhoCompras()
                 }
-                this.afs.collection('carrinhos').doc(fireUID).update(this.carrinho);
-                this.emitirNumeroDeItens.emit(this.itens.length);
+                this.afs.collection('carrinhos').doc(fireUID).set(this.carrinho).then(() => {
+                    this.emitirNumeroDeItens.emit(this.carrinho.itens.length);
+                });
             }
         })
     }
@@ -90,6 +93,16 @@ class CarrinhoService {
     public limparCarrinho(): void {
         this.itens = [];
         this.emitirNumeroDeItens.emit();
+    }
+
+    public getCarrinhoByEmail(email: string){
+        return this.afs.collection('carrinhos', ref => ref.where('email', '==', email))
+        .snapshotChanges()
+        .pipe(
+            map(changes => {
+                return changes.map(c => ({ key: c.payload.doc.id, ...c.payload.doc.data() }));
+            })
+        );
     }
 
 }

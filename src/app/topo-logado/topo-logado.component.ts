@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs/Observable';
@@ -9,6 +9,7 @@ import { OfertasService } from '../ofertas.service';
 import { Produto } from '../shared/produto.model';
 import { UsuarioService } from './../usuario.service';
 import { BehaviorSubject } from 'rxjs';
+import { Carrinho } from '../shared/carrinho.model';
 
 @Component({
   selector: 'app-topo-logado',
@@ -18,19 +19,21 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class TopoLogadoComponent implements OnInit {
 
-  public usuario: any
-  public enderecoEntrega: string;
-  public numeroEntrega: string;
-  public numeroItensCarrinho: number;
-  public widthScreen: boolean = true;
+  usuario: any;
+  enderecoEntrega: string;
+  numeroEntrega: string;
+  numeroItensCarrinho: number;
+  widthScreen: boolean = true;
   produtos: Observable<any[]>;
   startAt: BehaviorSubject<string | null> = new BehaviorSubject('');
+  carrinhoObservable: Observable<any>;
+  carrinho: Carrinho;
 
   constructor(
     private ofertasService: OfertasService,
     private autenticacao: Autenticacao,
     private carrinhoService: CarrinhoService,
-    private db: AngularFirestore,
+    private afs: AngularFirestore,
     public afauth: AngularFireAuth,
     public userService: UsuarioService
   ) { }
@@ -51,7 +54,7 @@ export class TopoLogadoComponent implements OnInit {
 
     this.produtos = this.ofertasService.pesquisaProdutos(this.startAt);
 
-    // mostrar número de itens no carrinho
+    // altera número de itens no carrinho
     this.carrinhoService.emitirNumeroDeItens.subscribe(
       numeroItens => this.numeroItensCarrinho = numeroItens
     );
@@ -67,6 +70,14 @@ export class TopoLogadoComponent implements OnInit {
 
         this.enderecoEntrega = aux.endereco
         this.numeroEntrega = aux.numero
+
+        this.carrinhoObservable = this.carrinhoService.getCarrinhoByEmail(user.email);
+        this.carrinhoObservable.subscribe(car => {
+          this.carrinho = car[0];
+          this.numeroItensCarrinho = this.carrinho.itens.length;
+        })
+
+
       })
     })
   } 
