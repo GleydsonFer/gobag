@@ -31,6 +31,7 @@
     "ngx-owl-carousel": "^2.0.7",
     "ngx-toastr": "^10.0.4",
     "owl.carousel": "^2.3.4",
+    "pagarme": "^4.4.0",
     "popper.js": "^1.14.7",
     "rxjs": "~6.3.3",
     "rxjs-compat": "^6.4.0",
