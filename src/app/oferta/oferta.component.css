@@ -100,3 +100,13 @@ h1 {
     background: #fff;
     color: #212529;
 }
+
+.tamanho_disponivel{
+    background-color:#3232a8;
+}
+.tamanho_indisponivel{
+    background-color:#b85656;
+}
+.selecionado{
+    border:5px solid black;
+}

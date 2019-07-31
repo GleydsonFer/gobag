@@ -27,9 +27,10 @@
             </div>
 
             <div class="medidas_box">
-              <div class="medida">P</div>
-              <div class="medida">M</div>
-              <div class="medida">G</div>
+              <div *ngFor="let item of tamanho" class="medida" (click)="selecionarTamanho(item.key)"
+                       [ngClass]="conferirNull(item.value, item.selecionado)">
+                <span >{{item.key}}</span>
+              </div>
             </div>
 
             <button type="button" class="btn_pedido" (click)="adicionarItemCarrinho()"> Adicionar ao carrinho
