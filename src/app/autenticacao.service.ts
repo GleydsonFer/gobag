@@ -14,6 +14,7 @@ import { promise } from 'protractor';
 export class Autenticacao {
 
     public message: string;
+    public error: any;
     public token_id: string
 
     constructor(
@@ -82,6 +83,7 @@ export class Autenticacao {
             })
             .catch((error: Error) => {
                 this.message = error.message;
+                this.error = error;
             });
     }
 

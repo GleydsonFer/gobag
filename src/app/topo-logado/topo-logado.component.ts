@@ -38,9 +38,9 @@ export class TopoLogadoComponent implements OnInit {
   ngAfterViewInit(): void {
     this.resize()
   }
-  
-  resize(){
-    if(screen.width > 820){
+
+  resize() {
+    if (screen.width > 820) {
       this.widthScreen = true
     } else {
       this.widthScreen = false
@@ -61,13 +61,16 @@ export class TopoLogadoComponent implements OnInit {
         aux = usuario[0]
 
         var foto_user = document.querySelector(".login");
-        foto_user.setAttribute("style" , `background-image:url(${aux.foto_perfil}); background-size:100%; background-repeat:no-repeat`)
-
+        if (aux.foto_perfil) {
+          foto_user.setAttribute("style", `background-image:url(${aux.foto_perfil}); background-size:100%; background-repeat:no-repeat`)
+        }else{
+          foto_user.setAttribute("style", `background-image:url(../../assets/brasil.png); background-size:100%; background-repeat:no-repeat`)
+        }
         this.enderecoEntrega = aux.endereco
         this.numeroEntrega = aux.numero
       })
     })
-  } 
+  }
 
 
 
