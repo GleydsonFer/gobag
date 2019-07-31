@@ -45,14 +45,7 @@ export class OrdemCompraComponent implements OnInit {
         
       })
     })
-    // setTimeout(this.testaCarrinho, 2000);
   }
-  
-  // testaCarrinho(){
-  //   this.carrinho.subscribe(car => {
-  //     console.log(car);
-  //   })
-  // }
 
   public confirmarCompra(): void {
     this.afAuth.auth.onAuthStateChanged(user => {
@@ -97,5 +90,9 @@ export class OrdemCompraComponent implements OnInit {
         }
       }
     })
+  }
+
+  public cancelarCarrinho(){
+    this.carrinhoService.limparCarrinho(this.usuario, this.carrinho);
   }
 }

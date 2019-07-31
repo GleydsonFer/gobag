@@ -17,7 +17,9 @@
  
   </div>
   <div class="bottom row col-sm-12 text-center">
-    <div class="col-12 col-sm-12 col-md-4 voltar"> <button class="btn_cancelar">CANCELAR</button></div>
+    <div class="col-12 col-sm-12 col-md-4 voltar"> 
+      <button class="btn_cancelar" (click)="cancelarCarrinho()">CANCELAR</button>
+    </div>
     <div class="col-12 col-sm-12 col-md-4 total ">
       <p *ngIf="carrinho; else loading">
         <span>TOTAL</span>
