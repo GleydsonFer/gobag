@@ -11,6 +11,7 @@ class CarrinhoService {
     }
 
     public incluirItem(produto: Produto): void {
+
         let itemCarrinho: ItemCarrinho = new ItemCarrinho(
             produto.id_produto,
             produto.imagens[0],
@@ -18,18 +19,24 @@ class CarrinhoService {
             produto.descricao,
             produto.loja,
             produto.valor,
-            1
+            1,
+            produto.tamanho
         )
 
-        //verificar se o item em questão já não existe dentro de this.itens
-        let itemCarrinhoEncontrado = this.itens.find((item: ItemCarrinho) => item.id_produto === itemCarrinho.id_produto)
 
-        if (itemCarrinhoEncontrado) {
-            itemCarrinhoEncontrado.quantidade += 1
-        } else {
-            this.itens.push(itemCarrinho);
-            this.emitirNumeroDeItens.emit(this.itens.length);
-        }
+        //verificar se o item em questão já não existe dentro de this.itens
+        // var  itemCarrinhoEncontrado = this.itens.find((item: ItemCarrinho) => (item.id_produto === itemCarrinho.id_produto))
+       
+         var itemCarrinhoEncontrado = this.itens.find((item: ItemCarrinho) => ( (item.tamanho == itemCarrinho.tamanho) && (item.id_produto === itemCarrinho.id_produto)) )
+      
+        if ( itemCarrinhoEncontrado) {
+               itemCarrinhoEncontrado.quantidade += 1
+       }else{
+
+           this.itens.push(itemCarrinho);
+           this.emitirNumeroDeItens.emit(this.itens.length);
+       }
+    
     }
 
     public totalCarrinhoCompras(): number {
@@ -45,7 +52,7 @@ class CarrinhoService {
     public adicionarQuantidade(itemCarrinho: ItemCarrinho): void {
 
         //incrementar quantidade
-        let itemCarrinhoEncontrado = this.itens.find((item: ItemCarrinho) => item.id_produto === itemCarrinho.id_produto)
+        let itemCarrinhoEncontrado = this.itens.find((item: ItemCarrinho) => ( (item.tamanho == itemCarrinho.tamanho) && (item.id_produto === itemCarrinho.id_produto)) )
 
         if (itemCarrinhoEncontrado) {
             itemCarrinhoEncontrado.quantidade += 1
@@ -54,7 +61,7 @@ class CarrinhoService {
 
     public diminuirQuantidade(itemCarrinho: ItemCarrinho): void {
         //decrementar quantidade
-        let itemCarrinhoEncontrado = this.itens.find((item: ItemCarrinho) => item.id_produto === itemCarrinho.id_produto)
+        let itemCarrinhoEncontrado = this.itens.find((item: ItemCarrinho) => ( (item.tamanho == itemCarrinho.tamanho) && (item.id_produto === itemCarrinho.id_produto)) )
 
         if (itemCarrinhoEncontrado) {
             itemCarrinhoEncontrado.quantidade -= 1
