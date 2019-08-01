@@ -1,0 +1,35 @@
+<div class="container">
+  <form>
+    <div class="form-group">
+      <label for="inputNome1">Nome</label>
+      <input type="text" class="form-control" id="inputNome1" placeholder="Nome da Loja">
+    </div>
+    <div class="form-group">
+      <label for="inputEmail1">E-mail</label>
+      <input type="email" class="form-control" id="inputEmail1" placeholder="Seu email">
+      <small id="emailHelp" class="form-text text-muted">Nunca vamos compartilhar seu email, com ninguém.</small>
+    </div>
+    <div class="form-group">
+      <label for="inputCnpj1">CNPJ</label>
+      <input type="text" class="form-control" id="inputCnpj1" placeholder="CNPJ">
+    </div>
+    <div class="form-group">
+      <label for="inputEndereco1">Endereço</label>
+      <div class="d-flex form-group" id="inputEndereco1">
+        <input type="text" class="form-control col-md-6" placeholder="Logradouro">
+        <input type="text" class="form-control col-md-3" placeholder="Número">
+        <input type="text" class="form-control col-md-3" placeholder="Complemento">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputTelefone1">Telefone</label>
+      <input type="tel" class="form-control" id="inputTelefone1" placeholder="Senha">
+    </div>
+    <div class="form-group form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">Concordo com os <a [routerLink]="[ '/termos-de-uso']">termos
+          de uso</a></label>
+    </div>
+    <button type="submit" class="btn btn-primary">Enviar</button>
+  </form>
+</div>

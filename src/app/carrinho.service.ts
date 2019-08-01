@@ -33,7 +33,11 @@ class CarrinhoService {
 
             this.carrinhoObservable = this.getCarrinhoByEmail(user.email);
             this.carrinhoObservable.subscribe(car => {
-                this.itens = car[0].itens;
+                if(car[0] != undefined){
+                    this.itens = car[0].itens;
+                } else {
+                    this.itens = [];
+                }
 
                 let itemCarrinho: ItemCarrinho = new ItemCarrinho(
                     produto.id_produto,
@@ -100,7 +104,7 @@ class CarrinhoService {
         }
     }
 
-    public limparCarrinho(usuario: Usuario, carrinho: Carrinho): void {
+    public limparCarrinho(usuario: Usuario, carrinho: Carrinho) {
         this.itens = [];
 
         console.log('carrinho', carrinho);
@@ -109,10 +113,11 @@ class CarrinhoService {
         carrinho.itens = [];
         carrinho.valor_total = null;
 
-        this.afs.collection('carrinhos').doc(fireUID).update(carrinho).then(() => {
+        this.afs.collection('carrinhos').doc(fireUID).delete().then(() => {
             // this.emitirNumeroDeItens.emit(0);
-        }).then(() => console.log('carrinho limpo'));
-
+            console.log('carrinho limpo', carrinho);
+        })
+        return carrinho;
     }
 
     public getCarrinhoByEmail(email: string) {

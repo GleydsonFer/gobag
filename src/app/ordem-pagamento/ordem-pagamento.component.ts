@@ -11,15 +11,13 @@ export class OrdemPagamentoComponent implements OnInit {
 
   ngOnInit() {
     const pagarme = require('pagarme/browser');
-    // pagarme.checkout.open();
+    pagarme.checkout.open();
     pagarme.client.connect({ api_key: 'ak_test_KN3qLDMn4KnpRgHCidxb7T9xfVcSz0' })
     // Mostra as tranferências já realizadas
-    // .then(client => client.transactions.all())
-    // .then(transactions => console.log(transactions))
-    // .catch(error => console.log(error))
+    .then(client => client.transactions.all())
+    .then(transactions => console.log(transactions))
+    .catch(error => console.log(error))
 
-    
   }
-
 
 }

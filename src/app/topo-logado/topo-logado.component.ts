@@ -41,9 +41,9 @@ export class TopoLogadoComponent implements OnInit {
   ngAfterViewInit(): void {
     this.resize()
   }
-  
-  resize(){
-    if(screen.width > 820){
+
+  resize() {
+    if (screen.width > 820) {
       this.widthScreen = true
     } else {
       this.widthScreen = false
@@ -62,11 +62,11 @@ export class TopoLogadoComponent implements OnInit {
     this.afauth.auth.onAuthStateChanged(user => {
       // console.log(user.email);
       this.userService.getUsuario(user.email).subscribe(usuario => {
-       
+
         aux = usuario[0]
 
         var foto_user = document.querySelector(".login");
-        foto_user.setAttribute("style" , `background-image:url(${aux.foto_perfil}); background-size:100%; background-repeat:no-repeat`)
+        foto_user.setAttribute("style", `background-image:url(${aux.foto_perfil}); background-size:100%; background-repeat:no-repeat`)
 
         this.enderecoEntrega = aux.endereco
         this.numeroEntrega = aux.numero
@@ -74,13 +74,15 @@ export class TopoLogadoComponent implements OnInit {
         this.carrinhoObservable = this.carrinhoService.getCarrinhoByEmail(user.email);
         this.carrinhoObservable.subscribe(car => {
           this.carrinho = car[0];
-          this.numeroItensCarrinho = this.carrinho.itens.length;
+          if (this.carrinho != undefined && this.carrinho != null) {
+            this.numeroItensCarrinho = this.carrinho.itens.length;
+          }
         })
 
 
       })
     })
-  } 
+  }
 
 
 

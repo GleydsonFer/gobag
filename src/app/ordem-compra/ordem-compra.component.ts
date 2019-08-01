@@ -93,6 +93,7 @@ export class OrdemCompraComponent implements OnInit {
   }
 
   public cancelarCarrinho(){
-    this.carrinhoService.limparCarrinho(this.usuario, this.carrinho);
+    // this.carrinhoService.limparCarrinho(this.usuario, this.carrinho);
+    // this.carrinho = null;
   }
 }
