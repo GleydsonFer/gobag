@@ -1,16 +1,33 @@
-import { EventEmitter } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { ItemCarrinho } from './shared/item-carrinho.model';
 import { Produto } from './shared/produto.model';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { Carrinho } from './shared/carrinho.model';
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { Usuario } from './shared/usuario.model';
 
+@Injectable()
 class CarrinhoService {
-    public itens: ItemCarrinho[] = []
-    public emitirNumeroDeItens: EventEmitter<number> = new EventEmitter<number>();
+
+    carrinho: Carrinho;
+    itens: ItemCarrinho[] = []
+    emitirNumeroDeItens: EventEmitter<number> = new EventEmitter<number>();
+    carrinhoObservable: Observable<any>;
+    carrinhoObservable2: Observable<any>;
+
+    constructor(
+        private afs: AngularFirestore,
+        private afauth: AngularFireAuth
+    ) { }
 
     public exibirItens(): ItemCarrinho[] {
         return this.itens;
     }
 
     public incluirItem(produto: Produto): void {
+
         let itemCarrinho: ItemCarrinho = new ItemCarrinho(
             produto.id_produto,
             produto.imagens[0],
@@ -18,18 +35,24 @@ class CarrinhoService {
             produto.descricao,
             produto.loja,
             produto.valor,
-            1
+            1,
+            produto.tamanho
         )
 
-        //verificar se o item em questão já não existe dentro de this.itens
-        let itemCarrinhoEncontrado = this.itens.find((item: ItemCarrinho) => item.id_produto === itemCarrinho.id_produto)
 
-        if (itemCarrinhoEncontrado) {
-            itemCarrinhoEncontrado.quantidade += 1
-        } else {
-            this.itens.push(itemCarrinho);
-            this.emitirNumeroDeItens.emit(this.itens.length);
-        }
+        //verificar se o item em questão já não existe dentro de this.itens
+        // var  itemCarrinhoEncontrado = this.itens.find((item: ItemCarrinho) => (item.id_produto === itemCarrinho.id_produto))
+       
+         var itemCarrinhoEncontrado = this.itens.find((item: ItemCarrinho) => ( (item.tamanho == itemCarrinho.tamanho) && (item.id_produto === itemCarrinho.id_produto)) )
+      
+        if ( itemCarrinhoEncontrado) {
+               itemCarrinhoEncontrado.quantidade += 1
+       }else{
+
+           this.itens.push(itemCarrinho);
+           this.emitirNumeroDeItens.emit(this.itens.length);
+       }
+    
     }
 
     public totalCarrinhoCompras(): number {
@@ -45,7 +68,7 @@ class CarrinhoService {
     public adicionarQuantidade(itemCarrinho: ItemCarrinho): void {
 
         //incrementar quantidade
-        let itemCarrinhoEncontrado = this.itens.find((item: ItemCarrinho) => item.id_produto === itemCarrinho.id_produto)
+        let itemCarrinhoEncontrado = this.itens.find((item: ItemCarrinho) => ( (item.tamanho == itemCarrinho.tamanho) && (item.id_produto === itemCarrinho.id_produto)) )
 
         if (itemCarrinhoEncontrado) {
             itemCarrinhoEncontrado.quantidade += 1
@@ -54,7 +77,7 @@ class CarrinhoService {
 
     public diminuirQuantidade(itemCarrinho: ItemCarrinho): void {
         //decrementar quantidade
-        let itemCarrinhoEncontrado = this.itens.find((item: ItemCarrinho) => item.id_produto === itemCarrinho.id_produto)
+        let itemCarrinhoEncontrado = this.itens.find((item: ItemCarrinho) => ( (item.tamanho == itemCarrinho.tamanho) && (item.id_produto === itemCarrinho.id_produto)) )
 
         if (itemCarrinhoEncontrado) {
             itemCarrinhoEncontrado.quantidade -= 1
@@ -66,9 +89,31 @@ class CarrinhoService {
         }
     }
 
-    public limparCarrinho(): void {
+    public limparCarrinho(usuario: Usuario, carrinho: Carrinho) {
         this.itens = [];
-        this.emitirNumeroDeItens.emit();
+
+        console.log('carrinho', carrinho);
+
+        var fireUID = btoa(usuario.email);
+
+        
+        this.afs.collection('carrinhos').doc(fireUID).delete().then(() => {
+            this.emitirNumeroDeItens.emit(0);
+            carrinho.itens = [];
+            carrinho.valor_total = 0;
+            console.log('carrinho limpo', carrinho);
+            return carrinho;
+        })
+    }
+
+    public getCarrinhoByEmail(email: string) {
+        return this.afs.collection('carrinhos', ref => ref.where('email', '==', email))
+            .snapshotChanges()
+            .pipe(
+                map(changes => {
+                    return changes.map(c => ({ ...c.payload.doc.data() }));
+                })
+            );
     }
 
 }
