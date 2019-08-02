@@ -73,11 +73,9 @@ export class CarouselOrdemCompraComponent implements OnInit {
     //codigo para controle de reordenação  do carousel
     if (item.quantidade < 1) {
       if (this.reordenar == false) {
-        console.log("entrou no primeiro laço");
         this.reordenar = true;
         this.ajustCarousel()
       } else {
-        console.log("entrou no segundo laço");
         this.reordenar = false;
         this.ajustCarousel()
       }

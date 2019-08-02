@@ -72,6 +72,8 @@ import { CarouselOrdemCompraComponent } from './ordem-compra/carousel-ordem-comp
 import { MenuUsuarioComponent } from './acesso/menu-usuario/menu-usuario.component';
 import { TermosDeUsoComponent } from './termos-de-uso/termos-de-uso.component';
 import { PoliticasDePrivacidadeComponent } from './politicas-de-privacidade/politicas-de-privacidade.component';
+import { OrdemDevolucaoComponent } from './ordem-devolucao/ordem-devolucao.component';
+import { CarouselOrdemDevolucaoComponent } from './ordem-devolucao/carousel-ordem-devolucao/carousel-ordem-devolucao.component';
 import { CadastroLojistaComponent } from './cadastro-lojista/cadastro-lojista.component';
 
 registerLocaleData(localePtBr);
@@ -116,6 +118,8 @@ registerLocaleData(localePtBr);
     MenuUsuarioComponent,
     TermosDeUsoComponent,
     PoliticasDePrivacidadeComponent,
+    OrdemDevolucaoComponent,
+    CarouselOrdemDevolucaoComponent,
     CadastroLojistaComponent,
     //ajustanto o erro ngIf
 
