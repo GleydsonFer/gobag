@@ -28,6 +28,7 @@ import { MenuUsuarioComponent } from './acesso/menu-usuario/menu-usuario.compone
 import { TermosDeUsoComponent } from './termos-de-uso/termos-de-uso.component';
 import { PoliticasDePrivacidadeComponent } from './politicas-de-privacidade/politicas-de-privacidade.component';
 import { OrdemDevolucaoComponent } from './ordem-devolucao/ordem-devolucao.component';
+import { CadastroLojistaComponent } from './cadastro-lojista/cadastro-lojista.component';
 
 export const ROUTES: Routes = [
     { path: '', component: HomeComponent },
@@ -59,5 +60,6 @@ export const ROUTES: Routes = [
     { path: 'termos-de-uso', component: TermosDeUsoComponent },
     { path: 'politicas-de-privacidade', component: PoliticasDePrivacidadeComponent },
     { path: 'ordem-devolucao', component: OrdemDevolucaoComponent },
+    { path: 'cadastro-lojista', component: CadastroLojistaComponent }
 
 ]

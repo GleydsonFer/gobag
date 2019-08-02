@@ -74,6 +74,7 @@ import { TermosDeUsoComponent } from './termos-de-uso/termos-de-uso.component';
 import { PoliticasDePrivacidadeComponent } from './politicas-de-privacidade/politicas-de-privacidade.component';
 import { OrdemDevolucaoComponent } from './ordem-devolucao/ordem-devolucao.component';
 import { CarouselOrdemDevolucaoComponent } from './ordem-devolucao/carousel-ordem-devolucao/carousel-ordem-devolucao.component';
+import { CadastroLojistaComponent } from './cadastro-lojista/cadastro-lojista.component';
 
 registerLocaleData(localePtBr);
 
@@ -119,6 +120,7 @@ registerLocaleData(localePtBr);
     PoliticasDePrivacidadeComponent,
     OrdemDevolucaoComponent,
     CarouselOrdemDevolucaoComponent,
+    CadastroLojistaComponent,
     //ajustanto o erro ngIf
 
     //

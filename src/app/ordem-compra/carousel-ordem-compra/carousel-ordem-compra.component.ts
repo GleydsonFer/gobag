@@ -1,8 +1,9 @@
 import { style } from '@angular/animations';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { ItemCarrinho } from 'src/app/shared/item-carrinho.model';
 import CarrinhoService from 'src/app/carrinho.service';
 import { Router, NavigationEnd } from '@angular/router';
+import { Carrinho } from 'src/app/shared/carrinho.model';
 
 @Component({
   selector: 'app-carousel-ordem-compra',
@@ -11,6 +12,7 @@ import { Router, NavigationEnd } from '@angular/router';
 })
 export class CarouselOrdemCompraComponent implements OnInit {
 
+  @Input() carrinho: Carrinho;
   reordenar: boolean = false;
 
   @ViewChild('carousel') elementoTeste: HTMLElement;
@@ -95,20 +97,22 @@ export class CarouselOrdemCompraComponent implements OnInit {
     this.ajustCarousel()
   }
   ajustCarousel() {
-    var nav = document.querySelector(".owl-nav");
-    var stage = document.querySelector(".owl-stage");
-    var prev = document.querySelector(".owl-prev");
-    var next = document.querySelector(".owl-next");
-    prev.setAttribute("style", "background-image:none !important; color:black; font-size:50px; position:absolute;left:-7%")
-    next.setAttribute("style", "background-image:none !important; color:black ; font-size:50px;position:absolute;right: -7%;")
-    // stage.setAttribute("class", "d-flex")
-    next.parentElement.children[0].innerHTML = "<img src='../../../assets/left.png' alt=''> "
-    prev.parentElement.children[1].innerHTML = "<img src='../../../assets/right.png' alt=''>"
-    // stage.children[0].classList.add('ml-3')
-    stage.classList.add('d-flex')
-    stage.classList.add('flex-row')
-    if (nav.classList[1] == "disabled") {
-      stage.setAttribute("style", "transform:none !important")
+    if (this.carrinho != null) {
+      var nav = document.querySelector(".owl-nav");
+      var stage = document.querySelector(".owl-stage");
+      var prev = document.querySelector(".owl-prev");
+      var next = document.querySelector(".owl-next");
+      prev.setAttribute("style", "background-image:none !important; color:black; font-size:50px; position:absolute;left:-7%")
+      next.setAttribute("style", "background-image:none !important; color:black ; font-size:50px;position:absolute;right: -7%;")
+      // stage.setAttribute("class", "d-flex")
+      next.parentElement.children[0].innerHTML = "<img src='../../../assets/left.png' alt=''> "
+      prev.parentElement.children[1].innerHTML = "<img src='../../../assets/right.png' alt=''>"
+      // stage.children[0].classList.add('ml-3')
+      stage.classList.add('d-flex')
+      stage.classList.add('flex-row')
+      if (nav.classList[1] == "disabled") {
+        stage.setAttribute("style", "transform:none !important")
+      }
     }
   }
 }
