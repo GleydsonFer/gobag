@@ -7,6 +7,9 @@ export class Usuario {
         public endereco: string,
         public numero: string,
         public complemento: string,
+        public data_nascimento: string,
+        public celular:string,
+        public bairro:string,
         public cpf?: string,
         public foto_perfil?: any
     ) {}

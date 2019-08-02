@@ -9,7 +9,7 @@
             <div class="descricao">
               <span class="nome_produto">{{item.nome | uppercase |  descricaoReduzida:10}}</span><br>
               <span class="nome_loja">{{item.anunciante}}</span><br>
-              <span class="preco"><span> {{item.valor | currency: 'BRL': 'symbol'}}</span> <span class="pp">PP</span>
+              <span class="preco"><span> {{item.valor | currency: 'BRL': 'symbol'}}</span> <span class="pp">{{ item.tamanho }}</span>
               </span><br>
 
               <span class="info_quant">
@@ -37,7 +37,7 @@
               <div class="descricao">
                 <span class="nome_produto">{{item.nome | uppercase |  descricaoReduzida:10}}</span><br>
                 <span class="nome_loja">{{item.anunciante}}</span><br>
-                <span class="preco"><span> {{item.valor | currency: 'BRL': 'symbol'}}</span> <span class="pp">PP</span>
+                <span class="preco"><span> {{item.valor | currency: 'BRL': 'symbol'}}</span> <span class="pp">{{ item.tamanho  }}</span>
                 </span><br>
 
                 <span class="info_quant">

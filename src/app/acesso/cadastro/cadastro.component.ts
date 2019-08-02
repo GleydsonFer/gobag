@@ -5,12 +5,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms'
 import { Usuario } from '../../shared/usuario.model'
 
 import { Autenticacao } from '../../autenticacao.service'
-
-
-
-
-
-
+// import { ConsoleReporter } from 'jasmine';
 
 @Component({
   selector: 'app-cadastro',
@@ -20,15 +15,16 @@ import { Autenticacao } from '../../autenticacao.service'
 })
 export class CadastroComponent implements OnInit {
   usuario:Usuario = {
-     email: "",
-     nome_completo: "",
-     nome_usuario: "",
-     senha: "",
-     endereco: "",
-     numero: "",
-     complemento: "",
-     cpf:"",
-     foto_perfil: ""
+    email: "",
+    nome_completo: "",
+    nome_usuario: "",
+    senha: "",
+    endereco: "",
+    numero: "",
+    complemento: "",
+    data_nascimento: "",
+    celular:"",
+    bairro:""
   }
   public mensagemErroCad: string
 
@@ -72,7 +68,13 @@ export class CadastroComponent implements OnInit {
       this.formulario.value.senha,
       this.formulario.value.endereco,
       this.formulario.value.numero,
-      this.formulario.value.complemento
+      this.formulario.value.complemento,
+      // data nascimento
+      "",
+      // celular 
+      "",
+      // bairro
+      ""
     )
 
     var aux = true;
@@ -89,36 +91,43 @@ export class CadastroComponent implements OnInit {
     } else {
       Object.assign(this.usuario,usuario)
       this.usuario.foto_perfil = ""
-      console.log(this.usuario);
-      this.auth.cadastrarUsuario(this.usuario)
+      this.auth.cadastrarUsuario(usuario)
         .then(() => {
 
-          var user =  this.fireAuth.auth.currentUser
-          user.sendEmailVerification().then(function() {
-            // Email sent.
-          }).catch(function(error) {
-            // An error happened.
-          });
+          // var user =  this.fireAuth.auth.currentUser
+          // user.sendEmailVerification().then(function() {
+          //   // Email sent.
+          // }).catch(function(error) {
+          //   // An error happened.
+          // });
 
           if (this.mensagemErroCad !== undefined) {
             this.auth.message = undefined;
           }
-
-          this.mensagemErroCad = this.auth.message;
-          console.log(this.mensagemErroCad);
-
-          if (this.mensagemErroCad === 'The email address is already in use by another account.') {
-            this.mensagemErroCad = "O endereço de email já está em uso por uma outra conta."
-          }
-          if (this.mensagemErroCad === 'The email address is badly formatted.') {
-            this.mensagemErroCad = "emeil com formatação errada"
-          }
-
-          if (this.mensagemErroCad === undefined) {
+      
+          if(this.auth.error !== undefined ){
+            if (this.auth.error.code === 'auth/email-already-in-use') {
+              this.mensagemErroCad = "O endereço de email já está em uso por uma outra conta."
+  
+            }
+            if (this.auth.error.code === 'auth/invalid-email') {
+              this.mensagemErroCad = "O endereço de email é inválido."
+            }
+            if (this.auth.error.code === 'auth/operation-not-allowed') {
+              this.mensagemErroCad = "Conta de email/senha não estão ativadas."
+            }
+            if (this.auth.error.code === 'auth/weak-password') {
+              this.mensagemErroCad = "Senha muita fraca. Para sua segurança digite uma senha mais forte."
+            }
+            this.auth.error =  undefined
+           
+          }else{
             this.exibirPainelLogin()
             this.mensagemErroCad = undefined;
           }
-        });
+        
+     
+        })
     }
   }
 }

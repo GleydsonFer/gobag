@@ -60,14 +60,15 @@ export class TopoLogadoComponent implements OnInit {
     );
 
     this.afauth.auth.onAuthStateChanged(user => {
-      // console.log(user.email);
       this.userService.getUsuario(user.email).subscribe(usuario => {
-
         aux = usuario[0]
 
         var foto_user = document.querySelector(".login");
-        foto_user.setAttribute("style", `background-image:url(${aux.foto_perfil}); background-size:100%; background-repeat:no-repeat`)
-
+        if (aux.foto_perfil) {
+          foto_user.setAttribute("style", `background-image:url(${aux.foto_perfil}); background-size:100%; background-repeat:no-repeat`)
+        }else{
+          foto_user.setAttribute("style", `background-image:url(../../assets/brasil.png); background-size:100%; background-repeat:no-repeat`)
+        }
         this.enderecoEntrega = aux.endereco
         this.numeroEntrega = aux.numero
 

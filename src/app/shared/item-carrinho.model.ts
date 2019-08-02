@@ -6,7 +6,8 @@ class ItemCarrinho {
         public descricao: string,
         public anunciante: string,
         public valor: number,
-        public quantidade: number
+        public quantidade: number,
+        public tamanho:any
     ) { }
 }
 

@@ -1,33 +1,86 @@
-<div class="conteudo row d-flex justify-content-center t">
+<div class="conteudo">
 
-  <form class="col-sm-9"  (submit)="salvar()" [formGroup]="formulario">
-    <h3 class="mb-5">Configurações da conta</h3>
-
-    <div class="form-group row w-100">
-      <label for="customFile">
-        <div class="form-group foto_user file_customizada d-flex" id="foto_user">
-            <img class="preview_img" src="" alt="" id="imgtag">
-            <span class="align-self-center text_image text-center">Selecionar</span>
-          <input  formControlName="foto" id="customFile" type="file" class="custom-file-input" accept="image/*" (change)="uploadFile($event)" />
+  <form class="row" (submit)="salvar()" [formGroup]="formulario">
+    <div class="col-sm-12 topo">
+      <h4>CADASTRO</h4>
+      <h4>NOVO POR AQUI</h4>
+      <h5>Precisamos de mais algumas informações para criar sua conta GOBAG</h5>
+    </div>
+    <div class="col">
+      <div class="col-8 inputs">
+        <div class="form-row">
+          <div class="form-group col">
+            <input formControlName="nome" type="text" class="form-control" placeholder="NOME">
+          </div>
+          <div class="form-group col">
+            <input formControlName="nome_usuario" type="text" class="form-control" placeholder="NOME DE USUÁRIO">
+          </div>
         </div>
-      </label>
-    </div>
-    <div class="form-group">
-        <label for="inputAddress">Nome</label>
-        <input  formControlName="nome"  type="text" class="form-control"  placeholder="nome">
+        <div class="form-group">
+          <input class="email" formControlName="email" type="text" class="form-control" placeholder="EMAIL" readonly>
+        </div>
+        <div class="form-group ">
+          <div class="input-group">
+            <input type="text" formControlName="cpf" class="form-control" [ngClass]="aplicaCssErro('cpf')"
+              placeholder="CPF">
+            <div *ngIf="this.formulario.get('cpf').invalid && this.formulario.get('cpf').touched"
+              class="invalid-feedback">
+              O campo CPF deve conter 11 dígitos
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col">
+            <input formControlName="data_nascimento" type="date" class="form-control" placeholder="NASCIMENTO">
+          </div>
+          <div class="form-group col">
+            <input formControlName="celular" type="text" class="form-control" placeholder="CELULAR">
+          </div>
+        </div>
+        <div class="form-row ">
+
+          <div class="form-group col-9">
+            <div class="input-group">
+              <input type="text" formControlName="endereco" class="form-control" [ngClass]="aplicaCssErro('endereco')"
+                placeholder="ENDERECO">
+              <div *ngIf="this.formulario.get('endereco').invalid && this.formulario.get('endereco').touched"
+                class="invalid-feedback">
+                O campo ENDEREÇO deve conter no mínimo 3 digitos
+              </div>
+            </div>
+          </div>
+          <div class="form-group col-3">
+            <div class="input-group">
+                <input type="text" formControlName="numero" class="form-control" [ngClass]="aplicaCssErro('numero')"
+                  placeholder="NUMERO">
+                <div *ngIf="this.formulario.get('numero').invalid && this.formulario.get('numero').touched"
+                  class="invalid-feedback">
+                  O campo NÚMERO  deve conter no mínimo 1 digitos
+                </div>
+              </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <input formControlName="bairro" type="text" class="form-control" placeholder="BAIRRO">
+        </div>
       </div>
-    <div class="form-row">
-        <div class="form-group col-md-9">
-            <label for="inputAddress col-md-9">endereco</label>
-            <input  formControlName="endereco"  type="text" class="form-control"  placeholder="Endereço">
-          </div>
-          <div class="form-group col-md-3">
-              <label for="inputAddress">numero</label>
-              <input  formControlName="numero"  type="text" class="form-control"  placeholder="numero">
-          </div>
+
     </div>
-  
-    <button  (click)="salvar()" class="btn btn-primary">Salvar</button>
+    <div class="col-sm-3 mt-5 d-flex justify-content-center">
+      <div class="form-group row">
+        <label for="customFile">
+          <div class="form-group foto_user file_customizada d-flex" id="foto_user">
+            <img class="preview_img" src="" alt="" id="imgtag">
+            <input formControlName="foto" id="customFile" type="file" class="custom-file-input" accept="image/*"
+              (change)="uploadFile($event)" />
+          </div>
+        </label>
+      </div>
+    </div>
+    <div class="col-12 text-center">
+      <button (click)="salvar()" [disabled]="this.formulario.invalid" class="btn btn-primary btn_salvar">ENVIAR</button>
+    </div>
   </form>
 
 </div>

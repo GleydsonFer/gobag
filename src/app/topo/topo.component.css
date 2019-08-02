@@ -63,8 +63,10 @@ nav{
     width: 27px;
     height: 27px;
     cursor: pointer;
-    /* background: url('/assets/avatar.png') no-repeat center center; */
-    background-color:black;
+    background: url('../../assets/brasil.png') no-repeat center center;
+    background-size:100%;
+    background-repeat:no-repeat;
+    /* background-color:black; */
     border-radius: 100%;
     margin-left:3px;
     margin-top:6px;
