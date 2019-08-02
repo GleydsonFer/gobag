@@ -1,35 +1,78 @@
-<div class="container">
-  <form>
-    <div class="form-group">
-      <label for="inputNome1">Nome</label>
-      <input type="text" class="form-control" id="inputNome1" placeholder="Nome da Loja">
-    </div>
-    <div class="form-group">
-      <label for="inputEmail1">E-mail</label>
-      <input type="email" class="form-control" id="inputEmail1" placeholder="Seu email">
-      <small id="emailHelp" class="form-text text-muted">Nunca vamos compartilhar seu email, com ninguém.</small>
-    </div>
-    <div class="form-group">
-      <label for="inputCnpj1">CNPJ</label>
-      <input type="text" class="form-control" id="inputCnpj1" placeholder="CNPJ">
-    </div>
-    <div class="form-group">
-      <label for="inputEndereco1">Endereço</label>
-      <div class="d-flex form-group" id="inputEndereco1">
-        <input type="text" class="form-control col-md-6" placeholder="Logradouro">
-        <input type="text" class="form-control col-md-3" placeholder="Número">
-        <input type="text" class="form-control col-md-3" placeholder="Complemento">
+<h4 class="d-flex justify-content-center mt-5">SEJA PARCEIRO!</h4>
+<h4 class="d-flex justify-content-center mb-4">Cadastre-se e seja uma loja GOBAG</h4>
+
+<form [formGroup]="cadastro" (ngSubmit)="cadastrarLojista()">
+
+  <div class="row">
+
+    <!-- 1ª coluna -->
+    <div class="col-md-6">
+      <h5>DADOS DE CONTATO</h5>
+
+      <div class="form-group d-flex">
+        <input type="text" class="form-control col-md-6" id="inputNome" placeholder="NOME" formControlName="nome">
+        <input type="tel" class="form-control col-md-6" id="inputSobrenome" placeholder="SOBRENOME" formControlName="sobrenome">
+      </div>
+
+      <div class="form-group d-flex">
+        <input type="text" class="form-control col-md-6" id="inputCargo" placeholder="CARGO" formControlName="cargo">
+        <input type="text" class="form-control col-md-6" id="inputCelular" placeholder="CELULAR" formControlName="celular">
+      </div>
+
+      <div class="form-group">
+        <input type="email" class="form-control" id="inputEmail1" placeholder="E-MAIL" formControlName="email">
+        <small id="emailHelp" class="form-text text-muted">Nunca vamos compartilhar seu email, com ninguém.</small>
+      </div>
+
+      <div class="form-group d-flex mt-5">
+        <input type="text" class="form-control" id="inputPergunta1" placeholder="Você já possui entregadores?" formControlName="jaPossuiEntregadores">
+      </div>
+
+      <div class="form-group d-flex">
+        <input type="text" class="form-control" id="inputPergunta2" placeholder="Possui quantas lojas?" formControlName="possuiQuantasLojas">
+      </div>
+      
+      <div class="form-group d-flex">
+        <input type="text" class="form-control" id="inputPergunta3" placeholder="Como você chegou até nós?" formControlName="comoChegouAteNos">
       </div>
     </div>
-    <div class="form-group">
-      <label for="inputTelefone1">Telefone</label>
-      <input type="tel" class="form-control" id="inputTelefone1" placeholder="Senha">
+
+    <!-- 2ª coluna -->
+    <div class="col-md-6">
+      <h5>DADOS DA LOJA</h5>
+
+      <div class="form-group">
+        <input type="text" class="form-control" id="inputNome1" placeholder="NOME DA LOJA" formControlName="nomeDaLoja">
+      </div>
+
+      <div class="form-group d-flex">
+        <input type="text" class="form-control col-md-6" id="inputCnpj1" placeholder="CNPJ" formControlName="cnpj">
+        <input type="text" class="form-control col-md-6" id="inputCep1" placeholder="CEP" formControlName="cep">
+      </div>
+
+      <div class="d-flex form-group" id="inputEndereco1">
+        <input type="text" class="form-control col-md-9" placeholder="ENDEREÇO" formControlName="endereco">
+        <input type="text" class="form-control col-md-3" placeholder="NÚMERO" formControlName="numero">
+      </div>
+
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="COMPLEMENTO" formControlName="complemento">
+      </div>
+
+      <div class="form-group d-flex">
+        <input type="text" class="form-control col-md-4" id="inputBairro" placeholder="BAIRRO" formControlName="bairro">
+        <input type="text" class="form-control col-md-4" id="inputCidade" placeholder="CIDADE" formControlName="cidade">
+        <input type="text" class="form-control col-md-4" id="inputUf" placeholder="UF" formControlName="uf">
+      </div>
+
     </div>
-    <div class="form-group form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-      <label class="form-check-label" for="exampleCheck1">Concordo com os <a [routerLink]="[ '/termos-de-uso']">termos
-          de uso</a></label>
-    </div>
-    <button type="submit" class="btn btn-primary">Enviar</button>
-  </form>
-</div>
+
+  </div>
+
+  <div class="d-flex justify-content-center">
+    <button type="submit" class="btn btn-secondary botao" routerLink="/cadastro-lojista">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ENVIAR DADOS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </button>
+  </div>
+
+</form>
