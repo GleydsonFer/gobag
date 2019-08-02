@@ -1,10 +1,26 @@
-import { EventEmitter } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { ItemCarrinho } from './shared/item-carrinho.model';
 import { Produto } from './shared/produto.model';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { Carrinho } from './shared/carrinho.model';
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { Usuario } from './shared/usuario.model';
 
+@Injectable()
 class CarrinhoService {
-    public itens: ItemCarrinho[] = []
-    public emitirNumeroDeItens: EventEmitter<number> = new EventEmitter<number>();
+
+    carrinho: Carrinho;
+    itens: ItemCarrinho[] = []
+    emitirNumeroDeItens: EventEmitter<number> = new EventEmitter<number>();
+    carrinhoObservable: Observable<any>;
+    carrinhoObservable2: Observable<any>;
+
+    constructor(
+        private afs: AngularFirestore,
+        private afauth: AngularFireAuth
+    ) { }
 
     public exibirItens(): ItemCarrinho[] {
         return this.itens;
@@ -73,9 +89,31 @@ class CarrinhoService {
         }
     }
 
-    public limparCarrinho(): void {
+    public limparCarrinho(usuario: Usuario, carrinho: Carrinho) {
         this.itens = [];
-        this.emitirNumeroDeItens.emit();
+
+        console.log('carrinho', carrinho);
+
+        var fireUID = btoa(usuario.email);
+
+        
+        this.afs.collection('carrinhos').doc(fireUID).delete().then(() => {
+            this.emitirNumeroDeItens.emit(0);
+            carrinho.itens = [];
+            carrinho.valor_total = 0;
+            console.log('carrinho limpo', carrinho);
+            return carrinho;
+        })
+    }
+
+    public getCarrinhoByEmail(email: string) {
+        return this.afs.collection('carrinhos', ref => ref.where('email', '==', email))
+            .snapshotChanges()
+            .pipe(
+                map(changes => {
+                    return changes.map(c => ({ ...c.payload.doc.data() }));
+                })
+            );
     }
 
 }
