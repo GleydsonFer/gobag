@@ -110,14 +110,15 @@ class CarrinhoService {
         console.log('carrinho', carrinho);
 
         var fireUID = btoa(usuario.email);
-        carrinho.itens = [];
-        carrinho.valor_total = null;
 
+        
         this.afs.collection('carrinhos').doc(fireUID).delete().then(() => {
-            // this.emitirNumeroDeItens.emit(0);
+            this.emitirNumeroDeItens.emit(0);
+            carrinho.itens = [];
+            carrinho.valor_total = 0;
             console.log('carrinho limpo', carrinho);
+            return carrinho;
         })
-        return carrinho;
     }
 
     public getCarrinhoByEmail(email: string) {
@@ -125,7 +126,7 @@ class CarrinhoService {
             .snapshotChanges()
             .pipe(
                 map(changes => {
-                    return changes.map(c => ({ key: c.payload.doc.id, ...c.payload.doc.data() }));
+                    return changes.map(c => ({ ...c.payload.doc.data() }));
                 })
             );
     }

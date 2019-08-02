@@ -1,6 +1,6 @@
 .botao{
     margin-top: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 200px;
 }
 input.ng-invalid.ng-touched {
     border-bottom: 2px solid red;
