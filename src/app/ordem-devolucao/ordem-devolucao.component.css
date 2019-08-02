@@ -4,6 +4,12 @@
     font-weight: 100;   
 }
 
+.div_container{
+    margin-top: 50px;
+    margin-bottom: 50px;  
+    margin-left: 20px;
+    /* height: 550px;   */
+}
 .rev_pedido{
     margin-left:100px;
     margin-bottom: 20px;
@@ -27,7 +33,7 @@
     line-height:22px;
 }
 .bottom{
-    margin-bottom: 150px;
+    margin-top: 150px;
 }
 
 .carousel{
@@ -78,14 +84,11 @@ p{
 .descricao span{
 }
 .descricao .nome_produto{
-    font-weight:bold;
-    color: #1d1d1d;
-    font-size: 0.8em;
+    font-weight: bold;
+    font-size: 0.7em;
 }
 .descricao .nome_loja{
     font-size: 0.8em;
-    font-weight: 600;
-    color: #5f5d5d;
 }
 .descricao .preco{
     color: rgb(119, 119, 119);
@@ -94,40 +97,22 @@ p{
 .quant_pecas{
     font-size: 0.8em;
 }
-
-.owl-next{
-    background-color:red;
+.endereco{
+    height: 70px;
 }
-.apenas_um_teste{
-    background-image: none;
-    background-color:blue;
+.endereco span{
+  line-height: 35px;
+  margin-left: 10px;
 }
-
-.pp{
- margin-left: 30%;
-}
-
-.btn_decre{
-    padding: 2px 7px 2px 7px;
-    background-color:white;
-    border-color:rgb(146, 146, 146);
-    border-width: 1px;
-    color:black;
-    margin-top:5px;
-}
-.btn_decre:hover{
-    background-color:rgb(192, 192, 192);
-}
-.btn_incre{
-    padding: 2px 5.5px 2px 5.5px;
-    background-color:white;
-    border-color:rgb(146, 146, 146);
-    border-width: 1px;
-    color:black;
-    margin-top:5px;
-}
-.btn_incre:hover{
-    background-color:rgb(192, 192, 192);
+@media (max-width: 820px){
+    .div_container{
+        margin-top: 120px;
+    }
+    .rev_pedido{
+        font-size: 1.5em;
+        margin-left:0px;
+        text-align:center;
+    }
 }
 
 

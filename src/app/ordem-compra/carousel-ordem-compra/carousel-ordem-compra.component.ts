@@ -71,11 +71,9 @@ export class CarouselOrdemCompraComponent implements OnInit {
     //codigo para controle de reordenação  do carousel
     if (item.quantidade < 1) {
       if (this.reordenar == false) {
-        console.log("entrou no primeiro laço");
         this.reordenar = true;
         this.ajustCarousel()
       } else {
-        console.log("entrou no segundo laço");
         this.reordenar = false;
         this.ajustCarousel()
       }
@@ -107,8 +105,8 @@ export class CarouselOrdemCompraComponent implements OnInit {
     next.parentElement.children[0].innerHTML = "<img src='../../../assets/left.png' alt=''> "
     prev.parentElement.children[1].innerHTML = "<img src='../../../assets/right.png' alt=''>"
     // stage.children[0].classList.add('ml-3')
-     stage.classList.add('d-flex')
-     stage.classList.add('flex-row')
+    stage.classList.add('d-flex')
+    stage.classList.add('flex-row')
     if (nav.classList[1] == "disabled") {
       stage.setAttribute("style", "transform:none !important")
     }
