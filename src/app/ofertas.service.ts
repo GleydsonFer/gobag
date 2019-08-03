@@ -165,14 +165,15 @@ export class OfertasService {
     public pesquisaProdutos(start: BehaviorSubject<string>): Observable<any[]> {
         return start
           .switchMap(startText => {
+            startText = startText.toLowerCase();
             const endText = startText + '\uf8ff';
             return this.afs
               .collection('produtos', ref =>
                 ref
-                  .orderBy('nome')
-                  .limit(5)
+                  .orderBy('nome_insensitive')
                   .startAt(startText)
                   .endAt(endText)
+                  .limit(5)
               )
               .snapshotChanges()
               .debounceTime(200)

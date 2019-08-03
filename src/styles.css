@@ -8,6 +8,10 @@ mas com um estilo diferente: header {background: #fff;} a desse arquivo
 é a que será exibida */
 
 /* Estilo default */
+html
+{
+    overflow-x:hidden;
+}
 
 h5 {
     color:#999

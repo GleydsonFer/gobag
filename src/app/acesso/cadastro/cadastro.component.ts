@@ -1,15 +1,10 @@
+import { AngularFireAuth } from '@angular/fire/auth';
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms'
 
 import { Usuario } from '../../shared/usuario.model'
 
 import { Autenticacao } from '../../autenticacao.service'
-
-
-
-
-
-
 
 @Component({
   selector: 'app-cadastro',
@@ -18,8 +13,18 @@ import { Autenticacao } from '../../autenticacao.service'
   
 })
 export class CadastroComponent implements OnInit {
-
-
+  usuario:Usuario = {
+    email: "",
+    nome_completo: "",
+    nome_usuario: "",
+    senha: "",
+    endereco: "",
+    numero: "",
+    complemento: "",
+    data_nascimento: "",
+    celular:"",
+    bairro:""
+  }
   public mensagemErroCad: string
 
   //
@@ -43,8 +48,7 @@ export class CadastroComponent implements OnInit {
 
   constructor(
     private auth: Autenticacao,
-    
-    
+    private fireAuth:AngularFireAuth
   ) { }
 
   ngOnInit() {
@@ -55,6 +59,7 @@ export class CadastroComponent implements OnInit {
   }
 
   public cadastrarUsuario(): void {
+    
     let usuario = new Usuario(
       this.formulario.value.email,
       this.formulario.value.nome_completo,
@@ -62,7 +67,13 @@ export class CadastroComponent implements OnInit {
       this.formulario.value.senha,
       this.formulario.value.endereco,
       this.formulario.value.numero,
-      this.formulario.value.complemento
+      this.formulario.value.complemento,
+      // data nascimento
+      "",
+      // celular 
+      "",
+      // bairro
+      ""
     )
 
     var aux = true;
@@ -77,8 +88,18 @@ export class CadastroComponent implements OnInit {
       this.formulario.get('complemento').markAsTouched()
 
     } else {
+      Object.assign(this.usuario,usuario)
+      this.usuario.foto_perfil = ""
+      console.log(this.usuario);
       this.auth.cadastrarUsuario(usuario)
         .then(() => {
+
+          // var user =  this.fireAuth.auth.currentUser
+          // user.sendEmailVerification().then(function() {
+          //   // Email sent.
+          // }).catch(function(error) {
+          //   // An error happened.
+          // });
 
           if (this.mensagemErroCad !== undefined) {
             this.auth.message = undefined;

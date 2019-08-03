@@ -1,5 +1,5 @@
 <div *ngIf="!naoLogado; else logado">
-    <nav class="navbar  sticky-top navbar-light bg-light align-items-start row">
+    <nav class="navbar fixed-top navbar-light bg-light align-items-start row">
         <!-- coluna da direita com menu de pesquisa, logo e dropdown-->
         <div class="col-7 col-md-7 col_left row">
             <!-- menu dropdown com ascategorias -->
@@ -55,22 +55,23 @@
                 </ul>
             </div>
             <div class="logo ">
-                <a class="logo_link" href="/">
+                <a class="logo_link" [routerLink]="['/home']">
                     <img class="img-fluid" src="./assets/logo03.png" />
                 </a>
             </div>
-            <form class=" col-7 col-sm col-md-7 col-lg-8 pesquisar ">
+            <div class=" col-7 col-sm col-md-7 col-lg-8 pesquisar ">
                 <input class="form-control mr-sm-2" placeholder="Buscar qualquer produto" type="text" #termoDaPesquisa
                     (keyup)="pesquisa(termoDaPesquisa.value)" aria-label="Pesquisar">
-
-                <ul class="list-group">
-                    <li class="list-group-item" *ngFor="let oferta of ofertas | async">
-                        <a [routerLink]="['/oferta', oferta.id ]" (click)="limpaPesquisa()">
-                            {{ oferta.titulo | descricaoReduzida:15 }}
-                        </a>
-                    </li>
-                </ul>
-            </form>
+                <div *ngIf="termoDaPesquisa.value">
+                    <ul class="list-group">
+                        <li class="list-group-item" *ngFor="let produto of produtos | async">
+                            <a [routerLink]="['/oferta', produto.id_produto ]" (click)="limpaPesquisa()">
+                                {{ produto.nome | descricaoReduzida:15 }}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
         <!-- coluna da direita onde fica o endereço do cliente e a bag -->

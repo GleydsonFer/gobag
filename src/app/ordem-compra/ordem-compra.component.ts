@@ -1,16 +1,15 @@
-import { AngularFireAuth } from '@angular/fire/auth';
-import { UsuarioService } from './../usuario.service';
 import { Component, OnInit } from '@angular/core';
-import { OrdemCompraService } from '../ordem-compra.service'
-import { Pedido } from '../shared/pedido.model'
-import { FormGroup, FormControl, Validators } from '@angular/forms'
+import { AngularFireAuth } from '@angular/fire/auth';
+import { ToastrService } from 'ngx-toastr';
+import CarrinhoService from '../carrinho.service';
+import { OrdemCompraService } from '../ordem-compra.service';
+import { Pedido } from '../shared/pedido.model';
+import { UsuarioService } from './../usuario.service';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
-import CarrinhoService from '../carrinho.service'
-import { ItemCarrinho } from '../shared/item-carrinho.model'
-import { inspectNativeElement } from '@angular/platform-browser/src/dom/debug/ng_probe';
 
 //import {PagarMeCheckout} from https://assets.pagar.me/checkout/checkout.js;
-import { pagarme } from '../../../node_modules/pagarme'
+// import { pagarme } from '../../../node_modules/pagarme'
 
 
 @Component({
@@ -21,17 +20,12 @@ import { pagarme } from '../../../node_modules/pagarme'
 })
 export class OrdemCompraComponent implements OnInit {
 
-  usuario:any
-  public idPedidoCompra: number
+  public usuario: any;
+  public idPedidoCompra: string;
+  public formularioCartao : FormGroup;
+  public dadosCartao: any;
 
-  public formulario: FormGroup = new FormGroup({
-    'endereco': new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(120)]),
-    'numero': new FormControl(null, [Validators.required, Validators.minLength(1), Validators.maxLength(20)]),
-    'complemento': new FormControl(null),
-    'formaPagamento': new FormControl(null, [Validators.required])
-  })
-
-  public PagarMeCheckout: pagarme;
+  // public PagarMeCheckout: pagarme;
 
   
 
@@ -39,147 +33,137 @@ export class OrdemCompraComponent implements OnInit {
     private ordemCompraService: OrdemCompraService,
     private carrinhoService: CarrinhoService,
     private userService: UsuarioService,
-    public afAuth: AngularFireAuth,
-
+    private afAuth: AngularFireAuth,
+    private toastr: ToastrService,
+    private formBuilder: FormBuilder
   ) { }
-
-  public testpagarme(): void {
-  console.log('vai abrir um modal')
-
-  function handleSuccess (data) {
-    console.log(data);
-  }
-
-  function handleError (data) {
-    console.log(data);
-  }
-
-  var checkout = new this.PagarMeCheckout.Checkout({
-    encryption_key: 'ek_test_O2HbYGEK5eWYnJi3odLXsOPaSSaTNm',
-    success: handleSuccess,
-    error: handleError
-  });
-  checkout.open({
-    amount: 8000,
-    createToken: 'true',
-    paymentMethods: 'credit_card',
-    customerData: false,
-    customer: {
-      external_id: '#123456789',
-      name: 'Fulano',
-      type: 'individual',
-      country: 'br',
-      email: 'fulano@email.com',
-      documents: [
-        {
-          type: 'cpf',
-          number: '71404665560',
-        },
-      ],
-      phone_numbers: ['+5511999998888', '+5511888889999'],
-      birthday: '1985-01-01',
-    },
-    billing: {
-      name: 'Ciclano de Tal',
-      address: {
-        country: 'br',
-        state: 'SP',
-        city: 'São Paulo',
-        neighborhood: 'Fulanos bairro',
-        street: 'Rua dos fulanos',
-        street_number: '123',
-        zipcode: '05170060'
-      }
-    },
-    shipping: {
-      name: 'Ciclano de Tal',
-      fee: 12345,
-      delivery_date: '2017-12-25',
-      expedited: true,
-      address: {
-        country: 'br',
-        state: 'SP',
-        city: 'São Paulo',
-        neighborhood: 'Fulanos bairro',
-        street: 'Rua dos fulanos',
-        street_number: '123',
-        zipcode: '05170060'
-      }
-    },
-    items: [
-      {
-        id: '1',
-        title: 'Bola de futebol',
-        unit_price: 12000,
-        quantity: 1,
-        tangible: true
-      },
-      {
-        id: 'a123',
-        title: 'Caderno do Goku',
-        unit_price: 3200,
-        quantity: 3,
-        tangible: true
-      }
-    ]
-  })
-
   
-  
- 
-          
 
-
-  }
-
-
-  evert
   ngOnInit() {
-    this.afAuth.auth.onAuthStateChanged(user => {
-      this.userService.getEnderecoByUsuario(user.email).subscribe((usuario)=>{
-        usuario.forEach(usuario =>{
-          this.usuario = usuario
-        })
-     
-      })
+
+    this.formularioCartao = this.formBuilder.group({
+      card_number : [],
+      card_holder_name:[],
+      card_expiration_date:[],
+      card_cvv:[],
     })
 
-    var button = document.querySelector('button') 
-}
+  /************************************* */
+  /************************************* */
+  /************************************* */
+  /*************** PAGARME ************* */
+  /************************************* */
+  /************************************* */
+  /************************************* */
+  /************************************* */
 
+    const pagarme = require('pagarme/browser')
 
-  public confirmarCompra(): void {
-    console.log('entrou no confirmar')
-    if (this.formulario.status === 'INVALID') {
+    this.afAuth.auth.onAuthStateChanged(user => {
+      console.log(user.emailVerified)
+      this.userService.getUsuario(user.email).subscribe((usuario) => {
+        usuario.forEach(usuario => {
+          this.usuario = usuario
+          
+        })
 
-      this.formulario.get('endereco').markAsTouched()
-      this.formulario.get('numero').markAsTouched()
-      this.formulario.get('complemento').markAsTouched()
-      this.formulario.get('formaPagamento').markAsTouched()
+      })
+    })
+  }
 
+  // comunicacao-pagarme
+
+  public executa(pedido:Pedido) : void {
+
+    
+
+    console.log(pedido)
+
+    
+    
+    const pagarme = require ('pagarme/browser' )
+    pagarme.client.connect({ api_key: 'ak_test_KN3qLDMn4KnpRgHCidxb7T9xfVcSz0' })
+    // //     // Mostrar as transações realizadas
+    // //     //   .then(client => {
+    // //     //     return client.transactions.all()
+    // //     //   })
+    // //     //   .then(console.log);
+    //     // Criar uma transação simples
+        .then(client => client.transactions.create({
+            capture: 'false',
+            amount: <number>pedido.valor_total * 100,
+            card_number: this.dadosCartao.card_number,
+            card_holder_name: this.dadosCartao.card_holder_name,
+            card_expiration_date: this.dadosCartao.card_expiration_date,
+            card_cvv: this.dadosCartao.card_cvv,
+        })).then(console.log('Transação efetuada com sucesso!'));
+        console.log(this.formularioCartao)  
+  }
+
+  public salvarDadosCartao(): void {
+
+     this.dadosCartao = this.formularioCartao.value
+     //criar 'pedido' para mandar por parametro
+
+     let pedido: Pedido = new Pedido(
+        
+      // email
+      this.usuario.email,
+      // endereco
+      this.usuario.endereco,
+      // numero 
+      this.usuario.numero,
+      // complemento
+      this.usuario.complemento,
+      // forma de pagamento
+      '',
+      // data do pedido
+      new Date(Date.now()),
+      // status
+      'processando',
+      // itens do carrinho
+      this.carrinhoService.exibirItens().map((obj)=> {return Object.assign({}, obj)}),
+      // valor total
+      this.carrinhoService.totalCarrinhoCompras(),
+      // desconto?
+      0
+    );
+     this.confirmarCompra(pedido)
+     this.executa(pedido)
+  }
+  
+  /************************************* */
+  /************************************* */
+  /************************************* */
+  /*************** PAGARME ************* */
+  /************************************* */
+  /************************************* */
+  /************************************* */
+  /************************************* */
+
+  public confirmarCompra(pedido:Pedido): void {
+    this.afAuth.auth.onAuthStateChanged(user => {
+      if (!user.emailVerified) {
+        this.toastr.error("Verifica seu email e tente novamente.", "Email ainda não verificado")
+        console.log("email ainda não verificado!\n verifique seu email e tente novamente");
+      }
+    })
+
+    if (this.carrinhoService.exibirItens().length === 0) {
+      alert('Você não selecionou nenhm item!')
     } else {
 
-      if (this.carrinhoService.exibirItens().length === 0) {
-        alert('Você não selecionou nenhm item!')
-        console.log('Você não selecionou nenhm item!')
-      } else {
+      
 
-        let pedido: Pedido = new Pedido(
-          this.formulario.value.endereco,
-          this.formulario.value.numero,
-          this.formulario.value.complemento,
-          this.formulario.value.formaPagamento,
-          this.carrinhoService.exibirItens()
-        )
+      this.ordemCompraService.efetivarCompra(pedido)
+        .then((idPedido: string) => {
+          this.idPedidoCompra = idPedido;
+          this.carrinhoService.limparCarrinho();
+          this.toastr.success('Pedido feito com sucesso', 'Compra');
+        })
 
-        this.ordemCompraService.efetivarCompra(pedido)
-          .subscribe((idPedido: number) => {
-            this.idPedidoCompra = idPedido
-            this.carrinhoService.limparCarrinho()
-            console.log('saiu no confirmar')
-          })
-
-      }
     }
   }
+  
 }
+

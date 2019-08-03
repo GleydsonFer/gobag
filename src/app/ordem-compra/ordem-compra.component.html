@@ -1,9 +1,6 @@
-<head>
-    <!-- SCRIPT PAGAR.ME -->
-    <script src="https://assets.pagar.me/checkout/1.1.0/checkout.js"></script>
-  </head>
 
 <div class="div_container row">
+ 
   <h3 class="rev_pedido">REVISÃO DO PEDIDO</h3>
   <div class="itensCarrinho col-sm-11  tendencia">
     <app-carousel-ordem-compra></app-carousel-ordem-compra>
@@ -12,42 +9,45 @@
     <div class="endereco row">
         <h4>Endereço de entrega: </h4> <span *ngIf="usuario != null">{{usuario.endereco}}, {{usuario.numero}} </span>
     </div>
-    <div class="faturamento">
-        <h4>faturamento:</h4><br>
-        <span>Nome do Cliente</span><br>
-        <span>CPF</span><br>
-        <span>Dados do Cartão</span>
-    </div>
- 
+
+  
+      
+      <span>Dados do Cartão</span>
+
+      <form (submit)="salvarDadosCartao()" [formGroup] = "formularioCartao" >
+        <div class="form-group col">
+          <input formControlName="card_number" type="text" class="form-control" placeholder="card_number">
+          <br>
+          <input formControlName="card_holder_name" type="text" class="form-control" placeholder="card_holder_name">
+          <br>
+          <input formControlName="card_expiration_date" type="text" class="form-control" placeholder="card_expiration_date">
+          <br>
+          <input formControlName="card_cvv" type="text" class="form-control" placeholder="card_cvv">
+          
+        </div>
+  
+      </form>
+
+
   </div>
   <div class="bottom row col-sm-12 text-center">
     <div class="col-12 col-sm-12 col-md-4 voltar"> <button class="btn_cancelar">CANCELAR</button></div>
     <div class="col-12 col-sm-12 col-md-4 total ">
       <p>
         <span>TOTAL</span>
-        <span> {{ carrinhoService.totalCarrinhoCompras() | currency: 'BRL': true }}</span><br>
+        <span> {{ carrinhoService.totalCarrinhoCompras() | currency: 'BRL': 'symbol' }}</span><br>
         <span class="envio">ENVIO</span>
-        <span> {{ 0 | currency: 'BRL': true }}</span>
+        <span> {{ 0 | currency: 'BRL': 'symbol' }}</span>
       </p>
     </div>
-    <div class="col-12 col-sm-12 col-md-4 continuar">
-      <button class="btn_confirmar" (click)="confirmarCompra()">CONFIRMAR</button>
-      
-      <!--MODAL PAGAR.ME-->
-      <button 
-        id="pay-button" 
-        (click)="testpagarme()"
-        data-toggle="modal"
-        
-      >
-        Pagar.me
-      </button>
-
-      <!--/MODAL PAGAR.ME-->
-
-      
-
-
-    </div>
+    <div class="col-12 col-sm-12 col-md-4 continuar"><button class="btn_confirmar" (click)="salvarDadosCartao()">CONFIRMAR</button></div>
   </div>
+
+  <!--PAGARME-->
+  
+  <!--/PAGARME-->
+
+
+
+
 </div>

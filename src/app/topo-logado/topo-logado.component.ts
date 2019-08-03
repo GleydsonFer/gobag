@@ -18,16 +18,14 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class TopoLogadoComponent implements OnInit {
 
-  public usuario:any
+  public usuario: any
   public enderecoEntrega: string;
   public numeroEntrega: string;
   public numeroItensCarrinho: number;
-  public widthScreen:boolean = true;
-
-  produtos: Observable<any[]>
+  public widthScreen: boolean = true;
+  produtos: Observable<any[]>;
   startAt: BehaviorSubject<string | null> = new BehaviorSubject('');
-  private subjectPesquisa: Subject<string> = new Subject<string>()
-  
+
   constructor(
     private ofertasService: OfertasService,
     private autenticacao: Autenticacao,
@@ -40,10 +38,11 @@ export class TopoLogadoComponent implements OnInit {
   ngAfterViewInit(): void {
     this.resize()
   }
+  
   resize(){
     if(screen.width > 820){
       this.widthScreen = true
-    }else{
+    } else {
       this.widthScreen = false
     }
   }
@@ -52,32 +51,32 @@ export class TopoLogadoComponent implements OnInit {
 
     this.produtos = this.ofertasService.pesquisaProdutos(this.startAt);
 
-    this.produtos.subscribe(prods => {
-      console.log(prods);
-    })
-
-   // mostrar número de itens no carrinho
+    // mostrar número de itens no carrinho
     this.carrinhoService.emitirNumeroDeItens.subscribe(
       numeroItens => this.numeroItensCarrinho = numeroItens
     );
 
     this.afauth.auth.onAuthStateChanged(user => {
-
-      this.userService.getEnderecoByUsuario(user.email).subscribe(usuario => {
-
+      this.userService.getUsuario(user.email).subscribe(usuario => {
         aux = usuario[0]
+
+        var foto_user = document.querySelector(".login");
+        foto_user.setAttribute("style" , `background-image:url(${aux.foto_perfil}); background-size:100%; background-repeat:no-repeat`)
+
         this.enderecoEntrega = aux.endereco
         this.numeroEntrega = aux.numero
       })
     })
-  }
+  } 
+
+
 
   public pesquisa(termoDaBusca) {
     this.startAt.next(termoDaBusca);
   }
 
   public limpaPesquisa(): void {
-    this.subjectPesquisa.next('');
+    this.startAt.next('--------------------------------------');
   }
 
   public sair(): void {
