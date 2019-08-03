@@ -28,6 +28,9 @@ import { OrdemPagamentoComponent } from './ordem-pagamento/ordem-pagamento.compo
 import { MenuUsuarioComponent } from './acesso/menu-usuario/menu-usuario.component';
 import { TermosDeUsoComponent } from './termos-de-uso/termos-de-uso.component';
 import { PoliticasDePrivacidadeComponent } from './politicas-de-privacidade/politicas-de-privacidade.component';
+import { PoliticasDeDevolucaoComponent } from './politicas-de-devolucao/politicas-de-devolucao.component';
+import { OrdemDevolucaoComponent } from './ordem-devolucao/ordem-devolucao.component';
+import { CadastroLojistaComponent } from './cadastro-lojista/cadastro-lojista.component';
 
 export const ROUTES: Routes = [
     { path: '', component: HomeComponent },
@@ -58,6 +61,9 @@ export const ROUTES: Routes = [
     { path: 'dadosdepagamento', component: DadosdepagamentoComponent },
     { path: 'menuUsuario', component: MenuUsuarioComponent },
     { path: 'termos-de-uso', component: TermosDeUsoComponent },
-    { path: 'politicas-de-privacidade', component: PoliticasDePrivacidadeComponent }
+    { path: 'politicas-de-privacidade', component: PoliticasDePrivacidadeComponent },
+    { path: 'politicas-de-devolucao', component: PoliticasDeDevolucaoComponent },
+    { path: 'ordem-devolucao', component: OrdemDevolucaoComponent },
+    { path: 'cadastro-lojista', component: CadastroLojistaComponent }
 
 ]

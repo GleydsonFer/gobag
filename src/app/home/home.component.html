@@ -1,36 +1,37 @@
+
 <app-banner-slide></app-banner-slide>
-<app-tendencias></app-tendencias>
 <app-lojas></app-lojas>
-<div class="container">
-  
+<app-tendencias></app-tendencias>
+
+<!--
   <div class="secao">
     <h3 class="text-center">Destaques do dia!</h3>
     <h5 class="text-center">Aproveite as super ofertas que separamos para você:</h5>
-  </div>
+  </div> -->
 
   <!-- <hr /> -->
 
-  <div class="row" style="margin-bottom: 50px">
+  <!-- <div class="row" style="margin-bottom: 50px">
 
-      <div class="col-md-3 col-6" *ngFor="let produto of produtos">
-          <div class="prod">
-            <div class="prod_title-box">
-              <h4 class="prod_title">{{ produto.nome }}</h4>
-            </div>
-  
-            <figure class="prod_img-box">
-              <img [src]="produto.imagens[0]" class="img-fluid prod_img" />
-              <img [src]="produto.imagens[1]" class="img-fluid prod_img second_img" />
-            </figure>
-  
-            <div class="prod_price-box">  
-              <p class="prod_price">{{ produto.valor | currency : 'BRL' : 'symbol' }}</p>
-            </div>
-  
-            <button class="btn_ofer" [routerLink]="['/oferta', produto.id_produto]">Ver oferta</button>
-
-          </div>
+    <div class="col-md-3 col-6" *ngFor="let produto of produtos">
+      <div class="prod">
+        <div class="prod_title-box">
+          <h4 class="prod_title">{{ produto.nome }}</h4>
         </div>
+
+        <figure class="prod_img-box">
+          <img [src]="produto.imagens[0]" class="img-fluid prod_img" />
+          <img [src]="produto.imagens[1]" class="img-fluid prod_img second_img" />
+        </figure>
+
+        <div class="prod_price-box">
+          <p class="prod_price">{{ produto.valor | currency : 'BRL' : 'symbol' }}</p>
+        </div>
+
+        <button class="btn_ofer" [routerLink]="['/oferta', produto.id_produto]">Experimente!</button>
+
+      </div>
+    </div> -->
 
 
 
@@ -50,7 +51,7 @@
       </div>
     </div> -->
 
-  </div>
+  <!-- </div> -->
   <!-- <hr /> -->
-  
-</div>
+
+<!-- </div> -->

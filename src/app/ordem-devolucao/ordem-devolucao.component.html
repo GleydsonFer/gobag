@@ -1,0 +1,20 @@
+<div class="div_container row">
+  <h3 class="rev_pedido">Devolução de produtos</h3>
+  <div class="itensCarrinho col-sm-11  tendencia">
+    <app-carousel-ordem-devolucao   ></app-carousel-ordem-devolucao>
+  </div>
+
+  <div class="bottom row col-sm-12 text-center">
+    <div class="col-12 col-sm-12 col-md-4 voltar"> <button class="btn_cancelar">CANCELAR</button></div>
+    <div class="col-12 col-sm-12 col-md-4 total ">
+      <p>
+        <span>TOTAL</span>
+        <span> {{ carrinhoService.totalCarrinhoCompras() | currency: 'BRL': 'symbol' }}</span><br>
+        <span class="envio">ENVIO</span>
+        <span> {{ 0 | currency: 'BRL': 'symbol' }}</span>
+      </p>
+    </div>
+    <div class="col-12 col-sm-12 col-md-4 continuar"><button class="btn_confirmar"
+        (click)="confirmarDevolucao()">CONFIRMAR</button></div>
+  </div>
+</div>

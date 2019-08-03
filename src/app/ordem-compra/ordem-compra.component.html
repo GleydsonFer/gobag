@@ -3,7 +3,7 @@
  
   <h3 class="rev_pedido">REVISÃO DO PEDIDO</h3>
   <div class="itensCarrinho col-sm-11  tendencia">
-    <app-carousel-ordem-compra></app-carousel-ordem-compra>
+    <app-carousel-ordem-compra [carrinho]="carrinho"></app-carousel-ordem-compra>
   </div>
   <div class="meio col-12">
     <div class="endereco row">
@@ -31,23 +31,20 @@
 
   </div>
   <div class="bottom row col-sm-12 text-center">
-    <div class="col-12 col-sm-12 col-md-4 voltar"> <button class="btn_cancelar">CANCELAR</button></div>
+    <div class="col-12 col-sm-12 col-md-4 voltar"> 
+      <button class="btn_cancelar" (click)="cancelarCarrinho()">CANCELAR</button>
+    </div>
     <div class="col-12 col-sm-12 col-md-4 total ">
       <p>
-        <span>TOTAL</span>
-        <span> {{ carrinhoService.totalCarrinhoCompras() | currency: 'BRL': 'symbol' }}</span><br>
-        <span class="envio">ENVIO</span>
-        <span> {{ 0 | currency: 'BRL': 'symbol' }}</span>
+        <span>TOTAL&nbsp;&nbsp;</span>
+        <span *ngIf="carrinho; else valornulo"> {{ carrinho.valor_total | currency: 'BRL': 'symbol' }}</span><br>
+        <span class="envio">ENVIO&nbsp;&nbsp;</span>
+        <span *ngIf="carrinho; else valornulo"> {{ 0 | currency: 'BRL': 'symbol' }}</span>
       </p>
     </div>
     <div class="col-12 col-sm-12 col-md-4 continuar"><button class="btn_confirmar" (click)="salvarDadosCartao()">CONFIRMAR</button></div>
   </div>
-
-  <!--PAGARME-->
-  
-  <!--/PAGARME-->
-
-
-
-
 </div>
+
+<ng-template #loading>Carrinho Vazio</ng-template>
+<ng-template #valornulo>{{ 0 | currency: 'BRL': 'symbol'}}</ng-template>

@@ -151,17 +151,6 @@ export class OfertasService {
             );
     }
 
-    // retorna os produtos por nome 
-    // public pesquisaProdutos(searchValue: string): Observable<Produto[]> {
-
-    //     return this.db.collection<Produto>('produtos', ref =>
-    //         ref
-    //             .orderBy('nome')
-    //             .startAt(searchValue.toLowerCase())
-    //             .endAt(searchValue.toLowerCase()+"\uf8ff")
-    //             .limit(5))
-    //             .valueChanges();
-    // }
     public pesquisaProdutos(start: BehaviorSubject<string>): Observable<any[]> {
         return start
           .switchMap(startText => {

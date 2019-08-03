@@ -11,6 +11,8 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 //import {PagarMeCheckout} from https://assets.pagar.me/checkout/checkout.js;
 // import { pagarme } from '../../../node_modules/pagarme'
 
+import { Carrinho } from '../shared/carrinho.model';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-ordem-compra',
@@ -66,9 +68,16 @@ export class OrdemCompraComponent implements OnInit {
           this.usuario = usuario
           
         })
-
+        // recupera  carrinho a partir do banco de dados
+        // this.carrinhoObservable = this.carrinhoService.getCarrinhoByEmail(user.email);
+        // this.carrinhoObservable.subscribe(car => {
+        //   this.carrinho = car[0];
+        //   console.log('ngOnInit', this.carrinho);
+        // })
       })
     })
+    
+  
   }
 
   // comunicacao-pagarme
@@ -146,23 +155,28 @@ export class OrdemCompraComponent implements OnInit {
       if (!user.emailVerified) {
         this.toastr.error("Verifica seu email e tente novamente.", "Email ainda não verificado")
         console.log("email ainda não verificado!\n verifique seu email e tente novamente");
-      }
-    })
+      } else {
 
-    if (this.carrinhoService.exibirItens().length === 0) {
-      alert('Você não selecionou nenhm item!')
-    } else {
+        if (this.carrinhoService.exibirItens().length === 0) {
+          alert('Você não selecionou nenhm item!')
+        } else {
 
       
 
-      this.ordemCompraService.efetivarCompra(pedido)
-        .then((idPedido: string) => {
-          this.idPedidoCompra = idPedido;
-          this.carrinhoService.limparCarrinho();
-          this.toastr.success('Pedido feito com sucesso', 'Compra');
-        })
+          this.ordemCompraService.efetivarCompra(pedido)
+            .then((idPedido: string) => {
+              this.idPedidoCompra = idPedido;
+              // this.carrinhoService.limparCarrinho();
+              this.toastr.success('Pedido feito com sucesso', 'Compra');
+            })
+        }
+      }
+    })
+  }
 
-    }
+  public cancelarCarrinho(){
+    // this.carrinhoService.limparCarrinho(this.usuario, this.carrinho);
+    // this.carrinho = null;
   }
   
 }

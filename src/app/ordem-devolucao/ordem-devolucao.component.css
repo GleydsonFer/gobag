@@ -1,0 +1,124 @@
+*{
+    font-family: museo-sans, sans-serif;
+    font-style: normal;
+    font-weight: 100;   
+}
+
+.div_container{
+    margin-top: 50px;
+    margin-bottom: 50px;  
+    margin-left: 20px;
+    /* height: 550px;   */
+}
+.rev_pedido{
+    margin-left:100px;
+    margin-bottom: 20px;
+}
+.itensCarrinho{
+
+    margin-left: 20px;
+} 
+.meio{
+    margin-top:50px;
+    margin-bottom: 50px;
+}
+.faturamento h4{
+ margin:0;
+ line-height:0px;
+}
+.faturamento span{
+   margin-left: 15px;
+   }
+.faturamento{
+    line-height:22px;
+}
+.bottom{
+    margin-top: 150px;
+}
+
+.carousel{
+    background-color:red;
+}
+
+
+.btn_cancelar{
+    background-color:white;
+    padding: 15px 60px 15px 60px;
+    border-color:black;
+    border-width: 1.3px;
+    margin-top:5px;
+    font-family: museo-sans, sans-serif;
+}
+
+.total{
+    margin-top:15px;    
+}
+.total span:nth-child(1) , .total span:nth-child(2){
+    font-size: 1.3em;
+    font-weight: 600;
+}
+
+.envio , .total span:nth-child(5){
+    font-size: 0.8em;
+}
+
+.btn_confirmar{
+    background-color:black;
+    padding: 12px 51px 12px 51px;
+    border-color:black;
+    border-width: 5px;
+    color:white;
+    margin-top:5px;
+}
+p{
+    font-size: 1.5em;
+    line-height: 28px;
+}
+
+.imagem{
+    background-color:black;
+}
+.descricao{
+    line-height:15px;
+}
+.descricao span{
+}
+.descricao .nome_produto{
+    font-weight: bold;
+    font-size: 0.7em;
+}
+.descricao .nome_loja{
+    font-size: 0.8em;
+}
+.descricao .preco{
+    color: rgb(119, 119, 119);
+    font-size: 0.8em;
+}
+.quant_pecas{
+    font-size: 0.8em;
+}
+.endereco{
+    height: 70px;
+}
+.endereco span{
+  line-height: 35px;
+  margin-left: 10px;
+}
+@media (max-width: 820px){
+    .div_container{
+        margin-top: 120px;
+    }
+    .rev_pedido{
+        font-size: 1.5em;
+        margin-left:0px;
+        text-align:center;
+    }
+}
+
+
+
+
+
+
+
+

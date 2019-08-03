@@ -1,0 +1,18 @@
+.botao{
+    margin-top: 10px;
+    margin-bottom: 200px;
+}
+input.ng-invalid.ng-touched {
+    border-bottom: 2px solid red;
+}
+select.ng-invalid.ng-touched {
+    border-bottom: 2px solid red;
+}
+
+select.ng-valid.ng-touched {
+    border-bottom: 2px solid green;
+}
+
+input.ng-valid.ng-touched {
+    border-bottom: 2px solid green;
+}
