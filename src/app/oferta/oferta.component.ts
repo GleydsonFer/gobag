@@ -21,7 +21,7 @@ export class OfertaComponent implements OnInit, OnDestroy {
   public tamanho: any[] = [];
   public produto: Observable<any>;
   @Output() public prod: Produto;
-  public aux:any[] = ['selecionado', 'valor'] 
+  public aux: any[] = ['selecionado', 'valor']
 
   public naoLogado: any;
 
@@ -68,7 +68,7 @@ export class OfertaComponent implements OnInit, OnDestroy {
       this.naoLogado = this.autenticacaoGuard.canActivateVerOfertaNaoLogado();
 
       if (this.naoLogado) {
-        this.prod.tamanho = this.aux[1]
+        this.prod.tamanho = this.aux[1];
         this.carrinhoService.incluirItem(this.prod);
         this.toastr.success('Oferta adicionada com sucesso!', `${this.prod.nome}`);
       }

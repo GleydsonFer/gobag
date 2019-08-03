@@ -45,8 +45,8 @@ export class OrdemCompraComponent implements OnInit {
         })
       })
     })
-    
-  
+
+
   }
 
   public confirmarCompra(): void {
@@ -56,46 +56,46 @@ export class OrdemCompraComponent implements OnInit {
         console.log("email ainda não verificado!\n verifique seu email e tente novamente");
       } else {
 
-        if (this.carrinhoService.exibirItens().length === 0) {
-          alert('Você não selecionou nenhm item!')
-        } else {
+          if (this.carrinho.itens.length === 0) {
+            alert('Você não selecionou nenhm item!')
+          } else {
 
-          let pedido: Pedido = new Pedido(
-            // email
-            this.usuario.email,
-            // endereco
-            this.usuario.endereco,
-            // numero 
-            this.usuario.numero,
-            // complemento
-            this.usuario.complemento,
-            // forma de pagamento
-            '',
-            // data do pedido
-            new Date(Date.now()),
-            // status
-            'processando',
-            // itens do carrinho
-            this.carrinhoService.exibirItens().map((obj) => { return Object.assign({}, obj) }),
-            // valor total
-            this.carrinhoService.totalCarrinhoCompras(),
-            // desconto?
-            0
-          );
+            let pedido: Pedido = new Pedido(
+              // email
+              this.usuario.email,
+              // endereco
+              this.usuario.endereco,
+              // numero 
+              this.usuario.numero,
+              // complemento
+              this.usuario.complemento,
+              // forma de pagamento
+              '',
+              // data do pedido
+              new Date(Date.now()),
+              // status
+              'processando',
+              // itens do carrinho
+              this.carrinho.itens,
+              // valor total
+              this.carrinho.valor_total,
+              // desconto?
+              0
+            );
 
-          this.ordemCompraService.efetivarCompra(pedido)
-            .then((idPedido: string) => {
-              this.idPedidoCompra = idPedido;
-              // this.carrinhoService.limparCarrinho();
-              this.toastr.success('Pedido feito com sucesso', 'Compra');
-            })
+            this.ordemCompraService.efetivarCompra(pedido)
+              .then((idPedido: string) => {
+                this.idPedidoCompra = idPedido;
+                // this.carrinhoService.limparCarrinho();
+                this.toastr.success('Pedido feito com sucesso', 'Compra');
+              })
+          }
         }
-      }
     })
   }
 
-  public cancelarCarrinho(){
-    // this.carrinhoService.limparCarrinho(this.usuario, this.carrinho);
-    // this.carrinho = null;
+  public cancelarCarrinho() {
+    this.carrinhoService.limparCarrinho(this.usuario, this.carrinho);
+    this.carrinho = null;
   }
 }

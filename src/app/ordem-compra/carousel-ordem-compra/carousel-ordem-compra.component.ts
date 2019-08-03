@@ -12,7 +12,7 @@ import { Carrinho } from 'src/app/shared/carrinho.model';
 })
 export class CarouselOrdemCompraComponent implements OnInit {
 
-  @Input() carrinho: Carrinho;
+  @Input() carrinho: Carrinho = new Carrinho();
   reordenar: boolean = false;
 
   @ViewChild('carousel') elementoTeste: HTMLElement;
@@ -60,7 +60,7 @@ export class CarouselOrdemCompraComponent implements OnInit {
 
 
   ngOnInit() {
-    this.itensCarrinho = this.carrinhoService.exibirItens()
+    this.itensCarrinho = this.carrinho.itens;
     console.log(this.itensCarrinho)
   }
 
