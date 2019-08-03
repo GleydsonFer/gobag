@@ -11,7 +11,11 @@ import { Usuario } from './shared/usuario.model';
 @Injectable()
 class CarrinhoService {
 
-    carrinho: Carrinho;
+    carrinho: Carrinho = {
+        email: '',
+        itens: [],
+        valor_total: 0
+    };
     itens: ItemCarrinho[] = []
     emitirNumeroDeItens: EventEmitter<number> = new EventEmitter<number>();
     carrinhoObservable: Observable<any>;
@@ -32,7 +36,7 @@ class CarrinhoService {
     //         );
     // }
 
-    public incluirItem(produto: Produto): void {
+    public incluirItem(produto: Produto, user: firebase.User) {
         // Prepara o produto que será adicionado ao carrinho
         let itemCarrinho: ItemCarrinho = new ItemCarrinho(
             produto.id_produto,
@@ -44,43 +48,44 @@ class CarrinhoService {
             1,
             produto.tamanho
         )
-        // recupera a referencia do usuário logado para pegar seu email
-        this.afauth.auth.onAuthStateChanged(user => {
-            // passa o email do usuario em base 64 para uma variável de id único
-            var fireUID = btoa(user.email);
-            // recupera o carrinho do usuário do banco de dados
-            this.carrinhoObservable = this.getCarrinhoByEmail(user.email);
-            this.carrinhoObservable.subscribe(car => {
-                // Se já existir um carrinho para esse usuário, as informações do carrinho serão enviadas para a variável carrinho
+
+        // passa o email do usuario em base 64 para uma variável de id único
+        var fireUID = btoa(user.email);
+        // recupera o carrinho do usuário do banco de dados
+        this.carrinhoObservable = this.getCarrinhoByEmail(user.email);
+        this.carrinhoObservable.subscribe(car => {
+            // Se já existir um carrinho para esse usuário, as informações do carrinho serão enviadas para a variável carrinho
+            if (car) {
                 this.carrinho = car[0];
                 console.log('recebendo o carrinho do banco', this.carrinho);
+            }
 
-                //verificar se o item em questão já não existe dentro de this.carrinho.itens
-                var itemCarrinhoEncontrado = this.carrinho.itens.find((item: ItemCarrinho) =>
-                    ((item.tamanho == itemCarrinho.tamanho) && (item.id_produto === itemCarrinho.id_produto))
-                );
-                console.log(itemCarrinhoEncontrado);
-
-                if (itemCarrinhoEncontrado) {
-                    itemCarrinhoEncontrado.quantidade += 1
-                } else {
-
-                    this.itens.push(itemCarrinho);
-
-                    this.carrinho = {
-                        email: user.email,
-                        itens: this.itens,
-                        valor_total: this.totalCarrinhoCompras()
-                    }
-
-                    this.afs.collection('carrinhos').doc(fireUID).set(this.carrinho).then(resp => {
-                        console.log('Carrinho setado com sucesso!', resp);
-                    })
-
-                    this.emitirNumeroDeItens.emit(this.itens.length);
-                }
+            //verificar se o item em questão já não existe dentro de this.carrinho.itens
+            var itemCarrinhoEncontrado = this.carrinho.itens.find((item: ItemCarrinho) => {
+                ((item.tamanho == itemCarrinho.tamanho) && (item.id_produto === itemCarrinho.id_produto));
+                console.log('item',item);
             });
-        });
+            console.log('itemCarrinhoEncontrado',itemCarrinhoEncontrado);
+
+            if (itemCarrinhoEncontrado) {
+                itemCarrinhoEncontrado.quantidade += 1;
+            } else {
+
+                this.itens.push(itemCarrinho);
+
+                this.carrinho = {
+                    email: user.email,
+                    itens: this.itens.map((obj) => { return Object.assign({}, obj) }),
+                    valor_total: this.totalCarrinhoCompras()
+                }
+
+                return this.afs.collection('carrinhos').doc(fireUID).set({ ...this.carrinho }).then(resp => {
+                    console.log('Carrinho setado com sucesso!', resp);
+                    // this.emitirNumeroDeItens.emit(resp.itens.length);
+                })
+
+            }
+        })
 
     }
 
