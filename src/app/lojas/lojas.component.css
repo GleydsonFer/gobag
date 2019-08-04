@@ -1,5 +1,6 @@
 .lojas {
     margin-top: 50px;
+    
 }
 
  .lojas_item {
@@ -27,11 +28,19 @@
 
 .fonte{
     text-transform: uppercase;
-    font-family: museo-sans, sans-serif;
+    font-family: "Museo Sans";
     font-style: normal;
-    font-weight: 100;
-    font-size:1.5em;
-}
-
-
-
+    font-weight: 500;
+    font-size:1.3rem;
+  }
+  
+  @import url(//db.onlinewebfonts.com/c/62c0135163427c652ae397f327f85010?family=Museo+Sans);
+  
+  @font-face {font-family: "Museo Sans";
+    src: url("//db.onlinewebfonts.com/t/62c0135163427c652ae397f327f85010.eot");
+    src: url("//db.onlinewebfonts.com/t/62c0135163427c652ae397f327f85010.eot?#iefix") format("embedded-opentype"),
+    url("//db.onlinewebfonts.com/t/62c0135163427c652ae397f327f85010.woff2") format("woff2"),
+    url("//db.onlinewebfonts.com/t/62c0135163427c652ae397f327f85010.woff") format("woff"),
+    url("//db.onlinewebfonts.com/t/62c0135163427c652ae397f327f85010.ttf") format("truetype"),
+    url("//db.onlinewebfonts.com/t/62c0135163427c652ae397f327f85010.svg#Museo Sans") format("svg");
+  }

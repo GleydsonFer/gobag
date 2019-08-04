@@ -1,19 +1,15 @@
 <section class="tendencia">
-<div class="container ">
-        <span class="fonte d-flex">Confira nossas tendências:</span>
+    <div class="container">
+        <span class="fonte d-flex mb-2">Confira nossas tendências:</span>
         <div>
-<owl-carousel 
-    [options]="mySlideOptions" 
-    [items]="images" 
-    [carouselClasses]="['owl-theme', 'sliding']" >
+            <owl-carousel [options]="mySlideOptions" [items]="images" [carouselClasses]="['owl-theme', 'sliding']">
 
-    <div class="item tend_item " *ngFor="let image of mySlideImages;let i = index">
-        <a routerLinkActive="active" routerLink="/{{image.link}}" class="tend_link">
-            <img class="slide-image img-fluid" src={{image.image}} alt="{{image.alt}}" />
-        </a>
+                <div class="item tend_item " *ngFor="let image of mySlideImages;let i = index">
+                    <a routerLinkActive="active" routerLink="/{{image.link}}" class="tend_link">
+                        <img class="slide-image img-fluid" src={{image.image}} alt="{{image.alt}}" />
+                    </a>
+                </div>
+            </owl-carousel>
+        </div>
     </div>
-</owl-carousel>
-</div>
-</div>
 </section>
-
