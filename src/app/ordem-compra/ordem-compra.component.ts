@@ -1,4 +1,4 @@
-import { PedidoService } from './../pedido.service';
+import { OrdemCompraService } from '../ordem-compra.service';
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { ToastrService } from 'ngx-toastr';
@@ -18,6 +18,7 @@ import { Observable } from 'rxjs';
   selector: 'app-ordem-compra',
   templateUrl: './ordem-compra.component.html',
   styleUrls: ['./ordem-compra.component.css'],
+  providers:[OrdemCompraService]
 })
 export class OrdemCompraComponent implements OnInit {
 
@@ -28,15 +29,15 @@ export class OrdemCompraComponent implements OnInit {
 
   // public PagarMeCheckout: pagarme;
 
-  
 
   constructor(
-    private pedidoService: PedidoService,
+    
     private carrinhoService: CarrinhoService,
     private userService: UsuarioService,
     private afAuth: AngularFireAuth,
     private toastr: ToastrService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private ordemCompraService : OrdemCompraService,
   ) { }
   
 
@@ -58,7 +59,7 @@ export class OrdemCompraComponent implements OnInit {
   /************************************* */
   /************************************* */
 
-    const pagarme = require('pagarme/browser')
+    //const pagarme = require('pagarme/browser')
 
     this.afAuth.auth.onAuthStateChanged(user => {
       console.log(user.emailVerified)
@@ -162,7 +163,7 @@ export class OrdemCompraComponent implements OnInit {
 
       
 
-          this.pedidoService.efetivarCompra(pedido)
+          this.ordemCompraService.efetivarCompra(pedido)
             .then((idPedido: string) => {
               this.idPedidoCompra = idPedido;
               // this.carrinhoService.limparCarrinho();
