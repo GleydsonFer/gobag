@@ -21,9 +21,7 @@ export class UsuarioService {
           .snapshotChanges()
           .pipe(
               map(changes => {
-                
                   return changes.map(c => ({ key: c.payload.doc.id, ...c.payload.doc.data() }));
-                  
               })
           );
   }
