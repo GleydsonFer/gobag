@@ -24,6 +24,7 @@ import { TopoComponent } from '../app/topo/topo.component'
 
 import { AutenticacaoGuard } from './autenticacao-guard.service'
 import { CadastroDeProdutosComponent } from './cadastro-de-produtos/cadastro-de-produtos.component';
+import { OrdemPagamentoComponent } from './ordem-pagamento/ordem-pagamento.component';
 import { MenuUsuarioComponent } from './acesso/menu-usuario/menu-usuario.component';
 import { TermosDeUsoComponent } from './termos-de-uso/termos-de-uso.component';
 import { PoliticasDePrivacidadeComponent } from './politicas-de-privacidade/politicas-de-privacidade.component';
@@ -38,6 +39,7 @@ export const ROUTES: Routes = [
     { path: 'masculino', component: MasculinoComponent },
     { path: 'infantil', component: InfantilComponent },
     { path: 'fitness', component: FitnessComponent },
+    { path: 'ordempagamento', component: OrdemPagamentoComponent },
     { path: 'teen', component: TeenComponent },
     { path: 'calcados', component: CalcadosComponent },
     { path: 'feminino', component: FemininoComponent },

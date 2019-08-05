@@ -85,8 +85,6 @@ export class TopoLogadoComponent implements OnInit {
     })
   }
 
-
-
   public pesquisa(termoDaBusca) {
     this.startAt.next(termoDaBusca);
   }
