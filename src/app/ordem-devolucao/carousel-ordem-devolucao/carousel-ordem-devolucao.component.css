@@ -129,8 +129,19 @@ p{
     background-color:rgb(192, 192, 192);
 }
 
+.corVerde{
+    border:green solid 2px !important;
+}
+.corAmarela{
+    border:yellow solid 2px !important;
+}
+.corVermelha{
+    border:red solid 2px !important;
+}
 
-
+.conteudo{
+    border:green solid 2px;
+}
 
 
 
