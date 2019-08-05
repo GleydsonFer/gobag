@@ -38,7 +38,9 @@
     text-transform: capitalize;
     padding: 10px 0;
     margin: 0;
-    font-family: 'Lato', sans-serif;
+    font-family: museo-sans, sans-serif;
+    font-style: normal;
+    font-weight: 100;
     color: #212529;
     font-size: 20px;
 }
@@ -76,7 +78,9 @@
 .prod_price {
     margin: 0;
     font-size: 22px;
-    font-family: 'Lato', sans-serif;
+    font-family: museo-sans, sans-serif;
+    font-style: normal;
+    font-weight: 100;
     color: #212529;
     font-weight: bold;
 }
@@ -109,7 +113,9 @@
     border-radius: 4px;
     color: #fff;
     transition: all .4s ease-out;
-    font-family: 'Lato', sans-serif;
+    font-family: museo-sans, sans-serif;
+    font-style: normal;
+    font-weight: 100;
     
 }
 

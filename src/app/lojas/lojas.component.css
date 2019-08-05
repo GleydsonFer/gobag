@@ -11,12 +11,20 @@
 }
 
 .lojas_item:hover {
-    border-color: #aaa;
+    border-color: #000;
 }
 
 .lojas_link {
     display: block;
     padding: 25px;
+}
+
+.fonte{
+    text-transform: uppercase;
+    font-family: museo-sans, sans-serif;
+    font-style: normal;
+    font-weight: 100;
+    font-size:1.5em;
 }
 
 

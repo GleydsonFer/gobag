@@ -7,9 +7,37 @@ span {
     padding: 10px 0;
 }
 
+.topic{
+    color: #fff;
+    font-family: museo-sans, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
 .link{
     color: #fff;
+    font-family: museo-sans, sans-serif;
+    font-style: normal;
+    font-weight: 100;
 }
 .link2{
     color: #696969;
+    font-family: museo-sans, sans-serif;
+    font-style: normal;
+    font-weight: 100;
 }
+
+.logo-app{
+    width: 180px;
+    margin-top: 10px;
+}
+
+.rede-social{
+    width: 30px;
+    margin-right: 10px;
+    margin-left: 5px;
+    margin-top: 10px;
+}
+

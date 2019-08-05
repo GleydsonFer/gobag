@@ -97,6 +97,10 @@ git add .
 git commit -m "texto"
 git pull
 
+-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+
+npm install pagarme
+
 --------------instalar ngx-chips ---------------------
 
 npm install ngx-chips --save
