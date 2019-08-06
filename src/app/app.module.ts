@@ -155,6 +155,11 @@ registerLocaleData(localePtBr);
     OfertasService,
     Autenticacao,
     AutenticacaoGuard
+
+      // possivel solução do problema das rotas ao atualizar:
+      // provide: LocationStrategy,
+      // useClass: HashLocationStrategy
+      
   ],
   bootstrap: [
     AppComponent

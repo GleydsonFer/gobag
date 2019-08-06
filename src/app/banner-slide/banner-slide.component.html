@@ -1,45 +1,93 @@
 <!-- Carousel Banner -->
 <section class="banner_home">
-    <owl-carousel [options]="mySlideOptions" [items]="images" [carouselClasses]="['owl-theme', 'sliding']">
+    <div class="fonte" data-toggle="modal" data-target="#modalBanner">
+        <owl-carousel [options]="mySlideOptions" [items]="images" [carouselClasses]="['owl-theme', 'sliding']">
 
-        <div class="banner_home-box" *ngFor="let image of mySlideImages;let i = index">
-            <img class="banner_home-img img-fluid" src={{image.image}} alt="{{image.alt}}" />
-        </div>
-    </owl-carousel>
+            <div class="banner_home-box" *ngFor="let image of mySlideImages;let i = index">
+                <img class="banner_home-img img-fluid" src={{image.image}} alt="{{image.alt}}" />
+            </div>
+        </owl-carousel>
+    </div>
 </section>
+
+<div class="modal fade" id="modalBanner" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content justify-content-center">
+            <div class="modal-header">
+                <h5 class="modal-title fonte">Como funciona a GoBag?</h5>
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+            </div>
+
+            <div class="modal-body d-flex">
+                <iframe width="100%" height="622" src="https://www.youtube.com/embed/uZ7rMRdIJ6w" frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+
+
+
+            <div class="modal-footer">
+
+                <span class="footerModal">Gobag, Inc. | E-mail: gobagbrasil@gmail.com | Fone: 4020.9500</span>
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+</div>
+
 
 <!-- Banners estáticos -->
 <div class="container">
     <div class="row">
-        <div class="col-4 col-md-4 align-center">
+        <div class="col-3 col-md-3 align-center">
             <!-- <div class="d-flex flex-row justify-content-md-center "> -->
+
             <img class="img-fluid fotos" src="../../assets/banners/home/banner-camisa.png" alt="">
+
             <!-- <p class="">
-                <span>Experimente</span><br>
+                <span>Experimente!</span><br>
                 <span>Se não gostar de algum produto,<br>devolva sem precisar pagar</span>
             </p> -->
             <!-- </div> -->
         </div>
-        <div class="col-4 col-md-4 align-center">
+        <div class="col-3 col-md-3 align-center">
             <!-- <div class="d-flex flex-row justify-content-md-center "> -->
+
             <img class="img-fluid fotos" src="../../assets/banners/home/banner-relogio.png" alt="">
+
             <!-- <p>
-                <span>Receba no mesmo dia</span><br>
+                <span>Receba no mesmo dia!</span><br>
                 <span>Selecione o período que <br> deseja receber o produto</span>
             </p> -->
             <!-- </div> -->
         </div>
-        <div class="col-4 col-md-4 align-center">
+        <div class="col-3 col-md-3 align-center">
             <!-- <div class="d-flex flex-row justify-content-md-center "> -->
 
             <img class="img-fluid fotos" src="../../assets/banners/home/banner-bolsa.png" alt="">
 
             <!-- <p class="align-self-sm-start">
-                <span>Monte a sua bag</span><br>
+                <span>Monte a sua bag!</span><br>
                 <span>Selecione os produtos que deseja<br> experimentar, de acordo com seu gosto</span>
             </p> -->
             <!-- </div> -->
 
+        </div>
+        <div class="col-3 col-md-3 align-center">
+            <!-- <div class="d-flex flex-row justify-content-md-center "> -->
+
+            <img class="img-fluid fotos" src="../../assets/banners/home/banner-retorne.png" alt="">
+
+            <!-- <p class="">
+                    <span>Retorne!</span><br>
+                    <span>Se não gostar de qualquer<br>produto, nos informe que<br>iremos recolher sua bag!</span>
+                </p> -->
+            <!-- </div> -->
         </div>
     </div>
 </div>

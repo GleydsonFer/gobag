@@ -2,11 +2,8 @@ export class Lojista {
     nome: string;
     sobrenome: string;
     cargo: string;
-    celular: string;
+    telefone: string;
     email: string;
-    jaPossuiEntregadores: string;
-    possuiQuantasLojas: string;
-    comoChegouAteNos: string;
     nomeDaLoja: string;
     cnpj: string;
     cep: string;
@@ -16,4 +13,10 @@ export class Lojista {
     bairro: string;
     cidade: string;
     uf: string;
+    telefone_loja: string;
+    instagram: string;
+    
+    jaPossuiEntregadores: string;
+    possuiQuantasLojas: string;
+    comoChegouAteNos: string;
 }

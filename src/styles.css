@@ -8,6 +8,17 @@ mas com um estilo diferente: header {background: #fff;} a desse arquivo
 é a que será exibida */
 
 /* Estilo default */
+@import url(//db.onlinewebfonts.com/c/62c0135163427c652ae397f327f85010?family=Museo+Sans);
+  
+  @font-face {font-family: "Museo Sans";
+    src: url("//db.onlinewebfonts.com/t/62c0135163427c652ae397f327f85010.eot");
+    src: url("//db.onlinewebfonts.com/t/62c0135163427c652ae397f327f85010.eot?#iefix") format("embedded-opentype"),
+    url("//db.onlinewebfonts.com/t/62c0135163427c652ae397f327f85010.woff2") format("woff2"),
+    url("//db.onlinewebfonts.com/t/62c0135163427c652ae397f327f85010.woff") format("woff"),
+    url("//db.onlinewebfonts.com/t/62c0135163427c652ae397f327f85010.ttf") format("truetype"),
+    url("//db.onlinewebfonts.com/t/62c0135163427c652ae397f327f85010.svg#Museo Sans") format("svg");
+  }
+
 html
 {
     overflow-x:hidden;
@@ -57,7 +68,7 @@ h3 {
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
 
-    opacity: .8;
+    /* opacity: .8;
     background-color: rgba(0, 0, 0, 0);
     filter: alpha(opacity=50);
 
@@ -68,7 +79,7 @@ h3 {
     -webkit-filter:"progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1)";
     -o-filter:"progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1)";
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
-    background-repeat: repeat-x!important;
+    background-repeat: repeat-x!important; */
 }
 
 .tendencia .owl-carousel .owl-nav button.owl-next,
@@ -82,7 +93,7 @@ h3 {
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
 
-    opacity: .8;
+    /* opacity: .8;
     background-color: rgba(0, 0, 0, 0);
     filter: alpha(opacity=50);
 
@@ -93,12 +104,18 @@ h3 {
     -webkit-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1)";
     -o-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1)";
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);
-    background-repeat: repeat-x!important;
+    background-repeat: repeat-x!important; */
 }
 
 .tendencia .owl-carousel .owl-nav button.owl-prev:hover,
 .tendencia .owl-carousel .owl-nav button.owl-next:hover,
-.tendencia .owl-theme .owl-nav [class*=owl-]:hover,
+.tendencia .owl-theme .owl-nav [class*=owl-]:hover
+{
+    background: rgba(0, 0, 0, 0);
+    filter: alpha(opacity=90);
+    outline: 0;
+    opacity: .9;
+}
 
 .banner_home .owl-carousel .owl-nav button.owl-prev:hover,
 .banner_home .owl-carousel .owl-nav button.owl-next:hover,
@@ -120,7 +137,7 @@ h3 {
 .banner_home .owl-carousel .owl-nav button.owl-next.disabled:hover {opacity: .5;}
 
 .tendencia .owl-carousel .owl-nav button.owl-prev:focus,
-.tendencia .owl-carousel .owl-nav button.owl-next:focus,
+.tendencia .owl-carousel .owl-nav button.owl-next:focus{outline: none;}
 
 .banner_home .owl-carousel .owl-nav button.owl-prev:focus,
 .banner_home .owl-carousel .owl-nav button.owl-next:focus{outline: none;}
@@ -140,7 +157,7 @@ h3 {
     font-size: 0;
 }
 
-.banner_home .nav-btn.prev-slide {
+/* .banner_home .nav-btn.prev-slide {
     background: url('./assets/left-w.png') center center no-repeat;
     left: 0;
 }
@@ -148,9 +165,9 @@ h3 {
 .banner_home .nav-btn.next-slide {
     background: url('./assets/right-w.png') center center no-repeat;
     right: 0;
-}
+} */
 
-.owl-theme .owl-dots {display: none;}
+.owl-theme .owl-dots {display: true;}
 
 /* fim do Estilo do carrossel das tendências */
 
@@ -167,7 +184,7 @@ h3 {
     font-size: 0;
 }
 
-.lojas .nav-btn.prev-slide {
+/* .lojas .nav-btn.prev-slide {
     background: url('./assets/left.png') center center no-repeat;
     left: 0;
 }
@@ -175,34 +192,54 @@ h3 {
 .lojas .nav-btn.next-slide {
     background: url('./assets/right.png') center center no-repeat;
     right: 0;
-}
+} */
 
 .lojas .owl-carousel .owl-nav button.owl-prev {
     position: absolute;
-    left: -20px;
+    left: 0;
     top: 0;
     height: 100%;
-    width: 20px;
+    width: 8%;
     margin: 0!important;
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
 
-    opacity: .5;
-    background-color: transparent;   
+    /* opacity: .8;
+    background-color: rgba(0, 0, 0, 0);
+    filter: alpha(opacity=50);
+
+    background-image:-webkit-linear-gradient(left, rgba(0, 0, 0, .8) 0%, rgba(0, 0, 0, .01) 100%)!important;
+    background-image:-o-linear-gradient(left, rgba(0, 0, 0, .8) 0%, rgba(0, 0, 0, .01) 100%)!important;
+    background-image:linear-gradient(to right, rgba(0, 0, 0, .8) 0%, rgba(0, 0, 0, .01) 100%)!important;
+
+    -webkit-filter:"progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1)";
+    -o-filter:"progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1)";
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
+    background-repeat: repeat-x!important;  */
 }
 
 .owl-carousel .owl-nav button.owl-next {
     position: absolute;
-    right: -20px;
+    right: 0;
     top: 0;
     height: 100%;
-    width: 20px;
+    width: 8%;
     margin: 0!important;
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
 
-    opacity: .5;
-    background-color: transparent;
+    /* opacity: .8;
+    background-color: rgba(0, 0, 0, 0);
+    filter: alpha(opacity=50);
+
+    background-image:-webkit-linear-gradient(left, rgba(0, 0, 0, .01) 0%, rgba(0, 0, 0, .8) 100%)!important;
+    background-image:-o-linear-gradient(left, rgba(0, 0, 0, .01) 0%, rgba(0, 0, 0, .8) 100%)!important;
+    background-image:linear-gradient(to right, rgba(0, 0, 0, .01) 0%, rgba(0, 0, 0, .8) 100%)!important;
+
+    -webkit-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1)";
+    -o-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1)";
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);
+    background-repeat: repeat-x!important; */
 }
 
 .lojas .owl-carousel .owl-nav button.owl-prev.disabled,

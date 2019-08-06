@@ -11,7 +11,9 @@ export class TendenciasComponent implements OnInit {
     margin:25,
     dot: false, 
     nav: true,
-    navText: ["<div class='nav-btn prev-slide'>prev</div>", "<div class='nav-btn next-slide'>next</div>"],    
+    navText: [
+      "<div class='nav-btn prev-slide'>prev</div>", 
+      "<div class='nav-btn next-slide'>next</div>"],    
     responsiveClass: true,
     responsive: {
       0: {
