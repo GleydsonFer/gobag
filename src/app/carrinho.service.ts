@@ -26,11 +26,14 @@ class CarrinhoService {
 
         this.afauth.auth.onAuthStateChanged(user => {
             this.usuario = user;
-            this.afs.collection("carrinhos" ).snapshotChanges().pipe(
-                map(changes => {
-                    return changes.map(c => ({ ...c.payload.doc.data() }));
-                })
-            ).subscribe((item: any) => {
+            this.getCarrinhoByEmail(user.email)
+            // this.afs.collection("carrinhos").snapshotChanges().pipe(
+            //     map(changes => {
+            //         return changes.map(c => ({ ...c.payload.doc.data() }));
+            //     })
+            // )
+            .subscribe((item: any) => {
+                console.log('entrou')
                 if (item.email == user.email) {
                     console.log(item);
                     item.forEach((element: any) => {
@@ -110,19 +113,13 @@ class CarrinhoService {
     }
 
     public limparCarrinho(usuario: Usuario, carrinho: Carrinho) {
-        // this.itens = [];
 
         console.log('carrinho', carrinho);
 
         var fireUID = btoa(usuario.email);
 
-
         this.afs.collection('carrinhos').doc(fireUID).delete().then(() => {
             this.emitirNumeroDeItens.emit(0);
-            carrinho.itens = [];
-            carrinho.valor_total = 0;
-            console.log('carrinho limpo', carrinho);
-            return carrinho;
         })
     }
 

@@ -46,14 +46,10 @@ export class OfertaComponent implements OnInit, OnDestroy {
         }
         this.prod = prod[0];
       })
-
     })
-
   }
 
-  ngOnDestroy() {
-
-  }
+  ngOnDestroy() { }
 
   // Função para adicionar itens ao carrinho
   public adicionarItemCarrinho(): void {

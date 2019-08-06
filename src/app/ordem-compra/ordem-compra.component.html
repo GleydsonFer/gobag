@@ -1,8 +1,8 @@
 
 <div class="div_container row">
  
-  <h3 class="rev_pedido">REVISÃO DO PEDIDO</h3>
-  <div class="itensCarrinho col-sm-11  tendencia" *ngIf="carrinho; else loading">
+  <h3 class="rev_pedido col-12">REVISÃO DO PEDIDO</h3>
+  <div class="itensCarrinho col-12  tendencia" *ngIf="carrinho; else loading">
     <app-carousel-ordem-compra [carrinho]="carrinho"></app-carousel-ordem-compra>
   </div>
   <div class="meio col-12">

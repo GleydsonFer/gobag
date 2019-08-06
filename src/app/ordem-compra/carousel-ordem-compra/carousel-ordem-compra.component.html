@@ -1,6 +1,7 @@
-<div class="container-fluid row" *ngIf="carrinho; else loading">
+<div class="container row" *ngIf="carrinho; else loading">
   <owl-carousel (click)="onClick()" (mouseenter)="mouseenter()" (mousemove)="mousemove()" class="col-12" *ngIf="!reordenar; else carousel2"
     [options]="mySlideOptions" [items]="images" [carouselClasses]="['owl-theme', 'sliding']" #carousel1>
+    
     <div class="item tend_item" *ngFor="let item of carrinho.itens;let i = index" [width]="500">
       <a routerLinkActive="active" class="tend_link" [ngStyle]="{'width': '800px'}">
         <div class="conteudo" (window:ondrag)="onClick()">

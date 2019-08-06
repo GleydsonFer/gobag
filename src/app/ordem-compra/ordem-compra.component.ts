@@ -10,7 +10,7 @@ import { UsuarioService } from './../usuario.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
 
-//import {PagarMeCheckout} from https://assets.pagar.me/checkout/checkout.js;
+// import {PagarMeCheckout} from https://assets.pagar.me/checkout/checkout.js;
 // import { pagarme } from '../../../node_modules/pagarme'
 
 import { Carrinho } from '../shared/carrinho.model';
@@ -43,7 +43,24 @@ export class OrdemCompraComponent implements OnInit {
     private ordemCompraService : OrdemCompraService,
     private autenticacaoGuard: AutenticacaoGuard,
     private Router:Router
-  ) { }
+  ) { 
+    
+    this.afAuth.auth.onAuthStateChanged(user => {
+      console.log(user.emailVerified)
+      this.userService.getUsuario(user.email).subscribe((usuario) => {
+        usuario.forEach(usuario => {
+          this.usuario = usuario
+          
+        })
+        // recupera  carrinho a partir do banco de dados
+        this.carrinhoObservable = this.carrinhoService.getCarrinhoByEmail(user.email);
+        this.carrinhoObservable.subscribe(car => {
+          this.carrinho = car[0];
+          console.log('construtor', this.carrinho);
+        })
+      })
+    })
+  }
   
 
   ngOnInit() {
@@ -69,34 +86,13 @@ export class OrdemCompraComponent implements OnInit {
 
     //const pagarme = require('pagarme/browser')
 
-    this.afAuth.auth.onAuthStateChanged(user => {
-      console.log(user.emailVerified)
-      this.userService.getUsuario(user.email).subscribe((usuario) => {
-        usuario.forEach(usuario => {
-          this.usuario = usuario
-          
-        })
-        // recupera  carrinho a partir do banco de dados
-        this.carrinhoObservable = this.carrinhoService.getCarrinhoByEmail(user.email);
-        this.carrinhoObservable.subscribe(car => {
-          this.carrinho = car[0];
-          console.log('ngOnInit', this.carrinho);
-        })
-      })
-    })
-    
-  
+   
   }
 
   // comunicacao-pagarme
-
   public executa(pedido:Pedido) : void {
 
-    
-
     console.log(pedido)
-
-    
     
     const pagarme = require ('pagarme/browser' )
     pagarme.client.connect({ api_key: 'ak_test_KN3qLDMn4KnpRgHCidxb7T9xfVcSz0' })
@@ -183,8 +179,8 @@ export class OrdemCompraComponent implements OnInit {
   }
 
   public cancelarCarrinho(){
-    // this.carrinhoService.limparCarrinho(this.usuario, this.carrinho);
-    // this.carrinho = null;
+    this.carrinhoService.limparCarrinho(this.usuario, this.carrinho);
+    this.carrinho = null;
   }
   
 }
