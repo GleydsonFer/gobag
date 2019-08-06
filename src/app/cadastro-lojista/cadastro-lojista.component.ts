@@ -21,11 +21,8 @@ export class CadastroLojistaComponent implements OnInit {
     'nome': new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(30)]),
     'sobrenome': new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(30)]),
     'cargo': new FormControl(null),
-    'celular': new FormControl(null, [Validators.required, Validators.minLength(8), Validators.maxLength(13)]),
+    'telefone': new FormControl(null, [Validators.required, Validators.minLength(8), Validators.maxLength(13)]),
     'email': new FormControl(null, [Validators.required, Validators.minLength(3), Validators.email]),
-    'jaPossuiEntregadores': new FormControl(null),
-    'possuiQuantasLojas': new FormControl(null),
-    'comoChegouAteNos': new FormControl(null),
     'nomeDaLoja': new FormControl(null, [Validators.required, Validators.minLength(1), Validators.maxLength(50)]),
     'cnpj': new FormControl(null, [Validators.required, Validators.pattern('[0-9]{2}\.?[0-9]{3}\.?[0-9]{3}\/?[0-9]{4}\-?[0-9]{2}')]),
     'cep': new FormControl(null, [Validators.required, Validators.pattern('[0-9]{5}-[0-9]{3}')]),
@@ -34,7 +31,12 @@ export class CadastroLojistaComponent implements OnInit {
     'complemento': new FormControl(null),
     'bairro': new FormControl(null, [Validators.required, Validators.minLength(1), Validators.maxLength(50)]),
     'cidade': new FormControl(null, [Validators.required, Validators.minLength(1), Validators.maxLength(50)]),
-    'uf': new FormControl(null, [Validators.required, Validators.minLength(2), Validators.maxLength(2)])
+    'uf': new FormControl(null, [Validators.required, Validators.minLength(2), Validators.maxLength(2)]),
+    'telefone_loja': new FormControl(null, [Validators.required, Validators.minLength(8), Validators.maxLength(13)]),
+    'instagram': new FormControl(null),
+    'jaPossuiEntregadores': new FormControl(null),
+    'possuiQuantasLojas': new FormControl(null),
+    'comoChegouAteNos': new FormControl(null),
   })
 
   public cadastrarLojista() {
@@ -53,6 +55,7 @@ export class CadastroLojistaComponent implements OnInit {
       this.cadastro.get('bairro').markAsTouched()
       this.cadastro.get('cidade').markAsTouched()
       this.cadastro.get('uf').markAsTouched()
+      this.cadastro.get('telefone_loja').markAsTouched()
 
     } else {
 
@@ -60,11 +63,8 @@ export class CadastroLojistaComponent implements OnInit {
         nome: <string>this.cadastro.value.nome,
         sobrenome: <string>this.cadastro.value.sobrenome,
         cargo: <string>this.cadastro.value.cargo,
-        celular: <string>this.cadastro.value.celular,
+        telefone: <string>this.cadastro.value.celular,
         email: <string>this.cadastro.value.email,
-        jaPossuiEntregadores: <string>this.cadastro.value.jaPossuiEntregadores,
-        possuiQuantasLojas: <string>this.cadastro.value.possuiQuantasLojas,
-        comoChegouAteNos: <string>this.cadastro.value.comoChegouAteNos,
         nomeDaLoja: <string>this.cadastro.value.nomeDaLoja,
         cnpj: <string>this.cadastro.value.cnpj,
         cep: <string>this.cadastro.value.cep,
@@ -73,7 +73,12 @@ export class CadastroLojistaComponent implements OnInit {
         complemento: <string>this.cadastro.value.complemento,
         bairro: <string>this.cadastro.value.bairro,
         cidade: <string>this.cadastro.value.cidade,
-        uf: <string>this.cadastro.value.uf
+        uf: <string>this.cadastro.value.uf,
+        telefone_loja: '',
+        instagram: '',
+        jaPossuiEntregadores: <string>this.cadastro.value.jaPossuiEntregadores,
+        possuiQuantasLojas: <string>this.cadastro.value.possuiQuantasLojas,
+        comoChegouAteNos: <string>this.cadastro.value.comoChegouAteNos
       };
 
       this.lojistaService.cadastrarLojista(this.lojista);

@@ -1,13 +1,13 @@
-import { Component, OnInit, OnDestroy, Output } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router'
-import { OfertasService } from '../ofertas.service'
-import CarrinhoService from '../carrinho.service'
+import { Component, OnDestroy, OnInit, Output } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { ActivatedRoute, Params } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-
-import { Oferta } from '../shared/oferta.model'
-import { AutenticacaoGuard } from '../autenticacao-guard.service';
 import { Observable } from 'rxjs';
+import { AutenticacaoGuard } from '../autenticacao-guard.service';
+import CarrinhoService from '../carrinho.service';
+import { OfertasService } from '../ofertas.service';
 import { Produto } from '../shared/produto.model';
+
 
 @Component({
   selector: 'app-oferta',
@@ -21,7 +21,7 @@ export class OfertaComponent implements OnInit, OnDestroy {
   public tamanho: any[] = [];
   public produto: Observable<any>;
   @Output() public prod: Produto;
-  public aux:any[] = ['selecionado', 'valor'] 
+  public aux: any[] = ['selecionado', 'valor']
 
   public naoLogado: any;
 
@@ -31,6 +31,7 @@ export class OfertaComponent implements OnInit, OnDestroy {
     private carrinhoService: CarrinhoService,
     private toastr: ToastrService,
     private autenticacaoGuard: AutenticacaoGuard,
+    private afauth: AngularFireAuth
   ) {
   }
 
@@ -48,7 +49,6 @@ export class OfertaComponent implements OnInit, OnDestroy {
 
     })
 
-
   }
 
   ngOnDestroy() {
@@ -58,23 +58,29 @@ export class OfertaComponent implements OnInit, OnDestroy {
   // Função para adicionar itens ao carrinho
   public adicionarItemCarrinho(): void {
 
-    this.tamanho.forEach(item => {
-      if (item.selecionado == true) {
-        this.aux[0] = true
-        this.aux[1] = item.key;
-      }
-    })
-    if (this.aux[0] == true) {
-      this.naoLogado = this.autenticacaoGuard.canActivateVerOfertaNaoLogado();
+    // recupera a referencia do usuário logado para pegar seu email
+    this.afauth.auth.onAuthStateChanged(user => {
 
-      if (this.naoLogado) {
-        this.prod.tamanho = this.aux[1]
-        this.carrinhoService.incluirItem(this.prod);
-        this.toastr.success('Oferta adicionada com sucesso!', `${this.prod.nome}`);
+      this.tamanho.forEach(item => {
+        if (item.selecionado == true) {
+          this.aux[0] = true
+          this.aux[1] = item.key;
+        }
+      })
+      if (this.aux[0] == true) {
+        this.naoLogado = this.autenticacaoGuard.canActivateVerOfertaNaoLogado();
+
+        if (this.naoLogado) {
+          this.prod.tamanho = this.aux[1];
+          this.carrinhoService.incluirItem(this.prod, user)
+          this.toastr.success('Oferta adicionada com sucesso!', `${this.prod.nome}`);
+         
+        }
+      } else {
+        this.toastr.error('Você deve selecionar um tamanho primeiro!')
       }
-    } else {
-      this.toastr.error('Você deve selecionar um tamanho primeiro!')
-    }
+
+    })
   }
 
   conferirNull(value, selecionado) {

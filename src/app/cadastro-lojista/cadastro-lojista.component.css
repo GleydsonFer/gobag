@@ -2,6 +2,10 @@
     margin-top: 10px;
     margin-bottom: 200px;
 }
+.image{
+    width: 30px;
+    
+}
 input.ng-invalid.ng-touched {
     border-bottom: 2px solid red;
 }
