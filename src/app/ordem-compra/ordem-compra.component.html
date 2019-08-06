@@ -1,20 +1,34 @@
+
 <div class="div_container row">
+ 
   <h3 class="rev_pedido">REVISÃO DO PEDIDO</h3>
-  <div class="itensCarrinho col-sm-11  tendencia">
+  <div class="itensCarrinho col-sm-11  tendencia" *ngIf="carrinho; else loading">
     <app-carousel-ordem-compra [carrinho]="carrinho"></app-carousel-ordem-compra>
   </div>
   <div class="meio col-12">
     <div class="endereco row">
         <h4>Endereço de entrega: </h4> <span *ngIf="usuario != null">{{usuario.endereco}}, {{usuario.numero}} </span>
     </div>
-    <div class="faturamento">
-        <h4>faturamento:</h4><br>
-        <span>Nome do Cliente</span><br>
-        <span>CPF</span><br>
-        <span>Dados do Cartão</span>
-        <app-ordem-pagamento></app-ordem-pagamento>
-    </div>
- 
+
+  
+      
+      <span>Dados do Cartão</span>
+
+      <form (submit)="salvarDadosCartao()" [formGroup] = "formularioCartao" >
+        <div class="form-group col">
+          <input formControlName="card_number" type="text" class="form-control" placeholder="card_number">
+          <br>
+          <input formControlName="card_holder_name" type="text" class="form-control" placeholder="card_holder_name">
+          <br>
+          <input formControlName="card_expiration_date" type="text" class="form-control" placeholder="card_expiration_date">
+          <br>
+          <input formControlName="card_cvv" type="text" class="form-control" placeholder="card_cvv">
+          
+        </div>
+  
+      </form>
+
+
   </div>
   <div class="bottom row col-sm-12 text-center">
     <div class="col-12 col-sm-12 col-md-4 voltar"> 
@@ -28,9 +42,9 @@
         <span *ngIf="carrinho; else valornulo"> {{ 0 | currency: 'BRL': 'symbol' }}</span>
       </p>
     </div>
-    <div class="col-12 col-sm-12 col-md-4 continuar"><button class="btn_confirmar" (click)="confirmarCompra()">CONFIRMAR</button></div>
+    <div class="col-12 col-sm-12 col-md-4 continuar"><button class="btn_confirmar" (click)="salvarDadosCartao()">CONFIRMAR</button></div>
   </div>
 </div>
 
-<ng-template #loading>Carrinho Vazio</ng-template>
+<ng-template #loading><p>Carrinho Vazio</p></ng-template>
 <ng-template #valornulo>{{ 0 | currency: 'BRL': 'symbol'}}</ng-template>
