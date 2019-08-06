@@ -59,7 +59,7 @@ export class OrdemCompraComponent implements OnInit {
   /************************************* */
   /************************************* */
 
-    const pagarme = require('pagarme/browser')
+    //const pagarme = require('pagarme/browser')
 
     this.afAuth.auth.onAuthStateChanged(user => {
       console.log(user.emailVerified)
@@ -100,13 +100,35 @@ export class OrdemCompraComponent implements OnInit {
     //     // Criar uma transação simples
         .then(client => client.transactions.create({
             capture: 'false',
-            amount: <number>pedido.valor_total * 100,
+            /*amount: <number>pedido.valor_total * 100,*/
+            amount:999999,
             card_number: this.dadosCartao.card_number,
             card_holder_name: this.dadosCartao.card_holder_name,
             card_expiration_date: this.dadosCartao.card_expiration_date,
             card_cvv: this.dadosCartao.card_cvv,
-        })).then(console.log('Transação efetuada com sucesso!'));
-        console.log(this.formularioCartao)  
+            billing: {
+              name: "TESTE LOJISTA",
+              address: {
+                country: "br",
+                state: "ce",
+                city: "Fortaleza",
+                neighborhood: "Aldeota",
+                street: "Rua A",
+                street_number: "9999",
+                zipcode: "06714360"
+              }
+            }            
+        })
+        
+        
+        ).then(console.log('Transação efetuada com sucesso!'));
+        console.log(this.formularioCartao)
+
+        
+        
+
+
+
   }
 
   public salvarDadosCartao(): void {
