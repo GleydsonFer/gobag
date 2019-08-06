@@ -4,20 +4,19 @@
 }
 
  .lojas_item {
-    border-radius: 8px;
-    /* border: 1px solid #ccc; */
+    border-radius: 10px;
     height: 160px;
     display: flex;
     align-items: center;
 } 
 
- /* .lojas_item:hover {
+ .lojas_item:hover {
     border-color: #000;
-}  */
+} 
 
 .lojas_link {
-    /* display: block;
-    padding: 25px; */
+    display: block;
+    padding: 25px; 
     display: block;
     border-radius: 8px;
 }

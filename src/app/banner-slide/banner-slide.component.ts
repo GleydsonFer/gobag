@@ -7,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BannerSlideComponent implements OnInit {
   mySlideOptions={
-    dot: false, 
+    autoplay:true,
+    autoplayTimeout:5000,
+    autoplayHoverPause:true,
+    loop: true,
+    dot: true, 
     nav: true,
     navText: ["<div class='nav-btn prev-slide'>prev</div>", "<div class='nav-btn next-slide'>next</div>"],    
     responsiveClass: true,
@@ -42,15 +46,4 @@ export class BannerSlideComponent implements OnInit {
   ngOnInit() {
   }
 
-//   $(function() {
-//     $(".video").click(function () {
-//       var theModal = $(this).data("target"),
-//       videoSRC = $(this).attr("data-video"),
-//       videoSRCauto = videoSRC + "?modestbranding=1&rel=0&controls=0&showinfo=0&html5=1&autoplay=1";
-//       $(theModal + ' iframe').attr('src', videoSRCauto);
-//       $(theModal + ' button.close').click(function () {
-//         $(theModal + ' iframe').attr('src', videoSRC);
-//       });
-//     });
-//   });
- }
+}
