@@ -77,6 +77,7 @@ import { OrdemDevolucaoComponent } from './ordem-devolucao/ordem-devolucao.compo
 import { CarouselOrdemDevolucaoComponent } from './ordem-devolucao/carousel-ordem-devolucao/carousel-ordem-devolucao.component';
 import { CadastroLojistaComponent } from './cadastro-lojista/cadastro-lojista.component';
 
+
 registerLocaleData(localePtBr);
 
 
@@ -154,6 +155,11 @@ registerLocaleData(localePtBr);
     OfertasService,
     Autenticacao,
     AutenticacaoGuard
+
+      // possivel solução do problema das rotas ao atualizar:
+      // provide: LocationStrategy,
+      // useClass: HashLocationStrategy
+      
   ],
   bootstrap: [
     AppComponent

@@ -5,7 +5,7 @@
     <div class="row d-flex justify-content-center">
 
       <!-- Categorias -->
-      <div class="col-3 link2">
+      <div class="col-3 link2 ">
         <span class="topic">Categorias</span>
 
         <ul class="mt-2 list-unstyled">
@@ -34,39 +34,60 @@
       </div>
 
       <!-- Informações -->
-      <div class="col-4 link2">
+      <div class="col-4 link2 ">
         <span class="topic">Informações</span>
 
-        <ul class="mt-2 list-unstyled" >
+        <ul class="mt-2 list-unstyled">
           <li>
             <a class="link" [routerLink]="['/termos-de-uso']">Termos de uso </a>
           </li>
-          <li>
+          <li class="mt-1">
             <a class="link" [routerLink]="[ '/politicas-de-privacidade']"> Política de Privacidade</a>
           </li>
-          <li>
+          <li class="mt-1">
             <a class="link" [routerLink]="[ '/politicas-de-devolucao']"> Política de Devolução</a>
           </li>
-
-
           <li class="mt-4">
-              <span class="link2"> 4020.9500</span>
+            <span class="link2"> Fone: 4020.9500</span>
           </li>
           <li>
-              <span class="link2"> E-mail: gobagbrasil@gmail.com</span>
+            <span class="link2"> E-mail: gobagbrasil@gmail.com</span>
           </li>
           <li>
-              <span class="link2"> Gobag, Inc.&nbsp; CNPJ: 34.262.627/0001-32</span>
+            <span class="link2"> Gobag, Inc.&nbsp; CNPJ: 34.262.627/0001-32</span>
+          </li>
+        </ul>
+      </div>
+
+
+      <!-- Contato -->
+      <!-- <div class="col-4 link2 ">
+        <span class="topic">Ganhe R$20,00 na primeira compra!</span>
+        <ul class="mt-2 list-unstyled">
+          <li>
+
+            <span class="link">Digite seu e-mail abaixo e em seguida enviaremos seu desconto!</span>
+          </li>
+          <li>
+            <input type="text" class="form-control mt-1" id="inputEmail" placeholder="Digite seu e-mail" formControlName="e-mail">
+
+          </li>
+
+          <li class="mt-4">            
+            <span class="link2"> E-mail: gobagbrasil@gmail.com</span>
+          </li>
+          <li>
+            <span class="link2"> Gobag, Inc.&nbsp; CNPJ: 34.262.627/0001-32</span>
           </li>
         </ul>
 
 
-      </div>
+      </div> -->
 
       <!-- Mídia -->
-      <div class="ml-4 col-4 link2">
-        <span class="topic">Mídia</span>
-        
+      <div class="ml-4 col-3 link2">
+        <span class="topic">Baixe nosso app</span>
+
         <ul class="mt-2 list-unstyled ">
           <li class="logo-app">
             <a href="/" target="_blank"><img class="img-fluid" src="./assets/rodape/googleplay-logo.png" /></a>
@@ -78,16 +99,20 @@
           <li>
             <ul class="list-inline">
               <li class="list-inline-item rede-social">
-                <a href="https://www.facebook.com/gobagbrasil" target="_blank"><img class="img-fluid " src="./assets/rodape/facebook-logo-rodape.png" /></a>
+                <a href="https://www.facebook.com/gobagbrasil" target="_blank"><img class="img-fluid "
+                    src="./assets/rodape/facebook-logo-rodape.png" /></a>
               </li>
               <li class="list-inline-item rede-social">
-                <a href="https://www.instagram.com/gobagbrasil" target="_blank"><img class="img-fluid" src="./assets/rodape/instagram-logo-rodape.png" /></a>
-              </li>             
-              <li class="list-inline-item rede-social">
-                <a href="https://twitter.com/gobagbrasil" target="_blank"><img class="img-fluid " src="./assets/rodape/twitter-logo-rodape.png" /></a>
+                <a href="https://www.instagram.com/gobagbrasil" target="_blank"><img class="img-fluid"
+                    src="./assets/rodape/instagram-logo-rodape.png" /></a>
               </li>
               <li class="list-inline-item rede-social">
-                <a href="https://br.pinterest.com/gobagbrasil/" target="_blank"><img class="img-fluid " src="./assets/rodape/pinterest-logo-rodape.png" /></a>
+                <a href="https://twitter.com/gobagbrasil" target="_blank"><img class="img-fluid "
+                    src="./assets/rodape/twitter-logo-rodape.png" /></a>
+              </li>
+              <li class="list-inline-item rede-social">
+                <a href="https://br.pinterest.com/gobagbrasil/" target="_blank"><img class="img-fluid "
+                    src="./assets/rodape/pinterest-logo-rodape.png" /></a>
               </li>
 
             </ul>
@@ -96,7 +121,9 @@
         </ul>
       </div>
 
+
+
     </div>
   </div>
 
-</footer>      
+</footer>

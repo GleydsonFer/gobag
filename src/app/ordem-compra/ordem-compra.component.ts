@@ -1,8 +1,8 @@
+import { OrdemCompraService } from '../ordem-compra.service';
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { ToastrService } from 'ngx-toastr';
 import CarrinhoService from '../carrinho.service';
-import { OrdemCompraService } from '../ordem-compra.service';
 import { Pedido } from '../shared/pedido.model';
 import { UsuarioService } from './../usuario.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
@@ -18,7 +18,7 @@ import { Observable } from 'rxjs';
   selector: 'app-ordem-compra',
   templateUrl: './ordem-compra.component.html',
   styleUrls: ['./ordem-compra.component.css'],
-  providers: [OrdemCompraService]
+  providers:[OrdemCompraService]
 })
 export class OrdemCompraComponent implements OnInit {
 
@@ -26,18 +26,19 @@ export class OrdemCompraComponent implements OnInit {
   public idPedidoCompra: string;
   public formularioCartao : FormGroup;
   public dadosCartao: any;
+  carrinhoObservable: Observable<any>;
+  carrinho: Carrinho;
 
   // public PagarMeCheckout: pagarme;
 
-  
-
   constructor(
-    private ordemCompraService: OrdemCompraService,
+    
     private carrinhoService: CarrinhoService,
     private userService: UsuarioService,
     private afAuth: AngularFireAuth,
     private toastr: ToastrService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private ordemCompraService : OrdemCompraService,
   ) { }
   
 
@@ -69,11 +70,11 @@ export class OrdemCompraComponent implements OnInit {
           
         })
         // recupera  carrinho a partir do banco de dados
-        // this.carrinhoObservable = this.carrinhoService.getCarrinhoByEmail(user.email);
-        // this.carrinhoObservable.subscribe(car => {
-        //   this.carrinho = car[0];
-        //   console.log('ngOnInit', this.carrinho);
-        // })
+        this.carrinhoObservable = this.carrinhoService.getCarrinhoByEmail(user.email);
+        this.carrinhoObservable.subscribe(car => {
+          this.carrinho = car[0];
+          console.log('ngOnInit', this.carrinho);
+        })
       })
     })
     
@@ -202,4 +203,3 @@ export class OrdemCompraComponent implements OnInit {
   }
   
 }
-

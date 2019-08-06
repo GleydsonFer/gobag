@@ -7,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BannerSlideComponent implements OnInit {
   mySlideOptions={
-    dot: false, 
+    autoplay:true,
+    autoplayTimeout:5000,
+    autoplayHoverPause:true,
+    loop: true,
+    dot: true, 
     nav: true,
     navText: ["<div class='nav-btn prev-slide'>prev</div>", "<div class='nav-btn next-slide'>next</div>"],    
     responsiveClass: true,
@@ -21,7 +25,7 @@ export class BannerSlideComponent implements OnInit {
   };
 
   mySlideImages = [
-    {
+    {      
       alt: "GoBag Brasil",
       image: "assets/banners/home/banner_home_3.png"
     },
@@ -35,6 +39,7 @@ export class BannerSlideComponent implements OnInit {
     }
   ]
 
+  
 
   constructor() { }
 
