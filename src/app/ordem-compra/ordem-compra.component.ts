@@ -26,6 +26,8 @@ export class OrdemCompraComponent implements OnInit {
   public idPedidoCompra: string;
   public formularioCartao : FormGroup;
   public dadosCartao: any;
+  carrinhoObservable: Observable<any>;
+  carrinho: Carrinho;
 
   // public PagarMeCheckout: pagarme;
 
@@ -69,11 +71,11 @@ export class OrdemCompraComponent implements OnInit {
           
         })
         // recupera  carrinho a partir do banco de dados
-        // this.carrinhoObservable = this.carrinhoService.getCarrinhoByEmail(user.email);
-        // this.carrinhoObservable.subscribe(car => {
-        //   this.carrinho = car[0];
-        //   console.log('ngOnInit', this.carrinho);
-        // })
+        this.carrinhoObservable = this.carrinhoService.getCarrinhoByEmail(user.email);
+        this.carrinhoObservable.subscribe(car => {
+          this.carrinho = car[0];
+          console.log('ngOnInit', this.carrinho);
+        })
       })
     })
     

@@ -17,6 +17,7 @@ class CarrinhoService {
     emitirNumeroDeItens: EventEmitter<number> = new EventEmitter<number>();
     carrinhoObservable: Observable<any>;
     carrinhoObservable2: Observable<any>;
+    usuario: any;
 
     constructor(
         private afs: AngularFirestore,
@@ -24,6 +25,7 @@ class CarrinhoService {
     ) {
 
         this.afauth.auth.onAuthStateChanged(user => {
+            this.usuario = user;
             this.afs.collection("carrinhos" ).snapshotChanges().pipe(
                 map(changes => {
                     return changes.map(c => ({ ...c.payload.doc.data() }));
@@ -31,9 +33,9 @@ class CarrinhoService {
             ).subscribe((item: any) => {
                 if (item.email = user.email) {
                     console.log(item);
-                    console.log(item.forEach((element: any) => {
+                    item.forEach((element: any) => {
                         this.itens = element.itens
-                    }))
+                    })
                 }
             })
         })
@@ -93,7 +95,7 @@ class CarrinhoService {
         }
     }
 
-    public diminuirQuantidade(itemCarrinho: ItemCarrinho): void {
+    public diminuirQuantidade(itemCarrinho: ItemCarrinho) {
         //decrementar quantidade
         let itemCarrinhoEncontrado = this.itens.find((item: ItemCarrinho) => ((item.tamanho == itemCarrinho.tamanho) && (item.id_produto === itemCarrinho.id_produto)))
 
