@@ -96,12 +96,12 @@ export class CadastroComponent implements OnInit {
       this.auth.cadastrarUsuario(usuario)
         .then(() => {
 
-          // var user =  this.fireAuth.auth.currentUser
-          // user.sendEmailVerification().then(function() {
-          //   // Email sent.
-          // }).catch(function(error) {
-          //   // An error happened.
-          // });
+          var user =  this.fireAuth.auth.currentUser
+          user.sendEmailVerification().then(function() {
+            // Email sent.
+          }).catch(function(error) {
+            // An error happened.
+          });
 
           if (this.mensagemErroCad !== undefined) {
             this.auth.message = undefined;
