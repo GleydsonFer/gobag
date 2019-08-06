@@ -31,7 +31,6 @@ export class OrdemCompraComponent implements OnInit {
 
   // public PagarMeCheckout: pagarme;
 
-
   constructor(
     
     private carrinhoService: CarrinhoService,

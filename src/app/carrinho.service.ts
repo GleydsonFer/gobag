@@ -31,7 +31,7 @@ class CarrinhoService {
                     return changes.map(c => ({ ...c.payload.doc.data() }));
                 })
             ).subscribe((item: any) => {
-                if (item.email = user.email) {
+                if (item.email == user.email) {
                     console.log(item);
                     item.forEach((element: any) => {
                         this.itens = element.itens
