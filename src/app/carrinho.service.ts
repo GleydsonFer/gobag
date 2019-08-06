@@ -24,20 +24,19 @@ class CarrinhoService {
     ) {
 
         this.afauth.auth.onAuthStateChanged(user => {
-            this.afs.collection("carrinhos" ).snapshotChanges().pipe(
+            this.afs.collection("carrinhos").snapshotChanges().pipe(
                 map(changes => {
                     return changes.map(c => ({ ...c.payload.doc.data() }));
                 })
             ).subscribe((item: any) => {
+                console.log(item)
                 if (item.email = user.email) {
-                    console.log(item.forEach((element: any) => {
+                    item.forEach((element: any) => {
                         this.itens = element.itens
-                    }))
+                    })
                 }
-
             })
         })
-
     }
 
     public exibirItens(): ItemCarrinho[] {
