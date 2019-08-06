@@ -7,7 +7,7 @@ import { OfertasService } from '../../ofertas.service';
   selector: 'app-produtos-relacionados',
   templateUrl: './produtos-relacionados.component.html',
   styleUrls: ['./produtos-relacionados.component.css'],
-  providers: [ OfertasService ]
+  providers: [OfertasService]
 })
 export class ProdutosRelacionadosComponent implements OnInit {
 
@@ -22,5 +22,5 @@ export class ProdutosRelacionadosComponent implements OnInit {
     this.produtos = this.ofertasService.getProdutosByLojas(this.prod.loja)
   }
 
-  }
+}
 

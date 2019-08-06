@@ -27,7 +27,7 @@
             </div>
 
             <div class="medidas_box">
-              <div *ngFor="let item of tamanho" class="medida" (click)="selecionarTamanho(item.key)"
+              <div *ngFor="let item of tamanho" class="medida" (click)="selecionarTamanho(item)"
                 [ngClass]="conferirNull(item.value, item.selecionado)">
                 <span>{{item.key}}</span>
               </div>
