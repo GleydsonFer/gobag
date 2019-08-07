@@ -56,7 +56,6 @@ export class OrdemCompraComponent implements OnInit {
         this.carrinhoObservable = this.carrinhoService.getCarrinhoByEmail(user.email);
         this.carrinhoObservable.subscribe(car => {
           this.carrinho = car[0];
-          console.log('construtor', this.carrinho);
         })
       })
     })

@@ -61,60 +61,59 @@ export class CarouselOrdemCompraComponent implements OnInit {
 
   ngOnInit() {
     this.itensCarrinho = this.carrinho.itens;
-    console.log(this.itensCarrinho)
   }
 
-  public adicionar(item: ItemCarrinho): void {
-    this.carrinhoService.adicionarQuantidade(item)
+  public adicionar(item: ItemCarrinho, index: number): void {
+    this.carrinhoService.adicionarQuantidade(item, index);
   }
 
-  public diminuir(item: ItemCarrinho): void {
-    this.carrinhoService.diminuirQuantidade(item)
+  public diminuir(item: ItemCarrinho, index: number): void {
+    this.carrinhoService.diminuirQuantidade(item, index)
     //codigo para controle de reordenação  do carousel
-    if (item.quantidade < 1) {
-      if (this.reordenar == false) {
-        this.reordenar = true;
-        this.ajustCarousel()
-      } else {
-        this.reordenar = false;
-        this.ajustCarousel()
-      }
-    }
+    // if (item.quantidade < 1) {
+    //   if (this.reordenar == false) {
+    //     this.reordenar = true;
+    //     // this.ajustCarousel()
+    //   } else {
+    //     this.reordenar = false;
+    //     // this.ajustCarousel()
+    //   }
+    // }
   }
-  ngAfterViewInit() {
-    this.ajustCarousel()
-  }
+  // ngAfterViewInit() {
+  //   // this.ajustCarousel()
+  // }
 
-  onClick() {
-    this.ajustCarousel();
-  }
+  // onClick() {
+  //   // this.ajustCarousel();
+  // }
 
-  mouseenter() {
-    this.ajustCarousel()
-  }
+  // mouseenter() {
+  //   // this.ajustCarousel()
+  // }
 
-  mousemove() {
-    this.ajustCarousel()
-  }
-  ajustCarousel() {
-    if (this.carrinho != null) {
-      var nav = document.querySelector(".owl-nav");
-      var stage = document.querySelector(".owl-stage");
-      var prev = document.querySelector(".owl-prev");
-      var next = document.querySelector(".owl-next");
-      prev.setAttribute("style", "background-image:none !important; color:black; font-size:50px; position:absolute;left:-7%")
-      next.setAttribute("style", "background-image:none !important; color:black ; font-size:50px;position:absolute;right: -7%;")
-      // stage.setAttribute("class", "d-flex")
-      next.parentElement.children[0].innerHTML = "<img src='../../../assets/left.png' alt=''> "
-      prev.parentElement.children[1].innerHTML = "<img src='../../../assets/right.png' alt=''>"
-      // stage.children[0].classList.add('ml-3')
-      stage.classList.add('d-flex')
-      stage.classList.add('flex-row')
-      if (nav.classList[1] == "disabled") {
-        stage.setAttribute("style", "transform:none !important")
-      }
-    }
-  }
+  // mousemove() {
+  //   // this.ajustCarousel()
+  // }
+  // ajustCarousel() {
+  //   if (this.carrinho != null) {
+  //     var nav = document.querySelector(".owl-nav");
+  //     var stage = document.querySelector(".owl-stage");
+  //     var prev = document.querySelector(".owl-prev");
+  //     var next = document.querySelector(".owl-next");
+  //     prev.setAttribute("style", "background-image:none !important; color:black; font-size:50px; position:absolute;left:-7%")
+  //     next.setAttribute("style", "background-image:none !important; color:black ; font-size:50px;position:absolute;right: -7%;")
+  //     // stage.setAttribute("class", "d-flex")
+  //     next.parentElement.children[0].innerHTML = "<img src='../../../assets/left.png' alt=''> "
+  //     prev.parentElement.children[1].innerHTML = "<img src='../../../assets/right.png' alt=''>"
+  //     // stage.children[0].classList.add('ml-3')
+  //     stage.classList.add('d-flex')
+  //     stage.classList.add('flex-row')
+  //     if (nav.classList[1] == "disabled") {
+  //       stage.setAttribute("style", "transform:none !important")
+  //     }
+  //   }
+  // }
 }
 
 
