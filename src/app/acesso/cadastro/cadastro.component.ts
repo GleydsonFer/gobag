@@ -5,6 +5,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms'
 import { Usuario } from '../../shared/usuario.model'
 
 import { Autenticacao } from '../../autenticacao.service'
+import { ToastrService } from 'ngx-toastr';
 // import { ConsoleReporter } from 'jasmine';
 
 @Component({
@@ -49,7 +50,8 @@ export class CadastroComponent implements OnInit {
 
   constructor(
     private auth: Autenticacao,
-    private fireAuth:AngularFireAuth
+    private fireAuth:AngularFireAuth,
+    private toastr: ToastrService,
   ) { }
 
   ngOnInit() {
@@ -94,12 +96,12 @@ export class CadastroComponent implements OnInit {
       this.auth.cadastrarUsuario(usuario)
         .then(() => {
 
-          // var user =  this.fireAuth.auth.currentUser
-          // user.sendEmailVerification().then(function() {
-          //   // Email sent.
-          // }).catch(function(error) {
-          //   // An error happened.
-          // });
+          var user =  this.fireAuth.auth.currentUser
+          user.sendEmailVerification().then(function() {
+            // Email sent.
+          }).catch(function(error) {
+            // An error happened.
+          });
 
           if (this.mensagemErroCad !== undefined) {
             this.auth.message = undefined;
@@ -122,6 +124,7 @@ export class CadastroComponent implements OnInit {
             this.auth.error =  undefined
            
           }else{
+            this.toastr.success('Cadastro foi relazidado com sucesso!')
             this.exibirPainelLogin()
             this.mensagemErroCad = undefined;
           }

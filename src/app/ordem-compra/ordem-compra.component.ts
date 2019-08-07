@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { AutenticacaoGuard } from './../autenticacao-guard.service';
 import { OrdemCompraService } from '../ordem-compra.service';
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
@@ -39,10 +41,15 @@ export class OrdemCompraComponent implements OnInit {
     private toastr: ToastrService,
     private formBuilder: FormBuilder,
     private ordemCompraService : OrdemCompraService,
+    private autenticacaoGuard: AutenticacaoGuard,
+    private Router:Router
   ) { }
   
 
   ngOnInit() {
+    if(!this.autenticacaoGuard.canActivateVerOfertaNaoLogado()){
+      this.Router.navigate(['/acesso'])
+    }
 
     this.formularioCartao = this.formBuilder.group({
       card_number : [],
