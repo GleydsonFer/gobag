@@ -10,7 +10,7 @@ import { Usuario } from './shared/usuario.model';
 import { JsonPipe } from '@angular/common';
 
 @Injectable()
-class CarrinhoService {
+export class CarrinhoService {
     teste: any[] = []
     carrinho: Carrinho;
     itens: ItemCarrinho[] = []
@@ -142,4 +142,3 @@ class CarrinhoService {
 
 }
 
-export default CarrinhoService

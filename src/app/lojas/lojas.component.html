@@ -3,7 +3,7 @@
 
         <span class="fonte d-flex mb-2">Compre em sua loja favorita:</span>
         <div class="carousel">
-            <owl-carousel [options]="mySlideOptions" [items]="images" [carouselClasses]="['owl-theme', 'sliding']">
+            <owl-carousel [options]="mySlideOptions" [items]="mySlideImages" [carouselClasses]="['owl-theme', 'sliding']">
 
                 <div class="item lojas_item" *ngFor="let image of mySlideImages;let i = index">
                     <a routerLinkActive="active" routerLink="/{{image.link}}" class="lojas_link">

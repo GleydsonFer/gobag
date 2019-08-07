@@ -8,7 +8,7 @@ mas com um estilo diferente: header {background: #fff;} a desse arquivo
 é a que será exibida */
 
 /* Estilo default */
-@import url(//db.onlinewebfonts.com/c/62c0135163427c652ae397f327f85010?family=Museo+Sans);
+/* @import url(//db.onlinewebfonts.com/c/62c0135163427c652ae397f327f85010?family=Museo+Sans);
   
   @font-face {font-family: "Museo Sans";
     src: url("//db.onlinewebfonts.com/t/62c0135163427c652ae397f327f85010.eot");
@@ -17,7 +17,7 @@ mas com um estilo diferente: header {background: #fff;} a desse arquivo
     url("//db.onlinewebfonts.com/t/62c0135163427c652ae397f327f85010.woff") format("woff"),
     url("//db.onlinewebfonts.com/t/62c0135163427c652ae397f327f85010.ttf") format("truetype"),
     url("//db.onlinewebfonts.com/t/62c0135163427c652ae397f327f85010.svg#Museo Sans") format("svg");
-  }
+  } */
 
 html
 {
@@ -167,7 +167,7 @@ h3 {
     right: 0;
 } */
 
-.owl-theme .owl-dots {display: true;}
+.owl-theme .owl-dots {display: none;}
 
 /* fim do Estilo do carrossel das tendências */
 

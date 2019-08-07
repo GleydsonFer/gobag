@@ -4,7 +4,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { AutenticacaoGuard } from '../autenticacao-guard.service';
-import CarrinhoService from '../carrinho.service';
+import {CarrinhoService} from '../carrinho.service';
 import { OfertasService } from '../ofertas.service';
 import { Produto } from '../shared/produto.model';
 

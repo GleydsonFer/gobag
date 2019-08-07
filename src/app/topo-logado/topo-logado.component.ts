@@ -4,7 +4,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { Autenticacao } from '../autenticacao.service';
-import CarrinhoService from '../carrinho.service';
+import {CarrinhoService} from '../carrinho.service';
 import { OfertasService } from '../ofertas.service';
 import { Produto } from '../shared/produto.model';
 import { UsuarioService } from './../usuario.service';
