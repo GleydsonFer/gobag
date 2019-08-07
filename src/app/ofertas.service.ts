@@ -131,7 +131,7 @@ export class OfertasService {
 
     // retorna os produtos por categoria
     public getProdutosByCategorias(categoria: string) {
-        return this.afs.collection('produtos', ref => ref.where('categoria', '==', categoria.toLowerCase()))
+        return this.afs.collection('produtos', ref => ref.where('categoria', 'array-contains', categoria.toLowerCase()))
             .snapshotChanges()
             .pipe(
                 map(changes => {
@@ -153,30 +153,30 @@ export class OfertasService {
 
     public pesquisaProdutos(start: BehaviorSubject<string>): Observable<any[]> {
         return start
-          .switchMap(startText => {
-            startText = startText.toLowerCase();
-            const endText = startText + '\uf8ff';
-            return this.afs
-              .collection('produtos', ref =>
-                ref
-                  .orderBy('nome_insensitive')
-                  .startAt(startText)
-                  .endAt(endText)
-                  .limit(5)
-              )
-              .snapshotChanges()
-              .debounceTime(200)
-              .distinctUntilChanged()
-              .map(changes => {
-                return changes.map(c => {
-                //   console.log(c);
-                  const data = c.payload.doc.data();
-                  const id = c.payload.doc.id;
-                  return { id, ...data };
-                });
-              });
-          });
-      }
+            .switchMap(startText => {
+                startText = startText.toLowerCase();
+                const endText = startText + '\uf8ff';
+                return this.afs
+                    .collection('produtos', ref =>
+                        ref
+                            .orderBy('nome_insensitive')
+                            .startAt(startText)
+                            .endAt(endText)
+                            .limit(5)
+                    )
+                    .snapshotChanges()
+                    .debounceTime(200)
+                    .distinctUntilChanged()
+                    .map(changes => {
+                        return changes.map(c => {
+                            //   console.log(c);
+                            const data = c.payload.doc.data();
+                            const id = c.payload.doc.id;
+                            return { id, ...data };
+                        });
+                    });
+            });
+    }
 
     public setProduto(produto: Produto, imagens: any) {
 
@@ -214,6 +214,6 @@ export class OfertasService {
         })
 
 
-     }
+    }
 
 }
