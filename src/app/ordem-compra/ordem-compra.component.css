@@ -3,17 +3,16 @@
     font-style: normal;
     font-weight: 100;   
 }
-
 .div_container{
     margin-top: 50px;
     margin-bottom: 50px;  
     margin-left: 20px;
     /* height: 550px;   */
 }
-.rev_pedido{
+/* .titulo{
     margin-left:100px;
     margin-bottom: 60px;
-}
+} */
 .itensCarrinho{
 
     margin-left: 20px;
@@ -35,12 +34,9 @@
 .bottom{
     margin-bottom: 150px;
 }
-
 .carousel{
     background-color:red;
 }
-
-
 .btn_cancelar{
     background-color:white;
     padding: 15px 60px 15px 60px;
@@ -49,7 +45,6 @@
     margin-top:5px;
     font-family: museo-sans, sans-serif;
 }
-
 .total{
     margin-top:15px;    
 }
@@ -57,11 +52,9 @@
     font-size: 1.3em;
     font-weight: 600;
 }
-
 .envio , .total span:nth-child(5){
     font-size: 0.8em;
 }
-
 .btn_confirmar{
     background-color:black;
     padding: 12px 51px 12px 51px;
@@ -74,14 +67,11 @@ p{
     font-size: 1.5em;
     line-height: 28px;
 }
-
 .imagem{
     background-color:black;
 }
 .descricao{
     line-height:15px;
-}
-.descricao span{
 }
 .descricao .nome_produto{
     font-weight: bold;
@@ -142,31 +132,25 @@ button{
   -ms-user-select: none;
   user-select: none;
 }
-
 button:hover{
   background-color: #92c83e;
   border-color: #92c83e;
   color: #FFF;
 }
-
 button:active{
   background: none;
   color: #92c83e;
   margin-top: 1px;
 }
-
 button:focus{
   box-shadow: none;
 }
-
 /***************************************** 
 ***************css pagar.me***************
 ******************************************/
-
 body{
     background-color: #282828;
   }
-  
   button{
     margin: 0;
     display: inline-block;
@@ -192,32 +176,17 @@ body{
     -ms-user-select: none;
     user-select: none;
   }
-  
   button:hover{
     background-color: #92c83e;
     border-color: #92c83e;
     color: #FFF;
   }
-  
   button:active{
     background: none;
     color: #92c83e;
     margin-top: 1px;
   }
-  
   button:focus{
     box-shadow: none;
   }
-  
-
-
-
 }
-
-
-
-
-
-
-
-

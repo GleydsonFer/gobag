@@ -2,11 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Produto } from '../shared/produto.model';
 import { OfertasService } from '../ofertas.service';
+import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
+
 
 @Component({
   selector: 'app-cadastro-de-produtos',
   templateUrl: './cadastro-de-produtos.component.html',
-  styleUrls: ['./cadastro-de-produtos.component.css']
+  styleUrls: ['./cadastro-de-produtos.component.css'],
+  providers: [Location, {provide: LocationStrategy, useClass: PathLocationStrategy}]
 })
 export class CadastroDeProdutosComponent implements OnInit {
 
@@ -14,8 +17,10 @@ export class CadastroDeProdutosComponent implements OnInit {
   private imagens: Array<any> = [];
   private categorias = [];
 
-  constructor(private ofertasService: OfertasService) { }
-
+  location: Location;
+  constructor(private ofertasService: OfertasService, location: Location) { this.location = location;}
+  
+  
   public cadastro: FormGroup = new FormGroup({
     'nome': new FormControl(null, [Validators.required]),
     'descricao': new FormControl(null, [Validators.required]),

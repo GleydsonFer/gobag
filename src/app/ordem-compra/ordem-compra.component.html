@@ -1,9 +1,7 @@
-
-<div class="div_container row">
- 
-  <h3 class="rev_pedido">REVISÃO DO PEDIDO</h3>
-  <div class="itensCarrinho col-sm-11  tendencia" *ngIf="carrinho; else loading">
-    <app-carousel-ordem-compra [carrinho]="carrinho"></app-carousel-ordem-compra>
+<div class="container row"> 
+  <h3 class="titulo col-12 ml-4 mb-3">BAG</h3>
+  <div class="itensCarrinho col-12 tendencia" *ngIf="carrinho; else loading">
+    <item-carrinho-compra [carrinho]="carrinho"></item-carrinho-compra>
   </div>
   <div class="meio col-12">
     <div class="endereco row">
@@ -46,5 +44,5 @@
   </div>
 </div>
 
-<ng-template #loading><p>Carrinho Vazio</p></ng-template>
+<ng-template #loading><h5>CARRINHO VAZIO...</h5></ng-template>
 <ng-template #valornulo>{{ 0 | currency: 'BRL': 'symbol'}}</ng-template>

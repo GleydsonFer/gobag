@@ -7,34 +7,76 @@ e no arquivo css de um componente for colocado a mesma chamada
 mas com um estilo diferente: header {background: #fff;} a desse arquivo
 é a que será exibida */
 
-/* Estilo default */
-@import url(//db.onlinewebfonts.com/c/62c0135163427c652ae397f327f85010?family=Museo+Sans);
-  
-  @font-face {font-family: "Museo Sans";
-    src: url("//db.onlinewebfonts.com/t/62c0135163427c652ae397f327f85010.eot");
-    src: url("//db.onlinewebfonts.com/t/62c0135163427c652ae397f327f85010.eot?#iefix") format("embedded-opentype"),
-    url("//db.onlinewebfonts.com/t/62c0135163427c652ae397f327f85010.woff2") format("woff2"),
-    url("//db.onlinewebfonts.com/t/62c0135163427c652ae397f327f85010.woff") format("woff"),
-    url("//db.onlinewebfonts.com/t/62c0135163427c652ae397f327f85010.ttf") format("truetype"),
-    url("//db.onlinewebfonts.com/t/62c0135163427c652ae397f327f85010.svg#Museo Sans") format("svg");
-  }
-
+/* Estilo default */ 
 html
 {
     overflow-x:hidden;
 }
 
 h5 {
-    color:#999
+    color:#999;
 }
 
 h4 {
-    color:#555
+    color:#555;
 }
 
 h3 {
-    color: #555
+    color: #555;
 }
+
+.branco{
+    color: #fff;
+}
+
+.cinza{
+    color:#808080;
+}
+
+.preto{
+    color: #000;
+}
+
+.upper{
+    text-transform: uppercase;
+}
+
+.titulo{
+    font-family: "Museo Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.7rem;
+}
+
+.subtitulo{
+    font-family: "Museo Sans";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.3rem;
+    
+}
+
+.texto{
+    font-family: "Museo Sans";
+    font-style: normal;
+    font-weight: 100;
+    
+}
+
+
+/* importando fonte */
+@import url(//db.onlinewebfonts.com/c/62c0135163427c652ae397f327f85010?family=Museo+Sans);
+  
+  @font-face {
+    font-family: "Museo Sans";
+    src: url("//db.onlinewebfonts.com/t/62c0135163427c652ae397f327f85010.eot");
+    src: url("//db.onlinewebfonts.com/t/62c0135163427c652ae397f327f85010.eot?#iefix") format("embedded-opentype"),
+    url("//db.onlinewebfonts.com/t/62c0135163427c652ae397f327f85010.woff2") format("woff2"),
+    url("//db.onlinewebfonts.com/t/62c0135163427c652ae397f327f85010.woff") format("woff"),
+    url("//db.onlinewebfonts.com/t/62c0135163427c652ae397f327f85010.ttf") format("truetype"),
+    url("//db.onlinewebfonts.com/t/62c0135163427c652ae397f327f85010.svg#Museo Sans") format("svg");
+  } 
+
 
 .card img {
     height: 200px;
@@ -167,7 +209,7 @@ h3 {
     right: 0;
 } */
 
-.owl-theme .owl-dots {display: true;}
+.owl-theme .owl-dots {display: none;}
 
 /* fim do Estilo do carrossel das tendências */
 
@@ -284,6 +326,7 @@ h3 {
  }
     
 }
+
 
 /* fim do carrossel lojas */
 

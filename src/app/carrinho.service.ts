@@ -8,12 +8,13 @@ import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Usuario } from './shared/usuario.model';
 import { JsonPipe } from '@angular/common';
+import { isUndefined } from 'util';
 
 @Injectable()
-class CarrinhoService {
-    teste: any[] = []
-    carrinho: Carrinho;
-    itens: ItemCarrinho[] = []
+export class CarrinhoService {
+    teste: any[] = [];
+    itens: ItemCarrinho[] = [];
+    carrinho: Carrinho = new Carrinho();
     emitirNumeroDeItens: EventEmitter<number> = new EventEmitter<number>();
     carrinhoObservable: Observable<any>;
     carrinhoObservable2: Observable<any>;
@@ -23,25 +24,25 @@ class CarrinhoService {
         private afs: AngularFirestore,
         private afauth: AngularFireAuth
     ) {
+        
 
         this.afauth.auth.onAuthStateChanged(user => {
             this.usuario = user;
-            this.afs.collection("carrinhos" ).snapshotChanges().pipe(
-                map(changes => {
-                    return changes.map(c => ({ ...c.payload.doc.data() }));
+            this.getCarrinhoByEmail(user.email)
+                .subscribe((car: any) => {
+                    this.carrinho = car[0];
+                    if (car.email == user.email) {
+                        car.forEach((element: any) => {
+                            this.itens = element.itens
+                        })
+                    }
                 })
-            ).subscribe((item: any) => {
-                if (item.email == user.email) {
-                    console.log(item);
-                    item.forEach((element: any) => {
-                        this.itens = element.itens
-                    })
-                }
-            })
         })
     }
 
     public incluirItem(produto: Produto, user: firebase.User) {
+
+
         // Prepara o produto que será adicionado ao carrinho
         let itemCarrinho: ItemCarrinho = new ItemCarrinho(
             produto.id_produto,
@@ -54,23 +55,38 @@ class CarrinhoService {
             produto.tamanho
         )
 
-        //verificar se o item em questão já não existe dentro de this.itens
-        // var  itemCarrinhoEncontrado = this.itens.find((item: ItemCarrinho) => (item.id_produto === itemCarrinho.id_produto))
+        console.log(this.carrinho);
+        console.log(user.email);
+        console.log(this.itens);
 
-        var itemCarrinhoEncontrado = this.itens.find((item: ItemCarrinho) => ((item.tamanho == itemCarrinho.tamanho) && (item.id_produto === itemCarrinho.id_produto)))
+        if(isUndefined(this.carrinho)){
+            console.log('entrou no undefined');
+            this.carrinho = {
+                email: '',
+                itens: [],
+                valor_total: 0
+            }
+        }
+        //verificar se o item em questão já não existe dentro de this.itens
+        var itemCarrinhoEncontrado = this.carrinho.itens.find((item: ItemCarrinho) => ((item.tamanho == itemCarrinho.tamanho) && (item.id_produto === itemCarrinho.id_produto)))
 
         if (itemCarrinhoEncontrado) {
-            itemCarrinhoEncontrado.quantidade += 1
-        } else {
-            this.itens.push(itemCarrinho);
-            this.emitirNumeroDeItens.emit(this.itens.length);
+            //incrementar quantidade
+            console.log(this.carrinho);
+            this.carrinho.itens[this.carrinho.itens.indexOf(itemCarrinhoEncontrado)].quantidade = ++itemCarrinho.quantidade;
+            this.carrinho.valor_total = this.totalCarrinhoCompras();
+            this.afs.collection('carrinhos').doc(btoa(user.email)).update({ ...this.carrinho });
 
-            this.afauth.auth.onAuthStateChanged(user => {
-                this.afs.collection('carrinhos').doc(btoa(user.email)).set({
-                    "email": user.email,
-                    "itens": this.itens.map((obj) => { return Object.assign({}, obj) }),
-                    "valor_total": this.totalCarrinhoCompras()
-                })
+        } else {
+            this.carrinho.itens.push(itemCarrinho);
+            this.emitirNumeroDeItens.emit(this.carrinho.itens.length);
+
+            console.log(this.carrinho);
+
+            this.afs.collection('carrinhos').doc(btoa(user.email)).set({
+                "email": user.email,
+                "itens": this.carrinho.itens.map((obj) => { return Object.assign({}, obj) }),
+                "valor_total": this.totalCarrinhoCompras()
             })
         }
     }
@@ -78,51 +94,43 @@ class CarrinhoService {
     public totalCarrinhoCompras(): number {
         let total: number = 0;
 
-        this.itens.map((item: ItemCarrinho) => {
+        this.carrinho.itens.map((item: ItemCarrinho) => {
             total = total + (item.valor * item.quantidade)
         })
-
         return total;
     }
 
-    public adicionarQuantidade(itemCarrinho: ItemCarrinho): void {
+    public adicionarQuantidade(itemCarrinho: ItemCarrinho, index: number): void {
 
         //incrementar quantidade
-        let itemCarrinhoEncontrado = this.itens.find((item: ItemCarrinho) => ((item.tamanho == itemCarrinho.tamanho) && (item.id_produto === itemCarrinho.id_produto)))
-
-        if (itemCarrinhoEncontrado) {
-            itemCarrinhoEncontrado.quantidade += 1
-        }
+        console.log(this.carrinho);
+        this.carrinho.itens[index].quantidade = ++itemCarrinho.quantidade;
+        this.carrinho.valor_total = this.totalCarrinhoCompras();
+        this.afs.collection('carrinhos').doc(btoa(this.carrinho.email)).update({ ...this.carrinho });
     }
 
-    public diminuirQuantidade(itemCarrinho: ItemCarrinho) {
+    public diminuirQuantidade(itemCarrinho: ItemCarrinho, index: number) {
         //decrementar quantidade
-        let itemCarrinhoEncontrado = this.itens.find((item: ItemCarrinho) => ((item.tamanho == itemCarrinho.tamanho) && (item.id_produto === itemCarrinho.id_produto)))
+        console.log(this.carrinho);
+        this.carrinho.itens[index].quantidade = --itemCarrinho.quantidade;
 
-        if (itemCarrinhoEncontrado) {
-            itemCarrinhoEncontrado.quantidade -= 1
-
-            if (itemCarrinhoEncontrado.quantidade === 0) {
-                this.itens.splice(this.itens.indexOf(itemCarrinhoEncontrado), 1);
-                this.emitirNumeroDeItens.emit(this.itens.length);
-            }
+        if (this.carrinho.itens[index].quantidade === 0) {
+            this.carrinho.itens.splice(index, 1);
+            this.emitirNumeroDeItens.emit(this.carrinho.itens.length);
         }
+        this.carrinho.valor_total = this.totalCarrinhoCompras();
+        this.afs.collection('carrinhos').doc(btoa(this.carrinho.email)).update({ ...this.carrinho });
+
     }
 
     public limparCarrinho(usuario: Usuario, carrinho: Carrinho) {
-        // this.itens = [];
 
         console.log('carrinho', carrinho);
 
         var fireUID = btoa(usuario.email);
 
-
         this.afs.collection('carrinhos').doc(fireUID).delete().then(() => {
             this.emitirNumeroDeItens.emit(0);
-            carrinho.itens = [];
-            carrinho.valor_total = 0;
-            console.log('carrinho limpo', carrinho);
-            return carrinho;
         })
     }
 
@@ -142,4 +150,3 @@ class CarrinhoService {
 
 }
 
-export default CarrinhoService

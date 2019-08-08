@@ -50,47 +50,47 @@ export class LojasComponent implements OnInit {
     {
       link: "loja01",
       alt: "loja01",
-      image: "assets/logos-lojas/riachuelo.png"
+      image: "assets/logos-lojas/sua-loja-aqui.png"
     },
     {
       link: "loja01",
       alt: "loja01",
-      image: "assets/logos-lojas/bellas.png"
+      image: "assets/logos-lojas/sua-loja-aqui.png"
     },
     {
       link: "loja01",
       alt: "loja01",
-      image: "assets/logos-lojas/belle.png"
+      image: "assets/logos-lojas/sua-loja-aqui.png"
     },
     {
       link: "loja01",
       alt: "loja01",
-      image: "assets/logos-lojas/ca.png"
+      image: "assets/logos-lojas/sua-loja-aqui.png"
     },
     {
       link: "loja01",
       alt: "loja01",
-      image: "assets/logos-lojas/fashion-trends.png"
+      image: "assets/logos-lojas/sua-loja-aqui.png"
     },
     {
       link: "loja01",
       alt: "loja01",
-      image: "assets/logos-lojas/glamour.png"
+      image: "assets/logos-lojas/sua-loja-aqui.png"
     },
     {
       link: "loja01",
       alt: "loja01",
-      image: "assets/logos-lojas/lion.png"
+      image: "assets/logos-lojas/sua-loja-aqui.png"
     },
     {
       link: "loja01",
       alt: "loja01",
-      image: "assets/logos-lojas/morago-rosa.png"
+      image: "assets/logos-lojas/sua-loja-aqui.png"
     },
     {
       link: "loja01",
       alt: "loja01",
-      image: "assets/logos-lojas/renner.png"
+      image: "assets/logos-lojas/sua-loja-aqui.png"
     }
 
   ]
