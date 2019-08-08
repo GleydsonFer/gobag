@@ -1,33 +1,10 @@
-span {
-    color: #fff;
-}
 
 .rodape {
     background: rgb(0, 0, 0);
     padding: 10px 0;
 }
 
-.topic{
-    color: #fff;
-    font-family: museo-sans, sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 1.3rem;
-    margin-bottom: 5px;
-}
 
-.link{
-    color: #fff;
-    font-family: museo-sans, sans-serif;
-    font-style: normal;
-    font-weight: 100;
-}
-.link2{
-    color: #696969;
-    font-family: museo-sans, sans-serif;
-    font-style: normal;
-    font-weight: 100;
-}
 
 .logo-app{
     width: 180px;

@@ -1,5 +1,5 @@
 <div *ngIf="!naoLogado; else logado">
-    <nav class="navbar fixed-top navbar-light bg-light align-items-start row">
+    <nav class="texto preto navbar fixed-top navbar-light bg-light align-items-start row">
         <!-- coluna da direita com menu de pesquisa, logo e dropdown-->
         <div class="col-7 col-md-7 col_left row">
             <!-- menu dropdown com ascategorias -->
@@ -8,7 +8,8 @@
                     aria-haspopup="true" aria-expanded="false">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <ul class="dropdown-menu  animated fadeInLeftBig">
+                
+                <ul class="dropdown-menu animated fadeInLeftBig">
                     <li class="dropdown-item">
                         <a class="nav-link" data-toggle="dropdown" role="button" aria-haspopup="true"
                             aria-expanded="false" routerLink="">
@@ -59,7 +60,7 @@
                     <img class="img-fluid" src="./assets/logo-gobag-sem-fundo.png" />
                 </a>
             </div>
-            <div class=" col-7 col-sm col-md-7 col-lg-8 pesquisar ">
+            <div class="texto col-7 col-sm col-md-7 col-lg-8 pesquisar ">
                 <input class="form-control mr-sm-2" placeholder="Buscar qualquer produto" type="text" #termoDaPesquisa
                     (keyup)="pesquisa(termoDaPesquisa.value)" aria-label="Pesquisar">
                 <div *ngIf="termoDaPesquisa.value">
@@ -75,15 +76,15 @@
         </div>
 
         <!-- coluna da direita onde fica o endereço do cliente e a bag -->
-        <div class="col-5 col-md-5 col_right d-flex justify-content-end">
+        <div class="texto preto col-5 col-md-5 col_right d-flex justify-content-end">
             <a class="login mr-2" routerLink="/acesso"></a>
-            <div class="endereco" >
+            <div class="endereco texto preto" >
                 <a routerLink="/cadastro-lojista">Cadastre sua Loja</a>
             </div>
-            <div class="endereco mr-3" >
+            <div class="endereco mr-3 texto preto" >
                 <a routerLink="/acesso">Login</a>
             </div>
-            <a class="bag" routerLink="/ordem-compra">
+            <a class="bag texto preto" routerLink="/ordem-compra">
                 <div class="numeroItensCarrinho d-flex justify-content-center">{{numeroItensCarrinho}}</div>
             </a>
         </div>
