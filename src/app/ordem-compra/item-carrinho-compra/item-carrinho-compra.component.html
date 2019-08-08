@@ -1,22 +1,22 @@
 <div class="row" *ngIf="carrinho.itens.length > 0; else carVazio">
-  <div class="tend_item col-md-3" *ngFor="let item of carrinho.itens;let i = index">
+  <div class="tend_item col-md-3 mb-4 mt-3" *ngFor="let item of carrinho.itens;let i = index">
 
     <a class="tend_link">
       <div class="box-image d-flex justify-content-center">
         <img class="image" [src]="item.imagem" alt="{{item.img}}" />
       </div>
       <div class="container d-block justify-content-start mt-4">
-        <div class="nome_produto">{{item.nome | uppercase |  descricaoReduzida:22}}</div>
-        <div class="nome_loja">{{item.anunciante | uppercase | descricaoReduzida:22}}</div>
-        <div class="preco d-flex">
+        <div class="nome_produto ml-3">{{item.nome | uppercase |  descricaoReduzida:16}}</div>
+        <div class="nome_loja ml-3 cinza">{{item.anunciante | uppercase | descricaoReduzida:16}}</div>
+        <div class="preco d-flex ml-3 preto">
           <div> {{item.valor | currency: 'BRL': 'symbol'}}</div>
-          <div class="pp">{{ item.tamanho }}</div>
+          <div class="tamanho preto ml-4">{{ item.tamanho }}</div>
         </div>
-        <span class="d-flex">
+        <div class="d-flex ml-3">
           <button (click)="diminuir(item, i)" type="button" class="btn_decre">-</button>
-          {{item.quantidade}}
+          <div class="quant_pecas">{{item.quantidade}}</div>
           <button (click)="adicionar(item, i)" type="button" class="btn_incre">+</button>
-        </span>
+        </div>
       </div>
     </a>
 

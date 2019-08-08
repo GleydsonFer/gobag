@@ -7,7 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 import {CarrinhoService} from '../carrinho.service';
 import { Pedido } from '../shared/pedido.model';
 import { UsuarioService } from './../usuario.service';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 
 
 // import {PagarMeCheckout} from https://assets.pagar.me/checkout/checkout.js;
@@ -30,8 +30,14 @@ export class OrdemCompraComponent implements OnInit {
   public dadosCartao: any;
   carrinhoObservable: Observable<any>;
   carrinho: Carrinho;
-
-  // public PagarMeCheckout: pagarme;
+  
+  public dados_pagamento: FormGroup = new FormGroup({
+    'card_number': new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(30)]),
+    'card_holder_name': new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(30)]),
+    'card_expiration_date': new FormControl(null),
+    'card_cvv': new FormControl(null),
+    'card_cpf': new FormControl(null)
+    })
 
   constructor(
     
@@ -72,6 +78,7 @@ export class OrdemCompraComponent implements OnInit {
       card_holder_name:[],
       card_expiration_date:[],
       card_cvv:[],
+      card_cpf:[]
     })
 
   /************************************* */

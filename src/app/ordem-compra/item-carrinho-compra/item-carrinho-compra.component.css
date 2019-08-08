@@ -3,49 +3,57 @@
     font-style: normal;
     font-weight: 100;   
 }
-
 .nome_produto{
-    font-weight:bold;
-    color: #1d1d1d;
+    font-weight:700;
     font-size: 0.8em;
 }
 .nome_loja{
     font-size: 0.8em;
-    font-weight: 600;
-    color: #5f5d5d;
+    font-weight: 700;
 }
 .preco{
-    color: rgb(119, 119, 119);
     font-size: 0.8em;
+    font-weight: 700;
 }
 .quant_pecas{
-    font-size: 0.8em;
-}
-
-/* .pp{
- margin-left: 30%;
-} */
-.btn_decre{
-    padding: 2px 7px 2px 7px;
+    font-size: 1.1em;
+    padding: 3px 20px 0px 20px;
     background-color:white;
-    border-color:rgb(146, 146, 146);
+    border: solid;
+    border-color:#808080;
     border-width: 1px;
     color:black;
     margin-top:5px;
+    margin-bottom: 10px;
+    
+}
+.btn_decre{
+    font-size: 1.1em;
+    padding: 0px 17px 5px 17px;
+    background-color:white;
+    border: solid;
+    border-color:#808080;
+    border-width: 1px;
+    color:black;
+    margin-top:5px;
+    margin-bottom: 10px;
 }
 .btn_decre:hover{
-    background-color:rgb(192, 192, 192);
+    background-color:#808080;
 }
 .btn_incre{
-    padding: 2px 5.5px 2px 5.5px;
+    font-size: 1.1em;
+    padding: 0px 15px;
     background-color:white;
-    border-color:rgb(146, 146, 146);
+    border: solid;
+    border-color:#808080;
     border-width: 1px;
     color:black;
     margin-top:5px;
+    margin-bottom: 10px;
 }
 .btn_incre:hover{
-    background-color:rgb(192, 192, 192);
+    background-color:#808080;
 }
 .image{
     max-width:250px;
@@ -56,13 +64,7 @@
 }
 .box-image{
     justify-content: center;
-    /* border: solid;
-    border-radius: 19px;
-    border-color: #5f5d5d;
-    background-color: #5f5d5d; */
 }
-
-/* .item{
-    width: 24%;
-    height: 300px;
-} */
+.tamanho{
+    font-weight:700;
+}
