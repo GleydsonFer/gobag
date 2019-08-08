@@ -1,0 +1,17 @@
+<div class="conteudo">
+  <h3 class="text-center">status do pedido</h3>
+  <ul class="row col-12 statusPedido">
+    <li class="col processando">Processando</li>
+    <li class="col enviado">Enviado</li>
+    <li class="col recebido">Recebido</li>
+    <li class="col provado">Provado</li>
+  </ul>
+  <p *ngIf="status == 'processando'"><span class="destaque">Seu pedido está em fase de processamento</span>, aguarde um
+    momento enquanto enquanto o logista prepara a sua bag.
+  </p>
+  <p *ngIf="status == 'enviado'"><span class="destaque">Seu pedido está a caminho</span>
+    , em instantes chegará emsua casa
+  </p>
+  <p *ngIf="status == 'recebido'"><span class="destaque">pedido recebido!</span>
+  <p *ngIf="status == 'provado'"><span class="destaque">pedido provado</span></p>
+</div>

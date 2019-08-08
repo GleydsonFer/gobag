@@ -1,32 +1,31 @@
-<div class="container mt-5 mb-5">
-  <div class="row">
-    <div class="col-sm-6 d-flex justify-content-end" [@animacao-banner]="estadoBanner" >
-      <app-banner></app-banner>
-    </div>
+<!-- <div class="container">
 
-    <div *ngIf="cadastro; else formLogin">
-      <div 
-        class="col-sm-6 d-flex justify-content-start" 
-        [@animacao-painel]="estadoPainel"
-        (@animacao-painel.start)="inicioDaAnimacao()"
-        (@animacao-painel.done)="fimDaAnimacao()"
-      >
-        <app-cadastro (exibirPainel)="exibirPainel($event)"></app-cadastro>
-      </div>  
+  <div *ngIf="cadastro; else formLogin">
+    <app-cadastro (exibirPainel)="exibirPainel($event)"></app-cadastro>
+  </div>
 
-    </div>
+  <ng-template #formLogin>
+    <app-login (exibirPainel)="exibirPainel($event)"></app-login>
+  </ng-template>
 
-    <ng-template #formLogin>
-        <div 
-          class="col-sm-6 d-flex justify-content-start" 
-          [@animacao-painel]="estadoPainel"
-          (@animacao-painel.start)="inicioDaAnimacao()"
-          (@animacao-painel.done)="fimDaAnimacao()"
-        >
-            <app-login (exibirPainel)="exibirPainel($event)"></app-login>
-        </div>  
+  <ng-template #forgetSenha>
+      <app-login (exibirPainel)="exibirPainel($event)"></app-login>
     </ng-template>
+</div> -->
 
-    
+
+<div class="container">
+
+  <div *ngIf="tela == 'cadastro'">
+    <app-cadastro (exibirPainel)="exibirPainel($event)"></app-cadastro>
+  </div>
+
+  <div *ngIf="tela == 'login'">
+    <app-login (exibirPainel)="exibirPainel($event)"></app-login>
+  </div>
+
+
+  <div *ngIf="tela == 'forgetSenha'">
+    <app-forget-senha (exibirPainel)="exibirPainel($event)"></app-forget-senha>
   </div>
 </div>

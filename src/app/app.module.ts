@@ -9,7 +9,6 @@ import { Autenticacao } from './autenticacao.service'
 import { CadastroComponent } from './acesso/cadastro/cadastro.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AcessoComponent } from './acesso/acesso.component';
-import { BannerComponent } from './acesso/banner/banner.component';
 import { LoginComponent } from './acesso/login/login.component';
 
 //
@@ -76,6 +75,8 @@ import { PoliticasDeDevolucaoComponent } from './politicas-de-devolucao/politica
 import { OrdemDevolucaoComponent } from './ordem-devolucao/ordem-devolucao.component';
 import { CarouselOrdemDevolucaoComponent } from './ordem-devolucao/carousel-ordem-devolucao/carousel-ordem-devolucao.component';
 import { CadastroLojistaComponent } from './cadastro-lojista/cadastro-lojista.component';
+import { AcompanharPedidoComponent } from './acompanhar-pedido/acompanhar-pedido.component';
+import { ForgetSenhaComponent } from './acesso/forget-senha/forget-senha.component';
 
 
 registerLocaleData(localePtBr);
@@ -106,7 +107,6 @@ registerLocaleData(localePtBr);
     Tendencia02Component,
     Tendencia03Component,
     AcessoComponent,
-    BannerComponent,
     LoginComponent,
     CadastroComponent,
     Loja01Component,
@@ -124,6 +124,8 @@ registerLocaleData(localePtBr);
     OrdemDevolucaoComponent,
     CarouselOrdemDevolucaoComponent,
     CadastroLojistaComponent,
+    AcompanharPedidoComponent,
+    ForgetSenhaComponent,
     //ajustanto o erro ngIf
 
     //
