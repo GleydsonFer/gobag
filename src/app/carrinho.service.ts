@@ -8,12 +8,13 @@ import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Usuario } from './shared/usuario.model';
 import { JsonPipe } from '@angular/common';
+import { isUndefined } from 'util';
 
 @Injectable()
 class CarrinhoService {
     teste: any[] = [];
     itens: ItemCarrinho[] = [];
-    carrinho: Carrinho;
+    carrinho: Carrinho = new Carrinho();
     emitirNumeroDeItens: EventEmitter<number> = new EventEmitter<number>();
     carrinhoObservable: Observable<any>;
     carrinhoObservable2: Observable<any>;
@@ -23,11 +24,7 @@ class CarrinhoService {
         private afs: AngularFirestore,
         private afauth: AngularFireAuth
     ) {
-        this.carrinho = {
-            email: '',
-            itens: [],
-            valor_total: 0
-        }
+        
 
         this.afauth.auth.onAuthStateChanged(user => {
             this.usuario = user;
@@ -60,6 +57,16 @@ class CarrinhoService {
 
         console.log(this.carrinho);
         console.log(user.email);
+        console.log(this.itens);
+
+        if(isUndefined(this.carrinho)){
+            console.log('entrou no undefined');
+            this.carrinho = {
+                email: '',
+                itens: [],
+                valor_total: 0
+            }
+        }
         //verificar se o item em questão já não existe dentro de this.itens
         var itemCarrinhoEncontrado = this.carrinho.itens.find((item: ItemCarrinho) => ((item.tamanho == itemCarrinho.tamanho) && (item.id_produto === itemCarrinho.id_produto)))
 

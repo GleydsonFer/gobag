@@ -6,11 +6,11 @@ import { Router, NavigationEnd } from '@angular/router';
 import { Carrinho } from 'src/app/shared/carrinho.model';
 
 @Component({
-  selector: 'app-carousel-ordem-compra',
-  templateUrl: './carousel-ordem-compra.component.html',
-  styleUrls: ['./carousel-ordem-compra.component.css']
+  selector: 'item-carrinho-compra',
+  templateUrl: './item-carrinho-compra.component.html',
+  styleUrls: ['./item-carrinho-compra.component.css']
 })
-export class CarouselOrdemCompraComponent implements OnInit {
+export class ItemCarrinhoCompraComponent implements OnInit {
 
   @Input() carrinho: Carrinho = new Carrinho();
   reordenar: boolean = false;
