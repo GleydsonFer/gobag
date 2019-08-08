@@ -1,3 +1,4 @@
+import { AcompanharPedidoComponent } from './acompanhar-pedido/acompanhar-pedido.component';
 import { DadosdepagamentoComponent } from './dadosdepagamento/dadosdepagamento.component';
 import { Routes } from '@angular/router'
 
@@ -64,6 +65,7 @@ export const ROUTES: Routes = [
     { path: 'politicas-de-privacidade', component: PoliticasDePrivacidadeComponent },
     { path: 'politicas-de-devolucao', component: PoliticasDeDevolucaoComponent },
     { path: 'ordem-devolucao', component: OrdemDevolucaoComponent },
-    { path: 'cadastro-lojista', component: CadastroLojistaComponent }
+    { path: 'cadastro-lojista', component: CadastroLojistaComponent },
+    { path: 'acompanharPedido', component: AcompanharPedidoComponent },
 
 ]

@@ -1,0 +1,22 @@
+<div class="conteudo container col-7">
+
+  <form [formGroup]="formulario" (ngSubmit)="redefinirSenha()">
+    <div class="col-12 topo">
+      <p class="ml-1">
+        <span>Trocar a senha</span><br>
+        <span >Identifique-se para receber um e-mail para redefinição de senha:</span>
+      </p>
+    </div>
+    <div class="col-12 inputs">
+      <div class="form-group">
+        <input class="email" type="email" class="form-control" placeholder="E-mail" formControlName="email">
+      </div>
+    </div>
+
+    <div class="col-12 ">
+      <button type="submit" class="btn btn-primary btn_salvar col-12">ENVIAR</button>
+      <p class="col-12" class="small text-danger text-center">{{mensagemErro}}</p>
+    </div>
+    
+  </form>
+</div>
