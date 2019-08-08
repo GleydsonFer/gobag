@@ -57,7 +57,16 @@ form{
    border:none;
    border-bottom: 4px solid #cfcbcb;
    border-radius:0px;
+   transition: 0.3s;
+
 }
+
+.inputs input:focus{
+    box-shadow: none;
+    font-size: 20px;
+    transition: 0.3s;
+}
+
  .inputs[_ngcontent-c4] input[_ngcontent-c4]{
      background-color:white;
  }
