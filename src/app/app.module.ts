@@ -40,7 +40,7 @@ import { TeenComponent } from './teen/teen.component';
 import { CalcadosComponent } from './calcados/calcados.component';
 import { BannerSlideComponent } from './banner-slide/banner-slide.component';
 import { OrdemCompraSucessoComponent } from './ordem-compra-sucesso/ordem-compra-sucesso.component';
-import CarrinhoService from './carrinho.service'
+import {CarrinhoService} from './carrinho.service'
 import { ReactiveFormsModule } from '@angular/forms'
 
 import { TendenciasComponent } from './tendencias/tendencias.component';
@@ -77,7 +77,8 @@ import { OrdemDevolucaoComponent } from './ordem-devolucao/ordem-devolucao.compo
 import { CarouselOrdemDevolucaoComponent } from './ordem-devolucao/carousel-ordem-devolucao/carousel-ordem-devolucao.component';
 import { CadastroLojistaComponent } from './cadastro-lojista/cadastro-lojista.component';
 
-
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import {Component} from '@angular/core';
 registerLocaleData(localePtBr);
 
 
@@ -154,12 +155,14 @@ registerLocaleData(localePtBr);
     CarrinhoService, { provide: LOCALE_ID, useValue: 'pt-Br' },
     OfertasService,
     Autenticacao,
-    AutenticacaoGuard
+    AutenticacaoGuard,
 
       // possivel solução do problema das rotas ao atualizar:
-      // provide: LocationStrategy,
-      // useClass: HashLocationStrategy
-      
+      {
+       provide: LocationStrategy,
+       useClass: HashLocationStrategy
+       
+      }
   ],
   bootstrap: [
     AppComponent
@@ -171,6 +174,22 @@ registerLocaleData(localePtBr);
   ]
   //
 })
+
+// @Component({
+//   selector: 'path-location',
+//   providers: [Location, {provide: LocationStrategy, useClass: PathLocationStrategy}]
+  // template: `
+  //   <h1>PathLocationStrategy</h1>
+  //   Current URL is: <code>{{location.path()}}</code><br>
+  //   Normalize: <code>/foo/bar/</code> is: <code>{{location.normalize('foo/bar')}}</code><br>
+  // `
+// })
+// export class PathLocationComponent {
+  // location: Location;
+  // constructor(location: Location) { this.location = location; }
+// }
 export class AppModule { }
+
+
 
 

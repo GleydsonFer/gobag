@@ -1,7 +1,7 @@
 import { style } from '@angular/animations';
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { ItemCarrinho } from 'src/app/shared/item-carrinho.model';
-import CarrinhoService from 'src/app/carrinho.service';
+import { CarrinhoService } from 'src/app/carrinho.service';
 import { Router, NavigationEnd } from '@angular/router';
 import { Carrinho } from 'src/app/shared/carrinho.model';
 

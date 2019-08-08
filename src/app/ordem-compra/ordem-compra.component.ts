@@ -4,7 +4,7 @@ import { OrdemCompraService } from '../ordem-compra.service';
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { ToastrService } from 'ngx-toastr';
-import CarrinhoService from '../carrinho.service';
+import {CarrinhoService} from '../carrinho.service';
 import { Pedido } from '../shared/pedido.model';
 import { UsuarioService } from './../usuario.service';
 import { FormGroup, FormBuilder } from '@angular/forms';

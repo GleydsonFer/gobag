@@ -11,7 +11,7 @@ import { JsonPipe } from '@angular/common';
 import { isUndefined } from 'util';
 
 @Injectable()
-class CarrinhoService {
+export class CarrinhoService {
     teste: any[] = [];
     itens: ItemCarrinho[] = [];
     carrinho: Carrinho = new Carrinho();
@@ -150,4 +150,3 @@ class CarrinhoService {
 
 }
 
-export default CarrinhoService
