@@ -98,15 +98,25 @@ export class OrdemCompraComponent implements OnInit {
     // //     //     return client.transactions.all()
     // //     //   })
     // //     //   .then(console.log);
+
     //     // Criar uma transação simples
         .then(client => client.transactions.create({
             capture: 'false',
-            /*amount: <number>pedido.valor_total * 100,*/
-            amount:999999,
+            amount: <number>pedido.valor_total * 100,
             card_number: this.dadosCartao.card_number,
             card_holder_name: this.dadosCartao.card_holder_name,
             card_expiration_date: this.dadosCartao.card_expiration_date,
             card_cvv: this.dadosCartao.card_cvv,
+            
+            /**/
+            // amount:999999,
+            // card_number: this.dadosCartao.card_number,
+            // card_holder_name: this.dadosCartao.card_holder_name,
+            // card_expiration_date: this.dadosCartao.card_expiration_date,
+            // card_cvv: this.dadosCartao.card_cvv,
+            /**/
+
+
             billing: {
               name: "TESTE LOJISTA",
               address: {
@@ -118,18 +128,24 @@ export class OrdemCompraComponent implements OnInit {
                 street_number: "9999",
                 zipcode: "06714360"
               }
-            }            
+            }, 
+            split_rules: [
+              {
+                recipient_id: "re_cjybj6gbs013aif6e279j7xh8",
+                percentage: 20,
+                liable: 'true',
+                charge_processing_fee: 'true'
+              },{
+                recipient_id: "re_cjyhakyt403s8hx6evd3cuzmg",
+                percentage: 80,
+                liable: 'true',
+                charge_processing_fee: 'true'
+              }
+            ]
         })
-        
-        
-        ).then(console.log('Transação efetuada com sucesso!'));
+        ).then(console.log('Transação efetuada com sucesso!'))
+        .catch(error => console.log(JSON.stringify(error)))
         console.log(this.formularioCartao)
-
-        
-        
-
-
-
   }
 
   public salvarDadosCartao(): void {
