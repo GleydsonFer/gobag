@@ -5,7 +5,7 @@ import { Pagamento } from './shared/pagamento.model';
   providedIn: 'root'
 })
 export class PagamentoService {
-
+  
   pagarme = require('pagarme/browser')
   api_key_teste = 'ak_test_KN3qLDMn4KnpRgHCidxb7T9xfVcSz0';
 
@@ -17,12 +17,11 @@ export class PagamentoService {
       .then(client => {
         return client.transactions.all()
       })
-      .then(console.log);
+      .then(console.log());
   }
 
   // Criar uma transação simples
   public iniciarTransferencia(pagamento: Pagamento): Promise<any> {
-    console.log(pagamento.amount * 100);
     return this.pagarme.client.connect({ api_key: this.api_key_teste })
       .then(client => client.transactions.create({
         capture: pagamento.capture,
