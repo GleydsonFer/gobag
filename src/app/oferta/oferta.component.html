@@ -2,11 +2,11 @@
   <div class="oferta" *ngIf="prod; else loading">
 
     <div class="row">
-      <div class="col-md-6">
+      <!-- imagens -->
+      <div class="col-md-6"> 
         <div class="oferta_img-box">
           <img [src]="prod.imagens" class="img-fluid prod_oferta-img" />
         </div>
-
         <div class="row">
           <figure *ngFor="let imagem of prod.imagens" class="thumbnails col-3">
             <img [src]="imagem" class="img-fluid prod_oferta-thumb" />
@@ -14,32 +14,26 @@
         </div>
       </div>
 
+      <!-- informações do produto -->
       <div class="offset-md-1 col-md-5">
         <div class="row">
-
           <div class="info_prod">
             <h2 class="tit_prod">{{ prod.nome }}</h2>
             <h4 class="desc_prod"><strong>descrição:</strong> {{ prod.descricao }}</h4>
-
             <div class="price_box">
               <p>Por apenas:</p>
               <span class="price_prod">{{ prod.valor | currency : 'BRL' : 'symbol' }}</span>
             </div>
-
             <div class="medidas_box">
               <div *ngFor="let item of tamanho" class="medida" (click)="selecionarTamanho(item)"
                 [ngClass]="conferirNull(item.value, item.selecionado)">
                 <span>{{item.key}}</span>
               </div>
             </div>
-
             <button type="button" class="btn_pedido" (click)="adicionarItemCarrinho()"> Adicionar ao carrinho
             </button>
-
           </div>
-
         </div>
-
       </div>
     </div>
   </div>
