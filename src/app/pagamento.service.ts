@@ -22,10 +22,11 @@ export class PagamentoService {
 
   // Criar uma transação simples
   public iniciarTransferencia(pagamento: Pagamento): Promise<any> {
+    console.log(pagamento.amount * 100);
     return this.pagarme.client.connect({ api_key: this.api_key_teste })
       .then(client => client.transactions.create({
         capture: pagamento.capture,
-        amount: pagamento.amount * 100,
+        amount: Math.round(pagamento.amount * 100),
         card_number: pagamento.card_number,
         card_holder_name: pagamento.card_holder_name,
         card_expiration_date: pagamento.card_expiration_date,
