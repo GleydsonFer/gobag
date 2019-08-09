@@ -12,7 +12,7 @@
 
     <div class="pagamento ml-4 mb-3 mt-5"><strong>PAGAMENTO</strong></div>
 
-    <form (submit)="salvarDadosCartao()" [formGroup]="formularioCartao">
+    <form (submit)="confirmarCompra()" [formGroup]="dados_pagamento">
 
       <div class="form-group inputs">
         <input formControlName="card_number" type="text" class="form-control mb-3" placeholder="Número do cartão">
@@ -42,7 +42,7 @@
       </p>
     </div>
     <div class="col-12 col-sm-12 col-md-4 continuar"><button class="btn_confirmar"
-        (click)="salvarDadosCartao()">CONFIRMAR</button></div>
+        (click)="confirmarCompra()">CONFIRMAR</button></div>
   </div>
 </div>
 
