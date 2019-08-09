@@ -16,7 +16,7 @@
     font-weight: 700;
 }
 .quant_pecas{
-    font-size: 1.1em;
+    font-size: 0.8em;
     padding: 3px 20px 0px 20px;
     background-color:white;
     border: solid;
@@ -28,7 +28,7 @@
     
 }
 .btn_decre{
-    font-size: 1.1em;
+    font-size: 0.9em;
     padding: 0px 17px 5px 17px;
     background-color:white;
     border: solid;
@@ -42,7 +42,7 @@
     background-color:#808080;
 }
 .btn_incre{
-    font-size: 1.1em;
+    font-size: 0.8em;
     padding: 0px 15px;
     background-color:white;
     border: solid;
