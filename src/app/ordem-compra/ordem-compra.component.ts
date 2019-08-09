@@ -76,7 +76,7 @@ export class OrdemCompraComponent implements OnInit {
   // CONFIRMAÇÃO DO PEDIDO DE COMPRA
   public confirmarCompra() {
 
-    //criar 'pedido' com os dados da compra e do cliente
+    // criar 'pedido' com os dados da compra e do cliente
     let pedido: Pedido = new Pedido(
       this.usuario.email, // email
       this.usuario.endereco, // endereco
