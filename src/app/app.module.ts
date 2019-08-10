@@ -77,12 +77,9 @@ import { CarouselOrdemDevolucaoComponent } from './ordem-devolucao/carousel-orde
 import { CadastroLojistaComponent } from './cadastro-lojista/cadastro-lojista.component';
 import { AcompanharPedidoComponent } from './acompanhar-pedido/acompanhar-pedido.component';
 import { ForgetSenhaComponent } from './acesso/forget-senha/forget-senha.component';
-
+import { NgxImageZoomModule } from 'ngx-image-zoom';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
-import {Component} from '@angular/core';
 registerLocaleData(localePtBr);
-
-
 
 @NgModule({
   declarations: [
@@ -151,7 +148,8 @@ registerLocaleData(localePtBr);
     AngularFireAuthModule,
     AngularFireStorageModule,
     FormsModule,
-    TagInputModule
+    TagInputModule,
+    NgxImageZoomModule.forRoot() 
   ],
   providers: [
     CarrinhoService, { provide: LOCALE_ID, useValue: 'pt-Br' },
