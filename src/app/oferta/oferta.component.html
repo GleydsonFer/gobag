@@ -35,10 +35,10 @@
 
       <!-- informações do produto -->
       <div class="offset-md-1 col-md-4 mt-3">
-        <div class="row justify-content-around">
-          <h4 class="">{{ prod.nome.toUpperCase() }}</h4>
-          <h5 class="">{{ prod.loja.charAt(0).toUpperCase() + prod.loja.slice(1).toLowerCase() }}</h5>
-          <div class="desc_prod"><div class="descricao">Descrição: </div> {{ prod.descricao.toLowerCase() }}</div>
+        <div class="row justify-content-center">
+          <h4 class="col-12 d-flex justify-content-center">{{ prod.nome.toUpperCase() }}</h4>
+          <h5 class="col-12 d-flex justify-content-center">{{ prod.loja.charAt(0).toUpperCase() + prod.loja.slice(1).toLowerCase() }}</h5>
+          <div class="desc_prod col-12"><div class="descricao">Descrição e Detalhes </div> {{ prod.descricao.toLowerCase() }}</div>
           <!-- <div class="price_box"> -->
           <h4 class="mt-2 mb-2">{{ prod.valor | currency : 'BRL' : 'symbol' }}</h4>
           <!-- </div> -->
