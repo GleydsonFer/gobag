@@ -37,6 +37,10 @@ h3 {
     color: #000;
 }
 
+.caps{
+    text-transform: initial;
+}
+
 .upper{
     text-transform: uppercase;
 }

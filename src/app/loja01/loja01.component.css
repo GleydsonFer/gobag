@@ -1,4 +1,4 @@
-/* img {
+ /*img {
     border-radius: 5px;
     width: 320px;
     height: 200px
@@ -9,6 +9,27 @@
     padding-right: 25px;
 }
 
+.logo-loja{    
+    height: 200px;   
+    margin-top: -15%;
+    border-width: 10px;
+    border-color: #000;
+    border-radius: 15px;
+}
+
+.banner{
+    align-content: center;
+    width: 100%;
+    max-height: 300px;
+    display: flex;
+    
+}
+.bannerLoja{    
+    align-content: center;
+}
+
+
+
 /* edições wilson */
 
 /* edições de estilo do card do produto */
@@ -18,8 +39,11 @@
 
 .prod {
     border-radius: 10px;
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc;  */
     margin-bottom: 20px;
+
+    height: 100%;
+    width: 200px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -36,15 +60,14 @@
     text-transform: capitalize;
     padding: 10px 0;
     margin: 0;
-    font-family: 'Lato', sans-serif;
     color: #212529;
     font-size: 20px;
 }
 
 .prod_img-box {
     margin: 0;
-    height: 250px;
-    position: relative;    
+    height: 200px;
+    position: center;    
 }
 
 .prod_img { height: 100%;}
@@ -55,13 +78,16 @@
 }
 
 .second_img {
+    border-radius: 10px;
     position: absolute;
     left: 0;
     right: 0;
     top: 0;
-    z-index: -1;
+    z-index: 0;
     opacity: 0;
     transition: opacity .4s ease;
+    width: 90%;
+    height: 80%;
 }
 
 .prod_price-box {
@@ -101,8 +127,8 @@
 }
 
 .btn_ofer {
-    border: 1px solid #212529;
-    background: #212529;
+    border: 1px solid #000;
+    background: #000000;
     padding: 8px 15px;
     border-radius: 4px;
     color: #fff;
@@ -112,7 +138,7 @@
 }
 
 .btn_ofer:hover {
-    color: #212529;
+    color: #000;
     background: #fff;
 }
 

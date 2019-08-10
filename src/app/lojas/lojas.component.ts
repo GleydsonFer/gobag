@@ -50,45 +50,45 @@ export class LojasComponent implements OnInit {
     {
       link: "loja01",
       alt: "loja01",
-      image: "assets/logos-lojas/sua-loja-aqui.png"
+      image: "assets/logos-lojas/loja-teste.png"
     },
     {
-      link: "loja01",
+      link: "cadastro-lojista",
       alt: "loja01",
       image: "assets/logos-lojas/sua-loja-aqui.png"
     },
     {
-      link: "loja01",
+      link: "cadastro-lojista",
       alt: "loja01",
       image: "assets/logos-lojas/sua-loja-aqui.png"
     },
     {
-      link: "loja01",
+      link: "cadastro-lojista",
       alt: "loja01",
       image: "assets/logos-lojas/sua-loja-aqui.png"
     },
     {
-      link: "loja01",
+      link: "cadastro-lojista",
       alt: "loja01",
       image: "assets/logos-lojas/sua-loja-aqui.png"
     },
     {
-      link: "loja01",
+      link: "cadastro-lojista",
       alt: "loja01",
       image: "assets/logos-lojas/sua-loja-aqui.png"
     },
     {
-      link: "loja01",
+      link: "cadastro-lojista",
       alt: "loja01",
       image: "assets/logos-lojas/sua-loja-aqui.png"
     },
     {
-      link: "loja01",
+      link: "cadastro-lojista",
       alt: "loja01",
       image: "assets/logos-lojas/sua-loja-aqui.png"
     },
     {
-      link: "loja01",
+      link: "cadastro-lojista",
       alt: "loja01",
       image: "assets/logos-lojas/sua-loja-aqui.png"
     }
