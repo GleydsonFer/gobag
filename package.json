@@ -30,6 +30,7 @@
     "firebase": "^6.2.4",
     "jquery": "^3.4.1",
     "ngx-chips": "^2.0.2",
+    "ngx-image-zoom": "^0.4.1",
     "ngx-owl-carousel": "^2.0.7",
     "ngx-toastr": "^10.0.4",
     "owl.carousel": "^2.3.4",

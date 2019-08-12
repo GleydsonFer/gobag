@@ -2,44 +2,68 @@
   <div class="oferta" *ngIf="prod; else loading">
 
     <div class="row">
-      <div class="col-md-6">
-        <div class="oferta_img-box">
-          <img [src]="prod.imagens" class="img-fluid prod_oferta-img" />
-        </div>
+      <div class="col-12">
+        <img class="logo mb-4 mt-2" src="assets/logos-lojas/sua-loja-aqui.png">
+      </div>
+    </div>
 
+    <div class="row">
+      <!-- imagens -->
+      <div class="col-md-7">
+        <div class="d-flex">
+          <img class="seta col-1" (click)="prevImage()" src="../../assets/left.png" />
+          <div class="col=10 d-flex justify-content-center">
+            <!-- <div class=""></div> -->
+            <img class="imagemSelecionada " [src]="imagem_selecionada" />
+            <!-- zoomMode -->
+            <!-- <ngx-image-zoom 
+            class=" col-7"
+              [thumbImage]="imagem_selecionada"
+              [zoomMode]='hover'
+              [magnification]=1.4
+              [enableScrollZoom]=true
+            ></ngx-image-zoom> -->
+          </div>
+          <img class="seta2 col-1" (click)="nextImage()" src="../../assets/right.png" />
+        </div>
         <div class="row">
-          <figure *ngFor="let imagem of prod.imagens" class="thumbnails col-3">
-            <img [src]="imagem" class="img-fluid prod_oferta-thumb" />
+          <figure *ngFor="let imagem of prod.imagens; index as i" class="thumbnails col-3">
+            <img [src]="imagem" (click)="mudarImagem(i)" class="img-fluid imagemSelecionada" />
           </figure>
         </div>
       </div>
 
-      <div class="offset-md-1 col-md-5">
-        <div class="row">
-
-          <div class="info_prod">
-            <h2 class="tit_prod">{{ prod.nome }}</h2>
-            <h4 class="desc_prod"><strong>descrição:</strong> {{ prod.descricao }}</h4>
-
-            <div class="price_box">
-              <p>Por apenas:</p>
-              <span class="price_prod">{{ prod.valor | currency : 'BRL' : 'symbol' }}</span>
+      <!-- informações do produto -->
+      <div class="offset-md-1 col-md-4 mt-3">
+        <div class="row justify-content-center">
+          <h4 class="col-12 d-flex justify-content-center">{{ prod.nome.toUpperCase() }}</h4>
+          <h5 class="col-12 d-flex justify-content-center">{{ prod.loja.charAt(0).toUpperCase() + prod.loja.slice(1).toLowerCase() }}</h5>
+          <div class="desc_prod col-12"><div class="descricao">Descrição e Detalhes </div> {{ prod.descricao.toLowerCase() }}</div>
+          <!-- <div class="price_box"> -->
+          <h4 class="mt-2 mb-2">{{ prod.valor | currency : 'BRL' : 'symbol' }}</h4>
+          <!-- </div> -->
+          
+          <div class="row justify-content-center mb-3 mt-3">
+            <h5 class="preto col-12 d-flex justify-content-center">TAMANHO</h5>
+            <div *ngFor="let item of tamanho" class="medida d-flex justify-content-center" (click)="selecionarTamanho(item)"
+              [ngClass]="conferirNull(item.value, item.selecionado)">
+              <span class="item">{{item.key}}</span>
             </div>
-
-            <div class="medidas_box">
-              <div *ngFor="let item of tamanho" class="medida" (click)="selecionarTamanho(item)"
-                [ngClass]="conferirNull(item.value, item.selecionado)">
-                <span>{{item.key}}</span>
-              </div>
-            </div>
-
-            <button type="button" class="btn_pedido" (click)="adicionarItemCarrinho()"> Adicionar ao carrinho
-            </button>
-
           </div>
 
+          <button type="button" class="btn_pedido col-12 " (click)="adicionarItemCarrinho()">  
+            VÁ PARA A BAG
+          </button>
+  
+          <!-- <img class="icon mt-3" src="../../assets/icons/whatsapp.png">
+          <span class="col-12 d-flex justify-content-center">Compartilhe nossas novidades</span>
+          <div class="mt-2 col-12 d-flex justify-content-center">
+            <img class="icon mr-2" src="../../assets/icons/facebook-logo-button.png">
+            <img class="icon mr-2" src="../../assets/icons/twitter-logo-button.png">
+            <img class="icon " src="../../assets/icons/pinterest-logo-button.png">
+            <img class="icon ml-2" src="../../assets/icons/instagram.png">
+          </div> -->
         </div>
-
       </div>
     </div>
   </div>
