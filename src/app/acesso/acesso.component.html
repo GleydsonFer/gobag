@@ -1,31 +1,13 @@
-<!-- <div class="container">
-
-  <div *ngIf="cadastro; else formLogin">
-    <app-cadastro (exibirPainel)="exibirPainel($event)"></app-cadastro>
-  </div>
-
-  <ng-template #formLogin>
-    <app-login (exibirPainel)="exibirPainel($event)"></app-login>
-  </ng-template>
-
-  <ng-template #forgetSenha>
-      <app-login (exibirPainel)="exibirPainel($event)"></app-login>
-    </ng-template>
-</div> -->
+<div *ngIf="tela == 'login'" class="container">
+  <app-login (exibirPainel)="exibirPainel($event)"></app-login>
+</div>
 
 
-<div class="container">
-
-  <div *ngIf="tela == 'cadastro'">
-    <app-cadastro (exibirPainel)="exibirPainel($event)"></app-cadastro>
-  </div>
-
-  <div *ngIf="tela == 'login'">
-    <app-login (exibirPainel)="exibirPainel($event)"></app-login>
-  </div>
+<div *ngIf="tela == 'forgetSenha'" class="container">
+  <app-forget-senha (exibirPainel)="exibirPainel($event)"></app-forget-senha>
+</div>
 
 
-  <div *ngIf="tela == 'forgetSenha'">
-    <app-forget-senha (exibirPainel)="exibirPainel($event)"></app-forget-senha>
-  </div>
+<div *ngIf="tela == 'cadastro'">
+  <app-cadastro (exibirPainel)="exibirPainel($event)"></app-cadastro>
 </div>

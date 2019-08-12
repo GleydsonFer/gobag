@@ -105,6 +105,18 @@ npm install pagarme
 
 npm install ngx-chips --save
 
+------------------ brmasker-ionic-3 -------------------
+npm install brmasker-ionic-3 --save
+
+no app.module.ts 
+    import { BrMaskerModule } from 'brmasker-ionic-3';
+
+    @NgModule({
+    imports: [
+        BrMaskerModule
+    ],
+    })
+
 
 
 
