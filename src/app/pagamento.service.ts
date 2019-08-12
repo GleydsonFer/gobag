@@ -6,8 +6,8 @@ import { Pagamento } from './shared/pagamento.model';
 })
 export class PagamentoService {
   
-  pagarme = require('pagarme/browser')
-  api_key_teste = 'ak_test_KN3qLDMn4KnpRgHCidxb7T9xfVcSz0';
+  private pagarme = require('pagarme/browser')
+  private api_key_teste = 'ak_test_KN3qLDMn4KnpRgHCidxb7T9xfVcSz0';
 
   constructor() { }
 
@@ -31,7 +31,8 @@ export class PagamentoService {
         card_expiration_date: pagamento.card_expiration_date,
         card_cvv: pagamento.card_cvv
       }))
-      .then(console.log('Transação efetuada com sucesso!'));
+      .then(console.log('Transação efetuada com sucesso!'))
+      .catch(err => console.log('ERRO NA CONFIRMAÇÃO', err));
   }
 
 }
