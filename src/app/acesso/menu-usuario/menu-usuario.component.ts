@@ -16,16 +16,19 @@ export class MenuUsuarioComponent implements OnInit {
 
   formulario: FormGroup;
   usuario: Usuario = {
-    email: "",
-    nome_completo: "",
-    nome_usuario: "",
-    senha: "",
-    endereco: "",
-    numero: "",
-    complemento: "",
-    data_nascimento: "",
-    celular: "",
-    bairro: ""
+    nome:"",
+    sobrenome:"",
+    data_nascimento:"",
+    celular:"",
+    email:"",
+    cep:"",
+    endereco:"",
+    numero:"",
+    complemento:"",
+    bairro:"",
+    cidade:"",
+    estado:"",
+    senha:""
   }
   imagem: any = null;
 
@@ -69,8 +72,8 @@ export class MenuUsuarioComponent implements OnInit {
           this.formulario.controls['bairro'].setValue(user.bairro)
 
           //atribuindo dados do banco ao objeto usuario
-          this.usuario.nome_usuario = user.nome_usuario
-          this.usuario.nome_completo = user.nome_completo;
+          this.usuario.nome = user.nome_usuario
+          this.usuario.nome = user.nome_completo;
           this.usuario.email = user.email;
           this.usuario.cpf = user.cpf;
           this.usuario.data_nascimento = user.data_nascimento;
@@ -113,8 +116,8 @@ export class MenuUsuarioComponent implements OnInit {
 
     delete this.usuario.senha;
     //atribuindo dados do formulário ao objeto usuário
-    this.usuario.nome_completo = this.formulario.value.nome
-    this.usuario.nome_usuario = this.formulario.value.nome_usuario
+    this.usuario.nome = this.formulario.value.nome
+    this.usuario.nome = this.formulario.value.nome_usuario
     this.usuario.email = this.formulario.value.email
     this.usuario.cpf = this.formulario.value.cpf
     this.usuario.data_nascimento = this.formulario.value.data_nascimento

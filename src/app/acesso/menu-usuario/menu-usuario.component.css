@@ -17,6 +17,9 @@ form{
    border-bottom: 4px solid #cfcbcb;
    border-radius:0px;
 }
+.inputs input:focus{
+    box-shadow: none;
+}
 .inputs input:cli{
     border:none;
     border-bottom: 4px solid #cfcbcb;

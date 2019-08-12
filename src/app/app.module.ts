@@ -32,6 +32,7 @@ import { AvaliacaoComponent } from './oferta/avaliacao/avaliacao.component';
 import { DescricaoReduzida } from './util/descricao-reduzida.pipe';
 import { OrdemCompraComponent } from './ordem-compra/ordem-compra.component';
 import localePtBr from '@angular/common/locales/pt';
+import { BrMaskerModule } from 'brmasker-ionic-3';
 
 import { registerLocaleData } from '@angular/common';
 import { from } from 'rxjs';
@@ -149,6 +150,7 @@ registerLocaleData(localePtBr);
     AngularFireStorageModule,
     FormsModule,
     TagInputModule,
+    BrMaskerModule,
     NgxImageZoomModule.forRoot() 
   ],
   providers: [

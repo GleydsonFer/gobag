@@ -66,6 +66,8 @@ export class Autenticacao {
         // console.log('Chegamos até o seriviço', usuario);
         return this.authFire.auth.createUserWithEmailAndPassword(usuario.email, usuario.senha)
             .then((resposta: any) => {
+                console.log("entrou na função");
+                
                 //remover o atributo senha do objeto usuario
                 delete usuario.senha;
 
@@ -73,12 +75,18 @@ export class Autenticacao {
                 // firebase.database().ref(`usuario_detalhe/${btoa(usuario.email)}`)
                 //     .set({ usuario })
                 this.db.collection('usuarios').doc(btoa(usuario.email)).set({
-                    email: usuario.email,
-                    nome_completo: usuario.nome_completo,
-                    nome_usuario: usuario.nome_usuario,
-                    endereco: usuario.endereco,
-                    numero: usuario.numero,
-                    complemento: usuario.complemento
+                    nome:usuario.nome,
+                    sobrenome:usuario.sobrenome,
+                    data_nascimento:usuario.data_nascimento,
+                    celular:usuario.celular,
+                    email:usuario.email,
+                    cep:usuario.cep,
+                    endereco:usuario.endereco,
+                    numero:usuario.numero,
+                    complemento:usuario.complemento,
+                    bairro:usuario.bairro,
+                    cidade:usuario.cidade,
+                    estado:usuario.estado,
                 });
             })
             .catch((error: Error) => {
