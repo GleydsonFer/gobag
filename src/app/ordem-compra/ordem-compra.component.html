@@ -8,13 +8,13 @@
     <div class="row ml-4 mb-3 mt-3">
       <div class="endereco col-12 mb-2">ENDEREÇO DE ENTREGA: </div>
       <div class="endereco2 col-12" *ngIf="usuario != null">
-        <em>{{usuario.endereco.toUpperCase()}}, {{usuario.numero}} </em>
+        <em>{{ usuario.endereco.toUpperCase() }}, {{ usuario.numero }} </em>
       </div>
       <div class="col-12" *ngIf="usuario != null">
-        <em *ngIf="usuario.bairro">{{usuario.bairro.toUpperCase()}} </em>
+        <em>{{ usuario.bairro.toUpperCase() }} </em>
       </div>
       <div class="col-12" *ngIf="usuario != null">
-        <em>{{usuario.complemento.toUpperCase()}} </em>
+        <em>{{ usuario.complemento.toUpperCase() }} </em>
       </div>
     </div>
 
