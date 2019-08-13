@@ -193,3 +193,11 @@ body{
     box-shadow: none;
   }
 }
+
+input:focus{
+    box-shadow: none;   
+}
+
+.invalid-feedback{
+    display:block !important;
+}
