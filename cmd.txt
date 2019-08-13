@@ -120,6 +120,7 @@ no app.module.ts
 ------------------ Cloud Functions -------------------
 $ npm install firebase-functions@latest firebase-admin@latest --save
 
+$ npm install ngx-image-zoom --save
 
 
 

@@ -1,11 +1,11 @@
-<app-banner-slide></app-banner-slide>
-<app-tendencias></app-tendencias>
+<!-- <app-banner-slide></app-banner-slide>
+<app-tendencias></app-tendencias> -->
 
 <div class="container"> 
   
   <div class="secao">
-    <h3 class="text-center">MODA MASCULINA</h3>
-    <h5 class="text-center">Conheça as melhores ofertas para roupas masculinas:</h5>
+    <h3 class="text-center titulo preto">MODA MASCULINA</h3>
+    <h5 class="text-center subtitulo cinza">Conheça as melhores ofertas para roupas masculinas:</h5>
   </div>
 
 </div>
@@ -18,22 +18,31 @@
   
         <div class="col-md-3" *ngFor="let produto of produtos | async">
             <div class="prod">
-              <div class="prod_title-box">
-                <h4 class="prod_title">{{ produto.nome }}</h4>
+
+
+                <a [routerLink]="['/oferta', produto.id_produto]">
+                  <figure class="prod_img-box">
+                    <img [src]="produto.imagens[0]" class="img-fluid rounded prod_img" />
+                    <img [src]="produto.imagens[1]" class="img-fluid rounded prod_img second_img" />
+                  </figure>
+                </a>
+          
+                <div class="prod_title-box" >
+                  <div class="prod_title subtitulo preto upper text-center">{{ produto.nome }}</div>
+                </div>
+          
+                <div class="justify-content-center">            
+                  <p class="text-center texto cinza">Loja Teste</p> 
+                  <!-- <span class="texto cinza">{{ produto.loja.charAt(0).toUpperCase() + produto.loja.slice(1).toLowerCase() }}</span> -->
+               
+                  <p class="align-text-top subtitulo preto">{{ produto.valor | currency:'BRL':true }}</p>
+                </div>
+          
+                <button class="btn_ofer upper" [routerLink]="['/oferta', produto.id_produto]">EXPERIMENTE</button>
+                <!-- <button class="btn_ofer upper" data-toggle="modal" data-target="#modalOferta">EXPERIMENTE</button> -->
+          
+          
               </div>
-    
-              <figure class="prod_img-box">
-                <img [src]="produto.imagens[0]" class="img-fluid prod_img" />
-                <img [src]="produto.imagens[1]" class="img-fluid prod_img second_img" />
-              </figure>
-    
-              <div class="prod_price-box">  
-                <p class="prod_price">{{ produto.valor | currency : 'BRL' : 'symbol' }}</p>
-              </div>
-    
-              <button class="btn_ofer" [routerLink]="['/oferta', produto.id_produto]">Ver oferta</button>
-  
-            </div>
         </div>
   
         <!-- <hr /> -->

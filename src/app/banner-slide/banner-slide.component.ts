@@ -1,19 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-banner-slide',
   templateUrl: './banner-slide.component.html',
   styleUrls: ['./banner-slide.component.css']
 })
 export class BannerSlideComponent implements OnInit {
-  mySlideOptions={
-    autoplay:true,
-    autoplayTimeout:5000,
-    autoplayHoverPause:true,
+  mySlideOptions = {
+    autoplay: true,
+    autoplayTimeout: 5000,
+    autoplayHoverPause: true,
     loop: true,
-    dot: true, 
+    dot: true,
     nav: true,
-    navText: ["<div class='nav-btn prev-slide'>prev</div>", "<div class='nav-btn next-slide'>next</div>"],    
+    navText: ["<div class='nav-btn prev-slide'>prev</div>", "<div class='nav-btn next-slide'>next</div>"],
     responsiveClass: true,
     responsive: {
       0: {
@@ -25,7 +26,7 @@ export class BannerSlideComponent implements OnInit {
   };
 
   mySlideImages = [
-    {      
+    {
       alt: "GoBag Brasil",
       image: "assets/banners/home/banner_home_3.jpg"
     },
@@ -39,11 +40,15 @@ export class BannerSlideComponent implements OnInit {
     }
   ]
 
-  
 
-  constructor() { }
+
+  constructor() {
+    
+  }
 
   ngOnInit() {
+
   }
+
 
 }

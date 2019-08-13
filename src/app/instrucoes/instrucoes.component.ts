@@ -9,7 +9,7 @@ export class InstrucoesComponent implements OnInit {
 
   mySlideOptions = {
     autoplay:true,
-    autoplayTimeout:3000,
+    autoplayTimeout:2000,
     autoplayHoverPause:true,
     loop: true,
     margin: 10,
@@ -22,29 +22,29 @@ export class InstrucoesComponent implements OnInit {
     responsive: {
       0: {
         items: 2,
-        dot: true,
+        dot: false,
         nav: false
       },
       500: {
-        items: 3,
+        items: 2,
         dot: false,
-        nav: true
+        nav: false
       },
       1000: {
         items: 4,
         dot: false,
-        nav: true
+        nav: false
       },
       1500: {
-        items: 6,
+        items: 4,
         dot: false,
-        nav: true,
+        nav: false,
         loop: false
       },
       2000: {
-        items: 6,
+        items: 4,
         dot: false,
-        nav: true,
+        nav: false,
         loop: false
       }
     }
