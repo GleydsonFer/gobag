@@ -32,6 +32,7 @@ import { PoliticasDePrivacidadeComponent } from './politicas-de-privacidade/poli
 import { PoliticasDeDevolucaoComponent } from './politicas-de-devolucao/politicas-de-devolucao.component';
 import { OrdemDevolucaoComponent } from './ordem-devolucao/ordem-devolucao.component';
 import { CadastroLojistaComponent } from './cadastro-lojista/cadastro-lojista.component';
+import { InstrucoesComponent } from './instrucoes/instrucoes.component';
 
 export const ROUTES: Routes = [
     { path: '', component: HomeComponent },
@@ -67,5 +68,6 @@ export const ROUTES: Routes = [
     { path: 'ordem-devolucao', component: OrdemDevolucaoComponent },
     { path: 'cadastro-lojista', component: CadastroLojistaComponent },
     { path: 'acompanharPedido', component: AcompanharPedidoComponent },
+    { path: 'instrucoes', component: InstrucoesComponent },
 
 ]
