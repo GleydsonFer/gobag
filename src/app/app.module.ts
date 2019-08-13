@@ -9,7 +9,6 @@ import { Autenticacao } from './autenticacao.service'
 import { CadastroComponent } from './acesso/cadastro/cadastro.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AcessoComponent } from './acesso/acesso.component';
-import { BannerComponent } from './acesso/banner/banner.component';
 import { LoginComponent } from './acesso/login/login.component';
 
 //
@@ -68,7 +67,7 @@ import { DadosdepagamentoComponent } from './dadosdepagamento/dadosdepagamento.c
 
 import { OrdemPagamentoComponent } from './ordem-pagamento/ordem-pagamento.component';
 import { StatusPedidoComponent } from './status-pedido/status-pedido.component';
-import { CarouselOrdemCompraComponent } from './ordem-compra/carousel-ordem-compra/carousel-ordem-compra.component';
+import { ItemCarrinhoCompraComponent } from './ordem-compra/item-carrinho-compra/item-carrinho-compra.component';
 import { MenuUsuarioComponent } from './acesso/menu-usuario/menu-usuario.component';
 import { TermosDeUsoComponent } from './termos-de-uso/termos-de-uso.component';
 import { PoliticasDePrivacidadeComponent } from './politicas-de-privacidade/politicas-de-privacidade.component';
@@ -76,12 +75,11 @@ import { PoliticasDeDevolucaoComponent } from './politicas-de-devolucao/politica
 import { OrdemDevolucaoComponent } from './ordem-devolucao/ordem-devolucao.component';
 import { CarouselOrdemDevolucaoComponent } from './ordem-devolucao/carousel-ordem-devolucao/carousel-ordem-devolucao.component';
 import { CadastroLojistaComponent } from './cadastro-lojista/cadastro-lojista.component';
-
+import { AcompanharPedidoComponent } from './acompanhar-pedido/acompanhar-pedido.component';
+import { ForgetSenhaComponent } from './acesso/forget-senha/forget-senha.component';
+import { NgxImageZoomModule } from 'ngx-image-zoom';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
-import {Component} from '@angular/core';
 registerLocaleData(localePtBr);
-
-
 
 @NgModule({
   declarations: [
@@ -107,7 +105,6 @@ registerLocaleData(localePtBr);
     Tendencia02Component,
     Tendencia03Component,
     AcessoComponent,
-    BannerComponent,
     LoginComponent,
     CadastroComponent,
     Loja01Component,
@@ -117,7 +114,7 @@ registerLocaleData(localePtBr);
     DadosdepagamentoComponent,
     OrdemPagamentoComponent,
     StatusPedidoComponent,
-    CarouselOrdemCompraComponent,
+    ItemCarrinhoCompraComponent,
     MenuUsuarioComponent,
     TermosDeUsoComponent,
     PoliticasDePrivacidadeComponent,
@@ -125,6 +122,8 @@ registerLocaleData(localePtBr);
     OrdemDevolucaoComponent,
     CarouselOrdemDevolucaoComponent,
     CadastroLojistaComponent,
+    AcompanharPedidoComponent,
+    ForgetSenhaComponent,
     //ajustanto o erro ngIf
 
     //
@@ -149,7 +148,8 @@ registerLocaleData(localePtBr);
     AngularFireAuthModule,
     AngularFireStorageModule,
     FormsModule,
-    TagInputModule
+    TagInputModule,
+    NgxImageZoomModule.forRoot() 
   ],
   providers: [
     CarrinhoService, { provide: LOCALE_ID, useValue: 'pt-Br' },

@@ -1,43 +1,33 @@
-<div class="card" style="width: 20rem;">
-  <div class="card-body">
-    <div class="card-title"></div>
-    
-   <form [formGroup]="formulario" (ngSubmit)="autenticar()"> 
+<div class="conteudo col-7 container">
+  <form class="row" [formGroup]="formulario" (ngSubmit)="autenticar()">
+    <div class="col-12 topo">
+      <p>
+        <span>OLÁ!</span> <br>
+        <span>Digite seu e-mail e senha para acessar sua conta GOBAG:</span>
+      </p>
+    </div>
+    <div class="col-12 inputs">
       <div class="form-group">
-        <input 
-          type="email" 
-          class="form-control" 
-          placeholder="E-mail"
-          formControlName="email"
-        >
+        <input class="email" type="email" class="form-control" placeholder="E-mail" formControlName="email">
         <small *ngIf="formulario.get('email').valid && formulario.get('email').touched" class="form-text text-success"></small>
         <small *ngIf="!formulario.get('email').valid && formulario.get('email').touched" class="form-text text-danger">Email inválido!</small>
       </div>
-      
       <div class="form-group">
-        <input 
-          type="password"
-          class="form-control" 
-          placeholder="Senha"
-          formControlName="senha"
-        >
+        <input type="password" class="form-control" placeholder="Senha" formControlName="senha">
         <small *ngIf="formulario.get('senha').valid && formulario.get('senha').touched" class="form-text text-success"></small>
         <small *ngIf="!formulario.get('senha').valid && formulario.get('senha').touched" class="form-text text-danger">Senha inválido!</small>
-
       </div>
-          <button type="submit" class="btn btn-primary btn-sm btn-block">Entrar</button>
-    </form>
-    <hr />
-<!-- https://pt.stackoverflow.com/questions/226496/retornar-a-mensagem-de-firebase-auth-no-typescript -->
-    <p class="small text-danger text-center">{{mensagemErro}}</p>
+    </div>
+    <div class="col-12 ">
+      <button type="submit" class="btn btn-primary btn_salvar col-12">ENVIAR</button>
+      <p class="col-12" class="small text-danger text-center">{{mensagemErro}}</p>
+    </div>
+    <div class="col-12 below text-center">
+      <span >NÃO POSSUI CONTA?</span> <span class="hover" (click)="exibirPainelCadastro()"> CADASTRE-SE AGORA</span><br>
+      <span class="hover" (click)="exibirForgetSenha()">ESQUECEU A SENHA</span>
+    </div>
 
-  </div>
-</div>
-<br />
-<div class="card" style="width: 20rem;">
-  <div class="card-body">
-    <p class="card-text">
-      Não tem uma conta? <span (click)="exibirPainelCadastro()" class="card-link">Cadastre-se</span>
-    </p> 
-  </div>
+  </form>
+
+
 </div>

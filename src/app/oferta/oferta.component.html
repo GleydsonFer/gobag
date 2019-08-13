@@ -1,45 +1,74 @@
 <div class="container">
   <div class="oferta" *ngIf="prod; else loading">
 
+    <!--  Logo da Loja
+      <div class="row">
+      <div class="col-12">
+        <img class="logo mb-4 mt-2" src="assets/logos-lojas/sua-loja-aqui.png">
+      </div>
+    </div> -->
+
     <div class="row">
-      <div class="col-md-6">
-        <div class="oferta_img-box">
-          <img [src]="prod.imagens" class="img-fluid prod_oferta-img" />
+      <!-- imagens -->
+      <div class="col-md-7">
+        <div class="d-flex">
+          <img class="seta col-1" (click)="prevImage()" src="../../assets/left.png" />
+          <div class="col=10 d-flex justify-content-center">
+            <!-- <div class=""></div> -->
+            <img class="imagemSelecionada " [src]="imagem_selecionada" />
+            <!-- zoomMode -->
+            <!-- <ngx-image-zoom 
+            class=" col-7"
+              [thumbImage]="imagem_selecionada"
+              [zoomMode]='hover'
+              [magnification]=1.4
+              [enableScrollZoom]=true
+            ></ngx-image-zoom> -->
+          </div>
+          <img class="seta2 col-1" (click)="nextImage()" src="../../assets/right.png" />
         </div>
 
         <div class="row">
-          <figure *ngFor="let imagem of prod.imagens" class="thumbnails col-3">
-            <img [src]="imagem" class="img-fluid prod_oferta-thumb" />
+          <figure *ngFor="let imagem of prod.imagens; index as i" class="thumbnails col-3">
+            <img [src]="imagem" (click)="mudarImagem(i)" class="img-fluid imagemSelecionada" />
           </figure>
         </div>
       </div>
 
-      <div class="offset-md-1 col-md-5">
-        <div class="row">
-
-          <div class="info_prod">
-            <h2 class="tit_prod">{{ prod.nome }}</h2>
-            <h4 class="desc_prod"><strong>descrição:</strong> {{ prod.descricao }}</h4>
-
-            <div class="price_box">
-              <p>Por apenas:</p>
-              <span class="price_prod">{{ prod.valor | currency : 'BRL' : 'symbol' }}</span>
+      <!-- informações do produto -->
+      <div class="offset-md-1 col-md-4 mt-3">
+        <div class="row justify-content-center">
+          <h4 class="col-12 d-flex justify-content-center text-center titulo preto">{{ prod.nome.toUpperCase() }}</h4>
+          <h5 class="col-12 d-flex justify-content-center text-center subtitulo cinza">{{ prod.loja.charAt(0).toUpperCase() + prod.loja.slice(1).toLowerCase() }}</h5>
+          <p class="text-center subtitulo preto">Descrição e Detalhes </p> 
+          <p class="desc_prod texto cinza col-12">{{ prod.descricao.toLowerCase() }}</p>
+          <!-- <div class="price_box"> -->
+          <h4 class="my-3 titulo preto">{{ prod.valor | currency : 'BRL' : 'symbol' }}</h4>
+          <!-- </div> -->
+          
+          <div class="row justify-content-center my-3">
+            <h5 class="texto preto col-12 d-flex justify-content-center">TAMANHO</h5>
+            <div *ngFor="let item of tamanho" class="medida d-flex justify-content-center" (click)="selecionarTamanho(item)"
+              [ngClass]="conferirNull(item.value, item.selecionado)">
+              <p class="item texto preto">{{item.key}}</p>
             </div>
-
-            <div class="medidas_box">
-              <div *ngFor="let item of tamanho" class="medida" (click)="selecionarTamanho(item)"
-                [ngClass]="conferirNull(item.value, item.selecionado)">
-                <span>{{item.key}}</span>
-              </div>
-            </div>
-
-            <button type="button" class="btn_pedido" (click)="adicionarItemCarrinho()"> Adicionar ao carrinho
-            </button>
-
           </div>
 
+          
+          <button type="button" class="btn_pedido texto preto col-12 my-3" (click)="adicionarItemCarrinho()">  
+            QUERO EXPERIMENTAR
+          </button>
+          
+  
+          <!-- <img class="icon mt-3" src="../../assets/icons/whatsapp.png">
+          <span class="col-12 d-flex justify-content-center">Compartilhe nossas novidades</span>
+          <div class="mt-2 col-12 d-flex justify-content-center">
+            <img class="icon mr-2" src="../../assets/icons/facebook-logo-button.png">
+            <img class="icon mr-2" src="../../assets/icons/twitter-logo-button.png">
+            <img class="icon " src="../../assets/icons/pinterest-logo-button.png">
+            <img class="icon ml-2" src="../../assets/icons/instagram.png">
+          </div> -->
         </div>
-
       </div>
     </div>
   </div>
@@ -51,7 +80,7 @@
     <div class="col">
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
-          <a class="nav-link active" routerLink="produtos-relacionados" data-toggle="tab" role="tab"
+          <a class="nav-link active texto preto" routerLink="produtos-relacionados" data-toggle="tab" role="tab"
             aria-expanded="true">Produtos Relacionados</a>
         </li>
         <!-- <li class="nav-item">

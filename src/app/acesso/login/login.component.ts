@@ -30,11 +30,17 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.exibirPainel.subscribe(event =>{
+      console.log(event)
+    })
   }
 
 
   public exibirPainelCadastro(): void {
     this.exibirPainel.emit('cadastro')
+  }
+  public exibirForgetSenha(){
+    this.exibirPainel.emit('forgetSenha')
   }
 
   

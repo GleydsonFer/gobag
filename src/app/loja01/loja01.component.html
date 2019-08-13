@@ -1,17 +1,17 @@
 <!-- <app-banner-slide></app-banner-slide>
 <app-lojas></app-lojas> -->
 
-<div class="bannerLoja">  
-    <img class="img-fluid banner" src="assets/banners/lojas/banner-fundo.jpg" /> 
+<div class="bannerLoja">
+  <img class="img-fluid banner" src="assets/banners/lojas/banner-fundo.jpg" />
 </div>
 
 <div class="container text-center">
 
   <div class="secao">
-          <img class="img-fluid logo-loja mb-2" src="assets/logos-lojas/loja-teste.png" /><br>
-          <span class="text-center subtitulo cinza">Frete: R$ 10,00</span><br>           
-          <span class="text-center subtitulo preto upper">mais informações</span>
-       
+    <img class="img-fluid logo-loja mb-2 shadow" src="assets/logos-lojas/loja-teste.png" /><br>
+    <span class="text-center subtitulo cinza">Frete: R$ 10,00</span><br>
+    <span class="text-center subtitulo preto upper">mais informações</span>
+
   </div>
 
 </div>
@@ -21,37 +21,62 @@
     <div class="row" style="border-top: 1px solid rgba(0,0,0,.1);
   padding-top: 20px;">
 
-      <div class="col-md-3 my-2" *ngFor="let produto of produtos | async">
-        <div class="prod">  
+
+<div class="col-md-3 my-2" *ngFor="let produto of produtos | async">
+    <div class="prod">
 
 
-          <a [routerLink]="['/oferta', produto.id_produto]">
-            <figure class="prod_img-box">
-            <img [src]="produto.imagens[0]" class="img-fluid prod_img" />
-            <img [src]="produto.imagens[1]" class="img-fluid prod_img second_img" />
-            </figure>
-          </a>
-          
-          <div class="text-center">
-            <span class="texto preto upper">{{ produto.nome }}</span>
-          <br>
+      <a [routerLink]="['/oferta', produto.id_produto]">
+        <figure class="prod_img-box">
+          <img [src]="produto.imagens[0]" class="img-fluid rounded prod_img" />
+          <img [src]="produto.imagens[1]" class="img-fluid rounded prod_img second_img" />
+        </figure>
+      </a>
 
-            <span class="texto preto">Loja Teste</span>
-            <!-- <span class="texto preto">{{ produto.loja.charAt(0).toUpperCase() + produto.loja.slice(1).toLowerCase() }}</span> -->
-          <br>
-
-          
-            <span class="subtitulo cinza align-text-bottom">{{ produto.valor | currency:'BRL':true }}</span>
-          </div>
-
-          <button class="btn_ofer upper" [routerLink]="['/oferta', produto.id_produto]">EXPERIMENTE</button>
-
-        </div>
+      <div class="prod_title-box" >
+        <div class="prod_title subtitulo preto caps text-center">{{ produto.nome }}</div>
       </div>
 
-<!-- estamos cadastrando as melhores lojas
-video do lojista
-link do cadastro -->
+      <div class="justify-content-center">            
+        <p class="text-center texto cinza">Loja Teste</p> 
+        <!-- <span class="texto cinza">{{ produto.loja.charAt(0).toUpperCase() + produto.loja.slice(1).toLowerCase() }}</span> -->
+     
+        <p class="align-text-top subtitulo preto">{{ produto.valor | currency:'BRL':true }}</p>
+      </div>
+
+      <button class="btn_ofer upper" [routerLink]="['/oferta', produto.id_produto]">EXPERIMENTE</button>
+      <!-- <button class="btn_ofer upper" data-toggle="modal" data-target="#modalOferta">EXPERIMENTE</button> -->
+
+
+    </div>
+    <!-- modal Ofertas -->
+    <!-- <div class="modal fade" id="modalOferta" tabindex="-1" role="dialog">
+
+          <div class="modal-dialog modal-xl" role="document">
+              <div class="modal-content justify-content-center">
+
+                  <div class="modal-header">
+                      <span class="texto preto upper">{{ produto.nome }}</span>
+                      <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                  </div>
+
+                  <div class="modal-body d-flex">
+                    <app-oferta >
+                      <div [routerLink]="['/oferta', produto.id_produto]"></div>
+                    </app-oferta>
+                  </div>
+
+                  <div class="modal-footer">
+                      <span class="texto preto">Gobag, Inc. | E-mail: atendimento@gobagbrasil.com.br | Fone: 4020.9500</span>
+                  </div>
+              </div>
+          </div>
+        </div> -->
+  </div>
+
+      
+
+      
     </div>
   </div>
 </div>

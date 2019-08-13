@@ -106,6 +106,10 @@ npm install pagarme
 npm install ngx-chips --save
 
 
+$ npm install ngx-image-zoom --save
+
+
+
 
 
 

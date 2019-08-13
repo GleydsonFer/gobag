@@ -1,0 +1,70 @@
+*{
+    font-family: museo-sans, sans-serif;
+    font-style: normal;
+    font-weight: 100;   
+}
+.nome_produto{
+    font-weight:700;
+    font-size: 0.8em;
+}
+.nome_loja{
+    font-size: 0.8em;
+    font-weight: 700;
+}
+.preco{
+    font-size: 0.8em;
+    font-weight: 700;
+}
+.quant_pecas{
+    font-size: 0.8em;
+    padding: 3px 20px 0px 20px;
+    background-color:white;
+    border: solid;
+    border-color:#808080;
+    border-width: 1px;
+    color:black;
+    margin-top:5px;
+    margin-bottom: 10px;
+    
+}
+.btn_decre{
+    font-size: 0.9em;
+    padding: 0px 17px 5px 17px;
+    background-color:white;
+    border: solid;
+    border-color:#808080;
+    border-width: 1px;
+    color:black;
+    margin-top:5px;
+    margin-bottom: 10px;
+}
+.btn_decre:hover{
+    background-color:#808080;
+}
+.btn_incre{
+    font-size: 0.8em;
+    padding: 0px 15px;
+    background-color:white;
+    border: solid;
+    border-color:#808080;
+    border-width: 1px;
+    color:black;
+    margin-top:5px;
+    margin-bottom: 10px;
+}
+.btn_incre:hover{
+    background-color:#808080;
+}
+.image{
+    max-width:250px;
+    max-height:250px;
+    width: auto;
+    height: auto;
+    border-radius: 14px;
+}
+.box-image{
+    justify-content: center;
+}
+.tamanho{
+    font-weight:700;
+}

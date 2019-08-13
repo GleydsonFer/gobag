@@ -25,6 +25,7 @@ export class OfertaComponent implements OnInit, OnDestroy {
   public aux: any[] = ['selecionado', 'valor']
 
   public naoLogado: any;
+  imagem_selecionada: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -45,17 +46,22 @@ export class OfertaComponent implements OnInit, OnDestroy {
         for (var [key, value] of Object.entries(prod[0].tamanho)) {
           this.tamanho.push({ key, value, selecionado: false })
         }
-        console.log(this.tamanho)
+        this.tamanho.reverse();
+        
+        let aux: any;
+        // troca os tamanhos para a ordem certa
+        aux = this.tamanho[3];
+        this.tamanho[3] = this.tamanho[4];
+        this.tamanho[4] = aux;
+
+        console.log(this.tamanho);
         this.prod = prod[0];
+        this.imagem_selecionada = prod[0].imagens[0];
       })
-
     })
-
   }
 
-  ngOnDestroy() {
-
-  }
+  ngOnDestroy() { }
 
   // Função para adicionar itens ao carrinho
   public adicionarItemCarrinho(): void {
@@ -112,6 +118,28 @@ export class OfertaComponent implements OnInit, OnDestroy {
         item.selecionado = false
       }
     })
+  }
+
+  mudarImagem(i: number){
+    this.imagem_selecionada = this.prod.imagens[i];
+  }
+
+  prevImage(){
+    let i = this.prod.imagens.indexOf(this.imagem_selecionada);
+    if(i > 0){
+      this.imagem_selecionada = this.prod.imagens[i-1];
+    }else {
+      this.imagem_selecionada = this.prod.imagens[this.prod.imagens.length-1];
+    }
+  }
+
+  nextImage(){
+    let i = this.prod.imagens.indexOf(this.imagem_selecionada);
+    if(i < this.prod.imagens.length-1){
+      this.imagem_selecionada = this.prod.imagens[i+1];
+    }else {
+      this.imagem_selecionada = this.prod.imagens[0];
+    }
   }
 
 }

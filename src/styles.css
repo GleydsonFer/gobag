@@ -38,7 +38,7 @@ h3 {
 }
 
 .caps{
-    text-transform: initial;
+    text-transform: capitalize;
 }
 
 .upper{
@@ -65,6 +65,12 @@ h3 {
     font-style: normal;
     font-weight: 100;
     
+}
+.subtexto{
+    font-family: "Museo Sans";
+    font-style: normal;
+    font-weight: 100;
+    font-size: 0.6em;
 }
 
 
