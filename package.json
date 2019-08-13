@@ -25,6 +25,8 @@
     "@types/jquery": "^3.3.31",
     "animate.css": "^3.7.2",
     "bootstrap": "^4.0.0-beta",
+    "brmasker-ionic-3": "^1.6.3",
+    "brmasker4": "^1.0.3",
     "core-js": "^2.5.4",
     "firebase": "^6.2.4",
     "jquery": "^3.4.1",

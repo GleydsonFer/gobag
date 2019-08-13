@@ -24,19 +24,21 @@ export class CarrinhoService {
         private afs: AngularFirestore,
         private afauth: AngularFireAuth
     ) {
-        
+
 
         this.afauth.auth.onAuthStateChanged(user => {
             this.usuario = user;
-            this.getCarrinhoByEmail(user.email)
-                .subscribe((car: any) => {
-                    this.carrinho = car[0];
-                    if (car.email == user.email) {
-                        car.forEach((element: any) => {
-                            this.itens = element.itens
-                        })
-                    }
-                })
+            if (user != null) {
+                this.getCarrinhoByEmail(user.email)
+                    .subscribe((car: any) => {
+                        this.carrinho = car[0];
+                        if (car.email == user.email) {
+                            car.forEach((element: any) => {
+                                this.itens = element.itens
+                            })
+                        }
+                    })
+            }
         })
     }
 
@@ -59,7 +61,7 @@ export class CarrinhoService {
         console.log(user.email);
         console.log(this.itens);
 
-        if(isUndefined(this.carrinho)){
+        if (isUndefined(this.carrinho)) {
             console.log('entrou no undefined');
             this.carrinho = {
                 email: '',

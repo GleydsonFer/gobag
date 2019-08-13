@@ -8,13 +8,13 @@
     <div class="row ml-4 mb-3 mt-3">
       <div class="endereco col-12 mb-2">ENDEREÇO DE ENTREGA: </div>
       <div class="endereco2 col-12" *ngIf="usuario != null">
-        <em>{{usuario.endereco.toUpperCase()}}, {{usuario.numero}} </em>
+        <em>{{ usuario.endereco.toUpperCase() }}, {{ usuario.numero }} </em>
       </div>
-      <div class="col-12">
-        <em *ngIf="usuario.bairro">{{usuario.bairro.toUpperCase()}} </em>
+      <div class="col-12" *ngIf="usuario != null">
+        <em>{{ usuario.bairro.toUpperCase() }} </em>
       </div>
-      <div class="col-12">
-        <em>{{usuario.complemento.toUpperCase()}} </em>
+      <div class="col-12" *ngIf="usuario != null">
+        <em>{{ usuario.complemento.toUpperCase() }} </em>
       </div>
     </div>
 
@@ -24,16 +24,50 @@
     <form (submit)="confirmarCompra()" [formGroup]="dados_pagamento">
 
       <div class="form-group inputs">
-        <input formControlName="card_number" type="text" class="form-control mb-3" placeholder="Número do cartão">
-        <input formControlName="card_holder_name" type="text" class="form-control mb-3" placeholder="Nome e sobrenome">
-        <div class="d-flex mb-3">
-          <input formControlName="card_expiration_date" type="text" class="form-control mr-3"
-            placeholder="Data de vencimento">
-          <input formControlName="card_cvv" type="text" class="form-control" placeholder="Código de segurança">
+        <div class="input-group">
+            <input formControlName="card_number" type="text" class="form-control mb-3 card_number" #card_number
+            placeholder="Número do cartão" [brmasker]="{mask:'0000 0000 0000 0000', type: 'num', len:19}" 
+            (keyup)="updateFieldValue('card_number', card_number.value)" [ngClass]="aplicaCssErro('card_number')" >
+            <div *ngIf="this.dados_pagamento.get('card_number').invalid && this.dados_pagamento.get('card_number').touched" class="invalid-feedback">
+                cartão inválido
+            </div>
         </div>
-        <input formControlName="card_cpf" type="text" class="form-control mb-3" placeholder="CPF do titular do cartão">
-      </div>
+        <div class="input-group">
+            <input formControlName="card_holder_name" type="text" class="form-control mb-3 card_holder_name"
+            placeholder="Nome e sobrenome"  [ngClass]="aplicaCssErro('card_holder_name')" >
+            <div *ngIf="this.dados_pagamento.get('card_holder_name').invalid && this.dados_pagamento.get('card_holder_name').touched" class="invalid-feedback">
+                campo não pode estar vazio
+            </div>
+        </div>
+        <div class="d-flex mb-3">
 
+        <div class="input-group">
+            <input formControlName="card_expiration_date" type="text" class="form-control mr-3" #card_expiration_date
+            placeholder="Data de vencimento" [brmasker]="{mask:'00/00',type: 'num', len:5}"
+            (keyup)="updateFieldValue('card_expiration_date', card_expiration_date.value)" [ngClass]="aplicaCssErro('card_expiration_date')">
+            <div *ngIf="this.dados_pagamento.get('card_expiration_date').invalid && this.dados_pagamento.get('card_expiration_date').touched" class="invalid-feedback">
+                data inválida
+            </div>
+          </div>
+        
+          <div class="input-group">
+              <input formControlName="card_cvv" type="text" class="form-control" #card_cvv
+              placeholder="Código de segurança" [brmasker]="{type: 'num', len:3}"
+              (keyup)="updateFieldValue('card_cvv', card_cvv.value)" [ngClass]="aplicaCssErro('card_cvv')">
+              <div *ngIf="this.dados_pagamento.get('card_cvv').invalid && this.dados_pagamento.get('card_cvv').touched" class="invalid-feedback">
+                  Código Segurança inválido
+              </div>
+          </div>
+        </div>
+        <div class="input-group">
+            <input formControlName="card_cpf" type="text" class="form-control mb-3" #card_cpf
+            placeholder="CPF do titular do cartão" [brmasker]="{mask:'000.000.000-00', len:14, type:'num'}"
+            (keyup)="updateFieldValue('card_cpf', card_cpf.value)" [ngClass]="aplicaCssErro('card_cpf')">
+            <div *ngIf="this.dados_pagamento.get('card_cpf').invalid && this.dados_pagamento.get('card_cpf').touched" class="invalid-feedback">
+                cpf inválido
+            </div>
+        </div>
+      </div>
     </form>
 
 

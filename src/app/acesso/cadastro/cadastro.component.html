@@ -1,108 +1,157 @@
-<div class="card" style="width: 20rem;">
-  <div class="card-body">
-    <div class="card-title"></div>
-    
-    <form [formGroup]="formulario" (ngSubmit)="cadastrarUsuario()">
-      <div class="form-group">
-        <input 
-          type="email" 
-          class="form-control" 
-          placeholder="E-mail"
-          formControlName="email"
-        >
-        <small *ngIf="formulario.get('email').valid && formulario.get('email').touched" class="form-text text-success"></small>
-        <small *ngIf="!formulario.get('email').valid && formulario.get('email').touched" class="form-text text-danger">Email inválido!</small>
+<div class="conteudo">
 
-      </div>
+  <form class="row" (submit)="cadastrarUsuario()" [formGroup]="formulario">
+    <div class="col-sm-12 topo">
+      <h4>CADASTRO</h4>
+      <h4>NOVO POR AQUI</h4>
+      <h5>Precisamos de mais algumas informações para criar sua conta GOBAG</h5>
+    </div>
+    <div class="col-12">
+      <div class="col-6 inputs">
+        <div class="form-row">
+          <div class="form-group col">
+            <div class="input-group">
+              <input formControlName="nome" type="text" class="form-control" placeholder="NOME"
+                [ngClass]="aplicaCssErro('nome')">
+              <div *ngIf="this.formulario.get('nome').invalid && this.formulario.get('nome').touched"
+                class="invalid-feedback">
+                campo inválido
+              </div>
+            </div>
+          </div>
+          <div class="form-group col">
+            <div class="input-group">
+              <input formControlName="sobrenome" type="text" class="form-control" placeholder="SOBRENOME"  [ngClass]="aplicaCssErro('sobrenome')">
+              <div *ngIf="this.formulario.get('sobrenome').invalid && this.formulario.get('sobrenome').touched"
+                class="invalid-feedback">
+                campo inválido
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col">
+            <div class="input-group">
+                <input formControlName="nascimento" #nascimento (keyup)="updateFieldValue('nascimento', nascimento.value)" type="text" [brmasker]="{mask:'00/00/0000', len:10, type: 'num'}" class="form-control" placeholder="NASCIMENTO" [ngClass]="aplicaCssErro('nascimento')">
+                <div *ngIf="this.formulario.get('nascimento').invalid && this.formulario.get('nascimento').touched"
+                  class="invalid-feedback">
+                  campo inválido
+                </div>
+              </div>
+          </div>
+          <div class="form-group col">
+            <div class="input-group">
+                <input formControlName="celular" name="phone" [brmasker]="{phone: true}"  #celular (keyup)="updateFieldValue('celular', celular.value)"   class="form-control" placeholder="CELULAR" [ngClass]="aplicaCssErro('celular')">
+                <div *ngIf="this.formulario.get('celular').invalid && this.formulario.get('celular').touched"
+                  class="invalid-feedback">
+                  telefone inválido
+                </div>
+              </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="input-group">
+              <input class="email" formControlName="email" type="text" class="form-control" placeholder="EMAIL" [ngClass]="aplicaCssErro('email')">
+              <div *ngIf="this.formulario.get('email').invalid && this.formulario.get('email').touched"
+                class="invalid-feedback">
+                email inválido
+              </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="input-group">
+              <input id='cep'  #inputCep (keyup)="buscarCep(inputCep.value)" [brmasker]="{mask:'00.000-000', len:10, type: 'num'}" formControlName="cep"  type="text" class="form-control" placeholder="CEP" [ngClass]="aplicaCssErro('cep')">
+              <div *ngIf="this.formulario.get('cep').invalid && this.formulario.get('cep').touched"
+                class="invalid-feedback">
+                cep inválido
+              </div>
+          </div>
+        </div>
+        <div class="form-row ">
+          <div class="form-group col-9">
+            <div class="input-group">
+              <input type="text" formControlName="endereco" class="form-control" [ngClass]="aplicaCssErro('endereco')"
+                placeholder="ENDERECO">
+              <div *ngIf="this.formulario.get('endereco').invalid && this.formulario.get('endereco').touched"
+                class="invalid-feedback">
+                O campo ENDEREÇO deve conter no mínimo 3 digitos
+              </div>
+            </div>
+          </div>
+          <div class="form-group col-3">
+            <div class="input-group">
+              <input type="text" formControlName="numero" class="form-control" [ngClass]="aplicaCssErro('numero')"
+                placeholder="NUMERO">
+              <div *ngIf="this.formulario.get('numero').invalid && this.formulario.get('numero').touched"
+                class="invalid-feedback">
+                O campo NÚMERO deve conter no mínimo 1 digitos
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <input formControlName="complemento" type="text" class="form-control" placeholder="COMPLEMENTO">
+        </div>
 
-      <div class="form-group">
-        <input 
-          type="text"
-          class="form-control" 
-          placeholder="Nome completo"
-          formControlName="nome_completo"
-        >
-        <small *ngIf="formulario.get('nome_completo').valid && formulario.get('nome_completo').touched" class="form-text text-success"></small>
-        <small *ngIf="!formulario.get('nome_completo').valid && formulario.get('nome_completo').touched" class="form-text text-danger">Nome completo inválido!</small>
-
-      </div>
-
-      <div class="form-group">
-        <input 
-          type="text"
-          class="form-control" 
-          placeholder="Nome de usuário"
-          formControlName="nome_usuario"
-        >
-        <small *ngIf="formulario.get('nome_usuario').valid && formulario.get('nome_usuario').touched" class="form-text text-success"></small>
-        <small *ngIf="!formulario.get('nome_usuario').valid && formulario.get('nome_usuario').touched" class="form-text text-danger">Nome do usuario inválido!</small>
-
-      </div>
-
-      <div class="form-group">
-        <input 
-          type="password"
-          class="form-control" 
-          placeholder="Senha"
-          formControlName="senha"
-        > 
-        <small *ngIf="formulario.get('senha').valid && formulario.get('senha').touched" class="form-text text-success"></small>
-        <small *ngIf="!formulario.get('senha').valid && formulario.get('senha').touched" class="form-text text-danger">Senha inválida!</small>
-
-      </div>
+        <div class="form-row">
+          <div class="form-group col">
+            <div class="input-group">
+                <input formControlName="bairro" type="text" class="form-control" placeholder="BAIRRO" [ngClass]="aplicaCssErro('bairro')">
+                <div *ngIf="this.formulario.get('bairro').invalid && this.formulario.get('bairro').touched"
+                  class="invalid-feedback">
+                  campo inválido
+                </div>
+            </div>
+          </div>
+          <div class="form-group col">
+            <div class="input-group">
+                <input formControlName="cidade" type="text" class="form-control" placeholder="CIDADE" [ngClass]="aplicaCssErro('cidade')">
+                <div *ngIf="this.formulario.get('cidade').invalid && this.formulario.get('cidade').touched"
+                  class="invalid-feedback">
+                  campo inválido
+                </div>
+            </div>
+          </div>
+          <div class="form-group col">
+            <div class="input-group">
+                <input formControlName="estado" type="text" class="form-control" placeholder="ESTADO" [ngClass]="aplicaCssErro('estado')">
+                <div *ngIf="this.formulario.get('estado').invalid && this.formulario.get('estado').touched"
+                  class="invalid-feedback">
+                  campo inválido
+                </div>
+            </div>
+          </div>
+        </div>
 
         <div class="form-group">
-          <input 
-            type="text"
-            class="form-control" 
-            placeholder="Endereco"
-            formControlName="endereco"
-          >
-          <small *ngIf="formulario.get('endereco').valid && formulario.get('endereco').touched" class="form-text text-success"></small>
-        <small *ngIf="!formulario.get('endereco').valid && formulario.get('endereco').touched" class="form-text text-danger">Endereço inválido!</small>
-
+          <div class="input-group">
+              <input formControlName="senha" type="password" class="form-control" placeholder="SENHA" [ngClass]="aplicaCssErro('senha')">
+              <div *ngIf="this.formulario.get('senha').invalid && this.formulario.get('senha').touched"
+                class="invalid-feedback">
+                A senha deve conter no mínino 6 caracteres
+              </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="input-group">
+              <input formControlName="confirmSenha" type="password" class="form-control" placeholder="CONFIRMAR SENHA" [ngClass]="aplicaCssErro('confirmSenha')">
+              <div *ngIf="this.formulario.get('confirmSenha').invalid && this.formulario.get('confirmSenha').touched"
+                class="invalid-feedback">
+                senha não confere
+              </div>
+          </div>
+        </div>
       </div>
 
-      <div class="form-group">
-        <input 
-          type="text"
-          class="form-control" 
-          placeholder="Numero"
-          formControlName="numero"
-        >
-        <small *ngIf="formulario.get('numero').valid && formulario.get('numero').touched" class="form-text text-success"></small>
-        <small *ngIf="!formulario.get('numero').valid && formulario.get('numero').touched" class="form-text text-danger">Número inválido!</small>
-
     </div>
 
-    <div class="form-group">
-      <input 
-        type="text"
-        class="form-control" 
-        placeholder="Complemento"
-        formControlName="complemento"
-      >
-      <small *ngIf="formulario.get('complemento').valid && formulario.get('complemento').touched" class="form-text text-success"></small>
-      <small *ngIf="!formulario.get('complemento').valid && formulario.get('complemento').touched" class="form-text text-danger">Complemento inválido!</small>
-
+    <div class="col-12 text-center mt-4">
+      <p class="small text-danger text-center">{{mensagemErroCad}}</p>
+      <button type="submit" [disabled]="this.formulario.invalid"
+        class="btn btn-primary btn_salvar">ENVIAR</button><br>
+        <!-- <div class="btn btn-primary" (click)="console(this.formulario)"></div> -->
+      <span>JÁ POSSUI CONTA?</span> <span class="hover" (click)="exibirPainelLogin()"> FAÇA LOGIN</span>
     </div>
-<div> <!--DIV DO ERRO-->
-  <p class="small text-danger text-center">{{mensagemErroCad}}</p>
-</div> <!-- /DIV DO ERRO-->
-      
-      <button type="submit" class="btn btn-primary btn-sm btn-block">Cadastre-se</button>
-    </form>
-    <hr />
+  </form>
 
-    <p class="small text-center">Ao cadastrar-se, você concorda com nossos <b>Termos</b> e <b>Política de Privacidade</b>.</p>
-
-  </div>
-</div>
-<br />
-<div class="card" style="width: 20rem;">
-  <div class="card-body">
-    <p class="card-text">
-      Tem uma conta? <span (click)="exibirPainelLogin()" class="card-link">Faça login</span>
-    </p> 
-  </div>
 </div>

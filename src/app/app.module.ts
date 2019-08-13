@@ -32,6 +32,7 @@ import { AvaliacaoComponent } from './oferta/avaliacao/avaliacao.component';
 import { DescricaoReduzida } from './util/descricao-reduzida.pipe';
 import { OrdemCompraComponent } from './ordem-compra/ordem-compra.component';
 import localePtBr from '@angular/common/locales/pt';
+import { BrMaskerModule } from 'brmasker-ionic-3';
 
 import { registerLocaleData } from '@angular/common';
 import { from } from 'rxjs';
@@ -79,6 +80,7 @@ import { AcompanharPedidoComponent } from './acompanhar-pedido/acompanhar-pedido
 import { ForgetSenhaComponent } from './acesso/forget-senha/forget-senha.component';
 import { NgxImageZoomModule } from 'ngx-image-zoom';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { InstrucoesComponent } from './instrucoes/instrucoes.component';
 registerLocaleData(localePtBr);
 
 @NgModule({
@@ -124,6 +126,7 @@ registerLocaleData(localePtBr);
     CadastroLojistaComponent,
     AcompanharPedidoComponent,
     ForgetSenhaComponent,
+    InstrucoesComponent,
     //ajustanto o erro ngIf
 
     //
@@ -149,6 +152,7 @@ registerLocaleData(localePtBr);
     AngularFireStorageModule,
     FormsModule,
     TagInputModule,
+    BrMaskerModule,
     NgxImageZoomModule.forRoot() 
   ],
   providers: [
