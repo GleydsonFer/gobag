@@ -1,7 +1,7 @@
-.lojas {
+ .lojas {
     margin-top: 50px;
     
-}
+} 
 
  .lojas_item {
     border-radius: 10px;
@@ -15,8 +15,7 @@
 } 
 
 .lojas_link {
-    display: block;
-    padding: 25px; 
+    padding: 10px; 
     display: block;
     border-radius: 8px;
 }
