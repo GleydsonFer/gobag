@@ -105,8 +105,13 @@ npm install pagarme
 
 npm install ngx-chips --save
 
+npm install ajax
 
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
+npm install axios
+
+npm i @types/jquery
 
 
 

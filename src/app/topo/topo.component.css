@@ -1,8 +1,8 @@
 
 nav{
-    font-family: museo-sans, sans-serif;
+    /* font-family: museo-sans, sans-serif;
     font-style: normal;
-    font-weight: 100;
+    font-weight: 100; */
 }
 
 .navbar-toggler{
@@ -35,8 +35,7 @@ nav{
 }
 
 .logo{
-    width: 80px;
-    
+    width: 80px;    
     margin-left: 30px; 
 }
 
@@ -83,15 +82,13 @@ nav{
     font-size: 0.9em;
 }
 .dropdown-menu{
-    font-family: museo-sans, sans-serif;
-    font-style: normal;
-    font-weight: 100;
     animation-duration: 0.5s;
 }
 
 .dropdown-menu li a{
-    color:black
+    color:black;
 }
+
 .list-group{
     position: absolute;
     z-index: 999;
@@ -101,12 +98,13 @@ nav{
 }
 
 .list-group-item a {
-    font-family: 'Lato', sans-serif;
+    font-family: "Museo Sans";
     color: black;
-    font-size: 18px;
+    font-size: 0.9rem;
     padding: 12px 20px;
     display: block;
     transition: all ease-in .5;
+
 }
 
 

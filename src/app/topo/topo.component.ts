@@ -9,7 +9,7 @@ import '../util/rxjs-extensions'
 import { OfertasService } from '../ofertas.service'
 import { Oferta } from '../shared/oferta.model'
 import { ActivatedRoute, Params } from '@angular/router';
-import CarrinhoService from '../carrinho.service';
+import {CarrinhoService} from '../carrinho.service';
 import { BehaviorSubject } from 'rxjs';
 
 @Component({

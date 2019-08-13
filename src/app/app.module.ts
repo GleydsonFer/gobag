@@ -9,7 +9,6 @@ import { Autenticacao } from './autenticacao.service'
 import { CadastroComponent } from './acesso/cadastro/cadastro.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AcessoComponent } from './acesso/acesso.component';
-import { BannerComponent } from './acesso/banner/banner.component';
 import { LoginComponent } from './acesso/login/login.component';
 
 //
@@ -40,7 +39,7 @@ import { TeenComponent } from './teen/teen.component';
 import { CalcadosComponent } from './calcados/calcados.component';
 import { BannerSlideComponent } from './banner-slide/banner-slide.component';
 import { OrdemCompraSucessoComponent } from './ordem-compra-sucesso/ordem-compra-sucesso.component';
-import CarrinhoService from './carrinho.service'
+import {CarrinhoService} from './carrinho.service'
 import { ReactiveFormsModule } from '@angular/forms'
 
 import { TendenciasComponent } from './tendencias/tendencias.component';
@@ -68,7 +67,7 @@ import { DadosdepagamentoComponent } from './dadosdepagamento/dadosdepagamento.c
 
 import { OrdemPagamentoComponent } from './ordem-pagamento/ordem-pagamento.component';
 import { StatusPedidoComponent } from './status-pedido/status-pedido.component';
-import { CarouselOrdemCompraComponent } from './ordem-compra/carousel-ordem-compra/carousel-ordem-compra.component';
+import { ItemCarrinhoCompraComponent } from './ordem-compra/item-carrinho-compra/item-carrinho-compra.component';
 import { MenuUsuarioComponent } from './acesso/menu-usuario/menu-usuario.component';
 import { TermosDeUsoComponent } from './termos-de-uso/termos-de-uso.component';
 import { PoliticasDePrivacidadeComponent } from './politicas-de-privacidade/politicas-de-privacidade.component';
@@ -76,7 +75,13 @@ import { PoliticasDeDevolucaoComponent } from './politicas-de-devolucao/politica
 import { OrdemDevolucaoComponent } from './ordem-devolucao/ordem-devolucao.component';
 import { CarouselOrdemDevolucaoComponent } from './ordem-devolucao/carousel-ordem-devolucao/carousel-ordem-devolucao.component';
 import { CadastroLojistaComponent } from './cadastro-lojista/cadastro-lojista.component';
+import { AcompanharPedidoComponent } from './acompanhar-pedido/acompanhar-pedido.component';
+import { ForgetSenhaComponent } from './acesso/forget-senha/forget-senha.component';
 
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import {Component} from '@angular/core';
+
+import * as $ from 'jquery';
 
 registerLocaleData(localePtBr);
 
@@ -106,7 +111,6 @@ registerLocaleData(localePtBr);
     Tendencia02Component,
     Tendencia03Component,
     AcessoComponent,
-    BannerComponent,
     LoginComponent,
     CadastroComponent,
     Loja01Component,
@@ -116,7 +120,7 @@ registerLocaleData(localePtBr);
     DadosdepagamentoComponent,
     OrdemPagamentoComponent,
     StatusPedidoComponent,
-    CarouselOrdemCompraComponent,
+    ItemCarrinhoCompraComponent,
     MenuUsuarioComponent,
     TermosDeUsoComponent,
     PoliticasDePrivacidadeComponent,
@@ -124,6 +128,8 @@ registerLocaleData(localePtBr);
     OrdemDevolucaoComponent,
     CarouselOrdemDevolucaoComponent,
     CadastroLojistaComponent,
+    AcompanharPedidoComponent,
+    ForgetSenhaComponent,
     //ajustanto o erro ngIf
 
     //
@@ -154,12 +160,14 @@ registerLocaleData(localePtBr);
     CarrinhoService, { provide: LOCALE_ID, useValue: 'pt-Br' },
     OfertasService,
     Autenticacao,
-    AutenticacaoGuard
+    AutenticacaoGuard,
 
       // possivel solução do problema das rotas ao atualizar:
-      // provide: LocationStrategy,
-      // useClass: HashLocationStrategy
-      
+      {
+       provide: LocationStrategy,
+       useClass: HashLocationStrategy
+       
+      }
   ],
   bootstrap: [
     AppComponent
@@ -171,6 +179,22 @@ registerLocaleData(localePtBr);
   ]
   //
 })
+
+// @Component({
+//   selector: 'path-location',
+//   providers: [Location, {provide: LocationStrategy, useClass: PathLocationStrategy}]
+  // template: `
+  //   <h1>PathLocationStrategy</h1>
+  //   Current URL is: <code>{{location.path()}}</code><br>
+  //   Normalize: <code>/foo/bar/</code> is: <code>{{location.normalize('foo/bar')}}</code><br>
+  // `
+// })
+// export class PathLocationComponent {
+  // location: Location;
+  // constructor(location: Location) { this.location = location; }
+// }
 export class AppModule { }
+
+
 
 

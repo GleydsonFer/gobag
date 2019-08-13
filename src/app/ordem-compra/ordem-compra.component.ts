@@ -1,221 +1,148 @@
+import { Router } from '@angular/router';
+import { AutenticacaoGuard } from './../autenticacao-guard.service';
 import { OrdemCompraService } from '../ordem-compra.service';
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { ToastrService } from 'ngx-toastr';
-import CarrinhoService from '../carrinho.service';
+import { CarrinhoService } from '../carrinho.service';
 import { Pedido } from '../shared/pedido.model';
 import { UsuarioService } from './../usuario.service';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 
 
-//import {PagarMeCheckout} from https://assets.pagar.me/checkout/checkout.js;
+// import {PagarMeCheckout} from https://assets.pagar.me/checkout/checkout.js;
 // import { pagarme } from '../../../node_modules/pagarme'
 
 import { Carrinho } from '../shared/carrinho.model';
 import { Observable } from 'rxjs';
+import { Pagamento } from '../shared/pagamento.model';
+import { PagamentoService } from '../pagamento.service';
 
 @Component({
   selector: 'app-ordem-compra',
   templateUrl: './ordem-compra.component.html',
   styleUrls: ['./ordem-compra.component.css'],
-  providers:[OrdemCompraService]
+  providers: [OrdemCompraService]
 })
 export class OrdemCompraComponent implements OnInit {
 
-  public usuario: any;
-  public idPedidoCompra: string;
-  public formularioCartao : FormGroup;
-  public dadosCartao: any;
+  usuario: any;
+  idPedidoCompra: string;
+  formularioCartao: FormGroup;
+  dadosCartao: any;
   carrinhoObservable: Observable<any>;
   carrinho: Carrinho;
-
-  // public PagarMeCheckout: pagarme;
+  pagamento: Pagamento;
+  dados_pagamento: FormGroup = new FormGroup({
+    'card_number': new FormControl(null, [Validators.required]),
+    'card_holder_name': new FormControl(null, [Validators.required]),
+    'card_expiration_date': new FormControl(null, [Validators.required]),
+    'card_cvv': new FormControl(null, [Validators.required]),
+    'card_cpf': new FormControl(null, [Validators.required])
+  })
 
   constructor(
-    
     private carrinhoService: CarrinhoService,
     private userService: UsuarioService,
     private afAuth: AngularFireAuth,
     private toastr: ToastrService,
-    private formBuilder: FormBuilder,
-    private ordemCompraService : OrdemCompraService,
-  ) { }
-  
-
-  ngOnInit() {
-
-    this.formularioCartao = this.formBuilder.group({
-      card_number : [],
-      card_holder_name:[],
-      card_expiration_date:[],
-      card_cvv:[],
-    })
-
-  /************************************* */
-  /************************************* */
-  /************************************* */
-  /*************** PAGARME ************* */
-  /************************************* */
-  /************************************* */
-  /************************************* */
-  /************************************* */
-
-    //const pagarme = require('pagarme/browser')
+    private ordemCompraService: OrdemCompraService,
+    private autenticacaoGuard: AutenticacaoGuard,
+    private Router: Router,
+    private pagamentoService: PagamentoService
+  ) {
 
     this.afAuth.auth.onAuthStateChanged(user => {
       console.log(user.emailVerified)
       this.userService.getUsuario(user.email).subscribe((usuario) => {
         usuario.forEach(usuario => {
           this.usuario = usuario
-          
         })
         // recupera  carrinho a partir do banco de dados
         this.carrinhoObservable = this.carrinhoService.getCarrinhoByEmail(user.email);
         this.carrinhoObservable.subscribe(car => {
           this.carrinho = car[0];
-          console.log('ngOnInit', this.carrinho);
         })
       })
     })
-    
-  
   }
 
-  // comunicacao-pagarme
-
-  public executa(pedido:Pedido) : void {
-
-    
-
-    console.log(pedido)
-
-    
-    
-    const pagarme = require ('pagarme/browser' )
-    pagarme.client.connect({ api_key: 'ak_test_KN3qLDMn4KnpRgHCidxb7T9xfVcSz0' })
-    // //     // Mostrar as transações realizadas
-    // //     //   .then(client => {
-    // //     //     return client.transactions.all()
-    // //     //   })
-    // //     //   .then(console.log);
-
-    //     // Criar uma transação simples
-        .then(client => client.transactions.create({
-            capture: 'false',
-            amount: <number>pedido.valor_total * 100,
-            card_number: this.dadosCartao.card_number,
-            card_holder_name: this.dadosCartao.card_holder_name,
-            card_expiration_date: this.dadosCartao.card_expiration_date,
-            card_cvv: this.dadosCartao.card_cvv,
-            
-            /**/
-            // amount:999999,
-            // card_number: this.dadosCartao.card_number,
-            // card_holder_name: this.dadosCartao.card_holder_name,
-            // card_expiration_date: this.dadosCartao.card_expiration_date,
-            // card_cvv: this.dadosCartao.card_cvv,
-            /**/
-
-
-            billing: {
-              name: "TESTE LOJISTA",
-              address: {
-                country: "br",
-                state: "ce",
-                city: "Fortaleza",
-                neighborhood: "Aldeota",
-                street: "Rua A",
-                street_number: "9999",
-                zipcode: "06714360"
-              }
-            }, 
-            split_rules: [
-              {
-                recipient_id: "re_cjybj6gbs013aif6e279j7xh8",
-                percentage: 20,
-                liable: 'true',
-                charge_processing_fee: 'true'
-              },{
-                recipient_id: "re_cjyhakyt403s8hx6evd3cuzmg",
-                percentage: 80,
-                liable: 'true',
-                charge_processing_fee: 'true'
-              }
-            ]
-        })
-        ).then(console.log('Transação efetuada com sucesso!'))
-        .catch(error => console.log(JSON.stringify(error)))
-        console.log(this.formularioCartao)
+  ngOnInit() {
+    if (!this.autenticacaoGuard.canActivateVerOfertaNaoLogado()) {
+      this.Router.navigate(['/acesso'])
+    }
   }
 
-  public salvarDadosCartao(): void {
+  // CONFIRMAÇÃO DO PEDIDO DE COMPRA
+  public confirmarCompra() {
 
-     this.dadosCartao = this.formularioCartao.value
-     //criar 'pedido' para mandar por parametro
-
-     let pedido: Pedido = new Pedido(
-        
-      // email
-      this.usuario.email,
-      // endereco
-      this.usuario.endereco,
-      // numero 
-      this.usuario.numero,
-      // complemento
-      this.usuario.complemento,
-      // forma de pagamento
-      '',
-      // data do pedido
-      new Date(Date.now()),
-      // status
-      'processando',
-      // itens do carrinho
-      this.carrinhoService.exibirItens().map((obj)=> {return Object.assign({}, obj)}),
-      // valor total
-      this.carrinhoService.totalCarrinhoCompras(),
-      // desconto?
-      0
+    // criar 'pedido' com os dados da compra e do cliente
+    let pedido: Pedido = new Pedido(
+      this.usuario.email, // email
+      this.usuario.endereco, // endereco
+      this.usuario.numero, // numero 
+      this.usuario.complemento, // complemento
+      '', // forma de pagamento
+      new Date(Date.now()), // data do pedido
+      'processando', // status
+      this.carrinhoService.exibirItens().map((obj) => { return Object.assign({}, obj) }), // itens do carrinho
+      this.carrinhoService.totalCarrinhoCompras(), // valor total
+      0 // desconto?
     );
-     this.confirmarCompra(pedido)
-     this.executa(pedido)
-  }
-  
-  /************************************* */
-  /************************************* */
-  /************************************* */
-  /*************** PAGARME ************* */
-  /************************************* */
-  /************************************* */
-  /************************************* */
-  /************************************* */
 
-  public confirmarCompra(pedido:Pedido): void {
-    this.afAuth.auth.onAuthStateChanged(user => {
-      if (!user.emailVerified) {
-        this.toastr.error("Verifica seu email e tente novamente.", "Email ainda não verificado")
-        console.log("email ainda não verificado!\n verifique seu email e tente novamente");
-      } else {
+    this.pagamento = new Pagamento(); // Inicia o objeto pagamento
 
-        if (this.carrinhoService.exibirItens().length === 0) {
-          alert('Você não selecionou nenhm item!')
-        } else {
+    // verifica se os campos de pagamento são inválidos
+    if (this.dados_pagamento.status == "INVALID") {
 
-      
+      this.dados_pagamento.get('card_number').markAsTouched()
+      this.dados_pagamento.get('card_holder_name').markAsTouched()
+      this.dados_pagamento.get('card_expiration_date').markAsTouched()
+      this.dados_pagamento.get('card_cvv').markAsTouched()
+      this.dados_pagamento.get('card_cpf').markAsTouched()
 
-          this.ordemCompraService.efetivarCompra(pedido)
-            .then((idPedido: string) => {
-              this.idPedidoCompra = idPedido;
-              // this.carrinhoService.limparCarrinho();
-              this.toastr.success('Pedido feito com sucesso', 'Compra');
-            })
-        }
+      this.toastr.info('Preencha os campos de pagamento para finalizar a compra!');
+
+    } else { // entra aqui se os campos de pagamento estiverem OK
+
+      // Se os campos preenchidos estiverem validados, então são passados para o objeto pagamento
+      this.pagamento = {
+        amount: pedido.valor_total,
+        capture: 'false', // inicia toda transação com a captura como falso
+        card_cvv: this.dados_pagamento.value.card_cvv,
+        card_expiration_date: this.dados_pagamento.value.card_expiration_date,
+        card_holder_name: this.dados_pagamento.value.card_holder_name,
+        card_number: this.dados_pagamento.value.card_number
       }
-    })
+
+      /*************** PAGARME ************* */
+      this.pagamentoService.iniciarTransferencia(this.pagamento).then(resp => {
+
+        // if (!this.usuario.emailVerified) { // verifica se o email está verificado
+        //   this.toastr.error("Verifica seu email e tente novamente.", "Email ainda não verificado")
+        //   console.log("email ainda não verificado!\n verifique seu email e tente novamente");
+        // } else {
+          if (this.carrinho.itens.length === 0) { // verifica se o carrinho está vazio no momento da confirmação
+            alert('Você não selecionou nenhum item!');
+          } else {
+            this.ordemCompraService.efetivarCompra(pedido) // efetiva a compra no banco de dados
+              .then((idPedido: string) => {
+                this.idPedidoCompra = idPedido;
+                // this.cancelarCarrinho(); // limpa o carrinho depois da compra finalizada
+                this.toastr.success('Pedido feito com sucesso', 'Compra'); // confirma e a compra
+              })
+          } // fim if else para verificar se o carrinho está vazio
+        // } // fim if else do email não vereficado
+      });
+    } // fim if else dos campos de pagamento
+  } //fim confirmarCompra()
+
+  // limpa o carrinho do cliente no banco de dados
+  public cancelarCarrinho() {
+    this.carrinhoService.limparCarrinho(this.usuario, this.carrinho);
+    this.carrinho = null;
   }
 
-  public cancelarCarrinho(){
-    // this.carrinhoService.limparCarrinho(this.usuario, this.carrinho);
-    // this.carrinho = null;
-  }
   
+
 }

@@ -1,10 +1,11 @@
+
 import { Component, OnDestroy, OnInit, Output } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { ActivatedRoute, Params } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { AutenticacaoGuard } from '../autenticacao-guard.service';
-import CarrinhoService from '../carrinho.service';
+import {CarrinhoService} from '../carrinho.service';
 import { OfertasService } from '../ofertas.service';
 import { Produto } from '../shared/produto.model';
 
@@ -40,20 +41,17 @@ export class OfertaComponent implements OnInit, OnDestroy {
     this.route.params.subscribe((parametros: Params) => {
       this.produto = this.ofertasService.getProdutoByID(parametros.id_produto);
       this.produto.subscribe(prod => {
-
+        this.tamanho = []
         for (var [key, value] of Object.entries(prod[0].tamanho)) {
           this.tamanho.push({ key, value, selecionado: false })
         }
+        console.log(this.tamanho)
         this.prod = prod[0];
       })
-
     })
-
   }
 
-  ngOnDestroy() {
-
-  }
+  ngOnDestroy() { }
 
   // Função para adicionar itens ao carrinho
   public adicionarItemCarrinho(): void {
@@ -104,7 +102,7 @@ export class OfertaComponent implements OnInit, OnDestroy {
 
   selecionarTamanho(value) {
     this.tamanho.forEach((item) => {
-      if (value == item.key) {
+      if ((value.key == item.key) && (value.value !== null)) {
         item.selecionado = true
       } else {
         item.selecionado = false

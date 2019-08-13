@@ -2,7 +2,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { PedidoService } from './../pedido.service';
 import { DevolucaoService } from './../devolucao.service';
 import { ItemCarrinho } from 'src/app/shared/item-carrinho.model';
-import CarrinhoService from '../carrinho.service';
+import {CarrinhoService} from '../carrinho.service';
 
 import { Component, OnInit, Input, ɵConsole } from '@angular/core';
 import { TestBed } from '@angular/core/testing';

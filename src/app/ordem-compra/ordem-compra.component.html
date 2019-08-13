@@ -1,50 +1,61 @@
-
-<div class="div_container row">
- 
-  <h3 class="rev_pedido">REVISÃO DO PEDIDO</h3>
-  <div class="itensCarrinho col-sm-11  tendencia" *ngIf="carrinho; else loading">
-    <app-carousel-ordem-compra [carrinho]="carrinho"></app-carousel-ordem-compra>
+<div class="container row">
+  <h3 class="col-12 ml-4 mb-3">BAG</h3>
+  <div class="itensCarrinho col-12 tendencia" *ngIf="carrinho; else loading">
+    <item-carrinho-compra [carrinho]="carrinho"></item-carrinho-compra>
   </div>
-  <div class="meio col-12">
-    <div class="endereco row">
-        <h4>Endereço de entrega: </h4> <span *ngIf="usuario != null">{{usuario.endereco}}, {{usuario.numero}} </span>
+  <div class="col-12">
+    <hr> 
+    <div class="row ml-4 mb-3 mt-3">
+      <div class="endereco col-12 mb-2">ENDEREÇO DE ENTREGA: </div>
+      <div class="endereco2 col-12" *ngIf="usuario != null">
+        <em>{{usuario.endereco.toUpperCase()}}, {{usuario.numero}} </em>
+        <em *ngIf="usuario.bairro"> - {{usuario.bairro.toUpperCase()}} </em>
+        <em>{{usuario.complemento.toUpperCase()}} </em>
+      </div>
     </div>
 
-  
-      
-      <span>Dados do Cartão</span>
+    <hr>
+    <div class="pagamento ml-4 mb-3 mt-5"><strong>PAGAMENTO</strong></div>
 
-      <form (submit)="salvarDadosCartao()" [formGroup] = "formularioCartao" >
-        <div class="form-group col">
-          <input formControlName="card_number" type="text" class="form-control" placeholder="card_number">
-          <br>
-          <input formControlName="card_holder_name" type="text" class="form-control" placeholder="card_holder_name">
-          <br>
-          <input formControlName="card_expiration_date" type="text" class="form-control" placeholder="card_expiration_date">
-          <br>
-          <input formControlName="card_cvv" type="text" class="form-control" placeholder="card_cvv">
-          
+    <form (submit)="confirmarCompra()" [formGroup]="dados_pagamento">
+
+      <div class="form-group inputs">
+        <input formControlName="card_number" type="text" class="form-control mb-3" placeholder="Número do cartão">
+        <input formControlName="card_holder_name" type="text" class="form-control mb-3" placeholder="Nome e sobrenome">
+        <div class="d-flex mb-3">
+          <input formControlName="card_expiration_date" type="text" class="form-control mr-3"
+            placeholder="Data de vencimento">
+          <input formControlName="card_cvv" type="text" class="form-control" placeholder="Código de segurança">
         </div>
-  
-      </form>
+        <input formControlName="card_cpf" type="text" class="form-control mb-3" placeholder="CPF do titular do cartão">
+      </div>
+
+    </form>
 
 
   </div>
-  <div class="bottom row col-sm-12 text-center">
-    <div class="col-12 col-sm-12 col-md-4 voltar"> 
+  <div class="row col-md-12 text-center mt-5 mb-5">
+    <div class="col-12 col-sm-12 col-md-4 voltar">
       <button class="btn_cancelar" (click)="cancelarCarrinho()">CANCELAR</button>
     </div>
     <div class="col-12 col-sm-12 col-md-4 total ">
       <p>
         <span>TOTAL&nbsp;&nbsp;</span>
         <span *ngIf="carrinho; else valornulo"> {{ carrinho.valor_total | currency: 'BRL': 'symbol' }}</span><br>
-        <span class="envio">ENVIO&nbsp;&nbsp;</span>
-        <span *ngIf="carrinho; else valornulo"> {{ 0 | currency: 'BRL': 'symbol' }}</span>
+        <!-- <span class="envio">ENVIO&nbsp;&nbsp;</span> -->
+        <!-- <span *ngIf="carrinho; else valornulo"> {{ 0 | currency: 'BRL': 'symbol' }}</span> -->
       </p>
     </div>
-    <div class="col-12 col-sm-12 col-md-4 continuar"><button class="btn_confirmar" (click)="salvarDadosCartao()">CONFIRMAR</button></div>
+    <div class="col-12 col-sm-12 col-md-4 continuar"><button class="btn_confirmar"
+        (click)="confirmarCompra()">CONFIRMAR</button></div>
   </div>
+
+  
+
+  
 </div>
 
-<ng-template #loading><p>Carrinho Vazio</p></ng-template>
+<ng-template #loading>
+  <h5>CARRINHO VAZIO...</h5>
+</ng-template>
 <ng-template #valornulo>{{ 0 | currency: 'BRL': 'symbol'}}</ng-template>
