@@ -80,6 +80,7 @@ import { AcompanharPedidoComponent } from './acompanhar-pedido/acompanhar-pedido
 import { ForgetSenhaComponent } from './acesso/forget-senha/forget-senha.component';
 import { NgxImageZoomModule } from 'ngx-image-zoom';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { InstrucoesComponent } from './instrucoes/instrucoes.component';
 registerLocaleData(localePtBr);
 
 @NgModule({
@@ -125,6 +126,7 @@ registerLocaleData(localePtBr);
     CadastroLojistaComponent,
     AcompanharPedidoComponent,
     ForgetSenhaComponent,
+    InstrucoesComponent,
     //ajustanto o erro ngIf
 
     //
