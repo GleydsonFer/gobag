@@ -1,26 +1,28 @@
- .lojas {
-    margin-top: 50px;
-    
-} 
-
- .lojas_item {
+.fotos{
+    width: 200px;
+}
+.instrucoes{
+    margin-bottom: 50px;
+}
+ .instrucoes_item {
     border-radius: 10px;
-    height: 160px;
+    height: 20%;
     display: flex;
     align-items: center;
 } 
 
- .lojas_item:hover {
+ .instrucoes_item:hover {
     border-color: #000;
 } 
 
-.lojas_link {
-    padding: 10px; 
+.instrucoes_link {
+    margin-left: 10px;
+    margin-right: 10px;
     display: block;
     border-radius: 8px;
 }
 
-.lojas_link img{
+.instrucoes_link img{
     border-radius: 8px;
 }
 

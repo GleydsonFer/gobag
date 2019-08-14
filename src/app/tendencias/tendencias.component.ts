@@ -17,12 +17,12 @@ export class TendenciasComponent implements OnInit {
     responsiveClass: true,
     responsive: {
       0: {
-        items: 3,
+        items: 2,
         dot: false,
         nav: true
       },
       600: {
-        items: 3,
+        items: 2,
         dot: false,
         nav: true
       },
