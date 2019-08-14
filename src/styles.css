@@ -37,6 +37,10 @@ h3 {
     color: #000;
 }
 
+.caps{
+    text-transform: capitalize;
+}
+
 .upper{
     text-transform: uppercase;
 }
@@ -62,6 +66,12 @@ h3 {
     font-weight: 100;
     
 }
+.subtexto{
+    font-family: "Museo Sans";
+    font-style: normal;
+    font-weight: 100;
+    font-size: 0.6em;
+}
 
 
 /* importando fonte */
@@ -84,7 +94,7 @@ h3 {
 
 .secao {
     margin-top: 30px;
-    margin-bottom: 30px
+    margin-bottom: 30px;
 }
 
 /* Inicio Estilo do carrossel dos banners da página inicial */
@@ -199,7 +209,7 @@ h3 {
     font-size: 0;
 }
 
-/* .banner_home .nav-btn.prev-slide {
+ .banner_home .nav-btn.prev-slide {
     background: url('./assets/left-w.png') center center no-repeat;
     left: 0;
 }
@@ -207,7 +217,7 @@ h3 {
 .banner_home .nav-btn.next-slide {
     background: url('./assets/right-w.png') center center no-repeat;
     right: 0;
-} */
+} 
 
 .owl-theme .owl-dots {display: none;}
 
@@ -226,7 +236,7 @@ h3 {
     font-size: 0;
 }
 
-/* .lojas .nav-btn.prev-slide {
+.lojas .nav-btn.prev-slide {
     background: url('./assets/left.png') center center no-repeat;
     left: 0;
 }
@@ -234,7 +244,7 @@ h3 {
 .lojas .nav-btn.next-slide {
     background: url('./assets/right.png') center center no-repeat;
     right: 0;
-} */
+}
 
 .lojas .owl-carousel .owl-nav button.owl-prev {
     position: absolute;

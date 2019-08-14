@@ -6,8 +6,8 @@
       <h4>NOVO POR AQUI</h4>
       <h5>Precisamos de mais algumas informações para criar sua conta GOBAG</h5>
     </div>
-    <div class="col">
-      <div class="col-8 inputs">
+    <div class="col-7">
+      <div class="col-10 inputs">
         <div class="form-row">
           <div class="form-group col">
             <input formControlName="nome" type="text" class="form-control" placeholder="NOME">
@@ -67,7 +67,7 @@
       </div>
 
     </div>
-    <div class="col-sm-3 mt-5 d-flex justify-content-center">
+    <div class="col-sm-5 mt-5 d-flex justify-content-center">
       <div class="form-group row">
         <label for="customFile">
           <div class="form-group foto_user file_customizada d-flex" id="foto_user">
@@ -78,7 +78,7 @@
         </label>
       </div>
     </div>
-    <div class="col-12 text-center">
+    <div class="col-12 text-center mt-4">
       <button (click)="salvar()" [disabled]="this.formulario.invalid" class="btn btn-primary btn_salvar">ENVIAR</button>
     </div>
   </form>

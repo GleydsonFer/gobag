@@ -1,32 +1,100 @@
-.card-title {
-    background-image: url("/assets/logo-instagram.png");
-    background-position: center;
+.conteudo{
+    height:1000px;
+    margin-bottom: 40px;
+}
+.topo{
+    margin-bottom: 50px
+}
+form{
+    margin-top:50px;
+}
+.inputs{
+    margin-left: 10%;
+}
+
+.inputs input{
+   border:none;
+   border-bottom: 4px solid #cfcbcb;
+   border-radius:0px;
+}
+.inputs input:focus{
+    box-shadow: none;
+}
+.inputs input:cli{
+    border:none;
+    border-bottom: 4px solid #cfcbcb;
+    border-radius:0px;
+ }
+ .inputs[_ngcontent-c4] input[_ngcontent-c4]{
+     background-color:white;
+ }
+form h4:nth-child(1){
+    margin-left: 13%;
+}
+form h4:nth-child(2){
+    color: #afadad;
+    font-weight: 700;  
+    margin-left:2%;
+}
+form h5{
+    color: #505050; 
+    margin-left:2%; 
+}
+
+.foto_user{
+    background-color:rgb(212, 211, 211);
+    height: 200px;
+    width: 200px;
+    background-image: url("../../../assets/icon_user.png");
+    background-size: 50%;
     background-repeat: no-repeat;
-    height: 60px;
+    background-position: 50% 50%;
+    border-radius: 100%;
+    transition-duration: 0.5s;
+    border: 5px solid rgb(173, 171, 171);
+}
+.foto_user:hover{
+    /* transform: scale(1.05, 1.05); */
+    box-shadow: inset 0 0 0 10000px rgba(170, 170, 170, 0.664);
+    transition-duration: 0.5s;
+    cursor: pointer;
+}
+.custom-file-input{
+    background-color:blue !important;
+}
+.text_image{
+    color:white;
+    text-align: center
+ 
+    
+}
+.preview_img{
+    height:100%;
     width: 100%;
+    border-radius: 100%;
 }
 
-.card-link {
-    font-weight: bold;
-    cursor: pointer; 
-
+.btn_salvar{
+font-weight: 700;
+color:#252424;
+padding: 10px;
+padding-left: 250px;
+padding-right: 250px;
+border: none;
+background-color:#bdbdbdbb;
+font-size: 1.6em;
+margin-left: 16%;
 }
 
-.card-link:hover{
-    color: blue;
+.btn_salvar + br + span {
+    margin-left: 15%;
 }
 
-input.ng-invalid.ng-touched {
-    border: 2px solid red;
-}
-select.ng-invalid.ng-touched {
-    border: 2px solid red;
+.hover:hover{
+    color: rgb(86, 86, 233);
+    cursor:pointer;
 }
 
-select.ng-valid.ng-touched {
-    border: 2px solid green;
-}
-
-input.ng-valid.ng-touched {
-    border: 2px solid green;
+.invalid-feedback{
+    display: block !important;
 }

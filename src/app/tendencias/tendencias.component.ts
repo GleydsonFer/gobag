@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class TendenciasComponent implements OnInit {
 
   mySlideOptions={
-    margin:25,
+    margin:5,
     dot: false, 
     nav: true,
     navText: [
@@ -17,12 +17,12 @@ export class TendenciasComponent implements OnInit {
     responsiveClass: true,
     responsive: {
       0: {
-        items: 1,
+        items: 3,
         dot: false,
         nav: true
       },
       600: {
-        items: 2,
+        items: 3,
         dot: false,
         nav: true
       },

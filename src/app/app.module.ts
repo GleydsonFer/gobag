@@ -32,6 +32,7 @@ import { AvaliacaoComponent } from './oferta/avaliacao/avaliacao.component';
 import { DescricaoReduzida } from './util/descricao-reduzida.pipe';
 import { OrdemCompraComponent } from './ordem-compra/ordem-compra.component';
 import localePtBr from '@angular/common/locales/pt';
+import { BrMaskerModule } from 'brmasker-ionic-3';
 
 import { registerLocaleData } from '@angular/common';
 import { from } from 'rxjs';
@@ -77,15 +78,14 @@ import { CarouselOrdemDevolucaoComponent } from './ordem-devolucao/carousel-orde
 import { CadastroLojistaComponent } from './cadastro-lojista/cadastro-lojista.component';
 import { AcompanharPedidoComponent } from './acompanhar-pedido/acompanhar-pedido.component';
 import { ForgetSenhaComponent } from './acesso/forget-senha/forget-senha.component';
-
+import { NgxImageZoomModule } from 'ngx-image-zoom';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
-import {Component} from '@angular/core';
+
 
 import * as $ from 'jquery';
 
+import { InstrucoesComponent } from './instrucoes/instrucoes.component';
 registerLocaleData(localePtBr);
-
-
 
 @NgModule({
   declarations: [
@@ -130,6 +130,7 @@ registerLocaleData(localePtBr);
     CadastroLojistaComponent,
     AcompanharPedidoComponent,
     ForgetSenhaComponent,
+    InstrucoesComponent,
     //ajustanto o erro ngIf
 
     //
@@ -154,7 +155,9 @@ registerLocaleData(localePtBr);
     AngularFireAuthModule,
     AngularFireStorageModule,
     FormsModule,
-    TagInputModule
+    TagInputModule,
+    BrMaskerModule,
+    NgxImageZoomModule.forRoot() 
   ],
   providers: [
     CarrinhoService, { provide: LOCALE_ID, useValue: 'pt-Br' },

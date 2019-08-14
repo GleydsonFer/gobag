@@ -30,19 +30,15 @@ h1 {
 
 .desc_prod {
     text-align: center;
-    font-family: 'Lato', sans-serif;
-    color: #212529;
-    margin-bottom: 20px;
-    text-transform: capitalize;
-    font-size: 18px;
+    text-transform: initial;
 }
-
-.desc_prod strong{font-weight: bold;}
+.descricao{
+    font-weight: 600;
+}
 
 .price_box {margin-bottom: 20px;}
 
 .price_box p{
-    font-family: 'Lato', sans-serif;
     color: #212529;
     margin-bottom: 0;
     font-size: 18px;
@@ -71,7 +67,9 @@ h1 {
     font-size: 20px;
     cursor: pointer;
     transition: all ease .3s;
-    margin-right: 8px;
+    margin-right: 5px;
+    border-radius: 50%;
+    background-color: #ffffff;
 }
 
 .medida:hover,
@@ -83,17 +81,15 @@ h1 {
 
 .btn_pedido {
     width: 230px;
-    padding: 15px;
+    padding: 5px;
     color: #fff;
-    background: #212529;
-    border: 1px solid #212529;
-    border-radius: 4px;
-    font-family: 'Lato', sans-serif;
-    font-weight: bold;
+    background: #000;
+    border: 1px solid #000;
+    /* font-weight: bold; */
     text-transform: uppercase;
-    font-size: 15px;
+    font-size: 25px;
 
-    transition: all .4s ease .4s;
+    /* transition: all .4s ease .4s; */
 }
 
 .btn_pedido:hover{
@@ -101,12 +97,38 @@ h1 {
     color: #212529;
 }
 
-.tamanho_disponivel{
+/* .tamanho_disponivel{
     background-color:#3232a8;
-}
+} */
 .tamanho_indisponivel{
-    background-color:#b85656;
+    background-color:#c0c0c0;
 }
 .selecionado{
     border:5px solid black;
+}
+.seta{
+    height: 30px;
+    margin-top: 50%;
+}
+.seta2{
+    height: 35px;
+    margin-top: 50%;
+}
+.logo{
+    height: 100px;
+}
+.imagemSelecionada{
+    width: 90%;
+    border-radius: 14px;
+}
+.prod_oferta_thumb{
+    height: 20%;
+}
+.item{
+    font-size: 0.8em;
+    padding: 15% 0 0 0;
+    color: #000;
+}
+.icon{
+    width: 12%;
 }

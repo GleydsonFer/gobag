@@ -106,8 +106,10 @@ npm install pagarme
 npm install ngx-chips --save
 
 npm install ajax
+------------------ brmasker-ionic-3 -------------------
+npm install brmasker-ionic-3 --save
 
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+npm install ngx-image-zoom --save
 
 npm install axios
 

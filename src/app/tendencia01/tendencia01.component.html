@@ -4,8 +4,8 @@
 <div class="container">
 
   <div class="secao">
-    <h3 class="text-center">30% OFF</h3>
-    <h5 class="text-center">Conheça as melhores ofertas, com os melhores descontos do mercado</h5>
+    <h3 class="text-center subtitulo preto">30% OFF</h3>
+    <h5 class="text-center texto cinza">Conheça as melhores ofertas, com os melhores descontos do mercado</h5>
   </div>
 
 </div>
@@ -15,24 +15,34 @@
     <div class="row" style="border-top: 1px solid rgba(0,0,0,.1);
   padding-top: 20px;">
 
-      <div class="col-md-3" *ngFor="let oferta of ofertas">
-          <div class="prod">
-            <div class="prod_title-box">
-              <h4 class="prod_title">{{ oferta.nome }}</h4>
-            </div>
-  
-            <figure class="prod_img-box">
-              <img [src]="oferta.imagens[0].url" class="img-fluid prod_img" />
-              <img [src]="oferta.imagens[1].url" class="img-fluid prod_img second_img" />
-            </figure>
-  
-            <div class="prod_price-box">  
-              <p class="prod_price">{{ oferta.valor | currency:'BRL':true }}</p>
-            </div>
-  
-            <button class="btn_ofer" [routerLink]="['/oferta', oferta.id_produto]">Ver oferta</button>
 
-          </div>
+<div class="col-md-3 my-2" *ngFor="let oferta of oferta | async">
+    <div class="prod">
+
+
+      <a [routerLink]="['/oferta', oferta.id_produto]">
+        <figure class="prod_img-box">
+          <img [src]="oferta.imagens[0].url" class="img-fluid rounded prod_img" />
+          <img [src]="oferta.imagens[1].url" class="img-fluid rounded prod_img second_img" />
+        </figure>
+      </a>
+
+      <div class="prod_title-box" >
+        <div class="prod_title subtitulo preto upper text-center">{{ oferta.nome }}</div>
+      </div>
+
+      <div class="justify-content-center">            
+        <p class="text-center texto cinza">Loja Teste</p> 
+        <!-- <span class="texto cinza">{{ oferta.loja.charAt(0).toUpperCase() + oferta.loja.slice(1).toLowerCase() }}</span> -->
+     
+        <p class="align-text-top subtitulo preto">{{ oferta.valor | currency:'BRL':true }}</p>
+      </div>
+
+      <button class="btn_ofer upper" [routerLink]="['/oferta', oferta.id_produto]">EXPERIMENTE</button>
+      <!-- <button class="btn_ofer upper" data-toggle="modal" data-target="#modalOferta">EXPERIMENTE</button> -->
+
+
+    </div>
       </div>
 
     

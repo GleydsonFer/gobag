@@ -34,11 +34,11 @@ export class OrdemCompraComponent implements OnInit {
   carrinho: Carrinho;
   pagamento: Pagamento;
   dados_pagamento: FormGroup = new FormGroup({
-    'card_number': new FormControl(null, [Validators.required]),
-    'card_holder_name': new FormControl(null, [Validators.required]),
-    'card_expiration_date': new FormControl(null, [Validators.required]),
-    'card_cvv': new FormControl(null, [Validators.required]),
-    'card_cpf': new FormControl(null, [Validators.required])
+    'card_number': new FormControl('', [Validators.required, Validators.minLength(19)]),
+    'card_holder_name': new FormControl('', [Validators.required]),
+    'card_expiration_date': new FormControl('', [Validators.required, Validators.minLength(5)]),
+    'card_cvv': new FormControl('', [Validators.required, Validators.minLength(3)]),
+    'card_cpf': new FormControl('', [Validators.required, Validators.minLength(14)])
   })
 
   constructor(
@@ -76,6 +76,12 @@ export class OrdemCompraComponent implements OnInit {
   // CONFIRMAÇÃO DO PEDIDO DE COMPRA
   public confirmarCompra() {
 
+    this.dados_pagamento.get('card_number').markAsTouched()
+    this.dados_pagamento.get('card_holder_name').markAsTouched()
+    this.dados_pagamento.get('card_expiration_date').markAsTouched()
+    this.dados_pagamento.get('card_cvv').markAsTouched()
+    this.dados_pagamento.get('card_cpf').markAsTouched()
+
     // criar 'pedido' com os dados da compra e do cliente
     let pedido: Pedido = new Pedido(
       this.usuario.email, // email
@@ -95,12 +101,6 @@ export class OrdemCompraComponent implements OnInit {
     // verifica se os campos de pagamento são inválidos
     if (this.dados_pagamento.status == "INVALID") {
 
-      this.dados_pagamento.get('card_number').markAsTouched()
-      this.dados_pagamento.get('card_holder_name').markAsTouched()
-      this.dados_pagamento.get('card_expiration_date').markAsTouched()
-      this.dados_pagamento.get('card_cvv').markAsTouched()
-      this.dados_pagamento.get('card_cpf').markAsTouched()
-
       this.toastr.info('Preencha os campos de pagamento para finalizar a compra!');
 
     } else { // entra aqui se os campos de pagamento estiverem OK
@@ -109,10 +109,10 @@ export class OrdemCompraComponent implements OnInit {
       this.pagamento = {
         amount: pedido.valor_total,
         capture: 'false', // inicia toda transação com a captura como falso
-        card_cvv: this.dados_pagamento.value.card_cvv,
-        card_expiration_date: this.dados_pagamento.value.card_expiration_date,
+        card_cvv: this.dados_pagamento.value.card_cvv.replace(/[^0-9]/g, ''),
+        card_expiration_date: this.dados_pagamento.value.card_expiration_date.replace(/[^0-9]/g, ''),
         card_holder_name: this.dados_pagamento.value.card_holder_name,
-        card_number: this.dados_pagamento.value.card_number
+        card_number: this.dados_pagamento.value.card_number.replace(/[^0-9]/g, '')
       }
 
       /*************** PAGARME ************* */
@@ -122,16 +122,16 @@ export class OrdemCompraComponent implements OnInit {
         //   this.toastr.error("Verifica seu email e tente novamente.", "Email ainda não verificado")
         //   console.log("email ainda não verificado!\n verifique seu email e tente novamente");
         // } else {
-          if (this.carrinho.itens.length === 0) { // verifica se o carrinho está vazio no momento da confirmação
-            alert('Você não selecionou nenhum item!');
-          } else {
-            this.ordemCompraService.efetivarCompra(pedido) // efetiva a compra no banco de dados
-              .then((idPedido: string) => {
-                this.idPedidoCompra = idPedido;
-                // this.cancelarCarrinho(); // limpa o carrinho depois da compra finalizada
-                this.toastr.success('Pedido feito com sucesso', 'Compra'); // confirma e a compra
-              })
-          } // fim if else para verificar se o carrinho está vazio
+        if (this.carrinho.itens.length === 0) { // verifica se o carrinho está vazio no momento da confirmação
+          alert('Você não selecionou nenhum item!');
+        } else {
+          this.ordemCompraService.efetivarCompra(pedido) // efetiva a compra no banco de dados
+            .then((idPedido: string) => {
+              this.idPedidoCompra = idPedido;
+              // this.cancelarCarrinho(); // limpa o carrinho depois da compra finalizada
+              this.toastr.success('Pedido feito com sucesso', 'Compra'); // confirma e a compra
+            })
+        } // fim if else para verificar se o carrinho está vazio
         // } // fim if else do email não vereficado
       });
     } // fim if else dos campos de pagamento
@@ -143,6 +143,14 @@ export class OrdemCompraComponent implements OnInit {
     this.carrinho = null;
   }
 
-  
+  updateFieldValue(campo, value) {
+    this.dados_pagamento.controls[campo].setValue(value)
+    this.dados_pagamento.controls[campo].markAsTouched()
+  }
+
+
+  aplicaCssErro(campo) {
+    return { 'is-invalid': this.dados_pagamento.get(campo).invalid && this.dados_pagamento.get(campo).touched }
+  }
 
 }

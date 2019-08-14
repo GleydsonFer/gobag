@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class LojasComponent implements OnInit {
 
   mySlideOptions = {
-    margin: 10,
+    margin: 5,
     dot: false,
     nav: true,
     navText: [
@@ -17,12 +17,12 @@ export class LojasComponent implements OnInit {
     responsiveClass: true,
     responsive: {
       0: {
-        items: 2,
+        items: 3,
         dot: true,
         nav: false
       },
-      480: {
-        items: 3,
+      480: {  
+        items: 4,
         dot: false,
         nav: true
       },
@@ -50,45 +50,45 @@ export class LojasComponent implements OnInit {
     {
       link: "loja01",
       alt: "loja01",
-      image: "assets/logos-lojas/sua-loja-aqui.png"
+      image: "assets/logos-lojas/loja-teste.png"
     },
     {
-      link: "loja01",
+      link: "cadastro-lojista",
       alt: "loja01",
       image: "assets/logos-lojas/sua-loja-aqui.png"
     },
     {
-      link: "loja01",
+      link: "cadastro-lojista",
       alt: "loja01",
       image: "assets/logos-lojas/sua-loja-aqui.png"
     },
     {
-      link: "loja01",
+      link: "cadastro-lojista",
       alt: "loja01",
       image: "assets/logos-lojas/sua-loja-aqui.png"
     },
     {
-      link: "loja01",
+      link: "cadastro-lojista",
       alt: "loja01",
       image: "assets/logos-lojas/sua-loja-aqui.png"
     },
     {
-      link: "loja01",
+      link: "cadastro-lojista",
       alt: "loja01",
       image: "assets/logos-lojas/sua-loja-aqui.png"
     },
     {
-      link: "loja01",
+      link: "cadastro-lojista",
       alt: "loja01",
       image: "assets/logos-lojas/sua-loja-aqui.png"
     },
     {
-      link: "loja01",
+      link: "cadastro-lojista",
       alt: "loja01",
       image: "assets/logos-lojas/sua-loja-aqui.png"
     },
     {
-      link: "loja01",
+      link: "cadastro-lojista",
       alt: "loja01",
       image: "assets/logos-lojas/sua-loja-aqui.png"
     }
