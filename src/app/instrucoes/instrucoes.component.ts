@@ -11,7 +11,7 @@ export class InstrucoesComponent implements OnInit {
     autoplay: true,
     autoplayTimeout: 2000,
     autoplayHoverPause: true,
-    loop: true,
+    loop: false,
     margin: 10,
     dot: false,
     nav: true,
@@ -23,25 +23,27 @@ export class InstrucoesComponent implements OnInit {
       0: {
         items: 2,
         dot: false,
-        nav: false
+        nav: false,
+        loop: true
       },
       500: {
         items: 2,
         dot: false,
-        nav: false
+        nav: false,
+        loop: true
       },
       1000: {
-        items: 5,
+        items: 4,
         dot: false,
         nav: false
       },
       1500: {
-        items: 5,
+        items: 4,
         dot: false,
         nav: false,
       },
       2000: {
-        items: 5,
+        items: 4,
         dot: false,
         nav: false,
       }

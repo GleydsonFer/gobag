@@ -7,6 +7,21 @@ e no arquivo css de um componente for colocado a mesma chamada
 mas com um estilo diferente: header {background: #fff;} a desse arquivo
 é a que será exibida */
 
+/* importando fonte */
+@import url(//db.onlinewebfonts.com/c/62c0135163427c652ae397f327f85010?family=Museo+Sans);
+  
+  @font-face {
+    font-family: "Museo Sans";
+    src: url("//db.onlinewebfonts.com/t/62c0135163427c652ae397f327f85010.eot");
+    src: url("//db.onlinewebfonts.com/t/62c0135163427c652ae397f327f85010.eot?#iefix") format("embedded-opentype"),
+    url("//db.onlinewebfonts.com/t/62c0135163427c652ae397f327f85010.woff2") format("woff2"),
+    url("//db.onlinewebfonts.com/t/62c0135163427c652ae397f327f85010.woff") format("woff"),
+    url("//db.onlinewebfonts.com/t/62c0135163427c652ae397f327f85010.ttf") format("truetype"),
+    url("//db.onlinewebfonts.com/t/62c0135163427c652ae397f327f85010.svg#Museo Sans") format("svg");
+  } 
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
 /* Estilo default */ 
 html
 {
@@ -58,8 +73,9 @@ h3 {
 }
 
 .subtitulo{
-    font-family: 'Montserrat', sans-serif;
-    font-style: bold;
+    font-family: "Museo Sans";
+    font-style: normal;
+    font-weight: bold;
     
     
 }
@@ -73,20 +89,7 @@ h3 {
 
 
 
-/* importando fonte */
-/* @import url(//db.onlinewebfonts.com/c/62c0135163427c652ae397f327f85010?family=Museo+Sans);
-  
-  @font-face {
-    font-family: "Museo Sans";
-    src: url("//db.onlinewebfonts.com/t/62c0135163427c652ae397f327f85010.eot");
-    src: url("//db.onlinewebfonts.com/t/62c0135163427c652ae397f327f85010.eot?#iefix") format("embedded-opentype"),
-    url("//db.onlinewebfonts.com/t/62c0135163427c652ae397f327f85010.woff2") format("woff2"),
-    url("//db.onlinewebfonts.com/t/62c0135163427c652ae397f327f85010.woff") format("woff"),
-    url("//db.onlinewebfonts.com/t/62c0135163427c652ae397f327f85010.ttf") format("truetype"),
-    url("//db.onlinewebfonts.com/t/62c0135163427c652ae397f327f85010.svg#Museo Sans") format("svg");
-  }  */
 
-  @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
 .card img {
     height: 200px;

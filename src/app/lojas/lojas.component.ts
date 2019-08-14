@@ -32,13 +32,13 @@ export class LojasComponent implements OnInit {
         nav: true
       },
       1000: {
-        items: 6,
+        items: 7,
         dot: false,
         nav: true,
         loop: false
       },
       1500: {
-        items: 6,
+        items: 7,
         dot: false,
         nav: true,
         loop: false
