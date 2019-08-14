@@ -1,11 +1,12 @@
 <div class="container">
   <div class="oferta" *ngIf="prod; else loading">
 
-    <div class="row">
+    <!--  Logo da Loja
+      <div class="row">
       <div class="col-12">
         <img class="logo mb-4 mt-2" src="assets/logos-lojas/sua-loja-aqui.png">
       </div>
-    </div>
+    </div> -->
 
     <div class="row">
       <!-- imagens -->
@@ -26,6 +27,7 @@
           </div>
           <img class="seta2 col-1" (click)="nextImage()" src="../../assets/right.png" />
         </div>
+
         <div class="row">
           <figure *ngFor="let imagem of prod.imagens; index as i" class="thumbnails col-3">
             <img [src]="imagem" (click)="mudarImagem(i)" class="img-fluid imagemSelecionada" />
@@ -36,24 +38,27 @@
       <!-- informações do produto -->
       <div class="offset-md-1 col-md-4 mt-3">
         <div class="row justify-content-center">
-          <h4 class="col-12 d-flex justify-content-center">{{ prod.nome.toUpperCase() }}</h4>
-          <h5 class="col-12 d-flex justify-content-center">{{ prod.loja.charAt(0).toUpperCase() + prod.loja.slice(1).toLowerCase() }}</h5>
-          <div class="desc_prod col-12"><div class="descricao">Descrição e Detalhes </div> {{ prod.descricao.toLowerCase() }}</div>
+          <h4 class="col-12 d-flex justify-content-center text-center titulo preto">{{ prod.nome.toUpperCase() }}</h4>
+          <h5 class="col-12 d-flex justify-content-center text-center subtitulo cinza">{{ prod.loja.charAt(0).toUpperCase() + prod.loja.slice(1).toLowerCase() }}</h5>
+          <p class="text-center subtitulo preto">Descrição e Detalhes </p> 
+          <p class="desc_prod texto cinza col-12">{{ prod.descricao.toLowerCase() }}</p>
           <!-- <div class="price_box"> -->
-          <h4 class="mt-2 mb-2">{{ prod.valor | currency : 'BRL' : 'symbol' }}</h4>
+          <h4 class="my-3 titulo preto">{{ prod.valor | currency : 'BRL' : 'symbol' }}</h4>
           <!-- </div> -->
           
-          <div class="row justify-content-center mb-3 mt-3">
-            <h5 class="preto col-12 d-flex justify-content-center">TAMANHO</h5>
+          <div class="row justify-content-center my-3">
+            <h5 class="texto preto col-12 d-flex justify-content-center">TAMANHO</h5>
             <div *ngFor="let item of tamanho" class="medida d-flex justify-content-center" (click)="selecionarTamanho(item)"
               [ngClass]="conferirNull(item.value, item.selecionado)">
-              <span class="item">{{item.key}}</span>
+              <p class="item texto preto">{{item.key}}</p>
             </div>
           </div>
 
-          <button type="button" class="btn_pedido col-12 " (click)="adicionarItemCarrinho()">  
-            VÁ PARA A BAG
+          
+          <button type="button" class="btn_pedido texto preto col-12 my-3" (click)="adicionarItemCarrinho()">  
+            QUERO EXPERIMENTAR
           </button>
+          
   
           <!-- <img class="icon mt-3" src="../../assets/icons/whatsapp.png">
           <span class="col-12 d-flex justify-content-center">Compartilhe nossas novidades</span>
@@ -75,7 +80,7 @@
     <div class="col">
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
-          <a class="nav-link active" routerLink="produtos-relacionados" data-toggle="tab" role="tab"
+          <a class="nav-link active texto preto" routerLink="produtos-relacionados" data-toggle="tab" role="tab"
             aria-expanded="true">Produtos Relacionados</a>
         </li>
         <!-- <li class="nav-item">
