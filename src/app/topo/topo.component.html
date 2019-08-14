@@ -1,7 +1,7 @@
 <div *ngIf="!naoLogado; else logado">
     <nav class="texto preto navbar fixed-top navbar-light bg-light align-items-start row">
         <!-- coluna da direita com menu de pesquisa, logo e dropdown-->
-        <div class="col-7 col-md-7 col_left row">
+        <div class="col-4 col-md-5 col-lg-7 col_left row">
             <!-- menu dropdown com ascategorias -->
             <div class="dropdown " aria-labelledby="dropdownMenuButton">
                 <button class="navbar-toggler ml-3" type="button" id="dropdownMenuButton" data-toggle="dropdown"
@@ -55,12 +55,15 @@
                     </li>
                 </ul>
             </div>
-            <div class="logo mt-1">
-                <a class="logo_link" [routerLink]="['/home']">
+            <div class="logo mt-1 ">
+                <a class="logo_link logo_desktop" [routerLink]="['/home']">
                     <img class="img-fluid" src="./assets/logo-gobag-sem-fundo.png" />
                 </a>
+                <a class="logo_link logo_mobile" [routerLink]="['/home']">
+                    <img class="img-fluid" src="../../assets/ico4/android-icon-36x36.png" />
+                </a>
             </div>
-            <div class="texto col-7 col-sm col-md-7 col-lg-8 pesquisar ">
+            <div class="texto col-12 col-sm-12  col-lg-8 pesquisar pesquisa_desktop ">
                 <input class="form-control mr-sm-2" placeholder="Buscar qualquer produto" type="text" #termoDaPesquisa
                     (keyup)="pesquisa(termoDaPesquisa.value)" aria-label="Pesquisar">
                 <div *ngIf="termoDaPesquisa.value">
@@ -76,18 +79,35 @@
         </div>
 
         <!-- coluna da direita onde fica o endereço do cliente e a bag -->
-        <div class="texto preto col-5 col-md-5 col_right d-flex justify-content-end">
-            <a class="login mr-2" routerLink="/acesso"></a>
+        <div class="texto preto col-8 col-md-7 col-lg-5 col_right d-flex justify-content-end">
+
             <div class="endereco texto preto" >
                 <a routerLink="/cadastro-lojista">Cadastre sua Loja</a>
             </div>
             <div class="endereco mr-3 texto preto" >
                 <a routerLink="/acesso">Login</a>
             </div>
+            <a class="login" routerLink="/acesso"></a>
             <a class="bag texto preto" routerLink="/ordem-compra">
                 <div class="numeroItensCarrinho d-flex justify-content-center">{{numeroItensCarrinho}}</div>
             </a>
         </div>
+        <!-- input de pesquisa para visualização mobile -->
+        <div class="texto col-12 col-sm-12  pesquisar pesquisa_mobile">
+            <input class="form-control mr-sm-2" placeholder="Buscar qualquer produto" type="text" #termoDaPesquisa
+                (keyup)="pesquisa(termoDaPesquisa.value)" aria-label="Pesquisar">
+            <div *ngIf="termoDaPesquisa.value">
+                <ul class="list-group">
+                    <li class="list-group-item" *ngFor="let produto of produtos | async">
+                        <a [routerLink]="['/oferta', produto.id_produto ]" (click)="limpaPesquisa()">
+                            {{ produto.nome | descricaoReduzida:15 }}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
     </nav>
 </div>
 
