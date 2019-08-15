@@ -1,11 +1,18 @@
 <!-- Carousel Banner -->
 <section class="banner_home">
     <div class="fonte" data-toggle="modal" data-target="#modalBanner">
-        <owl-carousel [options]="mySlideOptions" [items]="mySlideImages" [carouselClasses]="['owl-theme', 'sliding']">
+        <owl-carousel [options]="mySlideOptions"  [carouselClasses]="['owl-theme', 'sliding']">
 
-            <div class="banner_home-box" *ngFor="let image of mySlideImages;let i = index">
-                <img class="banner_home-img img-fluid" src={{image.image}} alt="{{image.alt}}" />
+            <div class="banner_home-box" >
+               
+                <img class="banner_home-gobag align-middle img-fluid " src="assets/banners/home/banner_home_gobag.png" alt="" />
+                
+                
             </div>
+            <div class="banner_home-box" >
+                    <img class="banner_home-entenda align-middle img-fluid " src="assets/banners/home/banner_home_entenda.png" alt="" />                 
+                                        
+                </div>
         </owl-carousel>
     </div>
 </section>

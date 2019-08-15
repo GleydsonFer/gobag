@@ -127,7 +127,7 @@ nav{
     }
 } 
 
-@media (max-width: 634px) {
+@media (max-width: 634px)  {
     .logo_desktop{
         display: none;
     }
@@ -138,6 +138,32 @@ nav{
     .logo_mobile{
         display: block;
         width: 30px !important;    
+    }
+    .logo_mobile a img{
+        background-image: url('../../assets/ico4/android-icon-36x36.png')
+    }
+    .navbar-toggler{
+        margin-left: 1px !important;
+    }
+    .col_right{
+        padding: 0;
+    }
+    .col_right{
+        padding-right: 2%;
+    }
+} 
+
+@media (max-width: 359px) {
+    .logo_desktop{
+        display: none;
+    }
+    .logo{
+        width: 20px ; 
+        margin-left: 1px !important;
+    }
+    .logo_mobile{
+        display: block;
+        width: 20px !important;    
     }
     .logo_mobile a img{
         background-image: url('../../assets/ico4/android-icon-36x36.png')
