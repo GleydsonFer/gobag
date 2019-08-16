@@ -120,7 +120,32 @@
     
 }
 
-@media (max-width: 2000px) and (min-width:1400px) {
+@media (max-width: 1699px) and (min-width: 1400px){
+    .banner_home-gobag{   
+        padding-top: 50px;
+        padding-bottom: 50px;
+        padding-left: 550px;
+        padding-right: 550px;
+    }
+    
+    .banner_home-entenda{    
+        padding-top: 120px;
+        padding-bottom: 120px;
+        padding-left: 250px;
+        padding-right: 250px;
+    }
+    .banner_home{
+        background-color: #000;
+        vertical-align: middle;
+        height: 300px;
+    }
+    .banner_home-box{
+        height: 300px;
+        
+    }
+}
+
+@media (max-width: 2000px) and (min-width:1700px) {
      .col_left img{
         margin-bottom:40px;
         
