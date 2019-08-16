@@ -9,36 +9,36 @@ export class LojasComponent implements OnInit {
 
   mySlideOptions = {
     margin: 5,
-    dot: false,
-    nav: true,
+    dot: true,
+    nav: false,
     navText: [
       "<div class='nav-btn prev-slide'>prev</div>",
       "<div class='nav-btn next-slide'>next</div>"],
     responsiveClass: true,
     responsive: {
       0: {
-        items: 3,
-        dot: true,
-        nav: false
+        items: 4,
+        dot: false,
+        nav: true
       },
       480: {  
-        items: 4,
+        items: 5,
         dot: false,
         nav: true
       },
       600: {
-        items: 4,
+        items: 5,
         dot: false,
         nav: true
       },
       1000: {
-        items: 6,
+        items: 7,
         dot: false,
         nav: true,
         loop: false
       },
       1500: {
-        items: 6,
+        items: 7,
         dot: false,
         nav: true,
         loop: false

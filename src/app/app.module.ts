@@ -81,6 +81,7 @@ import { ForgetSenhaComponent } from './acesso/forget-senha/forget-senha.compone
 import { NgxImageZoomModule } from 'ngx-image-zoom';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { InstrucoesComponent } from './instrucoes/instrucoes.component';
+import { HttpClientModule } from '@angular/common/http';
 registerLocaleData(localePtBr);
 
 @NgModule({
@@ -135,6 +136,7 @@ registerLocaleData(localePtBr);
     BrowserModule,
     OwlModule,
     HttpModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     //CategoriasModule,
     //ajustanto o erro ngIf

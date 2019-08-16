@@ -2,27 +2,29 @@
 // https://firebase.google.com/docs/functions/typescript
 
 const functions = require('firebase-functions');
-const admin = require('firebase-admin');
-const pagarme = require('pagarme/browser');
+const app = require('firebase-admin');
+app.initializeApp();
 
+const pagarme = require('pagarme');
 const api_key_teste = 'ak_test_KN3qLDMn4KnpRgHCidxb7T9xfVcSz0';
 
-admin.initializeApp();
-
-
+const cors = require('cors')({
+    origin: true,
+});
 
 export const helloWorld = functions.https.onRequest((request: any, response: any) => {
-    response.send("Hello from Firebase!");
+    return cors(request, response, () => {
+        response.send("Hello from Firebase!");
+    })
 });
 
 // Mostrar as transações realizadas
 export const mostrarTransferencias = functions.https.onRequest((request: any, response: any) => {
-    response.send(() => {
-        pagarme.client.connect({ api_key: api_key_teste })
-            .then((client: any) => {
-                return client.transactions.all();
-            })
-            .then((resp: any) => console.log(resp));
+    return cors(request, response, () => {
+        response.send(
+            pagarme.client.connect({ api_key: api_key_teste })
+                .then((client: any) => client.transactions.all())
+        )
     })
 });
 

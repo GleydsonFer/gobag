@@ -7,14 +7,15 @@
 
 
 .logo-app{
-    width: 180px;
+    width: 150px;
     margin-top: 10px;
 }
 
 .rede-social{
-    width: 20%;
-    margin-right: 10px;
-    margin-left: 5px;
-    margin-top: 10px;
+    width: 50px;
+    padding: 10px;
 }
 
+.siga{
+    margin-left: 10px;
+}
