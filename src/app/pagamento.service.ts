@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Pagamento } from './shared/pagamento.model';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,14 @@ export class PagamentoService {
   private pagarme = require('pagarme/browser')
   private api_key_teste = 'ak_test_KN3qLDMn4KnpRgHCidxb7T9xfVcSz0';
 
-  constructor() { }
+  constructor(
+    private http: HttpClient
+  ) { }
+
+  // Teste de comunicaçã com o bac-end
+  public helloWorld(){
+    return this.http.get('/helloWorld');
+  }
 
   // Mostrar as transações realizadas
   public mostrarTransferencias() {

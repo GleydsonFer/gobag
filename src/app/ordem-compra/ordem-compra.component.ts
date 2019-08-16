@@ -71,6 +71,8 @@ export class OrdemCompraComponent implements OnInit {
     if (!this.autenticacaoGuard.canActivateVerOfertaNaoLogado()) {
       this.Router.navigate(['/acesso'])
     }
+
+    this.pagamentoService.helloWorld().subscribe(console.log);
   }
 
   // CONFIRMAÇÃO DO PEDIDO DE COMPRA
