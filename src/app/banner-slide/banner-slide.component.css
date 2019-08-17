@@ -127,13 +127,21 @@
         padding-left: 550px;
         padding-right: 550px;
     }
-    
+
+    .banner_home-instrucoes{    
+        padding-top: 80px;
+        padding-bottom: 80px;
+        padding-left: 150px;
+        padding-right: 150px;
+    }
+
     .banner_home-entenda{    
         padding-top: 120px;
         padding-bottom: 120px;
         padding-left: 250px;
         padding-right: 250px;
     }
+    
     .banner_home{
         background-color: #000;
         vertical-align: middle;
