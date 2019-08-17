@@ -71,10 +71,12 @@ export class OrdemCompraComponent implements OnInit {
     if (!this.autenticacaoGuard.canActivateVerOfertaNaoLogado()) {
       this.Router.navigate(['/acesso'])
     }
-
+    // função de teste
     this.pagamentoService.helloWorld().subscribe(console.log);
-
-    this.pagamentoService.mostrarTransferencias().subscribe(console.log);
+    // mostra as últimas 10 transações feitas no pagarme
+    this.pagamentoService.mostrarTransferencias().subscribe(response => {
+      console.log(response);
+    });
   }
 
   // CONFIRMAÇÃO DO PEDIDO DE COMPRA
