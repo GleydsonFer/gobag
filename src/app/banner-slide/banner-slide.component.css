@@ -104,6 +104,13 @@
     padding-right: 450px;
 }
 
+.banner_home-instrucoes{    
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-left: 250px;
+    padding-right: 250px;
+}
+
 .banner_home-entenda{    
     padding-top: 120px;
     padding-bottom: 120px;
@@ -111,7 +118,7 @@
     padding-right: 250px;
 }
 .banner_home{
-    background-color: #000;
+    background-image: url(/./assets/banners/home/banner-fundo.jpg);
     vertical-align: middle;
     height: 300px;
 }
@@ -129,10 +136,10 @@
     }
 
     .banner_home-instrucoes{    
-        padding-top: 80px;
-        padding-bottom: 80px;
-        padding-left: 150px;
-        padding-right: 150px;
+        padding-top: 40px;
+        padding-bottom: 40px;
+        padding-left: 350px;
+        padding-right: 350px;
     }
 
     .banner_home-entenda{    
@@ -143,8 +150,7 @@
     }
     
     .banner_home{
-        background-color: #000;
-        vertical-align: middle;
+        background-image: url(/./assets/banners/home/banner-fundo.jpg);
         height: 300px;
     }
     .banner_home-box{
@@ -170,6 +176,13 @@
         padding-left: 600px;
         padding-right: 600px;
     }
+
+    .banner_home-instrucoes{    
+        padding-top: 40px;
+        padding-bottom: 40px;
+        padding-left: 350px;
+        padding-right: 350px;
+    }
     
     .banner_home-entenda{
         padding-top: 150px;
@@ -178,7 +191,7 @@
         padding-right: 300px;
     }
     .banner_home{
-        background-color: #000;
+        background-image: url(/./assets/banners/home/banner-fundo.jpg);
         vertical-align: middle;
         height: 400px;
     }
@@ -203,7 +216,7 @@
  } */
 
 
- /* IPAD PLUS*/
+ /* IPAD Pro*/
  @media (max-width: 1100px) and (min-width: 801px) {
     
     .banner_home-gobag{           
@@ -212,7 +225,14 @@
         padding-left: 300px;
         padding-right: 300px;
     }
-    
+
+    .banner_home-instrucoes{    
+        padding-top: 30px;
+        padding-bottom: 30px;
+        padding-left: 150px;
+        padding-right: 150px;
+    }
+
     .banner_home-entenda{              
         padding-top: 100px;
         padding-bottom: 100px;
@@ -221,7 +241,7 @@
     }
 
     .banner_home{
-        background-color: #000;
+        background-image: url(/./assets/banners/home/banner-fundo.jpg);
         vertical-align: middle;
         height: 250px;
     }
@@ -249,8 +269,15 @@
         padding-right: 50px;
     }
 
+    .banner_home-instrucoes{    
+        padding-top: 60px;
+        padding-bottom: 60px;
+        padding-left: 90px;
+        padding-right: 90px;
+    }
+
     .banner_home{
-        background-color: #000;
+        background-image: url(/./assets/banners/home/banner-fundo.jpg);
         vertical-align: middle;
         height: 250px;
     }
@@ -270,6 +297,13 @@
         padding-right: 90px;
     }
     
+    .banner_home-instrucoes{    
+        padding-top: 45px;
+        padding-bottom: 45px;
+        padding-left: 45px;
+        padding-right: 45px;
+    }
+
     .banner_home-entenda{              
         padding-top: 70px;
         padding-bottom: 70px;
@@ -278,7 +312,7 @@
     }
 
     .banner_home{
-        background-color: #000;
+        background-image: url(/./assets/banners/home/banner-fundo.jpg);
         vertical-align: middle;
         height: 150px;
     }
@@ -321,6 +355,13 @@
         padding-left: 80px;
         padding-right: 80px;
     }
+
+    .banner_home-instrucoes{    
+        padding-top: 45px;
+        padding-bottom: 45px;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
     
     .banner_home-entenda{              
         padding-top: 80px;
@@ -330,7 +371,7 @@
     }
 
     .banner_home{
-        background-color: #000;
+        background-image: url(/./assets/banners/home/banner-fundo.jpg);
         vertical-align: middle;
         height: 150px;
     }
@@ -369,6 +410,13 @@
         padding-left: 80px;
         padding-right: 80px;
     }
+
+    .banner_home-instrucoes{    
+        padding-top: 40px;
+        padding-bottom: 40px;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
     
     .banner_home-entenda{              
         padding-top: 65px;
@@ -378,7 +426,7 @@
     }
 
     .banner_home{
-        background-color: #000;
+        background-image: url(/./assets/banners/home/banner-fundo.jpg);
         vertical-align: middle;
         height: 120px;
     }
