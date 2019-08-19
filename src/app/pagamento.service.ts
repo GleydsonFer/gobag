@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Pagamento } from './shared/pagamento.model';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -9,15 +10,19 @@ export class PagamentoService {
   private pagarme = require('pagarme/browser')
   private api_key_teste = 'ak_test_KN3qLDMn4KnpRgHCidxb7T9xfVcSz0';
 
-  constructor() { }
+  constructor(
+    private http: HttpClient
+  ) { }
+
+  // Teste de comunicação com o back-end
+  // FUNCIONANDO
+  public helloWorld(){
+    return this.http.get('https://us-central1-gobag-delivery.cloudfunctions.net/helloWorld', {responseType: 'text'});
+  }
 
   // Mostrar as transações realizadas
   public mostrarTransferencias() {
-    this.pagarme.client.connect({ api_key: this.api_key_teste })
-      .then(client => {
-        return client.transactions.all()
-      })
-      .then(console.log());
+    return this.http.get('https://us-central1-gobag-delivery.cloudfunctions.net/mostrarTransferencias')
   }
 
   // Criar uma transação simples
