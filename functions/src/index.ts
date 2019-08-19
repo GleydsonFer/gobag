@@ -18,7 +18,7 @@ export const helloWorldVictor = functions.https.onRequest((request: any, respons
         response.send("Hello from Firebase!");
     })
 });
-    
+
 // Mostrar as transações realizadas
 export const mostrarTransferencias = functions.https.onRequest((request: any, response: any) => {
     return cors(request, response, () => {
@@ -33,4 +33,29 @@ export const mostrarTransferencias = functions.https.onRequest((request: any, re
                 response.status(500).send(error)
             })
     })
+});
+
+// Iniciar tranferência com cartão de crédito
+export const iniciarTranferencia = functions.https.onRequest((request: any, response: any) => {
+    return cors(request, response, () => {
+        console.log(request);
+        pagarme.client.connect({ api_key: api_key_teste })
+            .then((client: any) => client.transactions.create({
+                capture: false,
+                amount: 10000,
+                card_number: "5309713381066435",
+                card_holder_name: "Wesley teste no back",
+                card_expiration_date: "0120",
+                card_cvv: "307"
+            }))
+            .then((transaction: any) => {
+                console.log('Transação efetuada com sucesso!', transaction);
+                response.send(request);
+            })
+            .catch((err: any) => {
+                console.log('ERRO NA CONFIRMAÇÃO', err);
+                response.status(500).send(err);
+            });
+
+    });
 });
