@@ -13,18 +13,22 @@ const cors = require('cors')({
 });
 
 // Função de teste
-export const helloWorld = functions.https.onRequest((request: any, response: any) => {
+export const helloWorldVictor = functions.https.onRequest((request: any, response: any) => {
     return cors(request, response, () => {
         response.send("Hello from Firebase!");
     })
 });
 
+// Recupera as transações já feitas
+const transacoes = async() => {
+    return await pagarme.client.connect({ api_key: api_key_teste })
+    .then((client: any) => client.transactions.all());
+} 
+    
 // Mostrar as transações realizadas
 export const mostrarTransferencias = functions.https.onRequest((request: any, response: any) => {
     return cors(request, response, () => {
-        pagarme.client.connect({ api_key: api_key_teste })
-            .then((client: any) => client.transactions.all())
-            .then((transactions: any) => console.log(transactions))
+        response.send(transacoes);
     })
 });
 

@@ -1,0 +1,57 @@
+[debug] [2019-08-17T13:17:59.547Z] ----------------------------------------------------------------------
+[debug] [2019-08-17T13:17:59.550Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Design\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2019-08-17T13:17:59.550Z] CLI Version:   7.2.2
+[debug] [2019-08-17T13:17:59.550Z] Platform:      win32
+[debug] [2019-08-17T13:17:59.550Z] Node Version:  v10.16.2
+[debug] [2019-08-17T13:17:59.552Z] Time:          Sat Aug 17 2019 10:17:59 GMT-0300 (GMT-03:00)
+[debug] [2019-08-17T13:17:59.552Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-08-17T13:17:59.561Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-08-17T13:17:59.562Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\angular\projetos\nabag-app
+
+Before we get started, keep in mind:
+
+  * You are currently outside your home directory
+  * You are initializing in an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[info] i  .firebaserc already has a default project, using gobag-delivery.
+[debug] [2019-08-17T13:18:12.121Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/gobag-delivery  
+ 
+[debug] [2019-08-17T13:18:13.583Z] <<< HTTP RESPONSE 200
+[info] 
+=== Functions Setup
+[info] 
+[info] A functions directory will be created in your project with a Node.js
+[info] package pre-configured. Functions can be deployed with firebase deploy.
+[info] 
+[debug] [2019-08-17T13:18:13.588Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-08-17T13:18:13.589Z] > authorizing via signed-in user
+[debug] [2019-08-17T13:18:13.590Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/gobag-delivery  
+ 
+[debug] [2019-08-17T13:18:14.887Z] <<< HTTP RESPONSE 200
+[debug] [2019-08-17T13:18:14.895Z] >>> HTTP REQUEST POST https://serviceusage.googleapis.com/v1/projects/gobag-delivery/services/cloudfunctions.googleapis.com:enable  
+ 
+[debug] [2019-08-17T13:18:14.896Z] >>> HTTP REQUEST POST https://serviceusage.googleapis.com/v1/projects/gobag-delivery/services/runtimeconfig.googleapis.com:enable  
+ 
+[debug] [2019-08-17T13:18:16.169Z] <<< HTTP RESPONSE 200
+[debug] [2019-08-17T13:18:16.277Z] <<< HTTP RESPONSE 200
+[info] i  Skipping write of functions/package.json
+[info] i  Skipping write of functions/tslint.json
+[info] i  Skipping write of functions/tsconfig.json
