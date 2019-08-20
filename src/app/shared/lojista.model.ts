@@ -9,14 +9,10 @@ export class Lojista {
     cep: string;
     endereco: string;
     numero: number;
-    complemento?: string
+    complemento?: string;
     bairro: string;
     cidade: string;
     uf: string;
     telefone_loja: string;
     instagram: string;
-    
-    jaPossuiEntregadores: string;
-    possuiQuantasLojas: string;
-    comoChegouAteNos: string;
 }
