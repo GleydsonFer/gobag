@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Pagamento } from './shared/pagamento.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+const axios = require('axios');
 
 @Injectable({
   providedIn: 'root'
 })
 export class PagamentoService {
   
-  // private pagarme = require('pagarme/browser')
-  // private api_key_teste = 'ak_test_KN3qLDMn4KnpRgHCidxb7T9xfVcSz0';
+  
 
   constructor(
     private http: HttpClient
@@ -27,18 +27,28 @@ export class PagamentoService {
 
   // Criar uma transação simples
   public iniciarTransferenciaFront(pagamento: Pagamento): Promise<any> {
+    console.log(pagamento);
+    return axios.post('https://us-central1-gobag-delivery.cloudfunctions.net/iniciarTranferencia', 
+    {
+      pagamento
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+    // const httpOptions = {
+    //   headers: new HttpHeaders({
+    //     'Content-Type':  'application/json',
+    //   })
+    // };
 
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json',
-      })
-    };
-
-    return this.http.post(
-      'https://us-central1-gobag-delivery.cloudfunctions.net/iniciarTranferencia', 
-      pagamento,
-      {responseType: 'text'}
-    ).toPromise()
+    // return this.http.post(
+    //   'https://us-central1-gobag-delivery.cloudfunctions.net/iniciarTranferencia', 
+    //   pagamento,
+    //   {responseType: 'text'}
+    // ).toPromise()
     
     // return this.pagarme.client.connect({ api_key: this.api_key_teste })
     //   .then(client => client.transactions.create({

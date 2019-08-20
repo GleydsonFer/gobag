@@ -106,8 +106,8 @@ export class OrdemCompraComponent implements OnInit {
 
       // Se os campos preenchidos estiverem validados, então são passados para o objeto pagamento
       pagamento = {
-        amount: pedido.valor_total,
-        capture: false, // inicia toda transação com a captura como falso
+        capture: 'false', // inicia toda transação com a captura como falso
+        amount: Math.round(pedido.valor_total *100),
         card_cvv: this.dados_pagamento.value.card_cvv.replace(/[^0-9]/g, ''),
         card_expiration_date: this.dados_pagamento.value.card_expiration_date.replace(/[^0-9]/g, ''),
         card_holder_name: this.dados_pagamento.value.card_holder_name,

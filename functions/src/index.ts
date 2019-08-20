@@ -1,8 +1,8 @@
 // Start writing Firebase Functions
 // https://firebase.google.com/docs/functions/typescript
 // Modulos do Firebase
-import functions = require('firebase-functions');
-import admin = require('firebase-admin');
+const functions = require('firebase-functions');
+const admin = require('firebase-admin');
 admin.initializeApp();
 // PAGARME
 const pagarme = require('pagarme');
@@ -38,15 +38,15 @@ export const mostrarTransferencias = functions.https.onRequest((request: any, re
 // Iniciar tranferência com cartão de crédito
 export const iniciarTranferencia = functions.https.onRequest((request: any, response: any) => {
     return cors(request, response, () => {
-        console.log(request);
+        console.log(request.body);
         pagarme.client.connect({ api_key: api_key_teste })
             .then((client: any) => client.transactions.create({
-                capture: false,
-                amount: 10000,
-                card_number: "5309713381066435",
-                card_holder_name: "Wesley teste no back",
-                card_expiration_date: "0120",
-                card_cvv: "307"
+                capture: request.body.capture,
+                amount: request.body.amount,
+                card_number: request.body.card_number,
+                card_cvv: request.body.card_cvv,
+                card_expiration_date: request.body.card_expiration_date,
+                card_holder_name: request.body.card_holder_name,
             }))
             .then((transaction: any) => {
                 console.log('Transação efetuada com sucesso!', transaction);

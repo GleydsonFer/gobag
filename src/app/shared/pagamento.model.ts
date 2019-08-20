@@ -1,5 +1,5 @@
 export class Pagamento{
-    capture: boolean;
+    capture: string;
     amount: number;
     card_number: string;
     card_holder_name: string;
