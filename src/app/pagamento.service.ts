@@ -12,6 +12,7 @@ export class PagamentoService {
   constructor() { }
 
   // Mostrar as transações realizadas
+  
   // public mostrarTransferencias() {
   //   this.pagarme.client.connect({ api_key: this.api_key_teste })
   //     .then(client => {

@@ -109,7 +109,11 @@ npm install ajax
 ------------------ brmasker-ionic-3 -------------------
 npm install brmasker-ionic-3 --save
 
-npm install ngx-image-zoom --save
+
+------------------ Cloud Functions -------------------
+npm install firebase-functions@latest firebase-admin@latest --save
+
+$ npm install ngx-image-zoom --save
 
 npm install axios
 
