@@ -26,18 +26,29 @@ export class BannerSlideComponent implements OnInit {
   };
 
   mySlideImages = [
+
     {
       alt: "GoBag Brasil",
-      image: "assets/banners/home/banner_home_3.jpg"
+      image: "assets/banners/home/banner_home_gobag.png"
     },
     {
       alt: "Como Funciona?",
-      image: "assets/banners/home/banner_home_2.png"
-    },
-    {
-      alt: "Experimente!",
-      image: "assets/banners/home/banner_home_1.jpg"
+      image: "assets/banners/home/banner_home_entenda.png"
     }
+    
+
+    // {
+    //   alt: "GoBag Brasil",
+    //   image: "assets/banners/home/banner_home_3.jpg"
+    // },
+    // {
+    //   alt: "Como Funciona?",
+    //   image: "assets/banners/home/banner_home_2.png"
+    // },
+    // {
+    //   alt: "Experimente!",
+    //   image: "assets/banners/home/banner_home_1.jpg"
+    // }
   ]
 
 

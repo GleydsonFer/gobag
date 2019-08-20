@@ -22,6 +22,20 @@ mas com um estilo diferente: header {background: #fff;} a desse arquivo
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
+@media (max-width: 800px){
+    .mobile-texto{
+        font-size: small;
+    }
+
+    .mobile-titulo{
+        font-size: lead;
+    }
+    .mobile-subtitulo{
+        font-size: normal;
+    }
+}
+
+
 /* Estilo default */ 
 html
 {

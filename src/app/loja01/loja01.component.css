@@ -25,9 +25,63 @@
     
 }
 .bannerLoja{    
-    align-content: center;
+    background-image: url(/./assets/banners/lojas/banner-fundo.jpg);
+    height: 250px;
 }
 
+ /* IPAD Pro*/
+ @media (max-width: 1100px) and (min-width: 801px) {
+    .logo-loja{    
+        
+        margin-top: -20%;
+        
+    }
+  
+}
+
+
+/* IPAD */
+ @media (max-width: 800px) and (min-width: 700px) {
+    .logo-loja{    
+        
+        margin-top: -25%;
+        
+    }
+    
+}
+
+ /* IPHONE 6/7/8 PLUS */
+@media (max-width: 440px) and (min-width: 411px) {
+    .logo-loja{    
+        height: 150px;
+        margin-top: -35%;
+        
+    }
+    
+} 
+
+/* IPHONE 6/7/8 E GALAXY S5 */
+@media (max-width: 410px) and (min-width: 360px) {
+    .logo-loja{    
+        height: 150px;
+        margin-top: -40%;
+        
+    }
+    
+
+} 
+
+@media (max-width: 359px) {
+    .logo-loja{    
+        height: 150px;
+        margin-top: -45%;
+        
+    }
+    
+
+    
+
+} 
 
 
 /* edições wilson */

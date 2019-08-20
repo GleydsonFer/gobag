@@ -1,4 +1,5 @@
-<h4 class="d-flex justify-content-center mb-4">CADASTRE-SE E SEJA UMA LOJA GOBAG</h4>
+<div class="container">
+<h4 class="texto preto d-flex justify-content-center mb-4 mt-2">CADASTRE-SE E SEJA UMA LOJA GOBAG</h4>
 
 <form [formGroup]="cadastro" (ngSubmit)="cadastrarLojista()">
 
@@ -6,7 +7,7 @@
 
     <!-- 1ª coluna -->
     <div class="col-md-6">
-      <h5>DADOS DE CONTATO</h5>
+      <h5 class="texto preto">DADOS DE CONTATO</h5>
 
       <div class="form-group d-flex">
         <input type="text" class="form-control col-md-6" id="inputNome" placeholder="NOME" formControlName="nome">
@@ -99,3 +100,4 @@
   </div>
 
 </form>
+</div>

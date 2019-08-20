@@ -45,7 +45,7 @@ export class TendenciasComponent implements OnInit {
     {
       link: "tendencia01",
       alt: "30%off",
-      image: "assets/banners/home/Promoções_3.jpg"
+      image: "assets/banners/home/Promocoes_3.jpg"
     },
     {
       link: "tendencia02",

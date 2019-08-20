@@ -1,11 +1,11 @@
-<app-banner-slide></app-banner-slide>
-<app-tendencias></app-tendencias>
+<!-- <app-banner-slide></app-banner-slide>
+<app-tendencias></app-tendencias> -->
 
 <div class="container">
   
   <div class="secao">
-    <h3 class="text-center">MODA INFANTIL</h3>
-    <h5 class="text-center">Conheça as melhores ofertas para roupas infantis:</h5>
+    <h3 class="subtitulo preto text-center">MODA INFANTIL</h3>
+    <h5 class="texto cinza text-center">Conheça as melhores ofertas para roupas infantis:</h5>
   </div>
 
 </div>
@@ -16,25 +16,34 @@
       <div class="row" style="border-top: 1px solid rgba(0,0,0,.1);
     padding-top: 20px;">
   
-        <div class="col-md-3" *ngFor="let produto of produtos | async">
-            <div class="prod">
-              <div class="prod_title-box">
-                <h4 class="prod_title">{{ produto.nome }}</h4>
-              </div>
-    
-              <figure class="prod_img-box">
-                <img [src]="produto.imagens[0]" class="img-fluid prod_img" />
-                <img [src]="produto.imagens[1]" class="img-fluid prod_img second_img" />
-              </figure>
-    
-              <div class="prod_price-box">  
-                <p class="prod_price">{{ produto.valor | currency : 'BRL' : 'symbol' }}</p>
-              </div>
-    
-              <button class="btn_ofer" [routerLink]="['/oferta', produto.id_produto]">Ver oferta</button>
+  <div class="col-lg-3 col-md-4 col-sm-6 col-12 my-2" *ngFor="let produto of produtos | async">
+    <div class="prod">
+
+
+        <a [routerLink]="['/oferta', produto.id_produto]">
+          <figure class="prod_img-box">
+            <img [src]="produto.imagens[0]" class="img-fluid rounded prod_img" />
+            <img [src]="produto.imagens[1]" class="img-fluid rounded prod_img second_img" />
+          </figure>
+        </a>
   
-            </div>
+        <div class="prod_title-box" >
+          <div class="prod_title subtitulo preto upper text-center">{{ produto.nome }}</div>
         </div>
+  
+        <div class="justify-content-center">            
+          <p class="text-center texto cinza">Loja Teste</p> 
+          <!-- <span class="texto cinza">{{ produto.loja.charAt(0).toUpperCase() + produto.loja.slice(1).toLowerCase() }}</span> -->
+       
+          <p class="align-text-top subtitulo preto">{{ produto.valor | currency:'BRL':true }}</p>
+        </div>
+  
+        <button class="btn_ofer upper" [routerLink]="['/oferta', produto.id_produto]">EXPERIMENTE</button>
+        <!-- <button class="btn_ofer upper" data-toggle="modal" data-target="#modalOferta">EXPERIMENTE</button> -->
+  
+  
+      </div>
+</div>
   
         <!-- <hr /> -->
       </div>
