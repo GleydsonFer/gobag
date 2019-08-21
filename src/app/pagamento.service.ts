@@ -29,9 +29,8 @@ export class PagamentoService {
   public iniciarTransferenciaFront(pagamento: Pagamento): Promise<any> {
     console.log(pagamento);
     return axios.post('https://us-central1-gobag-delivery.cloudfunctions.net/iniciarTranferencia', 
-    {
       pagamento
-    })
+    )
     .then(function (response) {
       console.log(response);
     })
