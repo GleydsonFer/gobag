@@ -3,6 +3,7 @@ import { AutenticacaoGuard } from './../autenticacao-guard.service';
 import { OrdemCompraService } from '../ordem-compra.service';
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { ToastrService } from 'ngx-toastr';
 import { CarrinhoService } from '../carrinho.service';
 import { Pedido } from '../shared/pedido.model';
@@ -32,7 +33,6 @@ export class OrdemCompraComponent implements OnInit {
   dadosCartao: any;
   carrinhoObservable: Observable<any>;
   carrinho: Carrinho;
-  pagamento: Pagamento;
   dados_pagamento: FormGroup = new FormGroup({
     'card_number': new FormControl('', [Validators.required, Validators.minLength(19)]),
     'card_holder_name': new FormControl('', [Validators.required]),
@@ -45,6 +45,7 @@ export class OrdemCompraComponent implements OnInit {
     private carrinhoService: CarrinhoService,
     private userService: UsuarioService,
     private afAuth: AngularFireAuth,
+    private afs: AngularFirestore,
     private toastr: ToastrService,
     private ordemCompraService: OrdemCompraService,
     private autenticacaoGuard: AutenticacaoGuard,
@@ -71,12 +72,9 @@ export class OrdemCompraComponent implements OnInit {
     if (!this.autenticacaoGuard.canActivateVerOfertaNaoLogado()) {
       this.Router.navigate(['/acesso'])
     }
-    // função de teste
-    this.pagamentoService.helloWorld().subscribe(console.log);
-    // mostra as últimas 10 transações feitas no pagarme
-    this.pagamentoService.mostrarTransferencias().subscribe(response => {
-      console.log(response);
-    });
+
+    this.carrinhoService = new CarrinhoService(this.afs, this.afAuth);
+
   }
 
   // CONFIRMAÇÃO DO PEDIDO DE COMPRA
@@ -97,12 +95,12 @@ export class OrdemCompraComponent implements OnInit {
       '', // forma de pagamento
       new Date(Date.now()), // data do pedido
       'processando', // status
-      this.carrinhoService.exibirItens().map((obj) => { return Object.assign({}, obj) }), // itens do carrinho
+      this.carrinho.itens.map((obj) => { return Object.assign({}, obj) }), // itens do carrinho
       this.carrinhoService.totalCarrinhoCompras(), // valor total
       0 // desconto?
     );
 
-    this.pagamento = new Pagamento(); // Inicia o objeto pagamento
+    let pagamento = new Pagamento(); // Inicia o objeto pagamento
 
     // verifica se os campos de pagamento são inválidos
     if (this.dados_pagamento.status == "INVALID") {
@@ -112,9 +110,9 @@ export class OrdemCompraComponent implements OnInit {
     } else { // entra aqui se os campos de pagamento estiverem OK
 
       // Se os campos preenchidos estiverem validados, então são passados para o objeto pagamento
-      this.pagamento = {
-        amount: pedido.valor_total,
-        capture: 'false', // inicia toda transação com a captura como falso
+      pagamento = {
+        capture: false, // inicia toda transação com a captura como falso
+        amount: Math.round(pedido.valor_total *100),
         card_cvv: this.dados_pagamento.value.card_cvv.replace(/[^0-9]/g, ''),
         card_expiration_date: this.dados_pagamento.value.card_expiration_date.replace(/[^0-9]/g, ''),
         card_holder_name: this.dados_pagamento.value.card_holder_name,
@@ -122,24 +120,25 @@ export class OrdemCompraComponent implements OnInit {
       }
 
       /*************** PAGARME ************* */
-      this.pagamentoService.iniciarTransferencia(this.pagamento).then(resp => {
 
-        // if (!this.usuario.emailVerified) { // verifica se o email está verificado
-        //   this.toastr.error("Verifica seu email e tente novamente.", "Email ainda não verificado")
-        //   console.log("email ainda não verificado!\n verifique seu email e tente novamente");
-        // } else {
-        if (this.carrinho.itens.length === 0) { // verifica se o carrinho está vazio no momento da confirmação
-          alert('Você não selecionou nenhum item!');
-        } else {
-          this.ordemCompraService.efetivarCompra(pedido) // efetiva a compra no banco de dados
-            .then((idPedido: string) => {
-              this.idPedidoCompra = idPedido;
-              // this.cancelarCarrinho(); // limpa o carrinho depois da compra finalizada
-              this.toastr.success('Pedido feito com sucesso', 'Compra'); // confirma e a compra
-            })
-        } // fim if else para verificar se o carrinho está vazio
-        // } // fim if else do email não vereficado
-      });
+      // if (!this.usuario.emailVerified) { // verifica se o email está verificado
+      //   this.toastr.error("Verifica seu email e tente novamente.", "Email ainda não verificado")
+      //   console.log("email ainda não verificado!\n verifique seu email e tente novamente");
+      // } else {
+      if (this.carrinho.itens.length === 0) { // verifica se o carrinho está vazio no momento da confirmação
+        alert('Você não selecionou nenhum item!');
+      } else {
+        this.pagamentoService.iniciarTransferenciaFront(pagamento)
+          .then(() => {
+            this.ordemCompraService.efetivarCompra(pedido) // efetiva a compra no banco de dados
+              .then((idPedido: string) => {
+                this.idPedidoCompra = idPedido;
+                // this.cancelarCarrinho(); // limpa o carrinho depois da compra finalizada
+                this.toastr.success('Pedido feito com sucesso', 'Compra'); // confirma e a compra
+              })
+          });
+      } // fim if else para verificar se o carrinho está vazio
+      // } // fim if else do email não vereficado
     } // fim if else dos campos de pagamento
   } //fim confirmarCompra()
 
