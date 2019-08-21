@@ -11,6 +11,7 @@ const api_key_teste = 'ak_test_KN3qLDMn4KnpRgHCidxb7T9xfVcSz0';
 const cors = require('cors')({
     origin: true,
 });
+const CircularJSON = require('circular-json');
 
 // Função de teste
 export const helloWorldVictor = functions.https.onRequest((request: any, response: any) => {
@@ -38,18 +39,23 @@ export const mostrarTransferencias = functions.https.onRequest((request: any, re
 // Iniciar tranferência com cartão de crédito
 export const iniciarTranferencia = functions.https.onRequest((request: any, response: any) => {
     return cors(request, response, () => {
+
+        const jsonRequest = CircularJSON.stringify(request.body);
+        const objRequest = JSON.parse(jsonRequest);
+        console.log(objRequest);
+
         pagarme.client.connect({ api_key: api_key_teste })
             .then((client: any) => client.transactions.create({
-                capture: false,
-                amount: request.body.amount,
-                card_number: request.body.card_number,
-                card_holder_name: request.body.card_holder_name,
-                card_expiration_date: request.body.card_expiration_date,
-                card_cvv: request.body.card_cvv,
+                capture: objRequest.capture,
+                amount: objRequest.amount,
+                card_number: objRequest.card_number,
+                card_holder_name: objRequest.card_holder_name,
+                card_expiration_date: objRequest.card_expiration_date,
+                card_cvv: objRequest.card_cvv
             })
                 .then((transaction: any) => {
                     console.log('Transação efetuada com sucesso!', transaction);
-                    response.send(request);
+                    response.send(transaction);
                 })
             )
             .catch((err: any) => {
