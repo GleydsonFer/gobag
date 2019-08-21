@@ -12,6 +12,7 @@ export class Pedido {
         public status: string,
         public itens: Array <ItemCarrinho>,
         public valor_total: number,
+        public id_transacao: number,
         public desconto?: number
     ) {  }
 }

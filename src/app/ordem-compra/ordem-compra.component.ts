@@ -97,6 +97,7 @@ export class OrdemCompraComponent implements OnInit {
       'processando', // status
       this.carrinho.itens.map((obj) => { return Object.assign({}, obj) }), // itens do carrinho
       this.carrinhoService.totalCarrinhoCompras(), // valor total
+      0, // id_transacao
       0 // desconto?
     );
 

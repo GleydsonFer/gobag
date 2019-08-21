@@ -55,6 +55,9 @@ export const iniciarTranferencia = functions.https.onRequest((request: any, resp
             })
                 .then((transaction: any) => {
                     console.log('Transação efetuada com sucesso!', transaction);
+
+                    admin.firestore().collection('pedidos').doc()
+
                     response.send(transaction);
                 })
             )
