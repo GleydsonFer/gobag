@@ -1,11 +1,11 @@
 <div class="container">
-  <h4 class="titulo preto d-flex justify-content-center mb-4 mt-2">CADASTRE-SE E SEJA UMA LOJA GOBAG</h4>
+  <h3 id="titulo" class="titulo preto d-flex justify-content-center text-center ">CADASTRE-SE E SEJA UMA LOJA GOBAG</h3>
 
   <form [formGroup]="cadastro" (ngSubmit)="cadastrarLojista()">
 
     <div class="row">
 
-      <div class="col-md-6 embed-responsive embed-responsive-16by9">
+      <div class="col-md-6 embed-responsive embed-responsive-16by9 borda-video">
         <iframe src="https://www.youtube.com/embed/sxlk_TooYd8" frameborder="0"
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
         </iframe>
@@ -68,15 +68,19 @@
         </div>
 
         <div class="form-group d-flex">
-          <label class="col-md-1 mr-3 pt-1">
-            <img class="image" src="assets/icons/smartphone.png">
+          <div class="col-6 d-flex">
+          <label class="pt-1">
+            <img class="image img-fluid" src="assets/icons/smartphone.png">
           </label>
-          <input type="text" class="form-control col-md-5" id="inputBairro" placeholder="TELEFONE DA LOJA"
+          <input type="text " class="form-control ml-2" id="inputBairro" placeholder="TELEFONE DA LOJA"
             formControlName="telefone_loja">
-          <label class="col-md-1 mr-3 pt-1">
-            <img class="image" src="assets/icons/instagram.png">
+          </div>
+          <div class="col-6 d-flex">
+          <label class="pt-1">
+            <img class="image img-fluid" src="assets/icons/instagram.png">
           </label>
-          <input type="text" class="form-control " id="inputCidade" placeholder="INSTAGRAM" formControlName="instagram">
+          <input type="text" class="form-control ml-2" id="inputCidade" placeholder="INSTAGRAM" formControlName="instagram">
+        </div>
         </div>
 
       </div>

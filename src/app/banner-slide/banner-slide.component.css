@@ -192,6 +192,7 @@
     }
     .banner_home{
         background-image: url(/./assets/banners/home/banner-fundo.jpg);
+        align-items: center;
         vertical-align: middle;
         height: 400px;
     }
@@ -373,6 +374,7 @@
     .banner_home{
         background-image: url(/./assets/banners/home/banner-fundo.jpg);
         vertical-align: middle;
+        align-items: center;
         height: 150px;
     }
     .banner_home-box{

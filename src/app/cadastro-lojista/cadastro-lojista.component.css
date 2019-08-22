@@ -1,3 +1,9 @@
+
+#titulo{
+    margin-top: 100px;
+    margin-bottom: 40px;
+}
+
 .botao{
     margin-top: 10px;
     margin-bottom: 20px;
@@ -13,6 +19,10 @@
 .borda-loja{
     padding-top: 15px;
 }
+.borda-video{
+    margin-bottom: 15px;
+}
+
 input.ng-invalid.ng-touched {
     border-bottom: 2px solid red;
 }
