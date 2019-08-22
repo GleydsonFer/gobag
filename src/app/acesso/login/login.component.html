@@ -1,10 +1,10 @@
-<div class="conteudo col-7 container">
+<div class="conteudo col-12 col-md-7 container">
   <form class="row" [formGroup]="formulario" (ngSubmit)="autenticar()">
     <div class="col-12 topo">
-      <p>
-        <span>OLÁ!</span> <br>
-        <span>Digite seu e-mail e senha para acessar sua conta GOBAG:</span>
-      </p>
+      
+        <h3 class="titulo preto">OLÁ!</h3> 
+        <p class="texto preto">Digite seu e-mail e senha para acessar sua conta GOBAG:</p>
+      
     </div>
     <div class="col-12 inputs">
       <div class="form-group">
@@ -23,7 +23,7 @@
       <p class="col-12" class="small text-danger text-center">{{mensagemErro}}</p>
     </div>
     <div class="col-12 below text-center">
-      <span >NÃO POSSUI CONTA?</span> <span class="hover" (click)="exibirPainelCadastro()"> CADASTRE-SE AGORA</span><br>
+      <span >NÃO POSSUI CONTA?</span> <span class="hover titulo" (click)="exibirPainelCadastro()"> CADASTRE-SE AGORA</span><br>
       <span class="hover" (click)="exibirForgetSenha()">ESQUECEU A SENHA</span>
     </div>
 

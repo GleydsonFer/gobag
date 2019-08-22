@@ -40,13 +40,13 @@ input.ng-valid.ng-touched {
     margin-bottom: 15px;
 }
 
-/* .topo p span:nth-child(1){
+.topo p span:nth-child(1){
     color:#ccccd0;
     font-size: 35px;
 }
 .topo p span:nth-child(3){
   font-size: 22px;
-} */
+}
 
 
 form{

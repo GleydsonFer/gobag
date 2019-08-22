@@ -1,80 +1,90 @@
 <div class="container">
-<h4 class="titulo preto text-center d-flex justify-content-center py-4">CADASTRE-SE E SEJA UMA LOJA GOBAG</h4>
+  <h4 class="titulo preto d-flex justify-content-center mb-4 mt-2">CADASTRE-SE E SEJA UMA LOJA GOBAG</h4>
 
-<form [formGroup]="cadastro" (ngSubmit)="cadastrarLojista()">
+  <form [formGroup]="cadastro" (ngSubmit)="cadastrarLojista()">
 
-  <div class="row">
+    <div class="row">
 
-    <!-- 1ª coluna -->
-    <div class="col-md-6">
-      <h5 class="texto cinza">DADOS DE CONTATO</h5>
-
-      <div class="form-group d-flex">
-        <input type="text" class="form-control col-md-6" id="inputNome" placeholder="NOME" formControlName="nome">
-        <input type="tel" class="form-control col-md-6" id="inputSobrenome" placeholder="SOBRENOME"
-          formControlName="sobrenome">  
+      <div class="col-md-6 embed-responsive embed-responsive-16by9">
+        <iframe src="https://www.youtube.com/embed/sxlk_TooYd8" frameborder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+        </iframe>
       </div>
 
-      <div class="form-group d-flex">
-        <input type="text" class="form-control col-md-6" id="inputCargo" placeholder="CARGO" formControlName="cargo">
-        <input type="text" class="form-control col-md-6" id="inputCelular" placeholder="TELEFONE"
-          formControlName="telefone">
+      <!-- 1ª coluna -->
+      <div class="col-md-6 borda-contato">
+        <h5 class="texto preto">DADOS DE CONTATO</h5>
+
+        <div class="form-group d-flex">
+          <input type="text" class="form-control col-md-6" id="inputNome" placeholder="NOME" formControlName="nome">
+          <input type="tel" class="form-control col-md-6" id="inputSobrenome" placeholder="SOBRENOME"
+            formControlName="sobrenome">
+        </div>
+
+        <div class="form-group d-flex">
+
+          <input type="text" class="form-control col-md-6" id="inputCargo" placeholder="CARGO" formControlName="cargo">
+          <input type="text" class="form-control col-md-6" id="inputCelular" placeholder="TELEFONE" formControlName="telefone">
+          
+        </div>
+
+        <div class="form-group">
+          <input type="email" class="form-control" id="inputEmail1" placeholder="E-MAIL" formControlName="email">
+          <small id="emailHelp" class="form-text text-muted">Nunca vamos compartilhar seu email, com ninguém.</small>
+        </div>
+
       </div>
 
-      <div class="form-group">
-        <input type="email" class="form-control" id="inputEmail1" placeholder="E-MAIL" formControlName="email">
-        <small id="emailHelp" class="form-text text-muted">Nunca vamos compartilhar seu email, com ninguém.</small>
-      </div>
+      <!-- 2ª coluna -->
+      
+      <div class="col-md-12 borda-loja">
+        <h5 class="texto preto">DADOS DA LOJA</h5>
 
+        <div class="form-group">
+          <input type="text" class="form-control" id="inputNome1" placeholder="NOME DA LOJA"
+            formControlName="nomeDaLoja">
+        </div>
+
+        <div class="form-group d-flex">
+          <input type="text" class="form-control col-md-6" id="inputCnpj1" placeholder="CNPJ" formControlName="cnpj">
+          <input type="text" class="form-control col-md-6" id="inputCep1" placeholder="CEP" formControlName="cep">
+        </div>
+
+        <div class="d-flex form-group" id="inputEndereco1">
+          <input type="text" class="form-control col-md-9" placeholder="ENDEREÇO" formControlName="endereco">
+          <input type="text" class="form-control col-md-3" placeholder="NÚMERO" formControlName="numero">
+        </div>
+
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="COMPLEMENTO" formControlName="complemento">
+        </div>
+
+        <div class="form-group d-flex">
+          <input type="text" class="form-control col-md-4" id="inputBairro" placeholder="BAIRRO"
+            formControlName="bairro">
+          <input type="text" class="form-control col-md-4" id="inputCidade" placeholder="CIDADE"
+            formControlName="cidade">
+          <input type="text" class="form-control col-md-4" id="inputUf" placeholder="UF" formControlName="uf">
+        </div>
+
+        <div class="form-group d-flex">
+          <label class="col-md-1 mr-3 pt-1">
+            <img class="image" src="assets/icons/smartphone.png">
+          </label>
+          <input type="text" class="form-control col-md-5" id="inputBairro" placeholder="TELEFONE DA LOJA"
+            formControlName="telefone_loja">
+          <label class="col-md-1 mr-3 pt-1">
+            <img class="image" src="assets/icons/instagram.png">
+          </label>
+          <input type="text" class="form-control " id="inputCidade" placeholder="INSTAGRAM" formControlName="instagram">
+        </div>
+
+      </div>
 
     </div>
+    
 
-    <!-- 2ª coluna -->
-    <div class="col-md-6">
-      <h5 class="texto cinza">DADOS DA LOJA</h5>
-
-      <div class="form-group">
-        <input type="text" class="form-control" id="inputNome1" placeholder="NOME DA LOJA" formControlName="nomeDaLoja">
-      </div>
-
-      <div class="form-group d-flex">
-        <input type="text" class="form-control col-md-6" id="inputCnpj1" placeholder="CNPJ" formControlName="cnpj">
-        <input type="text" class="form-control col-md-6" id="inputCep1" placeholder="CEP" formControlName="cep">
-      </div>
-
-      <div class="d-flex form-group" id="inputEndereco1">
-        <input type="text" class="form-control col-md-9" placeholder="ENDEREÇO" formControlName="endereco">
-        <input type="text" class="form-control col-md-3" placeholder="NÚMERO" formControlName="numero">
-      </div>
-
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="COMPLEMENTO" formControlName="complemento">
-      </div>
-
-      <div class="form-group d-flex">
-        <input type="text" class="form-control col-md-4" id="inputBairro" placeholder="BAIRRO" formControlName="bairro">
-        <input type="text" class="form-control col-md-4" id="inputCidade" placeholder="CIDADE" formControlName="cidade">
-        <input type="text" class="form-control col-md-4" id="inputUf" placeholder="UF" formControlName="uf">
-      </div>
-
-      <div class="form-group d-flex ">
-        
-          <img class="img-fluid image col-2 col-md-2" src="assets/icons/logo-celular.png"/>
-        
-        <input type="text" class="form-control col-4 col-md-4" id="inputBairro" placeholder="TELEFONE DA LOJA"
-          formControlName="telefone_loja">
-        
-          <img class="img-fluid image col-2 col-md-2 " src="assets/icons/logo-insta.png"/>
-        
-        <input type="text" class="form-control col-4 col-md-4 " id="inputCidade" placeholder="INSTAGRAM"
-          formControlName="instagram">
-      </div>
-
-    </div>
-
-  </div>
-
-  <!-- <div class="container">
+    <!-- <div class="container">
     <div class="row mt-4 d-flex justify-content-center ">
       <div class="form-group col-md-4">
         <label for="inputPergunta1">Já possui entregadores?</label>
@@ -93,11 +103,11 @@
     </div>
   </div> -->
 
-  <div class="d-flex justify-content-center">
-    <button type="submit" class="btn btn-secondary botao" routerLink="/cadastro-lojista">
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ENVIAR DADOS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    </button>
-  </div>
+    <div class="d-flex justify-content-center">
+      <button type="submit" class="btn btn-secondary botao" routerLink="/cadastro-lojista">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ENVIAR DADOS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </button>
+    </div>
 
-</form>
+  </form>
 </div>
