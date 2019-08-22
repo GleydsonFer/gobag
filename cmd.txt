@@ -126,6 +126,9 @@ $ npm install ngx-image-zoom --save
 ------------------ Axios -------------------
 npm install axios --save
 
+------------------ CircularJson -------------------
+npm install --save circular-json
+
 
 
 
