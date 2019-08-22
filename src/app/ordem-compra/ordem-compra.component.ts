@@ -3,6 +3,7 @@ import { AutenticacaoGuard } from './../autenticacao-guard.service';
 import { OrdemCompraService } from '../ordem-compra.service';
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { ToastrService } from 'ngx-toastr';
 import { CarrinhoService } from '../carrinho.service';
 import { Pedido } from '../shared/pedido.model';
@@ -44,6 +45,7 @@ export class OrdemCompraComponent implements OnInit {
     private carrinhoService: CarrinhoService,
     private userService: UsuarioService,
     private afAuth: AngularFireAuth,
+    private afs: AngularFirestore,
     private toastr: ToastrService,
     private ordemCompraService: OrdemCompraService,
     private autenticacaoGuard: AutenticacaoGuard,
@@ -70,6 +72,9 @@ export class OrdemCompraComponent implements OnInit {
     if (!this.autenticacaoGuard.canActivateVerOfertaNaoLogado()) {
       this.Router.navigate(['/acesso'])
     }
+
+    this.carrinhoService = new CarrinhoService(this.afs, this.afAuth);
+
   }
 
   // CONFIRMAÇÃO DO PEDIDO DE COMPRA
@@ -90,7 +95,7 @@ export class OrdemCompraComponent implements OnInit {
       '', // forma de pagamento
       new Date(Date.now()), // data do pedido
       'processando', // status
-      this.carrinhoService.exibirItens().map((obj) => { return Object.assign({}, obj) }), // itens do carrinho
+      this.carrinho.itens.map((obj) => { return Object.assign({}, obj) }), // itens do carrinho
       this.carrinhoService.totalCarrinhoCompras(), // valor total
       0 // desconto?
     );
@@ -106,7 +111,7 @@ export class OrdemCompraComponent implements OnInit {
 
       // Se os campos preenchidos estiverem validados, então são passados para o objeto pagamento
       pagamento = {
-        capture: 'false', // inicia toda transação com a captura como falso
+        capture: false, // inicia toda transação com a captura como falso
         amount: Math.round(pedido.valor_total *100),
         card_cvv: this.dados_pagamento.value.card_cvv.replace(/[^0-9]/g, ''),
         card_expiration_date: this.dados_pagamento.value.card_expiration_date.replace(/[^0-9]/g, ''),

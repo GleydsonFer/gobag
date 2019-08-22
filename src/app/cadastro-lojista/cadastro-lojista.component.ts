@@ -34,9 +34,6 @@ export class CadastroLojistaComponent implements OnInit {
     'uf': new FormControl(null, [Validators.required, Validators.minLength(2), Validators.maxLength(2)]),
     'telefone_loja': new FormControl(null, [Validators.required, Validators.minLength(8), Validators.maxLength(13)]),
     'instagram': new FormControl(null),
-    'jaPossuiEntregadores': new FormControl(null),
-    'possuiQuantasLojas': new FormControl(null),
-    'comoChegouAteNos': new FormControl(null),
   })
 
   public cadastrarLojista() {
@@ -45,7 +42,7 @@ export class CadastroLojistaComponent implements OnInit {
     if (this.cadastro.status == "INVALID") {
       this.cadastro.get('nome').markAsTouched()
       this.cadastro.get('sobrenome').markAsTouched()
-      this.cadastro.get('celular').markAsTouched()
+      this.cadastro.get('telefone').markAsTouched()
       this.cadastro.get('email').markAsTouched()
       this.cadastro.get('nomeDaLoja').markAsTouched()
       this.cadastro.get('cnpj').markAsTouched()
@@ -63,7 +60,7 @@ export class CadastroLojistaComponent implements OnInit {
         nome: <string>this.cadastro.value.nome,
         sobrenome: <string>this.cadastro.value.sobrenome,
         cargo: <string>this.cadastro.value.cargo,
-        telefone: <string>this.cadastro.value.celular,
+        telefone: <string>this.cadastro.value.telefone,
         email: <string>this.cadastro.value.email,
         nomeDaLoja: <string>this.cadastro.value.nomeDaLoja,
         cnpj: <string>this.cadastro.value.cnpj,
@@ -74,11 +71,8 @@ export class CadastroLojistaComponent implements OnInit {
         bairro: <string>this.cadastro.value.bairro,
         cidade: <string>this.cadastro.value.cidade,
         uf: <string>this.cadastro.value.uf,
-        telefone_loja: '',
-        instagram: '',
-        jaPossuiEntregadores: <string>this.cadastro.value.jaPossuiEntregadores,
-        possuiQuantasLojas: <string>this.cadastro.value.possuiQuantasLojas,
-        comoChegouAteNos: <string>this.cadastro.value.comoChegouAteNos
+        telefone_loja: <string>this.cadastro.value.telefone_loja,
+        instagram: <string>this.cadastro.value.instagram,
       };
 
       this.lojistaService.cadastrarLojista(this.lojista);

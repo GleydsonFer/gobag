@@ -1,15 +1,16 @@
-<div class="conteudo">
+<div class="container">
 
   <form class="row" (submit)="cadastrarUsuario()" [formGroup]="formulario">
     <div class="col-sm-12 topo">
-      <h4>CADASTRO</h4>
-      <h4>NOVO POR AQUI</h4>
-      <h5>Precisamos de mais algumas informações para criar sua conta GOBAG</h5>
+      <h3 class="titulo preto">CRIE SUA CONTA GOBAG</h3>
+      <h5 class="titulo cinza">NOVO POR AQUI?</h5>
+      <h6 class="texto preto">Precisamos de mais algumas informações para criar sua conta GOBAG:</h6>
     </div>
+
     <div class="col-12">
-      <div class="col-6 inputs">
+      <!-- <div class="col-6 inputs"> -->
         <div class="form-row">
-          <div class="form-group col">
+          <div class="form-group col-sm-6">
             <div class="input-group">
               <input formControlName="nome" type="text" class="form-control" placeholder="NOME"
                 [ngClass]="aplicaCssErro('nome')">
@@ -19,7 +20,7 @@
               </div>
             </div>
           </div>
-          <div class="form-group col">
+          <div class="form-group col-sm-6">
             <div class="input-group">
               <input formControlName="sobrenome" type="text" class="form-control" placeholder="SOBRENOME"  [ngClass]="aplicaCssErro('sobrenome')">
               <div *ngIf="this.formulario.get('sobrenome').invalid && this.formulario.get('sobrenome').touched"
@@ -30,7 +31,7 @@
           </div>
         </div>
         <div class="form-row">
-          <div class="form-group col">
+          <div class="form-group col-sm-6">
             <div class="input-group">
                 <input formControlName="nascimento" #nascimento (keyup)="updateFieldValue('nascimento', nascimento.value)" type="text" [brmasker]="{mask:'00/00/0000', len:10, type: 'num'}" class="form-control" placeholder="NASCIMENTO" [ngClass]="aplicaCssErro('nascimento')">
                 <div *ngIf="this.formulario.get('nascimento').invalid && this.formulario.get('nascimento').touched"
@@ -39,7 +40,7 @@
                 </div>
               </div>
           </div>
-          <div class="form-group col">
+          <div class="form-group col-sm-6">
             <div class="input-group">
                 <input formControlName="celular" name="phone" [brmasker]="{phone: true}"  #celular (keyup)="updateFieldValue('celular', celular.value)"   class="form-control" placeholder="CELULAR" [ngClass]="aplicaCssErro('celular')">
                 <div *ngIf="this.formulario.get('celular').invalid && this.formulario.get('celular').touched"
@@ -68,7 +69,7 @@
           </div>
         </div>
         <div class="form-row ">
-          <div class="form-group col-9">
+          <div class="form-group col-12">
             <div class="input-group">
               <input type="text" formControlName="endereco" class="form-control" [ngClass]="aplicaCssErro('endereco')"
                 placeholder="ENDERECO">
@@ -78,7 +79,7 @@
               </div>
             </div>
           </div>
-          <div class="form-group col-3">
+          <div class="form-group col-12">
             <div class="input-group">
               <input type="text" formControlName="numero" class="form-control" [ngClass]="aplicaCssErro('numero')"
                 placeholder="NUMERO">
@@ -94,7 +95,7 @@
         </div>
 
         <div class="form-row">
-          <div class="form-group col">
+          <div class="form-group col-sm-6">
             <div class="input-group">
                 <input formControlName="bairro" type="text" class="form-control" placeholder="BAIRRO" [ngClass]="aplicaCssErro('bairro')">
                 <div *ngIf="this.formulario.get('bairro').invalid && this.formulario.get('bairro').touched"
@@ -103,7 +104,7 @@
                 </div>
             </div>
           </div>
-          <div class="form-group col">
+          <div class="form-group col-sm-6">
             <div class="input-group">
                 <input formControlName="cidade" type="text" class="form-control" placeholder="CIDADE" [ngClass]="aplicaCssErro('cidade')">
                 <div *ngIf="this.formulario.get('cidade').invalid && this.formulario.get('cidade').touched"
@@ -112,7 +113,7 @@
                 </div>
             </div>
           </div>
-          <div class="form-group col">
+          <div class="form-group col-sm-6">
             <div class="input-group">
                 <input formControlName="estado" type="text" class="form-control" placeholder="ESTADO" [ngClass]="aplicaCssErro('estado')">
                 <div *ngIf="this.formulario.get('estado').invalid && this.formulario.get('estado').touched"
@@ -143,14 +144,16 @@
         </div>
       </div>
 
-    </div>
+    <!--</div>-->
 
-    <div class="col-12 text-center mt-4">
+    <div class="col-12 text-center mt-4 mb-4">
       <p class="small text-danger text-center">{{mensagemErroCad}}</p>
       <button type="submit" [disabled]="this.formulario.invalid"
-        class="btn btn-primary btn_salvar">ENVIAR</button><br>
+        class="btn btn_salvar mb-2">ENVIAR</button><br>
         <!-- <div class="btn btn-primary" (click)="console(this.formulario)"></div> -->
-      <span>JÁ POSSUI CONTA?</span> <span class="hover" (click)="exibirPainelLogin()"> FAÇA LOGIN</span>
+        <p>
+      <span class="texto preto">JÁ POSSUI CONTA?</span> <span class="hover titulo preto" (click)="exibirPainelLogin()"> FAÇA LOGIN</span>
+    </p>
     </div>
   </form>
 

@@ -53,15 +53,15 @@ export class InstrucoesComponent implements OnInit {
   mySlideImages = [
     {
       alt: "loja01",
-      image: "/assets/banners/home/banner-camisa.png"
+      image: "/assets/banners/home/banner-bolsa.png"
     },
     { 
       alt: "loja01",
       image: "/assets/banners/home/banner-relogio.png"
     },
     { 
-      alt: "loja01",
-      image: "/assets/banners/home/banner-bolsa.png"
+      alt: "loja01",      
+      image: "/assets/banners/home/banner-camisa.png"
     },
     {  
       alt: "loja01",
