@@ -1,10 +1,10 @@
-<section class="lojas">
-    <div class="container justify-content-center">
+<section class="instrucoes">
+    <div class="container mt-6 justify-content-center">
 
         <div class="carousel">
             <owl-carousel [options]="mySlideOptions" [items]="mySlideImages" [carouselClasses]="['owl-theme', 'sliding']">
-                <div class="item lojas_item" *ngFor="let image of mySlideImages;let i = index">
-                    <a routerLinkActive="active" routerLink="/{{image.link}}" class="lojas_link">
+                <div class="item instrucoes_item" *ngFor="let image of mySlideImages;let i = index">
+                    <a routerLinkActive="active" routerLink="/{{image.link}}" class="instrucoes_link">
                         <img class="slide-image img-fluid" src={{image.image}} alt="{{image.alt}}" />
                     </a>
                 </div>
@@ -13,3 +13,66 @@
         </div>
     </div>
 </section>
+
+<!-- Banners estáticos -->
+<!-- <div class="container ">
+
+    <div class="row my-4">
+
+        <div class="col-3 col-md-3 align-center">          
+
+            <img class="img-fluid fotos" src="../../assets/banners/home/banner-bolsa.png" alt="">
+
+            <div class="d-flex flex-row justify-content-md-center ">
+
+            <p class="align-self-sm-start">
+                        <span>Monte a sua bag!</span><br>
+                        <span>Selecione os produtos que deseja<br> experimentar, de acordo com seu gosto</span>
+                    </p> 
+            </div>
+
+        </div>
+
+        <div class="col-3 col-md-3 align-center">
+            
+
+            <img class="img-fluid fotos" src="../../assets/banners/home/banner-relogio.png" alt="">
+
+            <div class="d-flex flex-row justify-content-md-center "></div>
+
+            <p>
+                <span>Receba no mesmo dia!</span><br>
+                <span>Selecione o período que <br> deseja receber o produto</span>
+            </p>
+            </div>
+        </div>
+
+        <div class="col-3 col-md-3 align-center">
+            
+
+            <img class="img-fluid fotos" src="../../assets/banners/home/banner-camisa.png" alt="">
+
+            <div class="d-flex flex-row justify-content-md-center "></div>
+
+            <p class="">
+                    <span>Experimente!</span><br>
+                    <span>Se não gostar de algum produto,<br>devolva sem precisar pagar</span>
+                </p> 
+            </div>
+        </div>
+
+        <div class="col-3 col-md-3 align-center">
+            
+
+            <img class="img-fluid fotos" src="../../assets/banners/home/banner-retorne.png" alt="">
+
+            <div class="d-flex flex-row justify-content-md-center "></div>
+
+            <p class="">
+                    <span>Retorne!</span><br>
+                    <span>Se não gostar de qualquer<br>produto, nos informe que<br>iremos recolher sua bag!</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div> -->

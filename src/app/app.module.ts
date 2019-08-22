@@ -85,6 +85,7 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import * as $ from 'jquery';
 
 import { InstrucoesComponent } from './instrucoes/instrucoes.component';
+import { HttpClientModule } from '@angular/common/http';
 registerLocaleData(localePtBr);
 
 @NgModule({
@@ -139,6 +140,7 @@ registerLocaleData(localePtBr);
     BrowserModule,
     OwlModule,
     HttpModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     //CategoriasModule,
     //ajustanto o erro ngIf

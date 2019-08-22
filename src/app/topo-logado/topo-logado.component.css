@@ -54,7 +54,8 @@
     width: 27px;
     height: 27px;
     cursor: pointer;
-    /* background: url('/assets/avatar.png') no-repeat center center; */
+
+    background: url('../../assets/brasil.png') no-repeat center center;
     background-color:black;
     border-radius: 100%;
     margin-left:3px;
@@ -98,59 +99,67 @@
     transition: all ease-in .5;
 }
 
-@media (max-width: 820px) {
-    .bag{
-        background:none;
 
+.drop_usuario{
+    /* right: 0 !important;
+    left: 5 !important;
+    background-color: blue; */
+}
+
+
+.pesquisa_mobile{
+    display: none;
+}
+.logo_mobile{
+    display:none;
+}
+.endereco_mobile{
+    display: none
+}
+
+
+@media (max-width: 994px) {
+    .pesquisa_mobile{
+        display:block;
+        margin-left: -15px;
     }
-    .bag img{
-        width: 27px;
-        height: 27px; 
-        margin-left: 100px;
+    .pesquisa_desktop{
+        display:none;
     }
 } 
 
-
-@media (max-width: 768px) {
-    .logo{
-        width: 30px;
-        height: 30px;;
-        margin-left: 10px;
-    }
-} 
-
-
-@media (max-width: 590px) {
-    .endereco{
+@media (max-width: 634px) {
+    .endereco_mobile{
+        display: block;
         
     }
-    .btn_sair{
-        margin-right: 15px;
-        font-size: 0.7em;
+    .endereco_desktop{
+        display:none
     }
-    .bag img{
-        width: 20px;
-        height: 20px; 
-        margin-left: 35px;
-    }
-    
-    .login {
-        width: 20px;
-        height: 20px;
-    }
-    .endereco  {
-        font-size: 0.7em;
-        
+    .logo_desktop{
+        display: none;
     }
     .logo{
-        margin-right: 5px;
+        width: 20px ; 
+        margin-left: 1px !important;
     }
-
+    .logo_mobile{
+        display: block;
+        width: 20px !important;    
+    }
+    .logo_mobile a img{
+        background-image: url('../../assets/ico4/android-icon-36x36.png')
+    }
+    .navbar-toggler{
+        margin-left: 1px !important;
+    }
+    .col_right{
+        padding: 0;
+    }
+    .col_right{
+        padding-right: 2%;
+    }
 } 
-
-
-
-
 
 
 

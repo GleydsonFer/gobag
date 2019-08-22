@@ -8,10 +8,10 @@ import { Component, OnInit } from '@angular/core';
 export class InstrucoesComponent implements OnInit {
 
   mySlideOptions = {
-    autoplay:true,
-    autoplayTimeout:2000,
-    autoplayHoverPause:true,
-    loop: true,
+    autoplay: true,
+    autoplayTimeout: 2000,
+    autoplayHoverPause: true,
+    loop: false,
     margin: 10,
     dot: false,
     nav: true,
@@ -23,12 +23,14 @@ export class InstrucoesComponent implements OnInit {
       0: {
         items: 2,
         dot: false,
-        nav: false
+        nav: false,
+        loop: true
       },
       500: {
         items: 2,
         dot: false,
-        nav: false
+        nav: false,
+        loop: true
       },
       1000: {
         items: 4,
@@ -39,13 +41,11 @@ export class InstrucoesComponent implements OnInit {
         items: 4,
         dot: false,
         nav: false,
-        loop: false
       },
       2000: {
         items: 4,
         dot: false,
         nav: false,
-        loop: false
       }
     }
   };

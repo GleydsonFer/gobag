@@ -118,6 +118,11 @@ $ npm install ngx-image-zoom --save
 npm install axios
 
 npm i @types/jquery
+------------------ Axios -------------------
+npm install axios --save
+
+
+
 
 
 
