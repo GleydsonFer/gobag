@@ -18,6 +18,7 @@ import { Carrinho } from '../shared/carrinho.model';
 import { Observable } from 'rxjs';
 import { Pagamento } from '../shared/pagamento.model';
 import { PagamentoService } from '../pagamento.service';
+import { ListaDePedidos } from '../shared/lista-de-pedidos.model';
 
 @Component({
   selector: 'app-ordem-compra',
@@ -87,7 +88,7 @@ export class OrdemCompraComponent implements OnInit {
     this.dados_pagamento.get('card_cpf').markAsTouched()
 
     // criar 'pedido' com os dados da compra e do cliente
-    let pedido: Pedido = new Pedido(
+    let pedido: ListaDePedidos = new ListaDePedidos(
       this.usuario.email, // email
       this.usuario.endereco, // endereco
       this.usuario.numero, // numero 
@@ -97,6 +98,8 @@ export class OrdemCompraComponent implements OnInit {
       'processando', // status
       this.carrinho.itens.map((obj) => { return Object.assign({}, obj) }), // itens do carrinho
       this.carrinhoService.totalCarrinhoCompras(), // valor total
+      0, // id_pedido
+      0, // id_transacao
       0 // desconto?
     );
 
@@ -129,10 +132,15 @@ export class OrdemCompraComponent implements OnInit {
         alert('Você não selecionou nenhum item!');
       } else {
         this.pagamentoService.iniciarTransferenciaFront(pagamento)
-          .then(() => {
+          .then((dadosTransferencia) => {
+            
+            console.log('dadosTranferência', dadosTransferencia);
+            pedido.id_transacao = dadosTransferencia.id;
+
             this.ordemCompraService.efetivarCompra(pedido) // efetiva a compra no banco de dados
               .then((idPedido: string) => {
                 this.idPedidoCompra = idPedido;
+                console.log('id_pedido', this.idPedidoCompra);
                 // this.cancelarCarrinho(); // limpa o carrinho depois da compra finalizada
                 this.toastr.success('Pedido feito com sucesso', 'Compra'); // confirma e a compra
               })

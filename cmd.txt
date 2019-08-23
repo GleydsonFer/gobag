@@ -121,6 +121,9 @@ npm i @types/jquery
 ------------------ Axios -------------------
 npm install axios --save
 
+------------------ CircularJson -------------------
+npm install --save circular-json
+
 
 
 
