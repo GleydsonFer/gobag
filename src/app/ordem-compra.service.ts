@@ -13,12 +13,16 @@ export class OrdemCompraService {
         private afs: AngularFirestore
     ) { }
 
-    public efetivarCompra(pedido: ListaDePedidos): Promise<string> {
+    public efetivarCompra(pedido: ListaDePedidos): Promise<any> {
 
         return this.afs.collection('pedidos')
-            .doc(pedido.email_cliente)
-            .collection('lista_pedidos')
-            .add({ ...pedido})
-            .then();
+            .doc(btoa(pedido.email_cliente)).set({ 'email': pedido.email_cliente })
+            .then(doc => {
+                return this.afs.collection('pedidos')
+                    .doc(btoa(pedido.email_cliente))
+                    .collection('lista_pedidos')
+                    .add({ ...pedido })
+                    .then();
+            })
     }
 }
