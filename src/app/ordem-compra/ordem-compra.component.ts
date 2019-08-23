@@ -55,17 +55,18 @@ export class OrdemCompraComponent implements OnInit {
 
     this.afAuth.auth.onAuthStateChanged(user => {
       console.log(user.emailVerified)
-      this.userService.getUsuario(user.email).subscribe((usuario) => {
-        usuario.forEach(usuario => {
-          this.usuario = usuario
-        })
+      this.userService.getUsuario(user.email).then((usuario) => {
+        // usuario.forEach(usuario => {
+        //   this.usuario = usuario
+        // })
+        this.usuario = usuario;
         // recupera  carrinho a partir do banco de dados
         this.carrinhoObservable = this.carrinhoService.getCarrinhoByEmail(user.email);
         this.carrinhoObservable.subscribe(car => {
           this.carrinho = car[0];
-        })
-      })
-    })
+        });
+      });
+    });
   }
 
   ngOnInit() {

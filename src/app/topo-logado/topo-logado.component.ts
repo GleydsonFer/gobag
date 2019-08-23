@@ -4,7 +4,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { Autenticacao } from '../autenticacao.service';
-import {CarrinhoService} from '../carrinho.service';
+import { CarrinhoService } from '../carrinho.service';
 import { OfertasService } from '../ofertas.service';
 import { Produto } from '../shared/produto.model';
 import { UsuarioService } from './../usuario.service';
@@ -52,29 +52,27 @@ export class TopoLogadoComponent implements OnInit {
     );
 
     this.afauth.auth.onAuthStateChanged(user => {
-      this.userService.getUsuario(user.email).subscribe(usuario => {
-        aux = usuario[0]
-
-        var foto_user = document.querySelector(".login");
-        if (aux.foto_perfil) {
-          // foto_user.setAttribute("style", `background-image:url(${aux.foto_perfil}); background-size:100%; background-repeat:no-repeat`)
-        }else{
-          foto_user.setAttribute("style", `background-image:url(../../assets/brasil.png); background-size:100%; background-repeat:no-repeat`)
+      this.userService.getUsuario(user.uid).then(usuario => {
+        const fotoUser = document.querySelector('.login');
+        if (usuario.foto_perfil) {
+          fotoUser.setAttribute('style', `background-image:url(${usuario.foto_perfil});
+            background-size:100%; background-repeat:no-repeat`);
+        } else {
+          fotoUser.setAttribute('style', `background-image:url(../../assets/brasil.png);
+            background-size:100%; background-repeat:no-repeat`);
         }
-        this.enderecoEntrega = aux.endereco
-        this.numeroEntrega = aux.numero
+        this.enderecoEntrega = usuario.endereco;
+        this.numeroEntrega = usuario.numero;
 
         this.carrinhoObservable = this.carrinhoService.getCarrinhoByEmail(user.email);
         this.carrinhoObservable.subscribe(car => {
           this.carrinho = car[0];
-          if (this.carrinho != undefined && this.carrinho != null) {
+          if (this.carrinho !== undefined && this.carrinho != null) {
             this.numeroItensCarrinho = this.carrinho.itens.length;
           }
-        })
-
-
-      })
-    })
+        });
+      });
+    });
   }
 
   public pesquisa(termoDaBusca) {

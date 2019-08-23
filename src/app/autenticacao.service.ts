@@ -30,7 +30,7 @@ export class Autenticacao {
 
 
         this.authFire.auth.onAuthStateChanged(user => {
-            var fireUID = btoa(user.email);
+            var fireUID = user.uid;
             let imagePath = `Imagem_perfil/${fireUID}/usuario.foto_perfil`;
             if (usuario.foto_perfil !== null) {
 

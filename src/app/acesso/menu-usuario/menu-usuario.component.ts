@@ -16,19 +16,19 @@ export class MenuUsuarioComponent implements OnInit {
 
   formulario: FormGroup;
   usuario: Usuario = {
-    nome:"",
-    sobrenome:"",
-    data_nascimento:"",
-    celular:"",
-    email:"",
-    cep:"",
-    endereco:"",
-    numero:"",
-    complemento:"",
-    bairro:"",
-    cidade:"",
-    estado:"",
-    senha:""
+    nome: "",
+    sobrenome: "",
+    data_nascimento: "",
+    celular: "",
+    email: "",
+    cep: "",
+    endereco: "",
+    numero: "",
+    complemento: "",
+    bairro: "",
+    cidade: "",
+    estado: "",
+    senha: ""
   }
   imagem: any = null;
 
@@ -45,29 +45,29 @@ export class MenuUsuarioComponent implements OnInit {
 
     this.formulario = this.formBuilder.group({
       foto: [],
-      nome: ['',[Validators.required]],
+      nome: ['', [Validators.required]],
       email: [''],
-      cpf: ['', [Validators.minLength(11), Validators.maxLength(11),Validators.required]],
-      data_nascimento: ['',[Validators.required]],
-      celular: ['',[Validators.required]],
-      endereco: ['', [Validators.minLength(3),Validators.required]],
+      cpf: ['', [Validators.minLength(11), Validators.maxLength(11), Validators.required]],
+      data_nascimento: ['', [Validators.required]],
+      celular: ['', [Validators.required]],
+      endereco: ['', [Validators.minLength(3), Validators.required]],
       numero: ['', [Validators.minLength(1), Validators.required]],
-      bairro: ['',[Validators.required]],
-      nome_usuario: ['',[Validators.required]],
+      bairro: ['', [Validators.required]],
+      nome_usuario: ['', [Validators.required]],
     })
 
     this.fireAuth.auth.onAuthStateChanged(user => {
-
-      this.userService.getUsuario(user.email).subscribe(user => {
-        user.forEach((user: any) => {
-          //setando informações do usuario na tela de cadastro
-          this.formulario.controls['nome'].setValue(user.nome_completo)
+      this.userService.getUsuario(user.uid).then(user => {
+        console.log(user)
+        console.log(user.sobrenome)
+          // setando informações do usuario na tela de cadastro
+          this.formulario.controls['nome'].setValue(user.nome)
           this.formulario.controls['endereco'].setValue(user.endereco)
           this.formulario.controls['numero'].setValue(user.numero)
           this.formulario.controls['email'].setValue(user.email)
           this.formulario.controls['cpf'].setValue(user.cpf)
           this.formulario.controls['data_nascimento'].setValue(user.data_nascimento)
-          this.formulario.controls['nome_usuario'].setValue(user.nome_usuario)
+          this.formulario.controls['nome_usuario'].setValue(user.sobrenome)
           this.formulario.controls['celular'].setValue(user.celular)
           this.formulario.controls['bairro'].setValue(user.bairro)
 
@@ -89,9 +89,8 @@ export class MenuUsuarioComponent implements OnInit {
             foto_user.style.backgroundSize = "100%";
 
           }
-        })
-      })
-    })
+      });
+    });
   }
 
   uploadFile(event: any) {
@@ -129,7 +128,7 @@ export class MenuUsuarioComponent implements OnInit {
 
     this.usuario.foto_perfil = this.imagem
 
-    
+
     this.authService.updateUsuario(this.usuario)
 
   }
