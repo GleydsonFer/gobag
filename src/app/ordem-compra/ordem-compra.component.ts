@@ -55,8 +55,8 @@ export class OrdemCompraComponent implements OnInit {
   ) {
 
     this.afAuth.auth.onAuthStateChanged(user => {
-      console.log(user.emailVerified)
-      this.userService.getUsuario(user.email).then((usuario) => {
+      console.log(user.emailVerified);
+      this.userService.getUsuario(user.uid).then((usuario) => {
         // usuario.forEach(usuario => {
         //   this.usuario = usuario
         // })
