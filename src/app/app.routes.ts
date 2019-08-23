@@ -33,6 +33,7 @@ import { PoliticasDeDevolucaoComponent } from './politicas-de-devolucao/politica
 import { OrdemDevolucaoComponent } from './ordem-devolucao/ordem-devolucao.component';
 import { CadastroLojistaComponent } from './cadastro-lojista/cadastro-lojista.component';
 import { InstrucoesComponent } from './instrucoes/instrucoes.component';
+import { OrdemCompraSucessoComponent } from './ordem-compra-sucesso/ordem-compra-sucesso.component' 
 
 export const ROUTES: Routes = [
     { path: '', component: HomeComponent },
@@ -69,5 +70,6 @@ export const ROUTES: Routes = [
     { path: 'cadastro-lojista', component: CadastroLojistaComponent },
     { path: 'acompanharPedido', component: AcompanharPedidoComponent },
     { path: 'instrucoes', component: InstrucoesComponent },
+    { path: 'ordemcomprasucesso', component: OrdemCompraSucessoComponent }
 
 ]

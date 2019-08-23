@@ -1,18 +1,19 @@
-.conteudo{
+/* .conteudo{
     height:1000px;
     margin-bottom: 40px;
-}
+} */
 .topo{
-    margin-bottom: 50px
+    margin-bottom: 50px;
+    margin-top: 50px;
 }
 form{
     margin-top:50px;
 }
-.inputs{
+/* .inputs{
     margin-left: 10%;
-}
+} */
 
-.inputs input{
+/* .inputs input{
    border:none;
    border-bottom: 4px solid #cfcbcb;
    border-radius:0px;
@@ -29,16 +30,13 @@ form{
      background-color:white;
  }
 form h4:nth-child(1){
-    margin-left: 13%;
 }
 form h4:nth-child(2){
     color: #afadad;
-    font-weight: 700;  
-    margin-left:2%;
+    font-weight: 700;
 }
 form h5{
-    color: #505050; 
-    margin-left:2%; 
+    color: #505050;
 }
 
 .foto_user{
@@ -54,14 +52,14 @@ form h5{
     border: 5px solid rgb(173, 171, 171);
 }
 .foto_user:hover{
-    /* transform: scale(1.05, 1.05); */
+    transform: scale(1.05, 1.05);
     box-shadow: inset 0 0 0 10000px rgba(170, 170, 170, 0.664);
     transition-duration: 0.5s;
     cursor: pointer;
 }
 .custom-file-input{
     background-color:blue !important;
-}
+} */
 .text_image{
     color:white;
     text-align: center
@@ -76,19 +74,14 @@ form h5{
 
 .btn_salvar{
 font-weight: 700;
-color:#252424;
-padding: 10px;
-padding-left: 250px;
-padding-right: 250px;
+color:#fff;
+padding-left: 50px;
+padding-right: 50px;
 border: none;
-background-color:#bdbdbdbb;
+background-color:#000;
 font-size: 1.6em;
-margin-left: 16%;
 }
 
-.btn_salvar + br + span {
-    margin-left: 15%;
-}
 
 .hover:hover{
     color: rgb(86, 86, 233);
