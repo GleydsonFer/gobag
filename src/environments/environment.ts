@@ -13,6 +13,17 @@ export const environment = {
     messagingSenderId: "471025471423",
     appId: "1:471025471423:web:19cbfbc5c6605ce6"
   }
+
+  // firebaseConfig: {
+  //   apiKey: 'AIzaSyC7Wyjp7ojT3Ed24Af5LQ18G8PLP-nxHPU',
+  //   authDomain: 'gobagrulesteste.firebaseapp.com',
+  //   databaseURL: 'https://gobagrulesteste.firebaseio.com',
+  //   projectId: 'gobagrulesteste',
+  //   storageBucket: 'gobagrulesteste.appspot.com',
+  //   messagingSenderId: '967707566358',
+  //   appId: '1:967707566358:web:a3a6b3fc6a9ac511'
+  // }
+
 };
 
 /*
