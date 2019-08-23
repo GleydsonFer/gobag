@@ -1,14 +1,64 @@
 <div class="container">
   <div class="row" style="margin-top: 50px">
     <div class="col d-flex justify-content-center">
-        <h3>Compra realizada com sucesso!</h3>
+        <h3>PEDIDO REALIZADO COM SUCESSO</h3>
     </div>
   </div>
   
   <div class="row" style="margin-top: 50px">
       <div class="col d-flex justify-content-center">
-          <p>O número do seu pedido é <b> {{idPedidoCompra}} </b></p>
+        <p>Nº do Pedido <b> numeroPedidoCompra </b></p>
+        <p>ID do Pedido <b> idPedidoCompra </b></p>
+      </div>
+
+      <!-- modal -->
+
+    <div class="col-12 col-sm-12 col-md-4 continuar">
+        <button 
+            class="btn_confirmar"
+            data-toggle="modal"
+            data-target="#avisoConfirmar"
+            >
+          CONFIRMAR modal
+        </button>
+      </div>
+  </div>
+
+
+  <!-- modal -->
+  <div class="modal fade" id="avisoConfirmar" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h5 class="modal-title">Tem ctz que chegou tudo direitinho?</h5>
+          <button type="button" class="close" data-dismiss="modal">
+            <span>x</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+            <p>
+              Confira se a bag chegou tudo direitinho e confirme? 
+              <br>
+              Caso não entre em contato com a nossa equipe ou com logista
+            </p>
+        </div>
+
+        <div class="modal-footer">
+              <button 
+                type="button" 
+                class="btn btn-danger" 
+                data-dismiss="modal" 
+                routerLink="/ordem-devolucao"
+              >
+              Chegou!
+              </button>
+        </div>
+
       </div>
     </div>
+
+    
   
 </div>

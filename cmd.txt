@@ -105,26 +105,24 @@ npm install pagarme
 
 npm install ngx-chips --save
 
+npm install ajax
 ------------------ brmasker-ionic-3 -------------------
 npm install brmasker-ionic-3 --save
 
-no app.module.ts 
-    import { BrMaskerModule } from 'brmasker-ionic-3';
-
-    @NgModule({
-    imports: [
-        BrMaskerModule
-    ],
-    })
 
 ------------------ Cloud Functions -------------------
-$ npm install firebase-functions@latest firebase-admin@latest --save
+npm install firebase-functions@latest firebase-admin@latest --save
 
 $ npm install ngx-image-zoom --save
 
+npm install axios
 
+npm i @types/jquery
 ------------------ Axios -------------------
 npm install axios --save
+
+------------------ CircularJson -------------------
+npm install --save circular-json
 
 
 

@@ -30,7 +30,7 @@ export class Autenticacao {
 
 
         this.authFire.auth.onAuthStateChanged(user => {
-            var fireUID = btoa(user.email);
+            var fireUID = user.uid;
             let imagePath = `Imagem_perfil/${fireUID}/usuario.foto_perfil`;
             if (usuario.foto_perfil !== null) {
 
@@ -66,7 +66,7 @@ export class Autenticacao {
         // console.log('Chegamos até o seriviço', usuario);
         return this.authFire.auth.createUserWithEmailAndPassword(usuario.email, usuario.senha)
             .then((resposta: any) => {
-                console.log("entrou na função");
+                console.log("entrou na função", resposta.user.uid);
                 
                 //remover o atributo senha do objeto usuario
                 delete usuario.senha;
@@ -74,7 +74,7 @@ export class Autenticacao {
                 //registrando dados complementares do usuário no path email na base 64 
                 // firebase.database().ref(`usuario_detalhe/${btoa(usuario.email)}`)
                 //     .set({ usuario })
-                this.db.collection('usuarios').doc(btoa(usuario.email)).set({
+                this.db.collection('usuarios').doc(resposta.user.uid).set({
                     nome:usuario.nome,
                     sobrenome:usuario.sobrenome,
                     data_nascimento:usuario.data_nascimento,
