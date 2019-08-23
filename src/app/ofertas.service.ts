@@ -13,6 +13,7 @@ import { Produto } from './shared/produto.model';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { FirebaseListObservable } from "@angular/fire/database-deprecated";
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable()
 export class OfertasService {
@@ -28,7 +29,8 @@ export class OfertasService {
     constructor(
         private http: Http,
         private afs: AngularFirestore,
-        private storage: AngularFireStorage
+        private storage: AngularFireStorage,
+        private toastr: ToastrService
     ) { }
 
     // Métodos para API fake
@@ -208,12 +210,11 @@ export class OfertasService {
 
                         // atualiza o produto no banco, o campo de imagens com seus respectivos links para download 
                         this.afs.collection('produtos').doc(fireUID).update(produto);
+
+                        this.toastr.success('Cadastro completado', 'Produto adicionado com sucesso!');
                     })
                 });
             }
         })
-
-
     }
-
 }

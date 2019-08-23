@@ -34,7 +34,7 @@
         </div>
         <div class="input-group">
             <input formControlName="card_holder_name" type="text" class="form-control mb-3 card_holder_name"
-            placeholder="Nome e sobrenome"  [ngClass]="aplicaCssErro('card_holder_name')" >
+            placeholder="Nome do titular do cartão"  [ngClass]="aplicaCssErro('card_holder_name')" >
             <div *ngIf="this.dados_pagamento.get('card_holder_name').invalid && this.dados_pagamento.get('card_holder_name').touched" class="invalid-feedback">
                 campo não pode estar vazio
             </div>
