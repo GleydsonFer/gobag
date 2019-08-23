@@ -80,6 +80,10 @@ import { AcompanharPedidoComponent } from './acompanhar-pedido/acompanhar-pedido
 import { ForgetSenhaComponent } from './acesso/forget-senha/forget-senha.component';
 import { NgxImageZoomModule } from 'ngx-image-zoom';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+
+
+import * as $ from 'jquery';
+
 import { InstrucoesComponent } from './instrucoes/instrucoes.component';
 import { HttpClientModule } from '@angular/common/http';
 registerLocaleData(localePtBr);

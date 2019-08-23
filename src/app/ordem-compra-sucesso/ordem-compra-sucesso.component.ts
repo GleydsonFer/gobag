@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'app-ordem-compra-sucesso',
@@ -8,12 +10,10 @@ import { Component, OnInit, Input } from '@angular/core';
 export class OrdemCompraSucessoComponent implements OnInit {
 
   @Input() public idPedidoCompra: string;
-
-
-
+  
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {  } 
+
 
 }

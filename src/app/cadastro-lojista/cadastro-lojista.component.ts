@@ -42,7 +42,7 @@ export class CadastroLojistaComponent implements OnInit {
     if (this.cadastro.status == "INVALID") {
       this.cadastro.get('nome').markAsTouched()
       this.cadastro.get('sobrenome').markAsTouched()
-      this.cadastro.get('celular').markAsTouched()
+      this.cadastro.get('telefone').markAsTouched()
       this.cadastro.get('email').markAsTouched()
       this.cadastro.get('nomeDaLoja').markAsTouched()
       this.cadastro.get('cnpj').markAsTouched()
