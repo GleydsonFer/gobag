@@ -1,9 +1,3 @@
-
-#titulo{
-    margin-top: 100px;
-    margin-bottom: 40px;
-}
-
 .botao{
     margin-top: 10px;
     margin-bottom: 20px;
@@ -41,3 +35,20 @@ input.ng-valid.ng-touched {
 .invalid-feedback{
     display: block !important;
 }
+
+.inputs input{
+   border:none;
+   border-bottom: 4px solid #cfcbcb;
+   border-radius:0px;
+}
+.inputs input:focus{
+    box-shadow: none;
+}
+.inputs input:cli{
+    border:none;
+    border-bottom: 4px solid #cfcbcb;
+    border-radius:0px;
+ }
+ .inputs[_ngcontent-c4] input[_ngcontent-c4]{
+     background-color:white;
+ }
