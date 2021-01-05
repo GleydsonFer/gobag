@@ -25,7 +25,7 @@
     "@types/jquery": "^3.3.31",
     "ajax": "0.0.4",
     "animate.css": "^3.7.2",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "bootstrap": "^4.0.0-beta",
     "brmasker-ionic-3": "^1.6.3",
     "brmasker4": "^1.0.3",
